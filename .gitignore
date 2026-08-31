@@ -1,0 +1,28 @@
+# Segreti
+.env
+.env.*
+!.env.example
+*.pem
+credentials.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Dati ed export (mai versionati: contengono dati di contatto)
+exports/
+data/
+*.csv
+*.xlsx
+*.jsonl
+!tests/golden/*.json
+
+# Sistema
+.DS_Store
+*.log
