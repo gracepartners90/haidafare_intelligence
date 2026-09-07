@@ -28,13 +28,15 @@
        DESIGN TOKENS
        ============================================================ */
     :root {
-      /* Dark theme (default) */
-      --bg:     #0B0C0E;
-      --rule:   #1D2026;
-      --t1:     #EDE9E1;
-      --t2:     #706E69;
-      --t3:     #46443E;
-      --accent: #C49328;
+      /* Light theme (default — brand Luca Picchio Academy) */
+      --bg:      #FFFFFF;
+      --rule:    #E4E4E4;
+      --t1:      #0C0C0C;
+      --t2:      #696969;
+      --t3:      #ABABAB;
+      --accent:  #B5820E;   /* oro, leggermente scurito per contrasto su bianco */
+      --btn-bg:  #0C0C0C;   /* CTA: nero pieno */
+      --btn-fg:  #FFFFFF;
 
       --ff-d: 'Fraunces', Georgia, serif;
       --ff-b: 'DM Sans', system-ui, sans-serif;
@@ -45,25 +47,29 @@
       --px: 1.5rem;
     }
 
-    /* Light theme — system preference */
-    @media (prefers-color-scheme: light) {
-      :root:not([data-theme="dark"]) {
-        --bg:     #F5F3EE;
-        --rule:   #DDD9D1;
-        --t1:     #0D0E10;
-        --t2:     #6A6861;
-        --t3:     #9C9892;
-        --accent: #9A7012;
+    /* Dark theme — system preference */
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg:     #0B0C0E;
+        --rule:   #1D2026;
+        --t1:     #EDE9E1;
+        --t2:     #706E69;
+        --t3:     #46443E;
+        --accent: #C49328;
+        --btn-bg: #C49328;
+        --btn-fg: #0B0C0E;
       }
     }
-    /* Light theme — explicit toggle */
-    :root[data-theme="light"] {
-      --bg:     #F5F3EE;
-      --rule:   #DDD9D1;
-      --t1:     #0D0E10;
-      --t2:     #6A6861;
-      --t3:     #9C9892;
-      --accent: #9A7012;
+    /* Dark theme — explicit toggle */
+    :root[data-theme="dark"] {
+      --bg:     #0B0C0E;
+      --rule:   #1D2026;
+      --t1:     #EDE9E1;
+      --t2:     #706E69;
+      --t3:     #46443E;
+      --accent: #C49328;
+      --btn-bg: #C49328;
+      --btn-fg: #0B0C0E;
     }
 
     /* ============================================================
@@ -307,8 +313,8 @@
       font-size: 0.6875rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--bg);
-      background: var(--accent);
+      color: var(--btn-fg);
+      background: var(--btn-bg);
       padding: 1.1rem 2.5rem;
       border-radius: 1px;
       transition: opacity 0.18s ease;
@@ -318,7 +324,7 @@
     .cta-btn:hover { opacity: 0.84; }
 
     .cta-btn:focus-visible {
-      outline: 2px solid var(--accent);
+      outline: 2px solid var(--btn-bg);
       outline-offset: 4px;
     }
 
