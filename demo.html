@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>AI DA FARE — Demo Guidata</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:           #F7F6F4;
+      --surface:      #FFFFFF;
+      --surface-2:    #F0EEE9;
+      --border:       #E5E3DF;
+      --border-light: #EDEBE7;
+      --text-1:       #131211;
+      --text-2:       #6B6760;
+      --text-3:       #A8A59F;
+      --s-ok-fg:      #15803D;
+      --s-ok-bg:      #F0FDF4;
+      --s-ok-bd:      #BBF7D0;
+      --s-mon-fg:     #1D4ED8;
+      --s-mon-bg:     #EFF6FF;
+      --s-mon-bd:     #BFDBFE;
+      --s-act-fg:     #B45309;
+      --s-act-bg:     #FFFBEB;
+      --s-act-bd:     #FDE68A;
+      --s-rev-fg:     #0F766E;
+      --s-rev-bg:     #F0FDFA;
+      --s-rev-bd:     #99F6E4;
+      --s-shd-fg:     #6D28D9;
+      --s-shd-bg:     #F5F3FF;
+      --s-shd-bd:     #DDD6FE;
+      --ff-d:         'DM Serif Display', Georgia, serif;
+      --ff-ui:        'DM Sans', system-ui, -apple-system, sans-serif;
+      --header-h:     56px;
+      --nav-h:        60px;
+      --radius:       8px;
+      --radius-sm:    4px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--ff-ui);
+      background: var(--bg);
+      color: var(--text-1);
+      height: 100dvh;
+      overflow: hidden;
+    }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+    /* Shell */
+    .demo-shell {
+      display: flex;
+      flex-direction: column;
+      height: 100dvh;
+      overflow: hidden;
+    }
+
+    /* Header */
+    .demo-header {
+      height: var(--header-h);
+      min-height: var(--header-h);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      gap: 1rem;
+      z-index: 100;
+      flex-shrink: 0;
+    }
+    .demo-wordmark {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .demo-wordmark-text {
+      font-family: var(--ff-d);
+      font-size: 1.125rem;
+      letter-spacing: 0.02em;
+      color: var(--text-1);
+      line-height: 1;
+    }
+    .demo-badge {
+      font-family: var(--ff-ui);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 0.2em 0.6em;
+      border-radius: var(--radius-sm);
+    }
+    .demo-header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .demo-progress {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-2);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.03em;
+    }
+    .demo-progress-current { color: var(--text-1); font-weight: 600; }
+    .demo-menu-btn {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+      color: var(--text-2);
+      transition: background 0.15s, color 0.15s;
+    }
+    .demo-menu-btn:hover { background: var(--surface-2); color: var(--text-1); }
+
+    /* Stage */
+    .demo-stage {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    /* Scenes */
+    .scene {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      overflow-y: auto;
+      overflow-x: hidden;
+      overscroll-behavior: contain;
+      z-index: 0;
+    }
+    .scene.active {
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 1;
+    }
+    .scene.entering {
+      animation: sceneEnter 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+    @keyframes sceneEnter {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scene.entering { animation: none; }
+    }
+
+    .scene-inner {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2.5rem 1.5rem;
+      max-width: 960px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .scene-inner.wide  { max-width: 1100px; }
+    .scene-inner.center { align-items: center; text-align: center; }
+
+    .scene-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 1.25rem;
+    }
+    .scene-h1 {
+      font-family: var(--ff-d);
+      font-size: clamp(1.875rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--text-1);
+      margin-bottom: 1rem;
+    }
+    .scene-h1 em { font-style: italic; }
+    .scene-sub {
+      font-size: clamp(1rem, 1.5vw, 1.125rem);
+      color: var(--text-2);
+      line-height: 1.65;
+      max-width: 56ch;
+      margin-bottom: 2rem;
+    }
+    .scene-inner.center .scene-sub { margin-left: auto; margin-right: auto; }
+
+    /* Navigation */
+    .demo-nav {
+      height: var(--nav-h);
+      min-height: var(--nav-h);
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      gap: 1rem;
+      z-index: 100;
+      flex-shrink: 0;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-2);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: background 0.15s, color 0.15s, border-color 0.15s, opacity 0.15s;
+      white-space: nowrap;
+    }
+    .nav-btn:hover:not(:disabled) { background: var(--surface-2); color: var(--text-1); }
+    .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .nav-btn.primary {
+      background: var(--text-1);
+      color: var(--bg);
+      border-color: var(--text-1);
+    }
+    .nav-btn.primary:hover:not(:disabled) {
+      background: #2a2927;
+      border-color: #2a2927;
+    }
+    .nav-restart-btn {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-3);
+      padding: 0.375rem 0.75rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-restart-btn:hover { background: var(--surface-2); color: var(--text-2); }
+
+    /* Presenter Panel */
+    .presenter-panel {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .presenter-panel.open { display: flex; pointer-events: auto; }
+    .presenter-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+    }
+    .presenter-drawer {
+      position: relative;
+      z-index: 1;
+      background: var(--text-1);
+      color: var(--surface);
+      width: 100%;
+      max-width: 680px;
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 1.5rem 2rem 2rem;
+      max-height: 45vh;
+      overflow-y: auto;
+    }
+    .presenter-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 0.875rem;
+    }
+    .presenter-note { font-size: 0.9375rem; line-height: 1.65; color: rgba(255,255,255,0.8); }
+    .presenter-note p + p { margin-top: 0.75rem; }
+    .presenter-note strong { color: #fff; }
+    .presenter-note code {
+      font-family: monospace;
+      font-size: 0.875em;
+      background: rgba(255,255,255,0.1);
+      padding: 0.1em 0.4em;
+      border-radius: 3px;
+    }
+    .presenter-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.4);
+      border-radius: var(--radius-sm);
+      transition: color 0.15s, background 0.15s;
+    }
+    .presenter-close:hover { color: #fff; background: rgba(255,255,255,0.1); }
+
+    /* Stat cards */
+    .cards-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+    }
+    .stat-card-value {
+      font-family: var(--ff-d);
+      font-size: 2.5rem;
+      color: var(--text-1);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-card-label { font-size: 0.8125rem; color: var(--text-2); line-height: 1.4; }
+    .stat-card.highlight { background: #FDF8F0; border-color: #F0D9A0; }
+    .stat-card.danger { background: var(--s-shd-bg); border-color: var(--s-shd-bd); }
+    .stat-card.danger .stat-card-value { color: var(--s-shd-fg); }
+
+    /* Table */
+    .ai-table-wrap {
+      overflow-x: auto;
+      margin-top: 1.75rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    thead th {
+      background: var(--surface-2);
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      white-space: nowrap;
+    }
+    tbody td {
+      padding: 0.875rem 1rem;
+      border-top: 1px solid var(--border-light);
+      color: var(--text-1);
+      vertical-align: middle;
+    }
+    tbody tr.shadow-row { background: var(--s-shd-bg); }
+    tbody tr.shadow-row td { color: var(--s-shd-fg); }
+    .referente-none { color: var(--text-3); font-style: italic; }
+
+    /* Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2em 0.6em;
+      border-radius: 100px;
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }
+    .badge-ok     { background: var(--s-ok-bg);  color: var(--s-ok-fg);  border-color: var(--s-ok-bd); }
+    .badge-mon    { background: var(--s-mon-bg); color: var(--s-mon-fg); border-color: var(--s-mon-bd); }
+    .badge-act    { background: var(--s-act-bg); color: var(--s-act-fg); border-color: var(--s-act-bd); }
+    .badge-rev    { background: var(--s-rev-bg); color: var(--s-rev-fg); border-color: var(--s-rev-bd); }
+    .badge-shadow { background: var(--s-shd-bg); color: var(--s-shd-fg); border-color: var(--s-shd-bd); }
+
+    /* Score ring */
+    .score-layout {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      align-items: center;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+    .score-ring-wrap { position: relative; width: 160px; height: 160px; }
+    .score-ring-svg  { width: 100%; height: 100%; }
+    .score-ring-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .score-ring-number {
+      font-family: var(--ff-d);
+      font-size: 2.5rem;
+      line-height: 1;
+      color: var(--text-1);
+    }
+    .score-ring-max { font-size: 0.75rem; color: var(--text-3); }
+    .score-details { display: flex; flex-direction: column; gap: 1rem; }
+    .score-detail-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .score-detail-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .dot-ok     { background: var(--s-ok-fg); }
+    .dot-warn   { background: var(--s-act-fg); }
+    .dot-danger { background: var(--s-shd-fg); }
+    .score-detail-label { font-size: 0.9375rem; color: var(--text-2); }
+    .score-detail-value { margin-left: auto; font-size: 0.9375rem; font-weight: 600; color: var(--text-1); }
+    .score-context {
+      margin-top: 2rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      font-size: 0.9375rem;
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+    @media (max-width: 600px) {
+      .score-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .score-ring-wrap { margin: 0 auto; }
+    }
+
+    /* Action cards */
+    .actions-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.75rem; }
+    .action-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: start;
+      gap: 1rem;
+    }
+    .action-num {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .action-num.urgent { background: var(--s-shd-bg); color: var(--s-shd-fg); }
+    .action-num.high   { background: var(--s-act-bg); color: var(--s-act-fg); }
+    .action-num.medium { background: var(--s-mon-bg); color: var(--s-mon-fg); }
+    .action-title { font-weight: 600; font-size: 0.9375rem; margin-bottom: 0.25rem; }
+    .action-meta  { font-size: 0.8125rem; color: var(--text-2); }
+    .action-deadline { font-size: 0.75rem; font-weight: 600; color: var(--text-3); white-space: nowrap; padding-top: 3px; }
+
+    /* Literacy */
+    .literacy-hero {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    .literacy-pct { font-family: var(--ff-d); font-size: 4.5rem; line-height: 1; color: var(--text-1); }
+    .literacy-meta { flex: 1; font-size: 0.9375rem; color: var(--text-2); }
+    .progress-bar {
+      height: 8px;
+      background: var(--border);
+      border-radius: 100px;
+      overflow: hidden;
+      margin-top: 0.625rem;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--s-ok-fg);
+      border-radius: 100px;
+      transition: width 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      width: 0%;
+    }
+    .dept-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.75rem;
+    }
+    .dept-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.875rem 1rem;
+    }
+    .dept-name { font-size: 0.8125rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .dept-bar { height: 4px; background: var(--border); border-radius: 100px; overflow: hidden; margin-bottom: 0.4rem; }
+    .dept-bar-fill { height: 100%; background: var(--s-ok-fg); border-radius: 100px; }
+    .dept-pct { font-size: 0.75rem; color: var(--text-2); }
+    .incomplete-block {
+      margin-top: 1.25rem;
+      background: var(--s-act-bg);
+      border: 1px solid var(--s-act-bd);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+    }
+    .incomplete-title {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--s-act-fg);
+      margin-bottom: 0.625rem;
+    }
+    .incomplete-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.375rem; }
+    .incomplete-pill {
+      font-size: 0.8125rem;
+      background: rgba(180,83,9,0.07);
+      color: var(--s-act-fg);
+      border: 1px solid var(--s-act-bd);
+      border-radius: 100px;
+      padding: 0.15em 0.7em;
+    }
+
+    /* Shadow highlight */
+    .shadow-highlight {
+      margin-top: 2rem;
+      background: var(--s-shd-bg);
+      border: 2px solid var(--s-shd-bd);
+      border-radius: var(--radius);
+      padding: 1.5rem 2rem;
+    }
+    .shadow-highlight-top {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .shadow-icon {
+      width: 48px; height: 48px;
+      background: var(--s-shd-fg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+    .shadow-name { font-family: var(--ff-d); font-size: 1.5rem; color: var(--s-shd-fg); }
+    .shadow-dept { font-size: 0.875rem; color: var(--text-2); margin-top: 0.25rem; }
+    .risk-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .risk-item {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.9375rem;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+    .risk-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--s-shd-fg);
+      flex-shrink: 0;
+      margin-top: 0.5em;
+    }
+
+    /* Welcome */
+    .start-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--ff-ui);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--surface);
+      background: var(--text-1);
+      padding: 0.875rem 1.75rem;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      margin-top: 2rem;
+    }
+    .start-btn:hover { background: #2a2927; transform: translateY(-1px); }
+    .welcome-rule { width: 40px; height: 1px; background: var(--border); margin: 1.5rem auto; }
+    .welcome-context { font-size: 0.8125rem; color: var(--text-3); }
+
+    /* CTA scene */
+    .cta-scene { background: var(--text-1); }
+    .cta-scene .scene-label { color: rgba(255,255,255,0.3); }
+    .cta-scene .scene-h1 { color: #fff; }
+    .cta-scene .scene-sub { color: rgba(255,255,255,0.55); }
+    .cta-buttons { display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 2.5rem; }
+    .cta-primary-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--ff-ui);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-1);
+      background: var(--bg);
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .cta-primary-btn:hover { background: #e5e3de; transform: translateY(-1px); }
+    .cta-secondary-btn {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.4);
+      cursor: pointer;
+      font-family: var(--ff-ui);
+      transition: color 0.15s;
+      border: none;
+      background: none;
+    }
+    .cta-secondary-btn:hover { color: rgba(255,255,255,0.75); }
+    .cta-note { margin-top: 3rem; font-size: 0.8125rem; color: rgba(255,255,255,0.25); line-height: 1.6; }
+
+    :focus-visible { outline: 2px solid var(--s-shd-fg); outline-offset: 2px; border-radius: var(--radius-sm); }
+
+    @media (max-width: 640px) {
+      .demo-header, .demo-nav { padding: 0 1rem; }
+      .scene-inner { padding: 1.5rem 1rem; }
+      .action-card { grid-template-columns: auto 1fr; }
+      .action-deadline { grid-column: 2; }
+      .literacy-hero { gap: 1rem; }
+      .literacy-pct { font-size: 3rem; }
+      .shadow-highlight { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="demo-shell">
+
+  <header class="demo-header">
+    <div class="demo-wordmark">
+      <span class="demo-wordmark-text">AI DA FARE</span>
+      <span class="demo-badge">Demo</span>
+    </div>
+    <div class="demo-header-right">
+      <div class="demo-progress" aria-live="polite" aria-atomic="true">
+        <span class="demo-progress-current" id="progress-current">01</span><span> / 08</span>
+      </div>
+      <button class="demo-menu-btn" id="presenter-toggle-btn" title="Note presentatore (P)" aria-label="Apri note presentatore" aria-expanded="false">
+        <svg width="16" height="4" viewBox="0 0 16 4" fill="none" aria-hidden="true">
+          <circle cx="2" cy="2" r="1.5" fill="currentColor"/>
+          <circle cx="8" cy="2" r="1.5" fill="currentColor"/>
+          <circle cx="14" cy="2" r="1.5" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="demo-stage" id="demo-stage" role="main">
+
+    <!-- Scene 1: Benvenuto -->
+    <section class="scene active" data-scene="1" id="scene-1" role="region" aria-label="Benvenuto">
+      <div class="scene-inner center">
+        <div class="scene-label">DEMO — AI DA FARE</div>
+        <h1 class="scene-h1">Cosa sta succedendo con l'AI nella <em>tua</em> azienda?</h1>
+        <p class="scene-sub">Un percorso di 8 minuti per scoprirlo.<br>Preparato per <strong id="welcome-company">Aurora S.p.A.</strong></p>
+        <button class="start-btn" id="start-btn">
+          Inizia la demo
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="welcome-rule" aria-hidden="true"></div>
+        <p class="welcome-context">Dati simulati · Scenario realistico · 8 scene</p>
+      </div>
+    </section>
+
+    <!-- Scene 2: La Situazione -->
+    <section class="scene" data-scene="2" id="scene-2" role="region" aria-label="La Situazione">
+      <div class="scene-inner">
+        <div class="scene-label">SCENARIO</div>
+        <h1 class="scene-h1"><span id="s2-company">Aurora S.p.A.</span> usa già l'AI.</h1>
+        <p class="scene-sub">85 dipendenti. 5 reparti. Almeno <strong>6 strumenti AI in uso</strong> — alcuni non li conosci ancora.</p>
+        <div class="cards-row">
+          <div class="stat-card">
+            <div class="stat-card-value" id="stat-total">6</div>
+            <div class="stat-card-label">strumenti AI attivi o in uso</div>
+          </div>
+          <div class="stat-card danger">
+            <div class="stat-card-value" id="stat-shadow">1</div>
+            <div class="stat-card-label">AI non dichiarata (Shadow AI)</div>
+          </div>
+          <div class="stat-card highlight">
+            <div class="stat-card-value" id="stat-actions">3</div>
+            <div class="stat-card-label">azioni urgenti identificate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scene 3: Il Censimento -->
+    <section class="scene" data-scene="3" id="scene-3" role="region" aria-label="Il Censimento">
+      <div class="scene-inner wide">
+        <div class="scene-label">CENSIMENTO AI</div>
+        <h1 class="scene-h1">Ecco cosa abbiamo trovato.</h1>
+        <p class="scene-sub">Ogni strumento AI in uso, mappato per reparto, referente e stato di conformità.</p>
+        <div class="ai-table-wrap">
+          <table aria-label="Inventario strumenti AI">
+            <thead>
+              <tr>
+                <th scope="col">Strumento</th>
+                <th scope="col">Provider</th>
+                <th scope="col">Reparto</th>
+                <th scope="col">Referente</th>
+                <th scope="col">Stato</th>
+              </tr>
+            </thead>
+            <tbody id="ai-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scene 4: Il Rischio Nascosto -->
+    <section class="scene" data-scene="4" id="scene-4" role="region" aria-label="Il Rischio Nascosto">
+      <div class="scene-inner">
+        <div class="scene-label">ATTENZIONE</div>
+        <h1 class="scene-h1">Un AI che <em>non sapevate</em> di avere.</h1>
+        <p class="scene-sub">Nel reparto Vendite, Claude di Anthropic viene usato quotidianamente. Non è nel registro. Non ha un referente. Non è stato valutato.</p>
+        <div class="shadow-highlight">
+          <div class="shadow-highlight-top">
+            <div class="shadow-icon" aria-hidden="true">⚠</div>
+            <div>
+              <div class="shadow-name" id="shadow-name">Claude</div>
+              <div class="shadow-dept" id="shadow-dept">Reparto Vendite · Anthropic · <span class="badge badge-shadow">Shadow AI</span></div>
+            </div>
+          </div>
+          <ul class="risk-list" aria-label="Rischi identificati">
+            <li class="risk-item"><span class="risk-dot" aria-hidden="true"></span>Dati di clienti e contratti potenzialmente esposti a sistemi non approvati</li>
+            <li class="risk-item"><span class="risk-dot" aria-hidden="true"></span>Nessun controllo sulle informazioni condivise con il modello</li>
+            <li class="risk-item"><span class="risk-dot" aria-hidden="true"></span>Possibile violazione del GDPR e delle policy aziendali</li>
+            <li class="risk-item"><span class="risk-dot" aria-hidden="true"></span>Il team non è stato formato per l'uso responsabile di AI generativa</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scene 5: Governance Score -->
+    <section class="scene" data-scene="5" id="scene-5" role="region" aria-label="AI Governance Score">
+      <div class="scene-inner">
+        <div class="scene-label">MISURAZIONE</div>
+        <h1 class="scene-h1">Il vostro AI Governance Score.</h1>
+        <p class="scene-sub">Un indice sintetico che misura quanto l'uso dell'AI in azienda è tracciato, responsabilizzato e sotto controllo.</p>
+        <div class="score-layout">
+          <div class="score-ring-wrap" role="img" aria-label="AI Governance Score: 72 su 100">
+            <svg class="score-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#E5E3DF" stroke-width="10"/>
+              <circle id="score-arc" cx="60" cy="60" r="50" fill="none" stroke="#131211" stroke-width="10"
+                stroke-linecap="round" stroke-dasharray="314.159" stroke-dashoffset="87.97"
+                transform="rotate(-90 60 60)"/>
+            </svg>
+            <div class="score-ring-text">
+              <span class="score-ring-number" id="score-value">72</span>
+              <span class="score-ring-max">/100</span>
+            </div>
+          </div>
+          <div class="score-details">
+            <div class="score-detail-item">
+              <span class="score-detail-dot dot-ok" aria-hidden="true"></span>
+              <span class="score-detail-label">Strumenti censiti</span>
+              <span class="score-detail-value" id="detail-censiti">5 / 6</span>
+            </div>
+            <div class="score-detail-item">
+              <span class="score-detail-dot dot-danger" aria-hidden="true"></span>
+              <span class="score-detail-label">Shadow AI rilevate</span>
+              <span class="score-detail-value" id="detail-shadow-n">1</span>
+            </div>
+            <div class="score-detail-item">
+              <span class="score-detail-dot dot-warn" aria-hidden="true"></span>
+              <span class="score-detail-label">Azioni aperte</span>
+              <span class="score-detail-value" id="detail-actions-n">3</span>
+            </div>
+            <div class="score-detail-item">
+              <span class="score-detail-dot dot-ok" aria-hidden="true"></span>
+              <span class="score-detail-label">AI Literacy completata</span>
+              <span class="score-detail-value" id="detail-literacy">80%</span>
+            </div>
+          </div>
+        </div>
+        <div class="score-context">
+          Un punteggio di <strong>72/100</strong> posiziona Aurora S.p.A. nella fascia <strong>media</strong> per la governance AI tra le PMI italiane. L'obiettivo di AI DA FARE è portarvi oltre 90 in 90 giorni.
+        </div>
+      </div>
+    </section>
+
+    <!-- Scene 6: Il Piano d'Azione -->
+    <section class="scene" data-scene="6" id="scene-6" role="region" aria-label="Piano d'Azione">
+      <div class="scene-inner">
+        <div class="scene-label">AZIONI PRIORITARIE</div>
+        <h1 class="scene-h1">Cosa fare adesso.</h1>
+        <p class="scene-sub">Tre interventi concreti, ordinati per impatto. Ognuno ha un owner e una scadenza.</p>
+        <div class="actions-list" id="actions-list" role="list"></div>
+      </div>
+    </section>
+
+    <!-- Scene 7: La Formazione -->
+    <section class="scene" data-scene="7" id="scene-7" role="region" aria-label="AI Literacy">
+      <div class="scene-inner">
+        <div class="scene-label">FORMAZIONE</div>
+        <h1 class="scene-h1">L'AI Literacy in Aurora.</h1>
+        <p class="scene-sub">Quanti dipendenti hanno completato il percorso base di formazione sull'AI responsabile?</p>
+        <div class="literacy-hero">
+          <div class="literacy-pct" id="literacy-pct">80%</div>
+          <div class="literacy-meta">
+            <strong id="literacy-completed">68</strong> di <strong id="literacy-total">85</strong> dipendenti formati
+            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso AI Literacy">
+              <div class="progress-bar-fill" id="literacy-bar"></div>
+            </div>
+          </div>
+        </div>
+        <div class="dept-grid" id="dept-grid"></div>
+        <div class="incomplete-block">
+          <div class="incomplete-title">Da completare</div>
+          <ul class="incomplete-list" id="incomplete-list" aria-label="Dipendenti con formazione incompleta"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scene 8: CTA -->
+    <section class="scene cta-scene" data-scene="8" id="scene-8" role="region" aria-label="Il Passo Successivo">
+      <div class="scene-inner center">
+        <div class="scene-label">IL PASSO SUCCESSIVO</div>
+        <h1 class="scene-h1">Questa era <em>Aurora</em>.<br>La prossima è la <em>tua</em> azienda.</h1>
+        <p class="scene-sub">Ogni demo è costruita sui dati reali della tua azienda. Nessun template generico. Solo intelligence su misura.</p>
+        <div class="cta-buttons">
+          <a href="#" class="cta-primary-btn" id="cta-link" target="_blank" rel="noopener noreferrer">
+            Parliamo della tua azienda
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <button class="cta-secondary-btn" id="restart-cta">Ricomincia la demo</button>
+        </div>
+        <p class="cta-note">AI DA FARE · Partner commerciale certificato</p>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="demo-nav" aria-label="Navigazione demo">
+    <button class="nav-btn" id="btn-prev" type="button" disabled aria-label="Scena precedente">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L5 7l4 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Indietro
+    </button>
+    <button class="nav-restart-btn" id="btn-restart" type="button" aria-label="Ricomincia la demo">Ricomincia</button>
+    <button class="nav-btn primary" id="btn-next" type="button" aria-label="Scena successiva">
+      Avanti
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2l4 5-4 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </nav>
+
+</div>
+
+<aside class="presenter-panel" id="presenter-panel" aria-label="Note presentatore" aria-hidden="true">
+  <div class="presenter-backdrop" id="presenter-backdrop"></div>
+  <div class="presenter-drawer" role="dialog" aria-modal="true" aria-labelledby="presenter-heading">
+    <div id="presenter-heading" class="presenter-label">NOTE PRESENTATORE — Scena <span id="presenter-scene-num">1</span> di 8</div>
+    <button class="presenter-close" id="presenter-close" aria-label="Chiudi note presentatore">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+    <div class="presenter-note" id="presenter-note"></div>
+  </div>
+</aside>
+
+<script>
+/* ── DATA ─────────────────────────────────────────────────────────── */
+const demoData = {
+  company: {
+    name:       'Aurora S.p.A.',
+    employees:  85,
+    demoDate:   '7 settembre 2026',
+    nextReview: '7 ottobre 2026',
+  },
+  aiSystems: [
+    { name: 'ChatGPT Team',    provider: 'OpenAI',      dept: 'Marketing',     referente: 'Anna Bianchi',  status: 'ok',  label: 'Operativo'       },
+    { name: 'Microsoft Copilot', provider: 'Microsoft',  dept: 'Direzione',     referente: null,            status: 'mon', label: 'In completamento' },
+    { name: 'AI Chatbot',      provider: 'Intercom',    dept: 'Customer Care', referente: 'Giulia Rossi',  status: 'act', label: 'Azione richiesta' },
+    { name: 'Lead Scoring AI', provider: 'HubSpot',     dept: 'Vendite',       referente: 'Luca Romano',   status: 'mon', label: 'Monitorato'       },
+    { name: 'Screening CV',    provider: 'HR esterno',  dept: 'HR',            referente: 'Marco Neri',    status: 'rev', label: 'In revisione'     },
+  ],
+  shadowAI: { name: 'Claude', provider: 'Anthropic', dept: 'Vendite', referente: null, status: 'shadow', label: 'Shadow AI' },
+  governance: { totaleStrumenti: 6, censiti: 5, shadowAI: 1, azioniAperte: 3, score: 72, scoreMax: 100 },
+  literacy: {
+    total: 85, completed: 68, percentage: 80,
+    byDept: [
+      { name: 'Marketing',     pct: 100 },
+      { name: 'Direzione',     pct: 90  },
+      { name: 'Customer Care', pct: 80  },
+      { name: 'Vendite',       pct: 75  },
+      { name: 'HR',            pct: 60  },
+    ],
+    incomplete: ['F. Martini','R. Costa','L. Ferrari','G. Conti','A. Esposito','M. Ricci','P. Moretti','C. Greco','S. Lombardi','T. Mancini','E. Bruno','V. De Luca','D. Giordano','N. Russo','I. Colombo','B. Fontana','Q. Rinaldi'],
+  },
+  actions: [
+    { priority: 'urgent', title: "Censire e regolamentare l'uso di Claude",  meta: 'Reparto Vendite · Responsabile: Luca Romano',      deadline: 'Entro 7 ott 2026'  },
+    { priority: 'high',   title: 'Completare onboarding Microsoft Copilot',  meta: 'Direzione · Assegnare un referente interno',        deadline: 'Entro 21 ott 2026' },
+    { priority: 'medium', title: 'Concludere revisione AI Chatbot',          meta: 'Customer Care · Giulia Rossi · Revisione DPA',      deadline: 'Entro 31 ott 2026' },
+  ],
+  contactUrl: '#', // TODO: sostituire con URL effettivo
+};
+
+/* ── PRESENTER NOTES ──────────────────────────────────────────────── */
+const notes = [
+  `<p>Schermata di apertura. Prima di avanzare, presenta brevemente il contesto: stai mostrando come AI DA FARE analizza la situazione AI di un'azienda.</p><p>Personalizza il nome nella variabile <code>demoData.company.name</code> prima dell'incontro.</p>`,
+  `<p>Chiedi al prospect: <strong>"Sapete quanti strumenti AI state usando in questo momento?"</strong></p><p>Lascia che rispondano. La maggior parte sottostima. Poi mostra i tre numeri.</p>`,
+  `<p>Scorri la tabella insieme. Fermati su ogni riga: <strong>"Questo vi suona familiare?"</strong></p><p>L'obiettivo è validare che il metodo AI DA FARE identifica cose non mappate sistematicamente.</p>`,
+  `<p>Momento di pausa. Lascia che l'informazione si depositi — non affrettare questa scena.</p><p>Chiedi: <strong>"Avete strumenti simili nella vostra azienda?"</strong> Non giudicare. Il 73% delle PMI italiane ha almeno un caso di Shadow AI.</p>`,
+  `<p>Il punteggio 72/100 è volutamente <em>buono ma non ottimo</em>. Mostra margine di miglioramento.</p><p>Sottolinea: <strong>"Il nostro obiettivo è portarvi oltre 90 in 90 giorni."</strong> È un impegno misurabile.</p>`,
+  `<p>Non leggere tutte le azioni. Scegli quella più rilevante per il prospect e approfondisci.</p><p>Chiedi: <strong>"Di queste tre, quale vi preoccupa di più?"</strong></p>`,
+  `<p>L'80% è positivo, ma enfatizza i 17 dipendenti incompleti — specialmente se in reparti sensibili.</p><p>Domanda aperta: <strong>"Come monitorate oggi la formazione AI dei vostri dipendenti?"</strong></p>`,
+  `<p>CTA diretto: <strong>"Possiamo costruire questo report per la vostra azienda in due settimane."</strong></p><p>Il bottone porta a un form di contatto o alla tua agenda. Configura <code>demoData.contactUrl</code> prima dell'incontro.</p>`,
+];
+
+/* ── STATE ────────────────────────────────────────────────────────── */
+let current = 1;
+const TOTAL = 8;
+let presenterOpen = false;
+let literacyAnimated = false;
+let demoStarted = false;
+
+/* ── ANALYTICS ────────────────────────────────────────────────────── */
+function track(name, props) {
+  props = props || {};
+  if (window.dataLayer) window.dataLayer.push(Object.assign({ event: name }, props));
+  if (window.gtag) window.gtag('event', name, props);
+  window.dispatchEvent(new CustomEvent('demo:' + name, { detail: props }));
+}
+
+/* ── ESCAPE HELPER ────────────────────────────────────────────────── */
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/* ── POPULATE ─────────────────────────────────────────────────────── */
+function populate() {
+  const d = demoData;
+
+  // Company names
+  document.getElementById('welcome-company').textContent = d.company.name;
+  document.getElementById('s2-company').textContent = d.company.name;
+
+  // Scene 2 stats
+  document.getElementById('stat-total').textContent   = d.governance.totaleStrumenti;
+  document.getElementById('stat-shadow').textContent  = d.governance.shadowAI;
+  document.getElementById('stat-actions').textContent = d.governance.azioniAperte;
+
+  // Scene 3 table
+  const badgeMap = { ok:'badge-ok', mon:'badge-mon', act:'badge-act', rev:'badge-rev', shadow:'badge-shadow' };
+  const rows = d.aiSystems.concat([d.shadowAI]);
+  document.getElementById('ai-table-body').innerHTML = rows.map(s =>
+    `<tr${s.status==='shadow' ? ' class="shadow-row"' : ''}>
+      <td><strong>${esc(s.name)}</strong></td>
+      <td>${esc(s.provider)}</td>
+      <td>${esc(s.dept)}</td>
+      <td>${s.referente ? esc(s.referente) : '<span class="referente-none">—</span>'}</td>
+      <td><span class="badge ${badgeMap[s.status]}">${esc(s.label)}</span></td>
+    </tr>`
+  ).join('');
+
+  // Scene 4 shadow
+  const sh = d.shadowAI;
+  document.getElementById('shadow-name').textContent = sh.name;
+  document.getElementById('shadow-dept').innerHTML =
+    `Reparto ${esc(sh.dept)} &middot; ${esc(sh.provider)} &middot; <span class="badge badge-shadow">Shadow AI</span>`;
+
+  // Scene 5 score
+  const g = d.governance;
+  document.getElementById('score-value').textContent    = g.score;
+  document.getElementById('detail-censiti').textContent = g.censiti + ' / ' + g.totaleStrumenti;
+  document.getElementById('detail-shadow-n').textContent= g.shadowAI;
+  document.getElementById('detail-actions-n').textContent = g.azioniAperte;
+  document.getElementById('detail-literacy').textContent = d.literacy.percentage + '%';
+  const pct = g.score / g.scoreMax;
+  const arc = document.getElementById('score-arc');
+  arc.setAttribute('stroke-dashoffset', (314.159 * (1 - pct)).toFixed(2));
+
+  // Scene 6 actions
+  const numClass = { urgent:'urgent', high:'high', medium:'medium' };
+  document.getElementById('actions-list').innerHTML = d.actions.map((a, i) =>
+    `<div class="action-card" role="listitem">
+      <div class="action-num ${numClass[a.priority]}" aria-hidden="true">${i+1}</div>
+      <div>
+        <div class="action-title">${esc(a.title)}</div>
+        <div class="action-meta">${esc(a.meta)}</div>
+      </div>
+      <div class="action-deadline">${esc(a.deadline)}</div>
+    </div>`
+  ).join('');
+
+  // Scene 7 literacy
+  const lit = d.literacy;
+  document.getElementById('literacy-pct').textContent      = lit.percentage + '%';
+  document.getElementById('literacy-completed').textContent = lit.completed;
+  document.getElementById('literacy-total').textContent    = lit.total;
+  document.getElementById('dept-grid').innerHTML = lit.byDept.map(dep =>
+    `<div class="dept-item">
+      <div class="dept-name">${esc(dep.name)}</div>
+      <div class="dept-bar"><div class="dept-bar-fill" style="width:${dep.pct}%"></div></div>
+      <div class="dept-pct">${dep.pct}%</div>
+    </div>`
+  ).join('');
+  document.getElementById('incomplete-list').innerHTML = lit.incomplete.map(n =>
+    `<li><span class="incomplete-pill">${esc(n)}</span></li>`
+  ).join('');
+
+  // CTA
+  document.getElementById('cta-link').href = d.contactUrl;
+}
+
+/* ── SCENE NAVIGATION ─────────────────────────────────────────────── */
+function goTo(n) {
+  if (n < 1 || n > TOTAL) return;
+
+  const prev = document.getElementById('scene-' + current);
+  const next = document.getElementById('scene-' + n);
+
+  if (prev) { prev.classList.remove('active'); prev.scrollTop = 0; }
+  next.classList.add('active', 'entering');
+  next.addEventListener('animationend', () => next.classList.remove('entering'), { once: true });
+
+  current = n;
+
+  // Progress
+  document.getElementById('progress-current').textContent = String(n).padStart(2, '0');
+  document.getElementById('presenter-scene-num').textContent = n;
+
+  // Nav buttons
+  document.getElementById('btn-prev').disabled = (n === 1);
+  const btnNext = document.getElementById('btn-next');
+  if (n === TOTAL) {
+    btnNext.disabled = true;
+    btnNext.innerHTML = 'Fine';
+  } else {
+    btnNext.disabled = false;
+    btnNext.innerHTML = 'Avanti <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2l4 5-4 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+
+  // Update presenter note
+  if (presenterOpen) setPresenterNote(n);
+
+  // Animate literacy bar on enter scene 7
+  if (n === 7 && !literacyAnimated) {
+    literacyAnimated = true;
+    setTimeout(() => {
+      document.getElementById('literacy-bar').style.width = demoData.literacy.percentage + '%';
+    }, 150);
+  }
+
+  // Analytics
+  track('demo_step_viewed', { step_number: n });
+  if (n === TOTAL) track('demo_completed', {});
+
+  // SR announce
+  announce('Scena ' + n + ' di ' + TOTAL + ': ' + (next.getAttribute('aria-label') || ''));
+}
+
+/* ── SR ANNOUNCER ─────────────────────────────────────────────────── */
+let srEl = null;
+function announce(msg) {
+  if (!srEl) {
+    srEl = document.createElement('div');
+    srEl.setAttribute('aria-live', 'assertive');
+    srEl.setAttribute('aria-atomic', 'true');
+    srEl.style.cssText = 'position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);';
+    document.body.appendChild(srEl);
+  }
+  srEl.textContent = '';
+  requestAnimationFrame(() => { srEl.textContent = msg; });
+}
+
+/* ── PRESENTER ────────────────────────────────────────────────────── */
+function setPresenterNote(n) {
+  document.getElementById('presenter-note').innerHTML = notes[n - 1] || '<p>Nessuna nota.</p>';
+  document.getElementById('presenter-scene-num').textContent = n;
+}
+function openPresenter() {
+  presenterOpen = true;
+  setPresenterNote(current);
+  const panel = document.getElementById('presenter-panel');
+  panel.classList.add('open');
+  panel.setAttribute('aria-hidden', 'false');
+  document.getElementById('presenter-toggle-btn').setAttribute('aria-expanded', 'true');
+  document.getElementById('presenter-close').focus();
+}
+function closePresenter() {
+  presenterOpen = false;
+  const panel = document.getElementById('presenter-panel');
+  panel.classList.remove('open');
+  panel.setAttribute('aria-hidden', 'true');
+  document.getElementById('presenter-toggle-btn').setAttribute('aria-expanded', 'false');
+  document.getElementById('presenter-toggle-btn').focus();
+}
+
+/* ── RESTART ──────────────────────────────────────────────────────── */
+function restart() {
+  literacyAnimated = false;
+  document.getElementById('literacy-bar').style.width = '0%';
+  for (let i = 1; i <= TOTAL; i++) {
+    const s = document.getElementById('scene-' + i);
+    s.classList.remove('active', 'entering');
+    s.scrollTop = 0;
+  }
+  current = 0;
+  goTo(1);
+  track('demo_restarted', {});
+}
+
+/* ── EVENTS ───────────────────────────────────────────────────────── */
+document.getElementById('btn-next').addEventListener('click', () => goTo(current + 1));
+document.getElementById('btn-prev').addEventListener('click', () => goTo(current - 1));
+document.getElementById('btn-restart').addEventListener('click', restart);
+document.getElementById('restart-cta').addEventListener('click', restart);
+document.getElementById('start-btn').addEventListener('click', () => {
+  if (!demoStarted) { demoStarted = true; track('demo_started', { company: demoData.company.name }); }
+  goTo(2);
+});
+document.getElementById('presenter-toggle-btn').addEventListener('click', () => presenterOpen ? closePresenter() : openPresenter());
+document.getElementById('presenter-close').addEventListener('click', closePresenter);
+document.getElementById('presenter-backdrop').addEventListener('click', closePresenter);
+document.getElementById('cta-link').addEventListener('click', () => track('demo_cta_clicked', { url: demoData.contactUrl }));
+
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); if (current < TOTAL) goTo(current + 1); }
+  else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); if (current > 1) goTo(current - 1); }
+  else if (e.key === 'p' || e.key === 'P') { e.preventDefault(); presenterOpen ? closePresenter() : openPresenter(); }
+  else if (e.key === 'Escape' && presenterOpen) { e.preventDefault(); closePresenter(); }
+});
+
+/* ── INIT ─────────────────────────────────────────────────────────── */
+populate();
+</script>
+</body>
+</html>

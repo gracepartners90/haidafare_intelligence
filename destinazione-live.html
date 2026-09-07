@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Destinazione Live | Luca Picchio Academy</title>
+  <meta name="description" content="Un contenuto speciale di Luca Picchio Academy dedicato agli imprenditori del settore Hair che vogliono far crescere il proprio salone.">
+
+  <!-- SEO: private page (arrives from automations).
+       To make public: change content to "index, follow" -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Destinazione Live | Luca Picchio Academy">
+  <meta property="og:description" content="Un contenuto speciale di Luca Picchio Academy dedicato agli imprenditori del settore Hair che vogliono far crescere il proprio salone.">
+  <meta property="og:type" content="website">
+  <!-- <meta property="og:image" content="og-image.jpg"> -->
+  <!-- <meta property="og:url" content="https://..."> -->
+
+  <!-- Fonts: Fraunces (editorial serif, variable) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap">
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+       ============================================================ */
+    :root {
+      /* Light theme (default — brand Luca Picchio Academy) */
+      --bg:      #FFFFFF;
+      --rule:    #E4E4E4;
+      --t1:      #0C0C0C;
+      --t2:      #696969;
+      --t3:      #ABABAB;
+      --accent:  #B5820E;   /* oro, leggermente scurito per contrasto su bianco */
+      --btn-bg:  #0C0C0C;   /* CTA: nero pieno */
+      --btn-fg:  #FFFFFF;
+
+      --ff-d: 'Fraunces', Georgia, serif;
+      --ff-b: 'DM Sans', system-ui, sans-serif;
+
+      --max-wrap:  1200px;
+      --max-text:   680px;
+      --max-video: 1100px;
+      --px: 1.5rem;
+    }
+
+    /* Dark theme — system preference */
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg:     #0B0C0E;
+        --rule:   #1D2026;
+        --t1:     #EDE9E1;
+        --t2:     #706E69;
+        --t3:     #46443E;
+        --accent: #C49328;
+        --btn-bg: #C49328;
+        --btn-fg: #0B0C0E;
+      }
+    }
+    /* Dark theme — explicit toggle */
+    :root[data-theme="dark"] {
+      --bg:     #0B0C0E;
+      --rule:   #1D2026;
+      --t1:     #EDE9E1;
+      --t2:     #706E69;
+      --t3:     #46443E;
+      --accent: #C49328;
+      --btn-bg: #C49328;
+      --btn-fg: #0B0C0E;
+    }
+
+    /* ============================================================
+       RESET
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--t1);
+      font-family: var(--ff-b);
+      font-weight: 300;
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ============================================================
+       LAYOUT
+       ============================================================ */
+    .wrap      { width: 100%; max-width: var(--max-wrap);  margin-inline: auto; padding-inline: var(--px); }
+    .col-text  { max-width: var(--max-text);  margin-inline: auto; }
+    .col-video { max-width: var(--max-video); margin-inline: auto; }
+
+    /* ============================================================
+       HEADER
+       ============================================================ */
+    .site-header {
+      display: flex;
+      justify-content: center;
+      padding-block: 2.25rem;
+    }
+
+    .logo {
+      font-family: var(--ff-b);
+      font-weight: 400;
+      font-size: 0.6875rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--t2);
+      /* Replace this element with:
+         <img src="logo.svg" alt="Luca Picchio Academy" height="26"> */
+    }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .hero {
+      padding-block: clamp(4rem, 9vw, 8rem) clamp(2.5rem, 4vw, 4rem);
+      text-align: center;
+    }
+
+    .hero-inner {
+      animation: heroFade 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-inner { animation: none; }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65em;
+      font-family: var(--ff-d);
+      font-style: italic;
+      font-weight: 300;
+      font-optical-sizing: auto;
+      font-size: 0.75rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.75rem;
+    }
+
+    .eyebrow::before {
+      content: '';
+      flex-shrink: 0;
+      display: block;
+      width: 1px;
+      height: 0.9em;
+      background: currentColor;
+      opacity: 0.5;
+    }
+
+    .hero-h1 {
+      font-family: var(--ff-d);
+      font-weight: 700;
+      font-optical-sizing: auto;
+      font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--t1);
+      text-wrap: balance;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-sub {
+      font-family: var(--ff-b);
+      font-weight: 300;
+      font-size: clamp(1rem, 2vw, 1.175rem);
+      color: var(--t2);
+      line-height: 1.55;
+      text-wrap: balance;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-intro {
+      font-family: var(--ff-b);
+      font-weight: 300;
+      font-size: 0.875rem;
+      color: var(--t3);
+      max-width: 500px;
+      margin-inline: auto;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       VIDEO
+       ============================================================ */
+    .video-section {
+      padding-bottom: clamp(2.5rem, 4vw, 4rem);
+    }
+
+    .video-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 2px;
+      background: #000;
+      position: relative;
+    }
+
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    /* ============================================================
+       EDITORIAL BLOCK (after video)
+       ============================================================ */
+    .editorial {
+      padding-block: clamp(2.5rem, 4.5vw, 4rem);
+    }
+
+    .editorial-inner {
+      border-top: 1px solid var(--rule);
+      padding-top: 2rem;
+    }
+
+    .editorial-h2 {
+      font-family: var(--ff-d);
+      font-weight: 700;
+      font-optical-sizing: auto;
+      font-size: clamp(1.35rem, 2.8vw, 2rem);
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      color: var(--t1);
+      text-wrap: balance;
+      margin-bottom: 1.1rem;
+    }
+
+    .editorial-body {
+      color: var(--t2);
+      font-weight: 300;
+      font-size: 0.9875rem;
+      line-height: 1.8;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7em;
+    }
+
+    /* ============================================================
+       CTA SECTION
+       ============================================================ */
+    .cta-section {
+      padding-block: clamp(4.5rem, 9vw, 8.5rem) clamp(5rem, 10vw, 10rem);
+    }
+
+    .cta-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .cta-when {
+      font-family: var(--ff-b);
+      font-weight: 400;
+      font-size: 0.6875rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--t3);
+      font-variant-numeric: tabular-nums;
+      margin-bottom: 1.75rem;
+    }
+
+    .cta-h2 {
+      font-family: var(--ff-d);
+      font-weight: 700;
+      font-optical-sizing: auto;
+      font-size: clamp(1.8rem, 4.2vw, 3.4rem);
+      line-height: 1.1;
+      letter-spacing: -0.022em;
+      color: var(--t1);
+      text-wrap: balance;
+      max-width: 740px;
+      margin-bottom: 1.2rem;
+    }
+
+    .cta-desc {
+      font-family: var(--ff-b);
+      font-weight: 300;
+      font-size: 0.9875rem;
+      color: var(--t2);
+      line-height: 1.72;
+      max-width: 460px;
+      text-wrap: balance;
+      margin-bottom: 2.75rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      font-family: var(--ff-b);
+      font-weight: 500;
+      font-size: 0.6875rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--btn-fg);
+      background: var(--btn-bg);
+      padding: 1.1rem 2.5rem;
+      border-radius: 1px;
+      transition: opacity 0.18s ease;
+      cursor: pointer;
+    }
+
+    .cta-btn:hover { opacity: 0.84; }
+
+    .cta-btn:focus-visible {
+      outline: 2px solid var(--btn-bg);
+      outline-offset: 4px;
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .site-footer {
+      border-top: 1px solid var(--rule);
+      padding-block: 1.75rem 2.25rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      font-family: var(--ff-b);
+      font-weight: 400;
+      font-size: 0.625rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--t3);
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-nav a {
+      font-family: var(--ff-b);
+      font-weight: 300;
+      font-size: 0.6875rem;
+      color: var(--t3);
+      transition: color 0.15s;
+    }
+
+    .footer-nav a:hover { color: var(--t2); }
+
+    /* ============================================================
+       SCROLL REVEAL — added progressively by JS
+       ============================================================ */
+    .will-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .will-reveal.revealed {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .will-reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 600px) {
+      :root { --px: 1.125rem; }
+      .cta-btn {
+        width: 100%;
+        max-width: 360px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="site-header wrap">
+    <!-- Replace with <img src="logo.svg" alt="Luca Picchio Academy" height="26"> when available -->
+    <div class="logo" aria-label="Luca Picchio Academy">Luca Picchio Academy</div>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="col-text hero-inner">
+          <p class="eyebrow">Destinazione Live</p>
+          <h1 class="hero-h1">Il contenuto che abbiamo&nbsp;preparato per&nbsp;te.</h1>
+          <p class="hero-sub">Hai scelto di andare più a fondo.<br>Partiamo da qui.</p>
+          <p class="hero-intro">Abbiamo raccolto in questo contenuto uno dei temi più importanti affrontati durante Destinazione Live.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         VIDEO
+         ============================================================ -->
+    <section class="video-section">
+      <div class="wrap">
+        <div class="col-video" data-reveal>
+          <div class="video-frame">
+            <iframe
+              src="https://player.vimeo.com/video/1223286685?h=5d3870f362&title=0&byline=0&portrait=0&badge=0&dnt=1"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+              allowfullscreen
+              loading="lazy"
+              title="Destinazione Live — Luca Picchio Academy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         EDITORIAL BLOCK
+         ============================================================ -->
+    <section class="editorial">
+      <div class="wrap">
+        <div class="col-text" data-reveal>
+          <div class="editorial-inner">
+            <h2 class="editorial-h2">Quello che hai appena visto è solo l'inizio.</h2>
+            <div class="editorial-body">
+              <p>Un salone può crescere molto più di quanto immagini quando inizi a guardarlo davvero come un'impresa.</p>
+              <p>Numeri, marketing, organizzazione, leadership e visione iniziano a muoversi nella stessa direzione.</p>
+              <p>Ed è da qui che possiamo iniziare a costruire il prossimo livello.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CTA
+         ============================================================ -->
+    <section class="cta-section">
+      <div class="wrap">
+        <div class="cta-inner" data-reveal>
+          <p class="cta-when">15 · 16 · 17 Novembre 2026 &nbsp;—&nbsp; Roma</p>
+          <h2 class="cta-h2">Il prossimo passo si chiama Luca&nbsp;Picchio Live.</h2>
+          <p class="cta-desc">Tre giorni per guardare il tuo salone da imprenditore e capire quanto lontano può arrivare quello che hai costruito.</p>
+          <a href="#" class="cta-btn" id="js-cta">Scopri Luca Picchio Live 2026 →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <span class="footer-brand">Luca Picchio Academy</span>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Cookie Policy</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ============================================================
+       CONFIGURATION — modifica qui prima del deploy
+       ============================================================ */
+
+    /* URL della pagina evento. Sostituisci "#" con il link reale. */
+    const LIVE_URL = '#';
+
+    /* SEO: per rendere la pagina indicizzabile, cambia il meta robots
+       da "noindex, nofollow" a "index, follow" nell'<head>. */
+
+    /* Applica URL alla CTA */
+    const ctaEl = document.getElementById('js-cta');
+    if (ctaEl) ctaEl.href = LIVE_URL;
+
+    /* ============================================================
+       SCROLL REVEAL — progressively enhanced
+       ============================================================ */
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (!('IntersectionObserver' in window)) return;
+
+      const items = document.querySelectorAll('[data-reveal]');
+      items.forEach(el => el.classList.add('will-reveal'));
+
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('revealed');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+      items.forEach(el => obs.observe(el));
+    }());
+  </script>
+
+</body>
+</html>
