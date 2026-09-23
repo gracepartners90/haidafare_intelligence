@@ -27,6 +27,7 @@ React 19 · TypeScript · Tailwind CSS 4 · Vite. Font self-hosted (Anton, Inter
 src/
   data/roadmap.ts          Contenuti tipizzati: fasi, 8 progetti, pilastri, milestone, asset di brand
   lib/storage.ts           Stato operativo + persistenza localStorage (con validazione)
+  lib/sharedStore.ts       Archivio condiviso (capability `db` dell’Artifact)
   lib/export.ts            Export JSON / CSV
   lib/dates.ts             Formattazione date e giorni alla scadenza
   hooks/useRoadmapState.ts Stato condiviso del cruscotto
@@ -44,14 +45,26 @@ src/
 
 Per modificare contenuti, priorità o scadenze iniziali intervenire solo su `src/data/roadmap.ts`.
 
-## Persistenza — importante
+## Persistenza
 
-Non esiste un backend: i dati del cruscotto (stato, referente, note, prossimo step, scadenza)
-sono salvati **solo nel localStorage del browser corrente** (chiave `grace-lpa-roadmap:v1`).
-**Non sono condivisi** con gli altri membri del team e non esiste alcuna sincronizzazione.
+La pagina sceglie da sola dove salvare e lo dichiara sempre nel cruscotto:
 
-Per allineare più persone: *Esporta roadmap → JSON* e poi *Importa JSON* sull’altro browser
-(l’import sostituisce i dati locali). Per una gestione multiutente reale serve un backend condiviso.
+- **Artifact claude.ai (archivio condiviso).** Pubblicata come Artifact con la capability `db`,
+  stato, referente, note, prossimo step e scadenza sono salvati in un archivio condiviso
+  (collezione `progetti`, un documento per progetto) e visibili in tempo reale a chi ha accesso
+  alla pagina. In caso di modifiche simultanee sullo stesso progetto prevale l’ultima salvata.
+- **In locale / hosting statico.** Senza runtime Artifact i dati restano **solo nel localStorage
+  del browser corrente** (chiave `grace-lpa-roadmap:v1`) e **non sono condivisi**. Per allinearsi:
+  *Esporta roadmap → JSON* e poi *Importa JSON* sull’altro browser.
+
+## Versione Artifact (HTML unico)
+
+```bash
+npm run build:artifact   # → artifact/roadmap-lpa.html (JS e CSS inline, font da Google Fonts)
+```
+
+Il file va pubblicato come Artifact claude.ai con le capability `db` (archivio condiviso) e
+`downloads` (export JSON/CSV). Aperto fuori da claude.ai, ripiega sul salvataggio locale.
 
 ## Brand — da completare
 

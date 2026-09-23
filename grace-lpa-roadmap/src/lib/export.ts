@@ -1,4 +1,5 @@
 import { PROJECTS, phaseById, statusLabel } from '../data/roadmap'
+import { getRuntime } from './sharedStore'
 import type { RoadmapState } from './storage'
 
 function rows(state: RoadmapState) {
@@ -24,13 +25,32 @@ function rows(state: RoadmapState) {
   })
 }
 
-function download(filename: string, content: string, type: string) {
+export type ExportResult = 'saved' | 'declined' | 'error'
+
+/**
+ * In un Artifact i download diretti sono bloccati: si passa dalla capability
+ * `downloads` (il browser chiede conferma). In locale si usa il classico link.
+ */
+async function download(filename: string, content: string, type: string): Promise<ExportResult> {
+  const rt = getRuntime()
+  if (rt) {
+    const dl = (await rt.use('downloads').catch(() => null)) as { save(r: { filename: string; data: string }): Promise<unknown> } | null
+    if (dl) {
+      try {
+        await dl.save({ filename, data: content })
+        return 'saved'
+      } catch (e) {
+        return (e as { code?: string })?.code === 'declined' ? 'declined' : 'error'
+      }
+    }
+  }
   const url = URL.createObjectURL(new Blob([content], { type }))
   const a = Object.assign(document.createElement('a'), { href: url, download: filename })
   document.body.appendChild(a)
   a.click()
   a.remove()
   URL.revokeObjectURL(url)
+  return 'saved'
 }
 
 const stamp = () => new Date().toISOString().slice(0, 10)
@@ -44,7 +64,7 @@ export function exportJSON(state: RoadmapState) {
     // Stato grezzo, reimportabile dal pulsante "Importa JSON".
     stato: state,
   }
-  download(`roadmap-lpa-${stamp()}.json`, JSON.stringify(payload, null, 2), 'application/json')
+  return download(`roadmap-lpa-${stamp()}.json`, JSON.stringify(payload, null, 2), 'application/json')
 }
 
 export function exportCSV(state: RoadmapState) {
@@ -53,5 +73,5 @@ export function exportCSV(state: RoadmapState) {
   const esc = (v: string) => `"${v.replace(/"/g, '""').replace(/\r?\n/g, ' ')}"`
   const lines = [headers.join(';'), ...data.map((r) => headers.map((h) => esc(String(r[h as keyof typeof r]))).join(';'))]
   // BOM + separatore ';' per l'apertura corretta in Excel con locale italiano.
-  download(`roadmap-lpa-${stamp()}.csv`, '﻿' + lines.join('\r\n'), 'text/csv;charset=utf-8')
+  return download(`roadmap-lpa-${stamp()}.csv`, '\uFEFF' + lines.join('\r\n'), 'text/csv;charset=utf-8')
 }

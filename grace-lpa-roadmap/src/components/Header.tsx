@@ -48,7 +48,7 @@ export function Header() {
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:px-3 focus:py-2 focus:text-ink">
         Vai al contenuto
       </a>
-      <header className="sticky top-0 z-40 border-b border-line bg-ink/90 backdrop-blur-md">
+      <header className="sticky top-[env(safe-area-inset-top,0px)] z-40 border-b border-line bg-ink/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3 sm:px-6 lg:px-10">
           <LogoSlot />
           <p className="hidden font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-soft lg:block">

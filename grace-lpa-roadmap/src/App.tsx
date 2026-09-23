@@ -9,7 +9,7 @@ import { PHASES } from './data/roadmap'
 import { useRoadmapState } from './hooks/useRoadmapState'
 
 export default function App() {
-  const { state, update, replaceAll, reset, storageOk, savedAt } = useRoadmapState()
+  const { state, update, replaceAll, reset, mode, savedAt, writeError } = useRoadmapState()
   const [openIds, setOpenIds] = useState<Set<string>>(new Set())
   const [highlightedId, setHighlightedId] = useState<string | null>(null)
   const timer = useRef<number | undefined>(undefined)
@@ -64,7 +64,8 @@ export default function App() {
           onImport={replaceAll}
           onReset={reset}
           onShowDetails={showDetails}
-          storageOk={storageOk}
+          mode={mode}
+          writeError={writeError}
           savedAt={savedAt}
           highlightedId={highlightedId}
         />

@@ -1,7 +1,8 @@
 import { useMemo, useRef, useState } from 'react'
 import { LIVE_EVENT, PHASES, PRIORITIES, PROJECTS, STATUSES, type PhaseId, type Priority, type Status } from '../data/roadmap'
 import { formatDate } from '../lib/dates'
-import { exportCSV, exportJSON } from '../lib/export'
+import { exportCSV, exportJSON, type ExportResult } from '../lib/export'
+import type { StorageMode } from '../hooks/useRoadmapState'
 import type { ProjectState, RoadmapState } from '../lib/storage'
 import { DeadlineChip, ProjectCard } from './ProjectCard'
 import { ProgressIndicator } from './ProgressIndicator'
@@ -12,7 +13,8 @@ interface Props {
   onImport: (raw: unknown) => void
   onReset: () => void
   onShowDetails: (id: string) => void
-  storageOk: boolean
+  mode: StorageMode
+  writeError: boolean
   savedAt: Date | null
   highlightedId: string | null
 }
@@ -22,11 +24,12 @@ type PhaseFilter = 'ALL' | PhaseId
 const select =
   'border border-line bg-ink px-3 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-white hover:border-line-strong focus:border-white focus:outline-none'
 
-export function ProjectDashboard({ state, onUpdate, onImport, onReset, onShowDetails, storageOk, savedAt, highlightedId }: Props) {
+export function ProjectDashboard({ state, onUpdate, onImport, onReset, onShowDetails, mode, writeError, savedAt, highlightedId }: Props) {
   const [phase, setPhase] = useState<PhaseFilter>('ALL')
   const [priority, setPriority] = useState<'ALL' | Priority>('ALL')
   const [status, setStatus] = useState<'ALL' | Status>('ALL')
-  const [importMsg, setImportMsg] = useState<string | null>(null)
+  const [message, setMessage] = useState<string | null>(null)
+  const [confirmReset, setConfirmReset] = useState(false)
   const fileRef = useRef<HTMLInputElement>(null)
 
   const filtered = useMemo(
@@ -53,10 +56,21 @@ export function ProjectDashboard({ state, onUpdate, onImport, onReset, onShowDet
   async function handleImport(file: File) {
     try {
       onImport(JSON.parse(await file.text()))
-      setImportMsg(`Importato: ${file.name}`)
+      setMessage(`Importato: ${file.name}`)
     } catch {
-      setImportMsg('File non valido: selezionare un JSON esportato da questa pagina.')
+      setMessage('File non valido: selezionare un JSON esportato da questa pagina.')
     }
+  }
+
+  async function handleExport(kind: 'JSON' | 'CSV') {
+    const res: ExportResult = await (kind === 'JSON' ? exportJSON(state) : exportCSV(state))
+    setMessage(
+      res === 'saved'
+        ? `Roadmap esportata in ${kind}.`
+        : res === 'declined'
+          ? 'Esportazione annullata.'
+          : 'Esportazione non disponibile in questa vista.',
+    )
   }
 
   return (
@@ -75,14 +89,14 @@ export function ProjectDashboard({ state, onUpdate, onImport, onReset, onShowDet
             <span className="eyebrow mr-1">Esporta roadmap</span>
             <button
               type="button"
-              onClick={() => exportJSON(state)}
+              onClick={() => void handleExport('JSON')}
               className="bg-white px-4 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-accent hover:text-white"
             >
               ↓ JSON
             </button>
             <button
               type="button"
-              onClick={() => exportCSV(state)}
+              onClick={() => void handleExport('CSV')}
               className="bg-white px-4 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-accent hover:text-white"
             >
               ↓ CSV
@@ -90,31 +104,58 @@ export function ProjectDashboard({ state, onUpdate, onImport, onReset, onShowDet
           </div>
         </div>
 
-        {/* Avviso persistenza: dati salvati solo nel browser corrente */}
+        {/* Avviso persistenza: dice sempre dove sono salvati i dati */}
         <div
           role="note"
-          className="mt-8 flex flex-col gap-3 border border-wait/50 bg-wait/5 p-4 text-sm sm:flex-row sm:items-center sm:justify-between"
+          className={`mt-8 flex flex-col gap-3 border p-4 text-sm sm:flex-row sm:items-center sm:justify-between ${
+            mode === 'shared' && !writeError ? 'border-done/40 bg-done/5' : 'border-wait/50 bg-wait/5'
+          }`}
         >
           <p className="text-soft">
-            <span className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-wait">Salvataggio locale · </span>
-            {storageOk ? (
+            {mode === 'shared' && !writeError && (
               <>
+                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-done">Archivio condiviso · </span>
+                Gli aggiornamenti sono salvati per <strong className="text-white">tutto il team</strong> con accesso a questa
+                pagina e compaiono agli altri in tempo reale. In caso di modifiche simultanee sullo stesso progetto prevale
+                l’ultima salvata.
+              </>
+            )}
+            {mode === 'shared' && writeError && (
+              <>
+                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-wait">Salvataggio non riuscito · </span>
+                <strong className="text-white">Alcune modifiche non sono state salvate</strong> (accesso in sola lettura o
+                archivio non raggiungibile). Esportare i dati per non perderli.
+              </>
+            )}
+            {mode === 'connecting' && (
+              <>
+                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-wait">Connessione · </span>
+                Caricamento dei dati condivisi del team…
+              </>
+            )}
+            {mode === 'local' && (
+              <>
+                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-wait">Salvataggio locale · </span>
                 Gli aggiornamenti sono salvati <strong className="text-white">solo in questo browser</strong> e non sono
                 condivisi con gli altri membri del team. Per allinearsi, esportare il JSON e importarlo sull’altro dispositivo.
               </>
-            ) : (
+            )}
+            {mode === 'none' && (
               <strong className="text-white">
-                Il browser non consente il salvataggio locale: le modifiche andranno perse alla chiusura della pagina. Esportare
-                i dati prima di uscire.
+                Il salvataggio non è disponibile in questa vista: le modifiche andranno perse alla chiusura della pagina.
+                Esportare i dati prima di uscire.
               </strong>
             )}
           </p>
           <div className="flex shrink-0 flex-wrap items-center gap-3">
             <span aria-live="polite" className="font-mono text-[10px] uppercase tracking-[0.12em] text-mute">
-              {savedAt && storageOk ? `Salvato ${savedAt.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}` : ''}
+              {savedAt && mode !== 'none' && !writeError
+                ? `Salvato ${savedAt.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}`
+                : ''}
             </span>
             <input
               ref={fileRef}
+              id="import-json"
               type="file"
               accept="application/json,.json"
               className="sr-only"
@@ -126,27 +167,55 @@ export function ProjectDashboard({ state, onUpdate, onImport, onReset, onShowDet
                 e.target.value = ''
               }}
             />
-            <button
-              type="button"
-              onClick={() => fileRef.current?.click()}
-              className="border border-line px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-soft hover:border-white hover:text-white"
-            >
-              Importa JSON
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                if (window.confirm('Ripristinare tutti i progetti allo stato iniziale? Le modifiche salvate in questo browser andranno perse.')) onReset()
-              }}
-              className="border border-line px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-soft hover:border-accent hover:text-accent-soft"
-            >
-              Ripristina
-            </button>
+            {confirmReset ? (
+              <span className="flex flex-wrap items-center gap-2" role="group" aria-label="Conferma ripristino">
+                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-accent-soft">
+                  {mode === 'shared' ? 'Azzera i dati per tutto il team?' : 'Azzera i dati salvati?'}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    onReset()
+                    setConfirmReset(false)
+                    setMessage('Tutti i progetti sono tornati allo stato iniziale.')
+                  }}
+                  className="bg-accent px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-white"
+                >
+                  Sì, ripristina
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setConfirmReset(false)}
+                  className="border border-line px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-soft hover:border-white hover:text-white"
+                >
+                  Annulla
+                </button>
+              </span>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  disabled={mode === 'connecting'}
+                  onClick={() => fileRef.current?.click()}
+                  className="border border-line px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-soft hover:border-white hover:text-white disabled:opacity-40"
+                >
+                  Importa JSON
+                </button>
+                <button
+                  type="button"
+                  disabled={mode === 'connecting'}
+                  onClick={() => setConfirmReset(true)}
+                  className="border border-line px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-soft hover:border-accent hover:text-accent-soft disabled:opacity-40"
+                >
+                  Ripristina
+                </button>
+              </>
+            )}
           </div>
         </div>
-        {importMsg && (
+        {message && (
           <p role="status" className="mt-2 font-mono text-[11px] text-soft">
-            {importMsg}
+            {message}
           </p>
         )}
 
@@ -249,7 +318,8 @@ export function ProjectDashboard({ state, onUpdate, onImport, onReset, onShowDet
             <p className="mt-2 text-sm text-soft">Nessun progetto corrisponde ai filtri selezionati.</p>
           </div>
         ) : (
-          <div className="mt-6 grid gap-6 lg:grid-cols-2">
+          <fieldset disabled={mode === 'connecting'} className="mt-6 grid min-w-0 gap-6 disabled:opacity-60 lg:grid-cols-2">
+            <legend className="sr-only">Progetti</legend>
             {filtered.map((p) => (
               <ProjectCard
                 key={p.id}
@@ -260,7 +330,7 @@ export function ProjectDashboard({ state, onUpdate, onImport, onReset, onShowDet
                 highlighted={highlightedId === p.id}
               />
             ))}
-          </div>
+          </fieldset>
         )}
 
       </div>
