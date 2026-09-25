@@ -22,3 +22,14 @@ HEAD='<title>Élite Experience Development Plan</title>
   cat script.js
   printf '</script>\n'
 } > artifact.html
+# Élite-Experience-Development-Plan.html → documento completo in un unico file, da scaricare e aprire offline
+{
+  printf '<!doctype html>\n<html lang="it">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
+  printf '%s\n<style>\n' "$HEAD"
+  cat styles.css
+  printf '</style>\n</head>\n<body>\n'
+  cat content.html
+  printf '<script>\n'
+  cat script.js
+  printf '</script>\n</body>\n</html>\n'
+} > Elite-Experience-Development-Plan.html
