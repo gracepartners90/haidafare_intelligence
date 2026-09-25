@@ -1,0 +1,1237 @@
+<title>Élite Experience Development Plan</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* =========================================================
+   ÉLITE EXPERIENCE — Development Plan | Grace & Partners
+   Sistema: bianco dominante, nero per i manifesti, grigi funzionali.
+   ========================================================= */
+:root {
+  color-scheme: light;
+  --white: #ffffff;
+  --black: #000000;
+  --paper-2: #f4f4f4;       /* fondi secondari */
+  --rule: #e3e3e3;          /* separazioni */
+  --rule-strong: #000000;
+  --muted: #666666;         /* testi secondari: 5.7:1 su bianco, 5.2:1 su #f4f4f4 */
+  --muted-inv: #a3a3a3;     /* testi secondari su nero: 8.3:1 */
+  --rule-inv: #2c2c2c;
+
+  --bg: var(--white);
+  --fg: var(--black);
+  --tx2: var(--muted);
+  --ln: var(--rule);
+
+  --f-sans: 'Geist', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --f-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --t-giant: clamp(3.4rem, 12vw, 12.5rem);
+  --t-xxl: clamp(2.8rem, 8.4vw, 8.75rem);
+  --t-xl: clamp(2.2rem, 5.4vw, 5.25rem);
+  --t-l: clamp(1.65rem, 3.2vw, 3rem);
+  --t-m: clamp(1.2rem, 1.75vw, 1.6rem);
+  --t-body: 1.0625rem;
+  --t-s: 0.9375rem;
+  --t-label: 0.6875rem;
+
+  --max: 1320px;
+  --gutter: clamp(16px, 4vw, 60px);
+  --gap: clamp(16px, 2.2vw, 32px);
+  --sec: clamp(80px, 11vw, 168px);
+  --nav-h: 56px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 8px); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--f-sans);
+  font-size: var(--t-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01" on;
+}
+::selection { background: var(--black); color: var(--white); }
+.inv ::selection { background: var(--white); color: var(--black); }
+a { color: inherit; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+h1, h2, h3, h4, p, ul, ol, figure, blockquote { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- Superfici ---------- */
+.sec { background: var(--bg); color: var(--fg); padding-block: var(--sec); position: relative; }
+.sec.tight { padding-block: clamp(56px, 7vw, 104px); }
+.sec.grey { --bg: var(--paper-2); }
+.inv { --bg: var(--black); --fg: var(--white); --tx2: var(--muted-inv); --ln: var(--rule-inv); }
+.sec + .sec:not(.inv):not(.grey) { border-top: 1px solid var(--rule); }
+.wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* ---------- Griglia ---------- */
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: clamp(28px, 3.5vw, 56px); }
+.c-side { grid-column: 1 / 4; }
+.c-main { grid-column: 4 / 13; }
+.c-read { grid-column: 4 / 11; }
+.c-l { grid-column: 1 / 7; }
+.c-r { grid-column: 7 / 13; }
+@media (max-width: 900px) { .c-side, .c-main, .c-read, .c-l, .c-r { grid-column: 1 / -1; } }
+
+/* ---------- Tipografia ---------- */
+.label {
+  font-family: var(--f-mono); font-size: var(--t-label); font-weight: 500;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--tx2); line-height: 1.6;
+}
+.label.fg { color: var(--fg); }
+.h { font-weight: 900; letter-spacing: -0.045em; line-height: .9; text-wrap: balance; }
+.up { text-transform: uppercase; }
+.giant { font-size: var(--t-giant); letter-spacing: -0.055em; line-height: .88; }
+.xxl { font-size: var(--t-xxl); letter-spacing: -0.05em; line-height: .92; }
+.xl { font-size: var(--t-xl); line-height: .98; }
+.l { font-size: var(--t-l); line-height: 1; letter-spacing: -0.035em; }
+.m { font-size: var(--t-m); line-height: 1.18; letter-spacing: -0.015em; font-weight: 600; }
+.lede { font-size: clamp(1.15rem, 1.55vw, 1.4rem); line-height: 1.5; max-width: 38em; text-wrap: pretty; }
+.body { max-width: 36em; text-wrap: pretty; }
+.tx2 { color: var(--tx2); }
+.num { font-family: var(--f-sans); font-weight: 900; letter-spacing: -0.06em; line-height: .78; font-variant-numeric: tabular-nums; }
+.mono { font-family: var(--f-mono); }
+.stack > * + * { margin-top: var(--s, 20px); }
+.sp-xs { margin-top: 12px; } .sp-s { margin-top: 24px; } .sp-m { margin-top: clamp(36px, 4vw, 56px); }
+.sp-l { margin-top: clamp(56px, 7vw, 104px); } .sp-xl { margin-top: clamp(80px, 10vw, 150px); }
+
+/* Etichette di stato (ipotesi, da validare) */
+.tag { display: inline-block; font-family: var(--f-mono); font-size: var(--t-label); font-weight: 500; letter-spacing: .16em; text-transform: uppercase; border: 1px solid currentColor; padding: 6px 9px; line-height: 1; border-radius: 2px; }
+.tag.solid { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+
+/* ---------- Navigazione ---------- */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 60; background: rgba(255,255,255,.96); color: var(--black); border-bottom: 1px solid var(--rule); transition: background-color .3s ease, color .3s ease, border-color .3s ease; }
+.nav.on-dark { background: rgba(0,0,0,.96); color: var(--white); border-bottom-color: var(--rule-inv); }
+.nav-in { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); height: var(--nav-h); display: flex; align-items: center; gap: 24px; }
+.brand { font-weight: 800; font-size: .9rem; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; }
+.brand span { font-weight: 400; opacity: .6; }
+.nav-links { margin-left: auto; display: flex; gap: clamp(12px, 1.8vw, 28px); overflow-x: auto; scrollbar-width: none; }
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links a { font-family: var(--f-mono); font-size: var(--t-label); font-weight: 500; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; white-space: nowrap; padding: 6px 0; position: relative; opacity: .62; transition: opacity .25s ease; }
+.nav-links a b { font-weight: 500; margin-right: 6px; }
+.nav-links a:hover, .nav-links a[aria-current="true"] { opacity: 1; }
+.nav-links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .4s var(--ease); }
+.nav-links a[aria-current="true"]::after { transform: scaleX(1); }
+.btn { font: 500 var(--t-label)/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; background: transparent; color: inherit; border: 1px solid currentColor; border-radius: 2px; padding: 9px 12px; cursor: pointer; white-space: nowrap; transition: background-color .25s ease, color .25s ease; }
+.nav .btn:hover { background: var(--black); color: var(--white); }
+.nav.on-dark .btn:hover { background: var(--white); color: var(--black); }
+.progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; background: currentColor; transform: scaleX(0); transform-origin: left; }
+@media (max-width: 1100px) { .nav-links a .full { display: none; } }
+@media (max-width: 720px) {
+  .nav .btn { display: none; }
+  .nav-in { gap: 14px; }
+  .brand span { display: none; }
+}
+
+/* ---------- Reveal: mai nascosto a riposo, solo sotto la piega ---------- */
+.pending { opacity: 0; transform: translateY(14px); }
+.revealed { opacity: 1; transform: none; transition: opacity .6s ease, transform .6s var(--ease); }
+.line-grow { transform-origin: left; }
+.pending.line-grow, .pending .line-grow { transform: scaleX(0); }
+.revealed .line-grow, .revealed.line-grow { transform: scaleX(1); transition: transform .6s var(--ease) .1s; }
+@media (prefers-reduced-motion: reduce) { .pending, .pending .line-grow { opacity: 1; transform: none; } }
+
+/* ---------- Cover ---------- */
+.cover { min-height: calc(100svh - var(--nav-h)); display: flex; padding-block: clamp(28px, 4vw, 56px); }
+.cover .wrap { display: flex; flex-direction: column; width: 100%; }
+.cover-top { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.cover-title { margin-top: auto; padding-top: clamp(80px, 14vw, 200px); font-size: clamp(3.4rem, 13.4vw, 14rem); letter-spacing: -0.06em; line-height: .86; }
+.cover-rule { height: 1px; background: var(--black); margin-block: clamp(28px, 4vw, 48px) 24px; }
+.cover-meta { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: 20px; align-items: end; }
+.cover-meta .a { grid-column: 1 / 6; }
+.cover-meta .b { grid-column: 6 / 10; }
+.cover-meta .c { grid-column: 10 / 13; text-align: right; }
+.cover-meta .dp { font-size: clamp(1.3rem, 2.1vw, 1.9rem); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; }
+@media (max-width: 720px) { .cover-meta .a, .cover-meta .b, .cover-meta .c { grid-column: 1 / -1; text-align: left; } }
+
+/* ---------- Sequenza strategica (Prodotto → … → Scale) ---------- */
+.seq { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); border-top: 1px solid var(--fg); }
+.seq li { position: relative; padding: 18px 10px 0 0; }
+.seq li::before { content: ""; position: absolute; left: 0; top: -5px; width: 9px; height: 9px; background: var(--fg); border-radius: 50%; }
+.seq .i { font-family: var(--f-mono); font-size: var(--t-label); letter-spacing: .14em; color: var(--tx2); display: block; margin-bottom: 10px; }
+.seq b { font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; font-size: clamp(.95rem, 1.3vw, 1.2rem); line-height: 1.1; display: block; }
+.seq::after { content: "→"; position: absolute; right: -2px; top: -.72em; font-size: 1.1rem; line-height: 1; }
+.seq { position: relative; }
+.seq.big b { font-size: clamp(1rem, 1.6vw, 1.45rem); }
+@media (max-width: 900px) {
+  .seq { grid-template-columns: 1fr; border-top: 0; border-left: 1px solid var(--fg); margin-left: 4px; }
+  .seq li { padding: 0 0 18px 24px; }
+  .seq li:last-child { padding-bottom: 0; }
+  .seq li::before { left: -5px; top: 4px; }
+  .seq .i { display: inline; margin-right: 10px; }
+  .seq b { display: inline; }
+  .seq::after { content: none; }
+}
+
+/* ---------- Indice delle 5 aree ---------- */
+.areas a { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); align-items: baseline; padding-block: clamp(20px, 2.4vw, 32px); border-top: 1px solid var(--ln); text-decoration: none; transition: border-color .3s ease; }
+.areas li:last-child a { border-bottom: 1px solid var(--ln); }
+.areas .n { grid-column: 1 / 3; font-size: clamp(2.6rem, 5vw, 4.75rem); }
+.areas .t { grid-column: 3 / 8; font-size: clamp(1.25rem, 2.2vw, 2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; text-transform: uppercase; }
+.areas .d { grid-column: 8 / 13; color: var(--tx2); transition: color .3s ease; }
+.areas .d i { font-style: normal; display: inline-block; transition: transform .3s var(--ease); }
+.areas a:hover { border-top-color: var(--fg); }
+.areas a:hover .d { color: var(--fg); }
+.areas a:hover .d i { transform: translateX(4px); }
+@media (max-width: 900px) {
+  .areas a { row-gap: 8px; }
+  .areas .n { grid-column: 1 / 4; }
+  .areas .t, .areas .d { grid-column: 4 / 13; }
+}
+
+/* ---------- Manifesto (The Question) ---------- */
+.manifesto { min-height: 92svh; display: flex; align-items: center; }
+.manifesto .wrap { width: 100%; }
+.manifesto .q { font-size: clamp(2.6rem, 8.2vw, 8.5rem); letter-spacing: -0.05em; line-height: .94; margin-block: clamp(28px, 4vw, 48px); }
+.manifesto .q .tx2 { color: var(--muted-inv); }
+
+/* ---------- Apertura area ---------- */
+.opener { padding-block: clamp(88px, 11vw, 176px) clamp(56px, 7vw, 104px); }
+.opener .grid { align-items: end; }
+.opener .o-n { grid-column: 1 / 6; font-size: clamp(7rem, 26vw, 26rem); line-height: .74; letter-spacing: -0.07em; margin-left: -0.04em; }
+.opener .o-t { grid-column: 6 / 13; font-size: var(--t-xl); padding-bottom: .05em; }
+.opener .o-meta { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: 12px; border-top: 1px solid var(--fg); padding-top: 22px; }
+.opener .o-meta .label { grid-column: 1 / 6; }
+.opener .o-meta .m { grid-column: 6 / 13; font-size: clamp(1.4rem, 2.4vw, 2.2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+@media (max-width: 900px) {
+  .opener .o-n, .opener .o-t, .opener .o-meta .label, .opener .o-meta .m { grid-column: 1 / -1; }
+}
+
+/* ---------- Liste ---------- */
+.index-list { counter-reset: none; }
+.index-list li { display: grid; grid-template-columns: 3.2rem 1fr; gap: 12px; padding-block: 15px; border-top: 1px solid var(--ln); align-items: baseline; }
+.index-list li:last-child { border-bottom: 1px solid var(--ln); }
+.index-list .i { font-family: var(--f-mono); font-size: .75rem; color: var(--tx2); letter-spacing: .08em; }
+.index-list b { font-weight: 600; font-size: clamp(1.02rem, 1.3vw, 1.18rem); letter-spacing: -0.01em; }
+.index-list .sub { grid-column: 2; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.cols-2 { columns: 2; column-gap: var(--gap); }
+.cols-2 li { break-inside: avoid; }
+@media (max-width: 720px) { .cols-2 { columns: 1; } }
+
+.dash li { position: relative; padding: 12px 0 12px 26px; border-top: 1px solid var(--ln); }
+.dash li::before { content: ""; position: absolute; left: 0; top: 1.3em; width: 12px; height: 1px; background: var(--fg); }
+.dash.cols-2 li:last-child, .dash:not(.cols-2) li:last-child { border-bottom: 1px solid var(--ln); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { font-family: var(--f-mono); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; border: 1px solid var(--fg); padding: 8px 11px; border-radius: 2px; }
+
+/* ---------- Split 50/50 (START / EVOLVE, Model A / B) ---------- */
+.split { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--fg); border-bottom: 1px solid var(--fg); }
+.split > div { padding: clamp(32px, 5vw, 80px) clamp(20px, 3.5vw, 56px) clamp(32px, 5vw, 80px) 0; }
+.split > div + div { border-left: 1px solid var(--fg); padding-left: clamp(20px, 3.5vw, 56px); padding-right: 0; }
+.split .word { font-size: clamp(3.2rem, 9vw, 9rem); font-weight: 900; letter-spacing: -0.06em; line-height: .82; display: block; margin-block: 18px 28px; }
+@media (max-width: 720px) {
+  .split { grid-template-columns: 1fr; }
+  .split > div { padding-right: 0; }
+  .split > div + div { border-left: 0; border-top: 1px solid var(--fg); padding-left: 0; }
+}
+
+/* ---------- Not / But ---------- */
+.notbut { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: 28px; }
+.notbut .k { grid-column: 1 / 4; }
+.notbut .v { grid-column: 4 / 13; }
+.notbut .strike { font-size: var(--t-l); font-weight: 500; letter-spacing: -0.03em; line-height: 1.05; color: var(--tx2); text-decoration: line-through; text-decoration-thickness: 2px; }
+.notbut .quote { font-size: clamp(1.45rem, 2.6vw, 2.4rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.14; text-wrap: pretty; }
+@media (max-width: 900px) { .notbut .k, .notbut .v { grid-column: 1 / -1; } }
+
+.note { border-left: 2px solid var(--fg); padding: 2px 0 2px 18px; max-width: 42em; }
+
+/* ---------- Vedere Élite: composizione tipografica ---------- */
+.lexicon { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: clamp(14px, 2vw, 32px); row-gap: 0; }
+.lexicon span { font-weight: 900; text-transform: uppercase; letter-spacing: -0.05em; line-height: .95; }
+.lexicon .s1 { font-size: clamp(2.6rem, 7.5vw, 7.5rem); }
+.lexicon .s2 { font-size: clamp(1.8rem, 4.6vw, 4.6rem); color: var(--tx2); }
+.lexicon .s3 { font-size: clamp(1.3rem, 2.8vw, 2.8rem); }
+.lessmore { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--fg); }
+.lessmore > div { padding: 22px 24px 26px 0; }
+.lessmore > div + div { border-left: 1px solid var(--ln); padding-left: 24px; }
+.lessmore .w { display: block; font-size: var(--t-l); font-weight: 900; letter-spacing: -0.04em; line-height: 1; margin-top: 12px; }
+.lessmore .less .w { color: var(--tx2); font-weight: 500; text-decoration: line-through; text-decoration-thickness: 2px; }
+
+/* ---------- Funnel ACQUISITION ---------- */
+.funnel { display: flex; flex-direction: column; align-items: flex-start; }
+.funnel .lvl { border-top: 2px solid var(--fg); padding: 18px 0 22px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); column-gap: var(--gap); row-gap: 12px; }
+.funnel .lvl:nth-child(1) { width: 100%; }
+.funnel .lvl:nth-child(3) { width: 84%; }
+.funnel .lvl:nth-child(5) { width: 68%; }
+.funnel .lvl h4 { font-size: clamp(1.3rem, 2.4vw, 2.25rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase; }
+.funnel .arrow { font-family: var(--f-mono); color: var(--tx2); padding: 2px 0 10px; line-height: 1; }
+@media (max-width: 720px) {
+  .funnel .lvl { grid-template-columns: 1fr; }
+  .funnel .lvl:nth-child(n) { width: 100%; }
+}
+
+.pillar-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; border-bottom: 1px solid var(--fg); padding-bottom: 14px; margin-bottom: clamp(32px, 4vw, 56px); flex-wrap: wrap; }
+.pillar-head h3 { font-size: var(--t-xl); font-weight: 900; letter-spacing: -0.05em; line-height: .9; text-transform: uppercase; }
+
+.qa li { font-size: var(--t-m); font-weight: 600; letter-spacing: -0.015em; line-height: 1.2; padding-block: 14px; border-top: 1px solid var(--ln); }
+.qa li:last-child { border-bottom: 1px solid var(--ln); }
+
+/* Pipeline orizzontale */
+.pipe { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
+.pipe li { border-top: 1px solid var(--fg); padding: 14px 10px 0 0; position: relative; }
+.pipe li + li { border-left: 0; }
+.pipe .i { font-family: var(--f-mono); font-size: var(--t-label); color: var(--tx2); letter-spacing: .14em; display: block; margin-bottom: 8px; }
+.pipe b { font-weight: 800; text-transform: uppercase; font-size: clamp(.9rem, 1.2vw, 1.08rem); letter-spacing: -0.005em; }
+@media (max-width: 900px) {
+  .pipe { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 18px; column-gap: var(--gap); }
+}
+
+/* Citazione principale */
+.pull { font-size: clamp(2rem, 4.6vw, 4.5rem); font-weight: 800; letter-spacing: -0.045em; line-height: 1.02; text-wrap: balance; }
+.pull .tx2 { font-weight: 500; }
+
+/* ---------- Today vs Target ---------- */
+.today .flowline { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 14px; font-weight: 600; color: var(--tx2); font-size: var(--t-m); }
+.target .flowline { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 clamp(10px, 1.4vw, 22px); }
+.target .flowline span { font-size: clamp(1.9rem, 4.6vw, 4.6rem); font-weight: 900; letter-spacing: -0.05em; line-height: 1.02; text-transform: uppercase; }
+.target .flowline i, .today .flowline i { font-style: normal; font-weight: 300; color: var(--tx2); }
+.target .flowline i { font-size: clamp(1.4rem, 3vw, 3rem); }
+
+/* ---------- Partner / Test ---------- */
+.objectives { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--fg); }
+.objectives li { padding: 18px 20px 22px 0; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; font-size: clamp(1rem, 1.4vw, 1.25rem); line-height: 1.12; }
+.objectives li + li { border-left: 1px solid var(--ln); padding-left: 20px; }
+.objectives .i { display: block; font-family: var(--f-mono); font-size: var(--t-label); font-weight: 500; letter-spacing: .14em; color: var(--tx2); margin-bottom: 18px; }
+@media (max-width: 900px) {
+  .objectives { grid-template-columns: 1fr 1fr; }
+  .objectives li:nth-child(3) { border-left: 0; padding-left: 0; }
+  .objectives li:nth-child(n+3) { border-top: 1px solid var(--ln); }
+}
+@media (max-width: 480px) {
+  .objectives { grid-template-columns: 1fr; }
+  .objectives li + li { border-left: 0; padding-left: 0; border-top: 1px solid var(--ln); }
+}
+
+/* ---------- Modelli di scala ---------- */
+.models .word { font-size: clamp(2.2rem, 5vw, 5rem); }
+.hybrid { border-top: 1px solid var(--fg); padding-top: 18px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: 14px; align-items: baseline; }
+.hybrid .k { grid-column: 1 / 4; }
+.hybrid .v { grid-column: 4 / 11; }
+.hybrid .t { grid-column: 11 / 13; justify-self: end; }
+@media (max-width: 900px) { .hybrid .k, .hybrid .v, .hybrid .t { grid-column: 1 / -1; justify-self: start; } }
+
+/* ---------- Strategic roadmap a gradini ---------- */
+.stairs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: clamp(10px, 1.4vw, 20px); align-items: start; }
+.stairs li { border-top: 2px solid var(--fg); padding-top: 16px; margin-top: calc((5 - var(--k)) * clamp(18px, 2.6vw, 40px)); position: relative; }
+.stairs .n { font-size: clamp(2.4rem, 4.4vw, 4.2rem); display: block; }
+.stairs h4 { font-size: clamp(.95rem, 1.35vw, 1.2rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; margin-block: 16px 12px; line-height: 1.05; overflow-wrap: anywhere; }
+.stairs p { color: var(--tx2); font-size: var(--t-s); line-height: 1.5; }
+.stairs .enables { position: absolute; top: -22px; right: 0; font-family: var(--f-mono); font-size: .625rem; letter-spacing: .14em; text-transform: uppercase; color: var(--tx2); }
+@media (max-width: 1000px) {
+  .stairs { grid-template-columns: 1fr 1fr 1fr; row-gap: 40px; }
+  .stairs li { margin-top: 0; }
+  .stairs .enables { display: none; }
+}
+@media (max-width: 560px) {
+  .stairs { grid-template-columns: 1fr; row-gap: 0; }
+  .stairs li { display: grid; grid-template-columns: 4.2rem 1fr; column-gap: 14px; padding-block: 16px 20px; border-top-width: 1px; }
+  .stairs li:first-child { border-top-width: 2px; }
+  .stairs .n { grid-row: span 2; font-size: 2.6rem; }
+  .stairs h4 { margin-top: 0; }
+}
+
+/* ---------- 18 month roadmap (Gantt) ---------- */
+.gantt { --m: 18; }
+.g-row { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); column-gap: var(--gap); padding-block: 16px; border-top: 1px solid var(--ln); align-items: center; }
+.g-row.head { border-top: 0; padding-bottom: 8px; align-items: end; }
+.g-row.group { border-top: 1px solid var(--fg); padding-top: 22px; }
+.g-name b { font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; font-size: 1rem; display: block; line-height: 1.15; }
+.g-name p { color: var(--tx2); font-size: .875rem; line-height: 1.45; margin-top: 4px; }
+.g-name .label { display: block; margin-bottom: 4px; }
+.g-track { position: relative; height: 22px; background-image: linear-gradient(to right, var(--ln) 1px, transparent 1px); background-size: calc(100% / 6) 100%; background-position: 0 0; }
+.g-axis { position: relative; height: 22px; }
+.g-axis span { position: absolute; bottom: 0; font-family: var(--f-mono); font-size: var(--t-label); letter-spacing: .12em; transform: translateX(0); white-space: nowrap; }
+.g-axis span:last-child { transform: translateX(-100%); }
+.g-bar { position: absolute; top: 50%; height: 10px; margin-top: -5px; background: var(--fg); left: calc(var(--s) / var(--m) * 100%); width: calc((var(--e) - var(--s)) / var(--m) * 100%); }
+.g-cont { position: absolute; top: 50%; height: 0; border-top: 1px dashed var(--fg); left: calc(var(--e) / var(--m) * 100%); right: 0; opacity: .55; }
+.g-always { position: absolute; top: 50%; left: 0; right: 0; height: 2px; margin-top: -1px; background: repeating-linear-gradient(to right, var(--fg) 0 10px, transparent 10px 16px); }
+.g-legend { display: flex; flex-wrap: wrap; gap: 10px 28px; }
+.g-legend span { display: inline-flex; align-items: center; gap: 10px; font-family: var(--f-mono); font-size: var(--t-label); letter-spacing: .12em; text-transform: uppercase; color: var(--tx2); }
+.g-legend i { display: inline-block; width: 28px; }
+.g-legend .k1 { height: 10px; background: var(--fg); }
+.g-legend .k2 { border-top: 1px dashed var(--fg); }
+.g-legend .k3 { height: 2px; background: repeating-linear-gradient(to right, var(--fg) 0 8px, transparent 8px 12px); }
+@media (max-width: 900px) {
+  .g-row { grid-template-columns: 1fr; row-gap: 10px; }
+  .g-row.head > :first-child { display: none; }
+  .g-axis span { font-size: .5625rem; letter-spacing: .04em; }
+}
+
+/* ---------- Priority matrix ---------- */
+.prio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--black); }
+.prio > div { padding: clamp(22px, 3vw, 40px); }
+.prio > div + div { border-left: 1px solid var(--black); }
+.prio .now { background: var(--black); color: var(--white); --tx2: var(--muted-inv); --ln: var(--rule-inv); --fg: var(--white); }
+.prio .later { background: var(--paper-2); }
+.prio h3 { text-transform: uppercase; font-size: clamp(3rem, 6vw, 6rem); font-weight: 900; letter-spacing: -0.06em; line-height: .82; margin-block: 14px 28px; }
+.prio li { padding-block: 11px; border-top: 1px solid var(--ln); font-weight: 600; letter-spacing: -0.01em; }
+.prio li:last-child { border-bottom: 1px solid var(--ln); }
+.prio .when { font-family: var(--f-mono); font-size: var(--t-label); letter-spacing: .14em; text-transform: uppercase; color: var(--tx2); }
+@media (max-width: 900px) {
+  .prio { grid-template-columns: 1fr; }
+  .prio > div + div { border-left: 0; border-top: 1px solid var(--black); }
+}
+
+/* ---------- Final page ---------- */
+.final { min-height: 100svh; display: flex; }
+.final .wrap { display: flex; flex-direction: column; gap: clamp(40px, 6vw, 80px); width: 100%; }
+.final .words { font-size: clamp(3rem, 10.5vw, 10.5rem); letter-spacing: -0.06em; line-height: .86; margin-block: auto; }
+.final .words span { display: block; }
+.final .words span:not(:last-child) { color: var(--muted-inv); }
+.final-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; border-top: 1px solid var(--rule-inv); padding-top: 24px; }
+.final-foot .gp { font-size: clamp(1.3rem, 2.2vw, 1.9rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+.final .btn:hover { background: var(--white); color: var(--black); }
+.print-note { font-family: var(--f-mono); font-size: var(--t-label); letter-spacing: .06em; color: var(--muted-inv); max-width: 32em; text-align: right; }
+
+/* ---------- Ripiegabili su mobile ---------- */
+details.fold > summary { display: none; }
+@media (max-width: 720px) {
+  details.fold > summary { display: flex; justify-content: space-between; align-items: center; cursor: pointer; list-style: none; font-family: var(--f-mono); font-size: var(--t-label); letter-spacing: .14em; text-transform: uppercase; border-top: 1px solid var(--fg); padding: 14px 0; }
+  details.fold > summary::-webkit-details-marker { display: none; }
+  details.fold > summary::after { content: "+"; font-size: 1rem; letter-spacing: 0; }
+  details.fold[open] > summary::after { content: "−"; }
+  details.fold[open] > summary { margin-bottom: 12px; }
+}
+
+/* =========================================================
+   STAMPA — executive report A4, bianco e nero
+   ========================================================= */
+@media print {
+  @page { size: A4; margin: 15mm 14mm 16mm; }
+  :root {
+    --t-giant: 60pt; --t-xxl: 44pt; --t-xl: 30pt; --t-l: 19pt; --t-m: 12.5pt; --t-body: 10pt; --t-s: 9pt; --t-label: 6.5pt;
+    --gutter: 0px; --gap: 12pt; --sec: 24pt;
+  }
+  html { scroll-behavior: auto; }
+  body { font-size: 10pt; }
+  .nav, .progress, .btn, .print-note, details.fold > summary, .areas .d i { display: none !important; }
+  .pending, .pending .line-grow { opacity: 1 !important; transform: none !important; }
+  .revealed, .revealed .line-grow { transition: none !important; }
+  .cover { min-height: 0; height: 250mm; }
+  .cover-title { font-size: 84pt; }
+  .inv { --bg: #fff; --fg: #000; --tx2: #555; --ln: #bbb; border-top: 3pt solid #000; }
+  .manifesto { min-height: 0; break-before: page; }
+  .manifesto .q { font-size: 44pt; }
+  .manifesto .q .tx2 { color: #555; }
+  .opener { break-before: page; padding-top: 10pt; }
+  .opener .o-n { font-size: 120pt; }
+  .final { min-height: 0; break-before: page; }
+  .final .words { font-size: 54pt; }
+  .final .words span:not(:last-child) { color: #555; }
+  .sec.grey { --bg: #fff; border-top: .5pt solid #bbb; }
+  .prio .now { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .stairs li { margin-top: 0; }
+  .stairs .enables { display: none; }
+  .areas a, .index-list li, .dash li, .seq li, .split, .notbut, .funnel .lvl, .pipe li, .objectives li, .stairs li, .g-row, .prio > div, .qa li, .hybrid, .lessmore, .pillar-head { break-inside: avoid; }
+  h2, h3, h4, .pillar-head { break-after: avoid; }
+  a { text-decoration: none; }
+}
+</style>
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top">Grace × Élite <span>/ Development Plan</span></a>
+    <nav class="nav-links" aria-label="Sezioni del documento">
+      <a href="#overview" data-nav="overview">Overview</a>
+      <a href="#s01" data-nav="s01"><b>01</b><span class="full">Brand</span></a>
+      <a href="#s02" data-nav="s02"><b>02</b><span class="full">Digital</span></a>
+      <a href="#s03" data-nav="s03"><b>03</b><span class="full">Acquisition</span></a>
+      <a href="#s04" data-nav="s04"><b>04</b><span class="full">Experience</span></a>
+      <a href="#s05" data-nav="s05"><b>05</b><span class="full">Scale</span></a>
+      <a href="#roadmap" data-nav="roadmap">Roadmap</a>
+    </nav>
+    <button class="btn" type="button" data-print>Print / Export PDF</button>
+  </div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</header>
+
+<main id="top">
+
+<!-- ================= COVER ================= -->
+<section class="sec cover" aria-labelledby="cover-title">
+  <div class="wrap">
+    <div class="cover-top">
+      <p class="label fg">Grace &amp; Partners<br><span class="tx2">Internal Development Plan</span></p>
+      <p class="label" style="text-align:right">Start<br><span style="color:var(--fg)">Ottobre 2026</span></p>
+    </div>
+    <h1 id="cover-title" class="h giant up cover-title">Élite<br>Experience</h1>
+    <div class="cover-rule line-grow" aria-hidden="true"></div>
+    <div class="cover-meta">
+      <div class="a">
+        <p class="dp">Development Plan</p>
+        <p class="tx2">October 2026 → March 2028</p>
+      </div>
+      <div class="b">
+        <p class="label">Orizzonte strategico</p>
+        <p style="font-weight:600">12–18 mesi</p>
+      </div>
+      <p class="c label fg">Confidential<br><span class="tx2">Internal use only</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STRATEGIC PREMISE ================= -->
+<section class="sec" id="overview" data-section="overview" aria-labelledby="premise-title">
+  <div class="wrap">
+    <div class="grid">
+      <p class="c-side label">Strategic premise</p>
+      <div class="c-main">
+        <h2 id="premise-title" class="h xl up">Tirare a lucido<br>Élite Experience.</h2>
+      </div>
+    </div>
+
+    <div class="grid sp-l">
+      <p class="c-side label">Dove si trova oggi</p>
+      <div class="c-read stack" style="--s:22px">
+        <p class="lede">Élite Experience possiede già competenza, rituali, formazione, una figura fondatrice riconoscibile e un’identità estetica definita.</p>
+        <p class="lede">Il prossimo passaggio è trasformare questi asset in un sistema più riconoscibile, strutturato e replicabile.</p>
+      </div>
+    </div>
+
+    <div class="grid sp-m">
+      <p class="c-side label">Obiettivo generale</p>
+      <p class="c-read m">Portare progressivamente Élite Experience da progetto formativo Hair Spa a brand B2B riconoscibile, commercialmente strutturato e predisposto alla scalabilità.</p>
+    </div>
+
+    <div class="grid sp-m">
+      <p class="c-side label">Un solo processo</p>
+      <div class="c-read stack body" style="--s:14px">
+        <p>Il lavoro di Grace non consiste nello sviluppare singoli cantieri indipendenti.</p>
+        <p>Prodotto, brand, digital, marketing, commerciale, customer experience e sviluppo del network devono evolvere nella stessa direzione.</p>
+      </div>
+    </div>
+
+    <ol class="seq big sp-l" style="--n:7" aria-label="Sequenza di intervento">
+      <li><span class="i">01</span><b>Prodotto</b></li>
+      <li><span class="i">02</span><b>Brand</b></li>
+      <li><span class="i">03</span><b>Digital</b></li>
+      <li><span class="i">04</span><b>Marketing</b></li>
+      <li><span class="i">05</span><b>Commerciale</b></li>
+      <li><span class="i">06</span><b>Delivery</b></li>
+      <li><span class="i">07</span><b>Scale</b></li>
+    </ol>
+
+    <div class="grid sp-xl">
+      <p class="c-side label">Principio strategico</p>
+      <p class="c-main h l up">Rendere Élite<br>distinguibile → desiderabile →<br>replicabile → scalabile.</p>
+    </div>
+
+    <div class="grid sp-xl">
+      <p class="c-side label">Cinque aree di intervento</p>
+      <ol class="c-main areas">
+        <li><a href="#s01"><span class="n num">01</span><span class="t">Brand &amp; Product Definition</span><span class="d">Élite deve essere distinguibile. <i aria-hidden="true">→</i></span></a></li>
+        <li><a href="#s02"><span class="n num">02</span><span class="t">Digital &amp; Brand Experience</span><span class="d">Una volta definito il prodotto, ripensiamo la presenza digitale. <i aria-hidden="true">→</i></span></a></li>
+        <li><a href="#s03"><span class="n num">03</span><span class="t">Acquisition &amp; Commercial System</span><span class="d">Trasformare l’interesse in intenzione. <i aria-hidden="true">→</i></span></a></li>
+        <li><a href="#s04"><span class="n num">04</span><span class="t">Customer Experience &amp; Élite Network</span><span class="d">Trasformiamo chi compra in parte del brand. <i aria-hidden="true">→</i></span></a></li>
+        <li><a href="#s05"><span class="n num">05</span><span class="t">Scale &amp; Franchising</span><span class="d">Prima validiamo. Poi replichiamo. <i aria-hidden="true">→</i></span></a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE QUESTION ================= -->
+<section class="sec inv manifesto" data-section="overview" aria-labelledby="question-title">
+  <div class="wrap">
+    <p class="label">The question</p>
+    <h2 id="question-title" class="h up q">Perché<br>Élite Experience<br><span class="tx2">è diversa<br>da una qualsiasi<br>Academy Hair Spa?</span></h2>
+    <p class="label fg">Il primo intervento parte da qui.</p>
+  </div>
+</section>
+
+<!-- =====================================================
+     01 — BRAND & PRODUCT DEFINITION
+     ===================================================== -->
+<section class="sec opener" id="s01" data-section="s01" aria-labelledby="s01-title">
+  <div class="wrap grid">
+    <span class="o-n num" aria-hidden="true">01</span>
+    <h2 id="s01-title" class="o-t h up"><span class="sr">01 </span>Brand &amp;<br>Product Definition</h2>
+    <div class="o-meta"><p class="label">Area 01 · Distinguibilità</p><p class="m">Élite deve essere distinguibile.</p></div>
+  </div>
+</section>
+
+<section class="sec" data-section="s01" aria-label="Brand e product definition, contenuti">
+  <div class="wrap">
+    <div class="grid">
+      <p class="c-side label">Oggi</p>
+      <div class="c-read stack" style="--s:22px">
+        <p class="lede">Oggi abbiamo rituali, Elisabetta, competenza, formazione online e in presenza e un’identità estetica abbastanza precisa.</p>
+        <p class="body">Dobbiamo arrivare a rispondere in maniera inequivocabile alla domanda:</p>
+        <p class="h l">“Perché Élite Experience è diversa da una qualsiasi Academy Hair Spa?”</p>
+      </div>
+    </div>
+
+    <div class="grid sp-xl">
+      <p class="c-side label fg">Area di intervento</p>
+      <div class="c-main">
+        <details class="fold" open>
+          <summary>Area di intervento · 10 punti</summary>
+          <ol class="index-list">
+            <li><span class="i">01</span><b>Analisi dell’offerta attuale</b></li>
+            <li><span class="i">02</span><b>Analisi competitor Hair Spa / formazione</b></li>
+            <li><span class="i">03</span><b>Definizione del posizionamento</b></li>
+            <li><span class="i">04</span><b>Codifica del Metodo Élite Experience</b></li>
+            <li><span class="i">05</span><div><b>Individuazione degli elementi realmente proprietari</b>
+              <ul class="chips sp-xs" aria-label="Elementi proprietari"><li>Rituali</li><li>Sequenze</li><li>Gestualità</li><li>Filosofia</li><li>Modalità di insegnamento</li></ul></div></li>
+            <li><span class="i">06</span><b>Architettura dell’offerta</b></li>
+            <li><span class="i">07</span><b>Naming e organizzazione dei percorsi</b></li>
+            <li><span class="i">08</span><b>Definizione della promessa commerciale</b></li>
+            <li><span class="i">09</span><b>Revisione del pricing</b></li>
+            <li><span class="i">10</span><b>Costruzione del racconto di Elisabetta come founder del metodo</b></li>
+          </ol>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec grey" data-section="s01" aria-labelledby="entry-title">
+  <div class="wrap">
+    <div class="grid">
+      <p class="c-side label">Two entry points</p>
+      <h3 id="entry-title" class="c-main h xl up">Due porte<br>d’ingresso.</h3>
+    </div>
+    <div class="split sp-l">
+      <div>
+        <p class="label">Entry point A</p>
+        <span class="word up">Start</span>
+        <p class="m">Per il salone che vuole introdurre l’Hair Spa.</p>
+      </div>
+      <div>
+        <p class="label">Entry point B</p>
+        <span class="word up">Evolve</span>
+        <p class="m">Per il salone che possiede già una proposta Hair Spa e vuole elevarla attraverso metodo, rituali e manualità.</p>
+      </div>
+    </div>
+    <div class="grid sp-m">
+      <p class="c-side"><span class="tag">Working categories</span></p>
+      <div class="c-read stack body" style="--s:12px">
+        <p>START ed EVOLVE sono categorie strategiche di lavoro.</p>
+        <p class="tx2">Non rappresentano necessariamente i naming definitivi dei prodotti. Servono a costruire due porte d’ingresso differenti alla proposta Élite Experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-section="s01" aria-labelledby="out01-title">
+  <div class="wrap">
+    <div class="grid">
+      <p class="c-side label fg">Expected output · 01</p>
+      <h3 id="out01-title" class="c-main h xl up">Da “corso Hair Spa”<br>a “Metodo Élite<br>Experience”.</h3>
+    </div>
+    <div class="grid sp-m">
+      <p class="c-side"></p>
+      <p class="c-read lede">Dobbiamo arrivare ad avere una frase che faccia capire immediatamente cosa acquista il salone.</p>
+    </div>
+    <div class="notbut sp-l">
+      <p class="k label">Non</p>
+      <p class="v strike">“Formazione professionale Hair Spa.”</p>
+      <p class="k label fg">Ma, concettualmente</p>
+      <p class="v quote">“Élite Experience porta nel tuo salone un metodo Hair Spa fatto di rituali, gestualità e protocolli riconoscibili, formando il team per trasformarli in una nuova esperienza da proporre alle clienti.”</p>
+      <p class="k"></p>
+      <div class="v note"><p class="label fg">Nota</p><p class="sp-xs">La formulazione è ancora strategica e dovrà essere raffinata in fase di posizionamento.</p></div>
+    </div>
+    <div class="grid sp-l">
+      <p class="c-side"><span class="tag solid">Under evaluation</span></p>
+      <div class="c-main">
+        <p class="label">Valutare</p>
+        <p class="m sp-xs">Certificazione finale post corso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     02 — DIGITAL & BRAND EXPERIENCE
+     ===================================================== -->
+<section class="sec opener" id="s02" data-section="s02" aria-labelledby="s02-title">
+  <div class="wrap grid">
+    <span class="o-n num" aria-hidden="true">02</span>
+    <h2 id="s02-title" class="o-t h up"><span class="sr">02 </span>Digital &amp;<br>Brand Experience</h2>
+    <div class="o-meta"><p class="label">Area 02 · Desiderabilità</p><p class="m">Una volta definito il prodotto, ripensiamo la presenza digitale.</p></div>
+  </div>
+</section>
+
+<section class="sec" data-section="s02" aria-label="Digital e brand experience, contenuti">
+  <div class="wrap">
+    <div class="grid">
+      <p class="c-side label">Perimetro</p>
+      <div class="c-read stack" style="--s:22px">
+        <p class="lede">L’intervento riguarda il sito principale e l’Academy. Non necessariamente un rifacimento totale.</p>
+        <p class="h l up">Prima audit.<br>Poi interveniamo dove serve.</p>
+        <p class="body tx2">Il sito deve progressivamente smettere di essere percepito come un catalogo corsi e diventare la rappresentazione digitale del mondo Élite Experience.</p>
+      </div>
+    </div>
+    <div class="grid sp-xl">
+      <p class="c-side label fg">Interventi</p>
+      <div class="c-main">
+        <details class="fold" open>
+          <summary>Interventi · 14</summary>
+          <ul class="dash cols-2">
+            <li>Nuova home orientata al posizionamento</li>
+            <li>Pagina Metodo Élite Experience</li>
+            <li>Pagina dedicata a Elisabetta</li>
+            <li>Distinzione START / EVOLVE</li>
+            <li>Revisione pagine rituali</li>
+            <li>Valorizzazione formazione in presenza</li>
+            <li>Case history dei saloni formati</li>
+            <li>Testimonianze strutturate</li>
+            <li>Fotografia e video proprietari</li>
+            <li>Revisione UX Academy</li>
+            <li>SEO / AEO / GEO Hair Spa professionale</li>
+            <li>Tracking comportamento utenti</li>
+            <li>CRM</li>
+            <li>Automazioni commerciali</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec grey" data-section="s02" aria-labelledby="vedere-title">
+  <div class="wrap">
+    <h3 id="vedere-title" class="h giant up">Vedere<br>Élite.</h3>
+    <div class="grid sp-m">
+      <p class="c-side label">Linguaggio visivo</p>
+      <div class="c-read stack body" style="--s:12px">
+        <p class="lede">Le manualità sono uno degli elementi che genera maggiore curiosità nei lead.</p>
+        <p>Devono diventare parte del linguaggio visivo del brand.</p>
+      </div>
+    </div>
+    <p class="lexicon sp-l" aria-label="Mani, sequenze, strumenti, pinda, acqua, movimento, preparazione, rituale, Hair Spa">
+      <span class="s1">Mani</span><span class="s3">Sequenze</span><span class="s2">Strumenti</span><span class="s1">Pinda</span><span class="s2">Acqua</span><span class="s3">Movimento</span><span class="s2">Preparazione</span><span class="s1">Rituale</span><span class="s3">Hair Spa</span>
+    </p>
+    <div class="lessmore sp-l">
+      <div class="less"><p class="label">Less</p><span class="w">Generic Wellness</span></div>
+      <div class="more"><p class="label fg">More</p><span class="w">Élite Experience</span></div>
+    </div>
+    <p class="h l sp-l" style="max-width:20em">Élite deve diventare riconoscibile prima ancora di leggere il logo.</p>
+  </div>
+</section>
+
+<!-- =====================================================
+     03 — ACQUISITION & COMMERCIAL SYSTEM
+     ===================================================== -->
+<section class="sec opener" id="s03" data-section="s03" aria-labelledby="s03-title">
+  <div class="wrap grid">
+    <span class="o-n num" aria-hidden="true">03</span>
+    <h2 id="s03-title" class="o-t h up"><span class="sr">03 </span>Acquisition &amp;<br>Commercial System</h2>
+    <div class="o-meta"><p class="label">Area 03 · Acquisizione e conversione</p><p class="m">Trasformare l’interesse in intenzione.</p></div>
+  </div>
+</section>
+
+<section class="sec" data-section="s03" aria-labelledby="acq-title">
+  <div class="wrap">
+    <div class="pillar-head"><h3 id="acq-title">Acquisition</h3><p class="label fg">Meta + Google</p></div>
+    <div class="funnel" role="list" aria-label="Progressione: awareness, consideration, conversion">
+      <div class="lvl" role="listitem">
+        <div><p class="label">Livello 1</p><h4>Awareness</h4></div>
+        <ul class="chips"><li>Rituali</li><li>Manualità</li><li>Metodo Élite</li><li>Elisabetta</li></ul>
+      </div>
+      <div class="arrow" aria-hidden="true">↓</div>
+      <div class="lvl" role="listitem">
+        <div><p class="label">Livello 2</p><h4>Consideration</h4></div>
+        <ul class="chips"><li>Come introdurre l’Hair Spa</li><li>Opportunità economica del servizio</li><li>Organizzazione</li><li>Esperienza cliente</li></ul>
+      </div>
+      <div class="arrow" aria-hidden="true">↓</div>
+      <div class="lvl" role="listitem">
+        <div><p class="label">Livello 3</p><h4>Conversion</h4></div>
+        <ul class="chips"><li>Formazione in presenza</li><li>Date</li><li>Disponibilità</li><li>Richiesta consulenza</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-section="s03" aria-labelledby="sales-title">
+  <div class="wrap">
+    <div class="pillar-head"><h3 id="sales-title">Sales</h3><p class="label fg">Sistema CRM interno</p></div>
+    <div class="grid">
+      <p class="c-side label">Obiettivo</p>
+      <p class="c-main h xl up">Dal lead<br>alla storia<br>del lead.</p>
+    </div>
+    <div class="grid sp-l">
+      <p class="c-side label">Il CRM deve permettere di conoscere</p>
+      <ol class="c-main qa">
+        <li>Ha già una Hair Spa?</li>
+        <li>Perché si è interessato?</li>
+        <li>Cosa vuole ottenere?</li>
+        <li>Quando vorrebbe partire?</li>
+        <li>Cosa gli impedisce di farlo adesso?</li>
+        <li>Qual è il prossimo contatto?</li>
+        <li>In quale stadio commerciale si trova?</li>
+      </ol>
+    </div>
+    <div class="grid sp-l">
+      <p class="c-side label">Processo commerciale</p>
+      <ol class="c-main pipe" style="--n:7">
+        <li><span class="i">01</span><b>Lead</b></li>
+        <li><span class="i">02</span><b>Qualifica</b></li>
+        <li><span class="i">03</span><b>Call</b></li>
+        <li><span class="i">04</span><b>Proposta</b></li>
+        <li><span class="i">05</span><b>Follow-up</b></li>
+        <li><span class="i">06</span><b>Chiusura</b></li>
+        <li><span class="i">07</span><b>Onboarding</b></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec inv tight" data-section="s03" aria-label="Sales proposition">
+  <div class="wrap">
+    <p class="label">Sales proposition</p>
+    <blockquote class="pull sp-s">
+      <p><span class="tx2">La scheda tecnica racconta il corso.</span><br>La proposta commerciale racconta come Élite può entrare in quel salone.</p>
+    </blockquote>
+  </div>
+</section>
+
+<!-- =====================================================
+     04 — CUSTOMER EXPERIENCE & ÉLITE NETWORK
+     ===================================================== -->
+<section class="sec opener" id="s04" data-section="s04" aria-labelledby="s04-title">
+  <div class="wrap grid">
+    <span class="o-n num" aria-hidden="true">04</span>
+    <h2 id="s04-title" class="o-t h up"><span class="sr">04 </span>Customer Experience<br>&amp; Élite Network</h2>
+    <div class="o-meta"><p class="label">Area 04 · Replicabilità</p><p class="m">Trasformiamo chi compra in parte del brand.</p></div>
+  </div>
+</section>
+
+<section class="sec" data-section="s04" aria-label="Da oggi al modello target">
+  <div class="wrap">
+    <div class="grid today">
+      <p class="c-side label">Today</p>
+      <p class="c-main flowline"><span>Corso</span><i>→</i><span>Formazione</span><i>→</i><span>Fine</span></p>
+    </div>
+    <div class="grid target sp-l" style="border-top:1px solid var(--fg);padding-top:clamp(28px,4vw,48px)">
+      <p class="c-side label fg">Target model</p>
+      <p class="c-main flowline"><span>Formazione</span><i>→</i><span>Applicazione</span><i>→</i><span>Supporto</span><i>→</i><span>Aggiornamento</span><i>→</i><span>Appartenenza</span></p>
+    </div>
+    <div class="grid sp-xl">
+      <p class="c-side label fg">Sviluppi possibili</p>
+      <div class="c-main">
+        <details class="fold" open>
+          <summary>Sviluppi possibili · 14</summary>
+          <ul class="dash cols-2">
+            <li>Onboarding salone</li>
+            <li>Materiali post-formazione</li>
+            <li>Protocolli operativi</li>
+            <li>Hair Spa Menu</li>
+            <li>Strumenti pricing</li>
+            <li>Kit comunicazione lancio</li>
+            <li>Follow-up 30 / 60 / 90 giorni</li>
+            <li>Aggiornamenti stagionali</li>
+            <li>Nuovi rituali</li>
+            <li>Formazione continua</li>
+            <li>Certificazione persone formate</li>
+            <li>Directory saloni</li>
+            <li>Community professionale</li>
+            <li>Eventi Élite Experience</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec grey" data-section="s04" aria-labelledby="partner-title">
+  <div class="wrap">
+    <div class="row" style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap">
+      <h3 id="partner-title" class="h xxl up">Élite<br>Experience<br>Partner</h3>
+      <span class="tag solid">Working hypothesis</span>
+    </div>
+    <div class="grid sp-l">
+      <p class="c-side label">Ipotesi</p>
+      <div class="c-read stack" style="--s:14px">
+        <p class="lede">Possibile step intermedio verso un modello di affiliazione più strutturato.</p>
+        <p class="body tx2">Un salone formato che rispetta determinati standard potrebbe diventare un salone riconosciuto Élite Experience.</p>
+      </div>
+    </div>
+    <div class="grid sp-l">
+      <p class="c-side label fg">Obiettivi</p>
+      <ol class="c-main objectives">
+        <li><span class="i">01</span>Creare network</li>
+        <li><span class="i">02</span>Testare gli standard</li>
+        <li><span class="i">03</span>Verificare la replicabilità</li>
+        <li><span class="i">04</span>Misurare la qualità fuori da Maison BB</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec inv tight" data-section="s04" aria-label="The test">
+  <div class="wrap">
+    <p class="label">The test</p>
+    <blockquote class="pull sp-s"><p>“Quanto il Metodo Élite riesce a vivere fuori da Maison BB senza perdere qualità e identità?”</p></blockquote>
+  </div>
+</section>
+
+<!-- =====================================================
+     05 — SCALE & FRANCHISING
+     ===================================================== -->
+<section class="sec opener" id="s05" data-section="s05" aria-labelledby="s05-title">
+  <div class="wrap grid">
+    <span class="o-n num" aria-hidden="true">05</span>
+    <h2 id="s05-title" class="o-t h up"><span class="sr">05 </span>Scale &amp;<br>Franchising</h2>
+    <div class="o-meta"><p class="label">Area 05 · Scalabilità · To be validated</p><p class="m">Prima validiamo.<br>Poi replichiamo.</p></div>
+  </div>
+</section>
+
+<section class="sec" data-section="s05" aria-label="Scale e franchising, contenuti">
+  <div class="wrap">
+    <div class="grid">
+      <p class="c-side label">Premessa</p>
+      <div class="c-read stack" style="--s:16px">
+        <p class="lede">Il franchising non deve essere sviluppato come esercizio teorico.</p>
+        <p class="body tx2">I primi 12 mesi servono anche a costruire e validare ciò che eventualmente dovrà essere replicato.</p>
+      </div>
+    </div>
+    <p class="h giant up sp-xl">What<br>exactly<br>are we<br>replicating?</p>
+    <div class="grid sp-l">
+      <p class="c-side label fg">Da definire e validare</p>
+      <div class="c-main">
+        <details class="fold" open>
+          <summary>Elementi · 18</summary>
+          <ul class="dash cols-2">
+            <li>Concept Élite Experience</li>
+            <li>Standard del punto</li>
+            <li>Customer journey</li>
+            <li>Protocolli</li>
+            <li>Requisiti spazi</li>
+            <li>Attrezzature</li>
+            <li>Formazione</li>
+            <li>Manuale operativo</li>
+            <li>Standard visual</li>
+            <li>Modello economico</li>
+            <li>Supporto marketing</li>
+            <li>Acquisizione clienti locale</li>
+            <li>Tecnologia</li>
+            <li>CRM</li>
+            <li>Controllo qualità</li>
+            <li>Royalty / fee</li>
+            <li>Tutela marchio e know-how</li>
+            <li>Pilot</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec grey" data-section="s05" aria-labelledby="models-title">
+  <div class="wrap">
+    <div class="grid">
+      <p class="c-side"><span class="tag">Possible models</span></p>
+      <h3 id="models-title" class="c-main h xl up">Possible<br>scale models.</h3>
+    </div>
+    <div class="split models sp-l">
+      <div>
+        <p class="label">Model A</p>
+        <span class="word up">Élite Experience Partner</span>
+        <p class="m">Corner / metodo Élite Experience all’interno di saloni esistenti.</p>
+      </div>
+      <div>
+        <p class="label">Model B</p>
+        <span class="word up">Élite Hair Spa</span>
+        <p class="m">Format completo dedicato all’esperienza Hair Spa.</p>
+      </div>
+    </div>
+    <div class="hybrid sp-m">
+      <p class="k label fg">Possible hybrid model</p>
+      <p class="v m">I due modelli potrebbero convivere con differenti livelli di affiliazione.</p>
+      <p class="t"><span class="tag solid">To be validated</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     STRATEGIC ROADMAP
+     ===================================================== -->
+<section class="sec" id="roadmap" data-section="roadmap" aria-labelledby="roadmap-title">
+  <div class="wrap">
+    <div class="grid">
+      <p class="c-side label fg">Strategic roadmap</p>
+      <h2 id="roadmap-title" class="c-main h xxl up">From distinctive<br>to scalable.</h2>
+    </div>
+    <div class="grid sp-m">
+      <p class="c-side"></p>
+      <p class="c-read body tx2">Ogni fase abilita quella successiva.</p>
+    </div>
+    <ol class="stairs sp-l" aria-label="Sei fasi, ognuna abilita la successiva">
+      <li style="--k:0"><span class="enables" aria-hidden="true">abilita →</span><span class="n num">01</span><h4>Distinguibilità</h4><p>Brand<br>Metodo<br>Prodotto</p></li>
+      <li style="--k:1"><span class="enables" aria-hidden="true">abilita →</span><span class="n num">02</span><h4>Desiderabilità</h4><p>Web<br>Immagine<br>Contenuti<br>Esperienza digitale</p></li>
+      <li style="--k:2"><span class="enables" aria-hidden="true">abilita →</span><span class="n num">03</span><h4>Acquisizione</h4><p>Advertising<br>Content<br>Lead generation</p></li>
+      <li style="--k:3"><span class="enables" aria-hidden="true">abilita →</span><span class="n num">04</span><h4>Conversione</h4><p>Sales process<br>CRM<br>Proposta commerciale</p></li>
+      <li style="--k:4"><span class="enables" aria-hidden="true">abilita →</span><span class="n num">05</span><h4>Replicabilità</h4><p>Customer experience<br>Standard<br>Network</p></li>
+      <li style="--k:5"><span class="n num">06</span><h4>Scalabilità</h4><p>Partner model<br>Franchising</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec grey" data-section="roadmap" aria-labelledby="opmodel-title">
+  <div class="wrap">
+    <div class="grid">
+      <p class="c-side label fg">Grace operating model</p>
+      <div class="c-main">
+        <h2 id="opmodel-title" class="h xl up">One client.<br>One direction.</h2>
+        <div class="stack sp-m body" style="--s:12px">
+          <p class="lede">Il Development Plan non divide Élite Experience in cantieri indipendenti.</p>
+          <p>Grace interviene progressivamente sull’intero sistema.</p>
+        </div>
+      </div>
+    </div>
+    <ol class="seq big sp-l" style="--n:8" aria-label="Sistema di intervento Grace">
+      <li><span class="i">01</span><b>Product</b></li>
+      <li><span class="i">02</span><b>Brand</b></li>
+      <li><span class="i">03</span><b>Digital</b></li>
+      <li><span class="i">04</span><b>Marketing</b></li>
+      <li><span class="i">05</span><b>Sales</b></li>
+      <li><span class="i">06</span><b>Delivery</b></li>
+      <li><span class="i">07</span><b>Network</b></li>
+      <li><span class="i">08</span><b>Scale</b></li>
+    </ol>
+    <p class="m sp-m">Ogni intervento deve rafforzare il successivo.</p>
+  </div>
+</section>
+
+<section class="sec" data-section="roadmap" aria-labelledby="gantt-title">
+  <div class="wrap">
+    <div class="grid">
+      <p class="c-side label fg">18 month roadmap</p>
+      <h2 id="gantt-title" class="c-main h xl up">Oct 2026 → Mar 2028</h2>
+    </div>
+    <div class="grid sp-m">
+      <p class="c-side"></p>
+      <p class="c-read body tx2">Le fasi non si chiudono quando inizia la successiva: advertising, content, sales e optimization restano attivi in parallelo per tutto il periodo.</p>
+    </div>
+
+    <div class="gantt sp-l" role="table" aria-label="Roadmap a 18 mesi">
+      <div class="g-row head" role="row">
+        <span role="columnheader" class="label">Fase</span>
+        <div class="g-axis" role="columnheader" aria-label="Asse temporale ottobre 2026 – marzo 2028">
+          <span style="left:0">OCT 26</span><span style="left:16.667%">JAN 27</span><span style="left:33.333%">APR 27</span><span style="left:50%">JUL 27</span><span style="left:66.667%">OCT 27</span><span style="left:100%">MAR 28</span>
+        </div>
+      </div>
+
+      <div class="g-row group" role="row">
+        <div class="g-name" role="rowheader"><span class="label">0–3 mesi · Oct–Dec 26</span><b>Brand / Product Definition</b><p>Audit digital · Revisione commerciale</p></div>
+        <div class="g-track" role="cell"><span class="g-bar line-grow" style="--s:0;--e:3"></span></div>
+      </div>
+      <div class="g-row" role="row">
+        <div class="g-name" role="rowheader"><span class="label">3–6 mesi · Jan–Mar 27</span><b>Web Experience</b><p>Contenuti proprietari · Nuovo sistema campagne</p></div>
+        <div class="g-track" role="cell"><span class="g-bar line-grow" style="--s:3;--e:6"></span></div>
+      </div>
+      <div class="g-row" role="row">
+        <div class="g-name" role="rowheader"><span class="label">6–9 mesi · Apr–Jun 27</span><b>Commercial System</b><p>CRM · Automazioni · Customer Experience · Case History</p></div>
+        <div class="g-track" role="cell"><span class="g-bar line-grow" style="--s:6;--e:9"></span></div>
+      </div>
+      <div class="g-row" role="row">
+        <div class="g-name" role="rowheader"><span class="label">9–12 mesi · Jul–Sep 27</span><b>Élite Network</b><p>Partner Pilot · Nuovi rituali · Aggiornamenti</p><p><span class="tag" style="margin-top:6px">Working hypothesis</span></p></div>
+        <div class="g-track" role="cell"><span class="g-bar line-grow" style="--s:9;--e:12"></span></div>
+      </div>
+      <div class="g-row" role="row">
+        <div class="g-name" role="rowheader"><span class="label">12–18 mesi · Oct 27–Mar 28</span><b>Scale</b><p>Validazione modello replicabile · Sviluppo progetto franchising</p><p><span class="tag" style="margin-top:6px">To be validated</span></p></div>
+        <div class="g-track" role="cell"><span class="g-bar line-grow" style="--s:12;--e:18"></span></div>
+      </div>
+
+      <div class="g-row group" role="row">
+        <div class="g-name" role="rowheader"><span class="label">Always on</span><b>Advertising</b></div>
+        <div class="g-track" role="cell"><span class="g-always"></span></div>
+      </div>
+      <div class="g-row" role="row">
+        <div class="g-name" role="rowheader"><span class="label">Always on</span><b>Content</b></div>
+        <div class="g-track" role="cell"><span class="g-always"></span></div>
+      </div>
+      <div class="g-row" role="row">
+        <div class="g-name" role="rowheader"><span class="label">Always on</span><b>Sales</b></div>
+        <div class="g-track" role="cell"><span class="g-always"></span></div>
+      </div>
+      <div class="g-row" role="row" style="border-bottom:1px solid var(--ln)">
+        <div class="g-name" role="rowheader"><span class="label">Always on</span><b>Optimization</b></div>
+        <div class="g-track" role="cell"><span class="g-always"></span></div>
+      </div>
+    </div>
+    <div class="g-legend sp-s" aria-hidden="true">
+      <span><i class="k1"></i>Fase principale</span>
+      <span><i class="k3"></i>Always on</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-section="roadmap" aria-labelledby="prio-title">
+  <div class="wrap">
+    <div class="grid">
+      <p class="c-side label fg">Priority matrix</p>
+      <div class="c-main">
+        <h2 id="prio-title" class="h xl up">Now. Next.<br>Later.</h2>
+        <p class="body tx2 sp-s">Ordine di intervento per il team Grace. Nessun punteggio: la sequenza è la priorità.</p>
+      </div>
+    </div>
+    <div class="prio sp-l">
+      <div class="now">
+        <p class="when">Prossimi 3 mesi</p>
+        <h3>Now</h3>
+        <ul>
+          <li>Brand / Product Definition</li>
+          <li>Analisi competitor</li>
+          <li>Metodo Élite</li>
+          <li>Sales analysis</li>
+          <li>Digital audit</li>
+        </ul>
+      </div>
+      <div class="next">
+        <p class="when">A seguire</p>
+        <h3>Next</h3>
+        <ul>
+          <li>Web Experience</li>
+          <li>Content system</li>
+          <li>Campaign architecture</li>
+          <li>CRM</li>
+          <li>Customer Experience</li>
+        </ul>
+      </div>
+      <div class="later">
+        <p class="when">Da validare</p>
+        <h3>Later</h3>
+        <ul>
+          <li>Élite Experience Partner</li>
+          <li>Network</li>
+          <li>Pilot</li>
+          <li>Scale model</li>
+          <li>Franchising</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL ================= -->
+<section class="sec inv final" data-section="roadmap" aria-labelledby="final-title">
+  <div class="wrap">
+    <p class="label">Grace × Élite Experience</p>
+    <h2 id="final-title" class="h up words"><span>Distinguibile.</span><span>Desiderabile.</span><span>Replicabile.</span><span>Scalabile.</span></h2>
+    <div class="final-foot">
+      <div>
+        <p class="label">Development Plan</p>
+        <p style="font-weight:600;margin-top:4px">2026—2028</p>
+        <p class="gp sp-s">Grace &amp; Partners</p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:14px">
+        <button class="btn" type="button" data-print>Print / Export PDF</button>
+        <p class="print-note" id="print-note" role="status" hidden></p>
+        <p class="label">Confidential · Internal use only</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<script>
+/* Élite Experience — Development Plan | Grace & Partners
+   JavaScript solo per: navigazione, progress di lettura, reveal, stampa. */
+(() => {
+  const nav = document.getElementById('nav');
+  const bar = document.getElementById('progress');
+  const links = [...document.querySelectorAll('.nav-links a')];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Progress di lettura + nav chiara/scura in base alla sezione sottostante */
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      bar.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`;
+      const under = document.elementFromPoint(24, nav.getBoundingClientRect().bottom + 2)?.closest('.sec');
+      nav.classList.toggle('on-dark', !!under && under.classList.contains('inv'));
+      ticking = false;
+    });
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+  onScroll();
+
+  /* Sezione corrente */
+  const setActive = (id) => links.forEach((a) => a.setAttribute('aria-current', a.dataset.nav === id ? 'true' : 'false'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.dataset.section); });
+  }, { rootMargin: '-45% 0px -54% 0px' });
+  document.querySelectorAll('[data-section]').forEach((s) => io.observe(s));
+  const firstSection = document.getElementById('overview');
+  addEventListener('scroll', () => {
+    if (firstSection.getBoundingClientRect().top > innerHeight * 0.46) setActive('');
+  }, { passive: true });
+
+  /* Reveal leggero: solo per ciò che parte sotto la piega; a riposo tutto è visibile */
+  if (!reduce && 'IntersectionObserver' in window) {
+    const targets = document.querySelectorAll(
+      '.sec .wrap > *, .opener .wrap > *, .areas li, .index-list li, .seq li, .stairs li, .g-row, .prio > div, .funnel > *, .pipe li, .objectives li, .qa li'
+    );
+    const rv = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.classList.remove('pending');
+        e.target.classList.add('revealed');
+        rv.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    targets.forEach((el) => {
+      if (el.closest('.pending')) return; // evita reveal annidati
+      if (el.getBoundingClientRect().top > innerHeight) {
+        el.classList.add('pending');
+        rv.observe(el);
+      }
+    });
+  }
+
+  /* Elenchi lunghi ripiegati su mobile; sempre aperti su desktop e in stampa */
+  const folds = [...document.querySelectorAll('details.fold')];
+  const mq = matchMedia('(max-width: 720px)');
+  const syncFolds = () => folds.forEach((d) => { d.open = !mq.matches; });
+  syncFolds();
+  mq.addEventListener?.('change', syncFolds);
+
+  const prepPrint = () => {
+    folds.forEach((d) => { d.open = true; });
+    document.querySelectorAll('.pending').forEach((el) => { el.classList.remove('pending'); el.classList.add('revealed'); });
+  };
+  addEventListener('beforeprint', prepPrint);
+  addEventListener('afterprint', syncFolds);
+
+  /* PRINT / EXPORT PDF
+     Nel browser: window.print().
+     Dentro un artifact claude.ai la stampa è bloccata: si scarica una copia HTML da stampare. */
+  const note = document.getElementById('print-note');
+  const say = (t) => { if (note) { note.textContent = t; note.hidden = false; } };
+  const selfCopy = () => {
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('.pending').forEach((el) => el.classList.remove('pending'));
+    clone.querySelectorAll('details.fold').forEach((d) => d.setAttribute('open', ''));
+    return '<!doctype html>\n' + clone.outerHTML;
+  };
+  document.querySelectorAll('[data-print]').forEach((btn) => btn.addEventListener('click', async () => {
+    const rt = window.claude;
+    if (!rt || typeof rt.use !== 'function') { prepPrint(); window.print(); return; }
+    let dl = null;
+    try { dl = await rt.use('downloads'); } catch { dl = null; }
+    if (!dl) { say('Per il PDF apri il documento nel browser e usa Stampa → Salva come PDF.'); return; }
+    try {
+      await dl.save({ filename: 'Elite-Experience-Development-Plan.html', data: selfCopy() });
+      say('Copia scaricata: aprila nel browser e usa Stampa → Salva come PDF.');
+    } catch (e) {
+      say(e && e.code === 'declined' ? 'Download annullato.' : 'Per il PDF apri il documento nel browser e usa Stampa → Salva come PDF.');
+    }
+  }));
+})();
+</script>
