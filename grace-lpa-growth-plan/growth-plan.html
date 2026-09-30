@@ -1,0 +1,1107 @@
+<title>Growth Plan LPA 2026–2027</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* =========================================================
+   GRACE × LPA — Growth Plan interno 2026–2027
+   Sistema: bianco/nero, grigi solo funzionali, filetti sottili.
+   ========================================================= */
+:root {
+  color-scheme: light;
+  --black: #000000;
+  --white: #ffffff;
+  --grey-on-white: #6e6e6e;   /* 5.1:1 su bianco */
+  --grey-on-black: #9b9b9b;   /* 7.4:1 su nero  */
+  --rule-on-white: #d6d6d6;
+  --rule-on-black: #2e2e2e;
+
+  --bg: var(--white);
+  --fg: var(--black);
+  --muted: var(--grey-on-white);
+  --rule: var(--rule-on-white);
+
+  --f-display: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --f-body: 'Hanken Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --f-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --t-mega: clamp(3.25rem, 11vw, 11.5rem);
+  --t-xxl: clamp(2.75rem, 8vw, 8.5rem);
+  --t-xl: clamp(2.1rem, 5.2vw, 5rem);
+  --t-l: clamp(1.6rem, 3.2vw, 3rem);
+  --t-m: clamp(1.2rem, 1.7vw, 1.55rem);
+  --t-body: 1.0625rem;
+  --t-s: 0.9375rem;
+  --t-label: 0.6875rem;
+
+  --gutter: clamp(16px, 4vw, 64px);
+  --gap: clamp(16px, 2.2vw, 36px);
+  --band-y: clamp(72px, 11vw, 168px);
+  --nav-h: 56px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--f-body);
+  font-size: var(--t-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: var(--black); color: var(--white); }
+.inv ::selection { background: var(--white); color: var(--black); }
+a { color: inherit; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+h1, h2, h3, h4, p, ul, ol, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+
+/* ---------- Bande: bianco di default, .inv = nero ---------- */
+.band { background: var(--bg); color: var(--fg); padding-block: var(--band-y); position: relative; }
+.inv { --bg: var(--black); --fg: var(--white); --muted: var(--grey-on-black); --rule: var(--rule-on-black); }
+.band + .band:not(.inv):not(.after-inv) { border-top: 1px solid var(--rule-on-white); }
+.band.tight { padding-block: clamp(56px, 7vw, 104px); }
+.wrap { max-width: 1440px; margin-inline: auto; padding-inline: var(--gutter); }
+
+/* ---------- Griglia editoriale ---------- */
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: clamp(28px, 3.5vw, 56px); }
+.c-side { grid-column: 1 / 4; }
+.c-main { grid-column: 4 / 13; }
+.c-read { grid-column: 4 / 11; }
+.c-half-l { grid-column: 1 / 7; }
+.c-half-r { grid-column: 7 / 13; }
+.c-full { grid-column: 1 / -1; }
+@media (max-width: 900px) {
+  .c-side, .c-main, .c-read, .c-half-l, .c-half-r { grid-column: 1 / -1; }
+}
+
+/* ---------- Tipografia ---------- */
+.label {
+  font-family: var(--f-mono); font-size: var(--t-label); font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+  line-height: 1.6;
+}
+.label.fg { color: var(--fg); }
+.display {
+  font-family: var(--f-display); font-weight: 800; text-transform: uppercase;
+  letter-spacing: -0.035em; line-height: 0.88; text-wrap: balance;
+}
+.mega { font-size: var(--t-mega); }
+.xxl { font-size: var(--t-xxl); }
+.xl { font-size: var(--t-xl); line-height: 0.92; letter-spacing: -0.03em; }
+.l { font-size: var(--t-l); line-height: 0.98; letter-spacing: -0.025em; }
+.m { font-size: var(--t-m); line-height: 1.12; letter-spacing: -0.01em; }
+.lede { font-size: clamp(1.15rem, 1.6vw, 1.45rem); line-height: 1.45; max-width: 38em; text-wrap: pretty; }
+.body { max-width: 36em; text-wrap: pretty; }
+.muted { color: var(--muted); }
+.num { font-family: var(--f-display); font-weight: 800; letter-spacing: -0.05em; line-height: 0.8; font-variant-numeric: tabular-nums; }
+.stack > * + * { margin-top: var(--s, 20px); }
+.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+.rule.strong { border-top-color: var(--fg); }
+
+/* ---------- Navigazione ---------- */
+.nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+  background: var(--white); color: var(--black);
+  border-bottom: 1px solid var(--rule-on-white);
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+.nav.on-dark { background: var(--black); color: var(--white); border-bottom-color: var(--rule-on-black); }
+.nav-in { display: flex; align-items: center; gap: 24px; height: var(--nav-h); }
+.brand { font-family: var(--f-display); font-weight: 800; font-size: 0.95rem; letter-spacing: 0.02em; text-decoration: none; white-space: nowrap; }
+.nav-links { margin-left: auto; display: flex; align-items: center; gap: clamp(10px, 2vw, 30px); overflow-x: auto; scrollbar-width: none; }
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links a {
+  font-family: var(--f-mono); font-size: var(--t-label); font-weight: 500; letter-spacing: 0.16em;
+  text-transform: uppercase; text-decoration: none; white-space: nowrap; padding: 6px 0;
+  opacity: .62; position: relative; transition: opacity .2s ease;
+}
+.nav-links a:hover, .nav-links a[aria-current="true"] { opacity: 1; }
+.nav-links a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor;
+  transform: scaleX(0); transform-origin: left; transition: transform .3s ease;
+}
+.nav-links a[aria-current="true"]::after { transform: scaleX(1); }
+.btn {
+  font: 500 var(--t-label)/1 var(--f-mono); letter-spacing: 0.16em; text-transform: uppercase;
+  background: transparent; color: inherit; border: 1px solid currentColor; border-radius: 2px;
+  padding: 9px 12px; cursor: pointer; white-space: nowrap; transition: background-color .2s ease, color .2s ease;
+}
+.btn:hover { background: var(--fg, #000); color: var(--bg, #fff); }
+.nav .btn:hover { background: currentColor; }
+.nav .btn:hover span { color: var(--white); }
+.nav.on-dark .btn:hover span { color: var(--black); }
+.progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; background: currentColor; transform: scaleX(0); transform-origin: left; }
+@media (max-width: 720px) {
+  .nav-in { gap: 14px; }
+  .nav .btn { display: none; }
+  .hide-s { display: none; }
+  .brand { font-size: .85rem; }
+  .nav-links { gap: 14px; }
+}
+.print-note { font-family: var(--f-mono); font-size: var(--t-label); letter-spacing: .08em; }
+
+/* ---------- Reveal (solo sotto la piega, mai nascosto a riposo) ---------- */
+.pending { opacity: 0; transform: translateY(14px); }
+.revealed { opacity: 1; transform: none; transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+@media (prefers-reduced-motion: reduce) { .pending { opacity: 1; transform: none; } }
+
+/* ---------- Hero ---------- */
+.hero { min-height: calc(92svh - var(--nav-h)); display: flex; flex-direction: column; padding-block: clamp(28px, 4vw, 56px) clamp(32px, 4vw, 56px); }
+.hero .wrap { display: flex; flex-direction: column; flex: 1; width: 100%; }
+.hero-top { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.hero-title { margin-block: auto; padding-block: clamp(48px, 9vw, 120px); font-size: clamp(3.2rem, 11vw, 12rem); line-height: 0.84; }
+.hero-bottom { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: var(--gap); row-gap: 24px; align-items: end; border-top: 1px solid var(--rule); padding-top: 24px; }
+.hero-bottom .gp { grid-column: 1 / 7; }
+.hero-bottom .concept { grid-column: 9 / 13; text-align: right; }
+@media (max-width: 720px) { .hero-title { font-size: 15.5vw; } }
+@media (max-width: 720px) { .hero-bottom .gp, .hero-bottom .concept { grid-column: 1 / -1; text-align: left; } }
+
+/* ---------- Obiettivo ---------- */
+.restyling { font-size: clamp(3.4rem, 14.2vw, 14.5rem); line-height: 0.8; letter-spacing: -0.05em; margin-block: clamp(20px, 3vw, 40px) clamp(36px, 5vw, 72px); }
+
+/* ---------- Cantieri (overview) ---------- */
+.dir { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: var(--gap); align-items: end; padding-block: clamp(24px, 3vw, 44px); border-top: 1px solid var(--rule); text-decoration: none; transition: border-color .3s ease; }
+.dir:last-child { border-bottom: 1px solid var(--rule); }
+.dir .n { grid-column: 1 / 4; font-size: clamp(4rem, 10vw, 10rem); }
+.dir .t { grid-column: 4 / 9; font-size: var(--t-l); }
+.dir .d { grid-column: 9 / 13; color: var(--muted); padding-bottom: .2em; transition: color .3s ease; }
+.dir .arrow { display: inline-block; transition: transform .3s ease; }
+.dir:hover { border-top-color: var(--fg); }
+.dir:hover .d { color: var(--fg); }
+.dir:hover .arrow { transform: translateX(4px); }
+@media (max-width: 900px) {
+  .dir { row-gap: 14px; }
+  .dir .n { grid-column: 1 / 5; }
+  .dir .t { grid-column: 5 / 13; }
+  .dir .d { grid-column: 5 / 13; }
+}
+
+/* ---------- Timeline ---------- */
+.tl { --months: 6; }
+.tl-head, .tl-row { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); column-gap: var(--gap); }
+.tl-months { display: grid; grid-template-columns: repeat(var(--months), minmax(0, 1fr)); }
+.tl-months span { font-family: var(--f-mono); font-size: var(--t-label); letter-spacing: .14em; padding-bottom: 12px; border-left: 1px solid var(--rule); padding-left: 8px; }
+.tl-row { border-top: 1px solid var(--rule); padding-block: 22px; }
+.tl-row:last-child { border-bottom: 1px solid var(--rule); }
+.tl-name { display: flex; gap: 14px; align-items: baseline; }
+.tl-name .num { font-size: 1.6rem; }
+.tl-name b { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; font-size: 1.05rem; line-height: 1.1; }
+.tl-track { display: grid; grid-template-columns: repeat(var(--months), minmax(0, 1fr)); row-gap: 14px; background-image: linear-gradient(to right, var(--rule) 1px, transparent 1px); background-size: calc(100% / var(--months)) 100%; }
+.seg { display: grid; grid-template-columns: subgrid; grid-column: 1 / -1; align-items: center; }
+.seg .bar { height: 3px; background: var(--fg); position: relative; margin-left: 8px; }
+.seg .bar::before { content: ""; position: absolute; left: -4px; top: -3.5px; width: 10px; height: 10px; border-radius: 50%; background: var(--fg); }
+.seg .txt { font-size: var(--t-s); padding-top: 8px; padding-left: 8px; white-space: nowrap; }
+.seg .txt .label { margin-right: 8px; }
+@media (max-width: 900px) {
+  .tl-head, .tl-row { grid-template-columns: 1fr; row-gap: 14px; }
+  .tl-head > :first-child { display: none; }
+  .tl-months span { padding-left: 4px; letter-spacing: .06em; font-size: 0.625rem; }
+  .seg .txt { white-space: normal; }
+}
+
+/* ---------- Apertura cantiere ---------- */
+.chapter { min-height: 78svh; display: flex; align-items: stretch; }
+.chapter .wrap { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: var(--gap); align-content: space-between; row-gap: 48px; width: 100%; }
+.chapter .ch-n { grid-column: 1 / 5; font-size: clamp(6rem, 22vw, 22rem); line-height: 0.76; }
+.chapter .ch-t { grid-column: 5 / 13; font-size: var(--t-xxl); align-self: end; }
+.chapter .ch-meta { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: var(--gap); border-top: 1px solid var(--rule); padding-top: 22px; }
+.chapter .ch-meta .label { grid-column: 1 / 5; }
+.chapter .ch-meta .m { grid-column: 5 / 13; font-family: var(--f-body); font-weight: 500; text-transform: none; }
+@media (max-width: 900px) {
+  .chapter { min-height: 0; }
+  .chapter .ch-n, .chapter .ch-t, .chapter .ch-meta .label, .chapter .ch-meta .m { grid-column: 1 / -1; }
+  .chapter .ch-meta { row-gap: 10px; }
+}
+
+/* ---------- Testata di periodo: OCT 26 ─── TITOLO ---------- */
+.phase { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: var(--gap); row-gap: 14px; align-items: baseline; padding-bottom: 18px; border-bottom: 1px solid var(--fg); margin-bottom: clamp(36px, 5vw, 72px); }
+.phase .label { grid-column: 1 / 4; color: var(--fg); }
+.phase .verb { grid-column: 4 / 13; font-family: var(--f-display); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: var(--t-s); }
+@media (max-width: 900px) { .phase .label, .phase .verb { grid-column: 1 / -1; } }
+
+/* ---------- Griglie tipografiche ---------- */
+.tgrid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); column-gap: var(--gap); }
+.tgrid.four { grid-template-columns: repeat(4, minmax(0,1fr)); }
+.tgrid.two { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.tgrid > * { border-top: 1px solid var(--rule); padding-block: 16px 18px; }
+.tgrid .item { font-family: var(--f-display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em; font-size: 1.02rem; line-height: 1.2; }
+@media (max-width: 900px) { .tgrid, .tgrid.four { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 520px) { .tgrid, .tgrid.four, .tgrid.two { grid-template-columns: 1fr; } }
+
+.bullets li { position: relative; padding: 12px 0 12px 28px; border-top: 1px solid var(--rule); }
+.bullets li:last-child { border-bottom: 1px solid var(--rule); }
+.bullets li::before { content: ""; position: absolute; left: 0; top: 1.3em; width: 12px; height: 1px; background: var(--fg); }
+
+/* ---------- Issue list ---------- */
+.issues { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); border-top: 1px solid var(--fg); border-bottom: 1px solid var(--fg); }
+.issues > div { padding: 22px 22px 26px 0; }
+.issues > div + div { border-left: 1px solid var(--rule); padding-left: 22px; }
+.issues .num { font-size: clamp(2.6rem, 4.5vw, 4.25rem); display: block; margin-bottom: 18px; }
+.issues > div:nth-child(1) .num { color: var(--fg); }
+.issues > div:nth-child(2) .num { color: var(--fg); opacity: .55; }
+.issues > div:nth-child(3) .num { color: var(--fg); opacity: .3; }
+@media (max-width: 620px) {
+  .issues { grid-template-columns: 1fr; }
+  .issues > div + div { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; }
+}
+
+.note { border-left: 2px solid var(--fg); padding: 4px 0 4px 20px; max-width: 42em; }
+
+/* ---------- Grande domanda ---------- */
+.question { font-size: var(--t-xl); line-height: 0.95; }
+
+/* ---------- Contrasto NON BASTA / OBIETTIVO ---------- */
+.contrast { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--rule); }
+.contrast > div { padding: clamp(28px, 4vw, 56px) clamp(0px, 3vw, 44px) clamp(28px, 4vw, 56px) 0; }
+.contrast > div + div { border-left: 1px solid var(--rule); padding-left: clamp(20px, 3vw, 44px); }
+.contrast .quote { font-family: var(--f-display); font-weight: 500; font-size: var(--t-l); line-height: 1.05; letter-spacing: -0.02em; color: var(--muted); text-decoration: line-through; text-decoration-thickness: 2px; }
+.contrast .goal { font-family: var(--f-display); font-weight: 800; font-size: var(--t-l); line-height: 1.02; letter-spacing: -0.025em; }
+@media (max-width: 720px) {
+  .contrast { grid-template-columns: 1fr; }
+  .contrast > div + div { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; }
+}
+
+/* ---------- Before / Live / After ---------- */
+.bla { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); column-gap: var(--gap); }
+.bla-col { border-top: 1px solid var(--fg); padding-top: 18px; }
+.bla-col .h { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 28px; }
+.bla-col .h b { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: var(--t-l); letter-spacing: -0.03em; line-height: 1; }
+.flow { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.flow span { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: clamp(1.3rem, 2vw, 1.8rem); letter-spacing: -0.02em; line-height: 1.1; }
+.flow i { font-style: normal; font-family: var(--f-mono); color: var(--muted); font-size: .9rem; line-height: 1; }
+.flow span:last-child { border-bottom: 3px solid var(--fg); }
+.seglist > div { border-top: 1px solid var(--rule); padding-block: 14px; }
+.seglist b { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; letter-spacing: 0; font-size: 1rem; display: block; }
+@media (max-width: 900px) { .bla { grid-template-columns: 1fr; row-gap: 48px; } }
+
+/* ---------- Metriche (nomi, senza valori inventati) ---------- */
+.metrics { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); column-gap: var(--gap); counter-reset: none; }
+.metrics > div { border-top: 1px solid var(--rule); padding-block: 18px 30px; display: flex; flex-direction: column; gap: 22px; }
+.metrics b { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: clamp(1.05rem, 1.5vw, 1.35rem); letter-spacing: -0.01em; line-height: 1.12; }
+.metrics .slot { height: 1px; width: 56px; background: var(--fg); }
+@media (max-width: 720px) { .metrics { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 440px) { .metrics { grid-template-columns: 1fr; } }
+
+/* ---------- Always-on ---------- */
+.aog { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); border-top: 1px solid var(--fg); }
+.aog > div { padding: 22px 22px 28px 0; }
+.aog > div + div { border-left: 1px solid var(--rule); padding-left: 22px; }
+.aog b { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: clamp(1.15rem, 1.8vw, 1.6rem); letter-spacing: -0.02em; display: block; margin-bottom: 10px; line-height: 1.05; }
+@media (max-width: 900px) {
+  .aog { grid-template-columns: 1fr 1fr; }
+  .aog > div:nth-child(3) { border-left: 0; padding-left: 0; }
+  .aog > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
+}
+@media (max-width: 520px) {
+  .aog { grid-template-columns: 1fr; }
+  .aog > div + div { border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); }
+}
+
+/* ---------- Tag (segmentazioni, voci da verificare) ---------- */
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tags li { font-family: var(--f-mono); font-size: 0.75rem; letter-spacing: .12em; text-transform: uppercase; border: 1px solid var(--fg); padding: 9px 12px; border-radius: 2px; }
+
+/* ---------- Flusso orizzontale (playbook, journey) ---------- */
+.hflow { display: grid; grid-template-columns: repeat(var(--steps), minmax(0,1fr)); border-top: 1px solid var(--fg); }
+.hflow li { padding: 16px 12px 0 0; position: relative; }
+.hflow li::before { content: ""; position: absolute; top: -5px; left: 0; width: 9px; height: 9px; background: var(--fg); border-radius: 50%; }
+.hflow .label { display: block; margin-bottom: 10px; }
+.hflow b { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: clamp(.95rem, 1.25vw, 1.15rem); letter-spacing: -0.005em; line-height: 1.15; display: block; }
+@media (max-width: 900px) {
+  .hflow { grid-template-columns: 1fr; border-top: 0; border-left: 1px solid var(--fg); margin-left: 4px; }
+  .hflow li { padding: 0 0 22px 24px; }
+  .hflow li:last-child { padding-bottom: 0; }
+  .hflow li::before { top: 3px; left: -5px; }
+  .hflow .label { display: inline; margin-right: 10px; }
+  .hflow b { display: inline; }
+}
+
+.questions li { font-family: var(--f-display); font-weight: 700; font-size: var(--t-m); letter-spacing: -0.01em; line-height: 1.2; padding-block: 14px; border-top: 1px solid var(--rule); }
+.questions li:last-child { border-bottom: 1px solid var(--rule); }
+
+.output { display: inline-flex; flex-direction: column; gap: 6px; background: var(--fg); color: var(--bg); padding: 22px 26px; border-radius: 2px; }
+.output .label { color: inherit; opacity: .7; }
+.output b { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: clamp(1.3rem, 2.2vw, 2rem); letter-spacing: -0.02em; line-height: 1; }
+
+/* ---------- KPI principale ---------- */
+.kpi-hero { font-size: clamp(2.8rem, 9vw, 9.5rem); line-height: 0.86; }
+
+/* ---------- Step franchising ---------- */
+.steps > li { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: var(--gap); border-top: 1px solid var(--fg); padding-block: clamp(32px, 4.5vw, 64px); }
+.steps > li:last-child { border-bottom: 1px solid var(--fg); }
+.steps .s-n { grid-column: 1 / 4; }
+.steps .s-n .num { font-size: clamp(3.5rem, 7vw, 7rem); display: block; margin-top: 10px; }
+.steps .s-b { grid-column: 4 / 13; }
+.steps .s-b h4 { font-size: var(--t-l); margin-bottom: 28px; }
+@media (max-width: 900px) {
+  .steps > li { row-gap: 18px; }
+  .steps .s-n { grid-column: 1 / -1; display: flex; align-items: baseline; gap: 16px; }
+  .steps .s-n .num { margin-top: 0; }
+  .steps .s-b { grid-column: 1 / -1; }
+}
+.pilot { display: flex; align-items: flex-end; gap: clamp(16px, 3vw, 40px); flex-wrap: wrap; }
+.pilot .num { font-size: clamp(5rem, 13vw, 12rem); letter-spacing: -0.06em; }
+.gonogo { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--fg); }
+.gonogo > div { padding: clamp(24px, 3.5vw, 48px); }
+.gonogo > div:first-child { background: var(--fg); color: var(--bg); }
+.gonogo b { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: var(--t-xl); letter-spacing: -0.04em; line-height: .9; display: block; margin-bottom: 22px; }
+@media (max-width: 720px) { .gonogo { grid-template-columns: 1fr; } }
+
+/* ---------- Next step ---------- */
+.next { min-height: 96svh; display: flex; }
+.next .wrap { display: flex; flex-direction: column; gap: clamp(40px, 6vw, 80px); width: 100%; }
+.next-title { font-size: clamp(4.5rem, 17vw, 17rem); line-height: 0.78; letter-spacing: -0.055em; }
+.actions { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); column-gap: var(--gap); }
+.actions li { border-top: 1px solid var(--fg); padding-top: 16px; }
+.actions .num { font-size: clamp(2rem, 3vw, 2.75rem); display: block; margin-bottom: 20px; }
+.actions p { font-family: var(--f-display); font-weight: 700; font-size: clamp(1.05rem, 1.4vw, 1.3rem); line-height: 1.2; letter-spacing: -0.01em; }
+@media (max-width: 900px) { .actions { grid-template-columns: 1fr 1fr; row-gap: 32px; } }
+@media (max-width: 520px) { .actions { grid-template-columns: 1fr; } }
+.closing { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; border-top: 1px solid var(--rule); padding-top: 24px; margin-top: auto; }
+.closing .gp-name { font-family: var(--f-display); font-weight: 800; font-size: clamp(1.4rem, 2.4vw, 2rem); letter-spacing: -0.02em; line-height: 1.05; }
+.closing .gp-tag { font-family: var(--f-body); font-size: 1rem; color: var(--muted); }
+
+/* ---------- Dettagli ripiegabili (solo mobile) ---------- */
+details.fold > summary { display: none; }
+@media (max-width: 720px) {
+  details.fold > summary {
+    display: flex; justify-content: space-between; align-items: center; cursor: pointer; list-style: none;
+    font-family: var(--f-mono); font-size: var(--t-label); letter-spacing: .16em; text-transform: uppercase;
+    border-top: 1px solid var(--fg); padding: 14px 0;
+  }
+  details.fold > summary::-webkit-details-marker { display: none; }
+  details.fold > summary::after { content: "+"; font-size: 1rem; letter-spacing: 0; }
+  details.fold[open] > summary::after { content: "−"; }
+  details.fold[open] > summary { margin-bottom: 14px; }
+}
+
+.sp-xs { margin-top: 12px; } .sp-s { margin-top: 24px; } .sp-m { margin-top: clamp(36px, 4vw, 56px); } .sp-l { margin-top: clamp(56px, 7vw, 112px); } .sp-xl { margin-top: clamp(80px, 10vw, 160px); }
+.row-between { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+
+/* =========================================================
+   STAMPA / PDF
+   ========================================================= */
+@media print {
+  @page { size: A4; margin: 14mm 13mm 16mm; }
+  :root {
+    --t-mega: 58pt; --t-xxl: 46pt; --t-xl: 28pt; --t-l: 19pt; --t-m: 13pt; --t-body: 10pt; --t-s: 9pt; --t-label: 6.5pt;
+    --gutter: 0px; --gap: 12pt; --band-y: 22pt;
+  }
+  html { scroll-behavior: auto; }
+  body { font-size: 10pt; }
+  .nav, .progress, .btn, .no-print, .arrow, .print-note, details.fold > summary { display: none !important; }
+  .pending { opacity: 1 !important; transform: none !important; }
+  /* Le bande nere diventano bianche con filetto: stampa leggera e leggibile */
+  .inv { --bg: #fff; --fg: #000; --muted: #555; --rule: #bbb; border-top: 3pt solid #000; }
+  .band + .band:not(.inv) { border-top: .5pt solid #bbb; }
+  .hero { min-height: 0; border-top: 0; }
+  .hero-title { padding-block: 26pt; font-size: 62pt; }
+  .restyling { font-size: 72pt; }
+  .chapter { min-height: 0; break-before: page; }
+  .chapter .ch-n { font-size: 110pt; }
+  .next { min-height: 0; break-before: page; }
+  .next-title { font-size: 92pt; }
+  .kpi-hero { font-size: 44pt; }
+  .dir .n { font-size: 44pt; }
+  .pilot .num { font-size: 64pt; }
+  .gonogo > div:first-child { background: #000; color: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .output { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .dir, .tl-row, .steps > li, .bla-col, .metrics > div, .aog > div, .issues, .contrast, .gonogo, .actions li, .phase, .question, .tgrid > * { break-inside: avoid; }
+  h2, h3, .phase { break-after: avoid; }
+  a { text-decoration: none; }
+}
+</style>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">GRACE × LPA</a>
+    <nav class="nav-links" aria-label="Sezioni del documento">
+      <a href="#overview" data-nav="overview">Overview</a>
+      <a href="#c01" data-nav="c01" aria-label="01 Digital Foundation">01</a>
+      <a href="#c02" data-nav="c02" aria-label="02 Academy Growth">02</a>
+      <a href="#c03" data-nav="c03" aria-label="03 Brand Experience">03</a>
+      <a href="#c04" data-nav="c04" aria-label="04 New Business">04</a>
+      <a href="#next" data-nav="next">Next<span class="hide-s"> step</span></a>
+    </nav>
+    <button class="btn" type="button" data-print><span>Print / PDF</span></button>
+  </div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</header>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="band inv hero" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div class="hero-top">
+      <p class="label fg">Grace &amp; Partners<br><span class="muted">Internal Growth Plan</span></p>
+      <p class="label" style="text-align:right">Internal use only<br>25.09.2026</p>
+    </div>
+    <h1 id="hero-title" class="display hero-title">Luca Picchio<br>Academy</h1>
+    <div class="hero-bottom">
+      <p class="gp"><span class="display m" style="display:block;font-size:clamp(1.6rem,3vw,2.75rem)">Growth Plan</span><span class="muted">Ottobre 2026 — Marzo 2027</span></p>
+      <p class="concept label fg">From plan<br>to growth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OBIETTIVO GENERALE ================= -->
+<section class="band after-inv" aria-labelledby="obiettivo">
+  <div class="wrap">
+    <p class="label" id="obiettivo">Obiettivo generale</p>
+    <p class="display restyling" aria-hidden="false">Restyling.</p>
+    <div class="grid">
+      <p class="c-side label">Un intervento complessivo</p>
+      <p class="c-read lede">Un intervento complessivo sulla Luca Picchio Academy per mettere ordine nell’infrastruttura digitale, rafforzare la capacità commerciale, aumentare il valore percepito dell’esperienza e costruire le condizioni per nuove linee di business.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OVERVIEW ================= -->
+<section class="band inv" id="overview" data-section="overview" aria-labelledby="overview-title">
+  <div class="wrap">
+    <div class="grid">
+      <p class="c-side label">Overview · i quattro cantieri</p>
+      <h2 id="overview-title" class="c-main display xl">04 direzioni.<br><span class="muted">Una sola crescita.</span></h2>
+    </div>
+    <div class="sp-l">
+      <a class="dir" href="#c01"><span class="n num">01</span><span class="t display">Digital<br>Foundation</span><span class="d">Mettere ordine nell’infrastruttura digitale e trasformarla in uno strumento commerciale. <span class="arrow" aria-hidden="true">→</span></span></a>
+      <a class="dir" href="#c02"><span class="n num">02</span><span class="t display">Academy<br>Growth</span><span class="d">Aumentare la capacità dell’Academy di acquisire e convertire clienti. <span class="arrow" aria-hidden="true">→</span></span></a>
+      <a class="dir" href="#c03"><span class="n num">03</span><span class="t display">Brand<br>Experience</span><span class="d">Alzare la percezione complessiva del brand e dell’esperienza. <span class="arrow" aria-hidden="true">→</span></span></a>
+      <a class="dir" href="#c04"><span class="n num">04</span><span class="t display">New<br>Business</span><span class="d">Costruire e validare il progetto franchising. <span class="arrow" aria-hidden="true">→</span></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TIMELINE ================= -->
+<section class="band after-inv" aria-labelledby="timeline-title">
+  <div class="wrap">
+    <div class="grid">
+      <p class="c-side label">Timeline generale</p>
+      <h2 id="timeline-title" class="c-main display l">Ottobre 2026 — Marzo 2027</h2>
+    </div>
+    <div class="tl sp-l" role="table" aria-label="Quando intervengono i quattro cantieri">
+      <div class="tl-head" role="row">
+        <span role="columnheader" class="label">Cantiere</span>
+        <div class="tl-months" role="presentation"><span>OCT 26</span><span>NOV 26</span><span>DEC 26</span><span>JAN 27</span><span>FEB 27</span><span>MAR 27</span></div>
+      </div>
+      <div class="tl-row" role="row">
+        <div class="tl-name" role="rowheader"><span class="num">01</span><b>Digital<br>Foundation</b></div>
+        <div class="tl-track" role="cell">
+          <div class="seg"><div class="bar" style="grid-column:1/2"></div><div class="txt" style="grid-column:1/-1;grid-row:2"><span class="label">OCT</span>Audit</div></div>
+          <div class="seg"><div class="bar" style="grid-column:3/4"></div><div class="txt" style="grid-column:3/-1;grid-row:2"><span class="label">DEC</span>Web Restyling</div></div>
+          <div class="seg"><div class="bar" style="grid-column:4/7"></div><div class="txt" style="grid-column:4/-1;grid-row:2"><span class="label">JAN–MAR</span>Evolution</div></div>
+        </div>
+      </div>
+      <div class="tl-row" role="row">
+        <div class="tl-name" role="rowheader"><span class="num">02</span><b>Academy<br>Growth</b></div>
+        <div class="tl-track" role="cell">
+          <div class="seg"><div class="bar" style="grid-column:1/3"></div><div class="txt" style="grid-column:1/-1;grid-row:2"><span class="label">OCT–NOV</span>Mastery × Live</div></div>
+          <div class="seg"><div class="bar" style="grid-column:4/7"></div><div class="txt" style="grid-column:4/-1;grid-row:2"><span class="label">JAN–MAR</span>Always-On Growth</div></div>
+        </div>
+      </div>
+      <div class="tl-row" role="row">
+        <div class="tl-name" role="rowheader"><span class="num">03</span><b>Brand<br>Experience</b></div>
+        <div class="tl-track" role="cell">
+          <div class="seg"><div class="bar" style="grid-column:1/3"></div><div class="txt" style="grid-column:1/-1;grid-row:2"><span class="label">OCT–NOV</span>Isola</div></div>
+          <div class="seg"><div class="bar" style="grid-column:4/7"></div><div class="txt" style="grid-column:4/-1;grid-row:2"><span class="label">JAN–MAR</span>Academy Experience</div></div>
+        </div>
+      </div>
+      <div class="tl-row" role="row">
+        <div class="tl-name" role="rowheader"><span class="num">04</span><b>New<br>Business</b></div>
+        <div class="tl-track" role="cell">
+          <div class="seg"><div class="bar" style="grid-column:4/7"></div><div class="txt" style="grid-column:4/-1;grid-row:2"><span class="label">JAN–MAR</span>Franchising</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     01 — DIGITAL FOUNDATION
+     ===================================================== -->
+<section class="band inv chapter" id="c01" data-section="c01" aria-labelledby="c01-title">
+  <div class="wrap">
+    <span class="ch-n num" aria-hidden="true">01</span>
+    <h2 id="c01-title" class="ch-t display">Digital<br>Foundation</h2>
+    <div class="ch-meta"><p class="label">Cantiere 01 · Ott 2026 — Mar 2027</p><p class="m">Mettere ordine prima di evolvere.</p></div>
+  </div>
+</section>
+
+<section class="band after-inv" data-section="c01" aria-label="Ottobre 2026 — Correggere">
+  <div class="wrap">
+    <div class="phase"><span class="label">Ottobre 2026</span><span class="verb">Correggere</span></div>
+    <div class="grid">
+      <p class="c-side label">Audit</p>
+      <div class="c-main stack" style="--s:24px">
+        <h3 class="display xl">Audit<br>lucapicchio.it</h3>
+        <p class="lede">Analisi completa dell’attuale infrastruttura digitale per individuare ciò che compromette esperienza, immagine o conversione.</p>
+      </div>
+    </div>
+
+    <div class="grid sp-l">
+      <p class="c-side label">Aree di audit</p>
+      <div class="c-main">
+        <details class="fold" open>
+          <summary>Aree di audit · 11</summary>
+          <ul class="tgrid">
+            <li class="item">Architettura &amp; navigazione</li>
+            <li class="item">UX mobile &amp; desktop</li>
+            <li class="item">Performance</li>
+            <li class="item">Pagine obsolete</li>
+            <li class="item">Coerenza dell’offerta</li>
+            <li class="item">CTA</li>
+            <li class="item">Form</li>
+            <li class="item">Percorsi di conversione</li>
+            <li class="item">Tracciamenti</li>
+            <li class="item">SEO tecnica</li>
+            <li class="item">Campagne &amp; automazioni</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+
+    <div class="grid sp-l">
+      <p class="c-side label fg">Issue list / Grace</p>
+      <div class="c-main">
+        <div class="issues">
+          <div><span class="num">01</span><p class="display m">Urgente</p></div>
+          <div><span class="num">02</span><p class="display m">Importante</p></div>
+          <div><span class="num">03</span><p class="display m">Evolutivo</p></div>
+        </div>
+        <p class="m sp-s" style="font-weight:500;max-width:30em">Prima interveniamo su ciò che compromette esperienza, immagine o conversione.</p>
+        <div class="note sp-m">
+          <p class="label fg">Nota</p>
+          <p class="sp-xs">Parallelamente, tutto ciò che riguarda la vendita di Rockstar Mastery deve essere perfettamente funzionante in vista del Live.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band inv" data-section="c01" aria-label="Dicembre 2026 — Evolvere">
+  <div class="wrap">
+    <div class="phase"><span class="label">Dicembre 2026</span><span class="verb">Evolvere</span></div>
+    <div class="grid">
+      <p class="c-side label">Web restyling</p>
+      <h3 class="c-main display l">Web restyling</h3>
+    </div>
+    <p class="display question sp-l">Che ruolo deve avere<br>lucapicchio.it<br>nella prossima<br>Luca Picchio Academy?</p>
+    <div class="grid sp-l">
+      <p class="c-side label">Allineamento</p>
+      <div class="c-main">
+        <p class="lede">Dobbiamo fare in modo che sito, landing, automazioni e dati siano allineati.</p>
+        <p class="label sp-m">Aree di intervento</p>
+        <details class="fold sp-xs" open>
+          <summary>Aree di intervento · 8</summary>
+          <ul class="bullets tgrid two" style="column-gap:var(--gap)">
+            <li>Nuova architettura dei contenuti</li>
+            <li>Organizzazione dell’offerta formativa</li>
+            <li>Pagine dedicate ai diversi percorsi</li>
+            <li>Evoluzione dell’area Academy</li>
+            <li>Automazioni</li>
+            <li>Segmentazione database</li>
+            <li>Dashboard marketing/commerciale</li>
+            <li>Tracciamento della provenienza delle vendite</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     02 — ACADEMY GROWTH
+     ===================================================== -->
+<section class="band inv chapter" id="c02" data-section="c02" aria-labelledby="c02-title">
+  <div class="wrap">
+    <span class="ch-n num" aria-hidden="true">02</span>
+    <h2 id="c02-title" class="ch-t display">Academy<br>Growth</h2>
+    <div class="ch-meta"><p class="label">Cantiere 02 · Ott 2026 — Mar 2027</p><p class="m">Questo è il cantiere economicamente più importante.</p></div>
+  </div>
+</section>
+
+<section class="band after-inv" data-section="c02" aria-label="Academy Growth — introduzione e Live">
+  <div class="wrap">
+    <div class="grid">
+      <p class="c-side label">Premessa</p>
+      <p class="c-read lede">I percorsi annuali rappresentano già la grande maggioranza dei ricavi dell’Academy. Prima di sviluppare nuovi prodotti dobbiamo comprendere quanto possiamo far crescere ciò che già funziona.</p>
+    </div>
+
+    <div class="phase sp-xl"><span class="label">Ottobre — Novembre 2026</span><span class="verb">Mastery × Live</span></div>
+    <div class="grid">
+      <p class="c-side label">Primo progetto commerciale</p>
+      <div class="c-main">
+        <h3 class="display xl">Rockstar Mastery<br><span class="muted">×</span><br>Luca Picchio Live</h3>
+        <div class="row-between sp-m" style="border-top:1px solid var(--fg);padding-top:18px">
+          <p class="label fg">Luca Picchio Live</p>
+          <p class="display xl" style="letter-spacing:-0.045em">15 — 17 Novembre 2026</p>
+        </div>
+        <p class="m sp-m" style="font-weight:500;max-width:28em">Il Live diventa il primo grande progetto commerciale del Growth Plan.</p>
+      </div>
+    </div>
+
+    <div class="contrast sp-l">
+      <div>
+        <p class="label">Non basta</p>
+        <p class="quote sp-s">“Durante il Live vendiamo Mastery.”</p>
+      </div>
+      <div>
+        <p class="label fg">Obiettivo Grace</p>
+        <p class="goal sp-s">Progettare l’intero processo di conversione.</p>
+      </div>
+    </div>
+
+    <div class="bla sp-xl">
+      <div class="bla-col">
+        <div class="h"><b>Before</b><span class="label">Prima del Live</span></div>
+        <details class="fold" open>
+          <summary>9 attività</summary>
+          <ul class="bullets">
+            <li>Posizionamento Rockstar Mastery 2027</li>
+            <li>Proposta commerciale</li>
+            <li>Eventuali condizioni dedicate</li>
+            <li>Argomentazioni di vendita</li>
+            <li>Presentazione sul palco</li>
+            <li>Materiali</li>
+            <li>Landing</li>
+            <li>Modalità di raccolta dell’interesse</li>
+            <li>Processo commerciale</li>
+          </ul>
+        </details>
+      </div>
+      <div class="bla-col">
+        <div class="h"><b>Live</b><span class="label">Durante</span></div>
+        <div class="flow" aria-label="Contenuto, consapevolezza, possibilità, Mastery">
+          <span>Contenuto</span><i aria-hidden="true">↓</i>
+          <span>Consapevolezza</span><i aria-hidden="true">↓</i>
+          <span>Possibilità</span><i aria-hidden="true">↓</i>
+          <span>Mastery</span>
+        </div>
+        <div class="stack sp-m" style="--s:14px">
+          <p>Mastery deve risultare la naturale prosecuzione del lavoro svolto durante i tre giorni.</p>
+          <p class="muted">Eliminare qualsiasi attrito nel momento in cui una persona decide di approfondire o acquistare.</p>
+        </div>
+      </div>
+      <div class="bla-col">
+        <div class="h"><b>After</b><span class="label">Dopo il Live</span></div>
+        <p class="display m" style="font-weight:800">Il fatturato non finisce quando finisce il Live.</p>
+        <div class="seglist sp-m">
+          <div><b>Acquirenti</b><span class="muted">→ onboarding</span></div>
+          <div><b>Interessati</b><span class="muted">→ contatto commerciale prioritario</span></div>
+          <div><b>Partecipanti non attivati</b><span class="muted">→ nurturing e recupero</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band inv" data-section="c02" aria-labelledby="kpi-live">
+  <div class="wrap">
+    <div class="grid">
+      <p class="c-side label">KPI Live</p>
+      <h3 id="kpi-live" class="c-main display l">Il Live diventa misurabile anche come asset commerciale.</h3>
+    </div>
+    <div class="metrics sp-l">
+      <div><b>Partecipanti</b><span class="slot" aria-hidden="true"></span></div>
+      <div><b>Offerte effettuate</b><span class="slot" aria-hidden="true"></span></div>
+      <div><b>Manifestazioni di interesse</b><span class="slot" aria-hidden="true"></span></div>
+      <div><b>Appuntamenti commerciali</b><span class="slot" aria-hidden="true"></span></div>
+      <div><b>Iscrizioni immediate</b><span class="slot" aria-hidden="true"></span></div>
+      <div><b>Iscrizioni post-evento</b><span class="slot" aria-hidden="true"></span></div>
+      <div><b>Valore venduto</b><span class="slot" aria-hidden="true"></span></div>
+      <div><b>Conversion rate</b><span class="slot" aria-hidden="true"></span></div>
+      <div><b>Partecipante → studente</b><span class="slot" aria-hidden="true"></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band after-inv" data-section="c02" aria-label="Gennaio — Marzo 2027, Always-on growth">
+  <div class="wrap">
+    <div class="phase"><span class="label">Gennaio — Marzo 2027</span><span class="verb">Always-on</span></div>
+    <p class="display question">Come vendiamo<br>Academy<br>quando non c’è<br>il Live?</p>
+
+    <div class="grid sp-l">
+      <p class="c-side label">Risposta</p>
+      <h3 class="c-main display l">Always-on growth</h3>
+    </div>
+    <div class="aog sp-m">
+      <div><b>Acquisizione</b><p class="muted">Nuovi titolari di salone.</p></div>
+      <div><b>Conversione</b><p class="muted">Lead già presenti nel database.</p></div>
+      <div><b>Riattivazione</b><p class="muted">Lead storici che non hanno acquistato.</p></div>
+      <div><b>Sviluppo cliente</b><p class="muted">Studenti ed ex studenti.</p></div>
+    </div>
+
+    <div class="grid sp-xl">
+      <p class="c-side label fg">Database</p>
+      <div class="c-main">
+        <p class="display l">Il database diventa un patrimonio commerciale.</p>
+        <p class="label sp-m">Segmentazione</p>
+        <ul class="tags sp-xs">
+          <li>Prospect</li><li>Lead webinar</li><li>Partecipanti Live</li><li>Clienti</li>
+          <li>Ex clienti / studenti</li><li>Prodotto acquistato</li><li>Livello di interesse</li><li>Opportunità commerciale</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid sp-xl">
+      <p class="c-side label fg">Sales playbook</p>
+      <div class="c-main">
+        <ol class="hflow" style="--steps:7">
+          <li><span class="label">01</span><b>Lead</b></li>
+          <li><span class="label">02</span><b>Assegnazione</b></li>
+          <li><span class="label">03</span><b>Primo contatto</b></li>
+          <li><span class="label">04</span><b>Follow-up</b></li>
+          <li><span class="label">05</span><b>Trattativa</b></li>
+          <li><span class="label">06</span><b>Esito</b></li>
+          <li><span class="label">07</span><b>Analisi</b></li>
+        </ol>
+        <ul class="questions sp-l">
+          <li>Chi riceve il lead?</li>
+          <li>Quando viene contattato?</li>
+          <li>Cosa accade?</li>
+          <li>Quando viene ricontattato?</li>
+          <li>Perché acquista o non acquista?</li>
+        </ul>
+        <div class="output sp-m"><span class="label">Output</span><b>Sales Playbook<br>Luca Picchio Academy</b></div>
+      </div>
+    </div>
+
+    <div class="grid sp-xl">
+      <p class="c-side label fg">KPI</p>
+      <div class="c-main">
+        <p class="display kpi-hero">Costo per<br>studente<br>acquisito</p>
+        <ul class="tgrid sp-l">
+          <li class="item">CPL</li>
+          <li class="item">Lead qualificati</li>
+          <li class="item">Conversione commerciale</li>
+          <li class="item">Valore medio vendita</li>
+          <li class="item">Rinnovi</li>
+          <li class="item">Ricavi per campagna</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     03 — BRAND EXPERIENCE
+     ===================================================== -->
+<section class="band inv chapter" id="c03" data-section="c03" aria-labelledby="c03-title">
+  <div class="wrap">
+    <span class="ch-n num" aria-hidden="true">03</span>
+    <h2 id="c03-title" class="ch-t display">Brand<br>Experience<span class="label" style="display:block;letter-spacing:.18em;margin-top:18px;color:var(--muted)">&amp; continuità commerciale</span></h2>
+    <div class="ch-meta"><p class="label">Cantiere 03 · Ott 2026 — Mar 2027</p><p class="m">Isola può diventare il primo intervento di un lavoro più ampio sulla percezione dell’Academy.</p></div>
+  </div>
+</section>
+
+<section class="band after-inv" data-section="c03" aria-label="Ottobre — Novembre 2026, Isola restyling">
+  <div class="wrap">
+    <div class="phase"><span class="label">Ottobre — Novembre 2026</span><span class="verb">Isola restyling</span></div>
+    <p class="display question">Portare lo spazio fisico<br>allo stesso livello<br>dell’Academy che<br>vogliamo costruire.</p>
+    <div class="grid sp-l">
+      <p class="c-side label">Aree</p>
+      <div class="c-main">
+        <details class="fold" open>
+          <summary>Aree · 8</summary>
+          <ul class="tgrid four">
+            <li class="item">Audit stato attuale</li>
+            <li class="item">Restyling grafico</li>
+            <li class="item">Concept</li>
+            <li class="item">Moodboard</li>
+            <li class="item">Visual identity nello spazio</li>
+            <li class="item">Materiali</li>
+            <li class="item">Touchpoint</li>
+            <li class="item">Coerenza con Luca Picchio Academy</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" data-section="c03" aria-label="Gennaio — Marzo 2027, dallo spazio all'esperienza">
+  <div class="wrap">
+    <div class="phase"><span class="label">Gennaio — Marzo 2027</span><span class="verb">Academy experience</span></div>
+    <div class="grid">
+      <p class="c-side label">Customer journey</p>
+      <h3 class="c-main display xl">Dallo spazio<br>all’esperienza.</h3>
+    </div>
+    <ol class="hflow sp-l" style="--steps:8" aria-label="Customer journey">
+      <li><span class="label">01</span><b>Vedo Luca</b></li>
+      <li><span class="label">02</span><b>Entro in contatto</b></li>
+      <li><span class="label">03</span><b>Webinar / Live</b></li>
+      <li><span class="label">04</span><b>Acquisto</b></li>
+      <li><span class="label">05</span><b>Entro in Academy</b></li>
+      <li><span class="label">06</span><b>Frequento</b></li>
+      <li><span class="label">07</span><b>Termino il percorso</b></li>
+      <li><span class="label">08</span><b>Rimango nella community</b></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band inv tight" data-section="c03" aria-label="Domanda centrale">
+  <div class="wrap">
+    <p class="label">La domanda</p>
+    <p class="display xxl sp-s" style="line-height:.9;font-size:clamp(2rem,8vw,8.5rem)">È all’altezza<br>del posizionamento<br>che stiamo vendendo?</p>
+  </div>
+</section>
+
+<section class="band after-inv tight" data-section="c03" aria-label="Possibili interventi">
+  <div class="wrap">
+    <div class="grid">
+      <p class="c-side label">Possibili interventi</p>
+      <ul class="c-main tgrid">
+        <li class="item">Onboarding</li>
+        <li class="item">Welcome kit</li>
+        <li class="item">Comunicazioni studenti</li>
+        <li class="item">Materiali didattici</li>
+        <li class="item">Area riservata</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     04 — NEW BUSINESS
+     ===================================================== -->
+<section class="band inv chapter" id="c04" data-section="c04" aria-labelledby="c04-title">
+  <div class="wrap">
+    <span class="ch-n num" aria-hidden="true">04</span>
+    <h2 id="c04-title" class="ch-t display">New<br>Business</h2>
+    <div class="ch-meta"><p class="label">Cantiere 04 · Gennaio — Marzo 2027</p><p class="m">Questo è il cantiere che può cambiare maggiormente il perimetro futuro dell’azienda.</p></div>
+  </div>
+</section>
+
+<section class="band after-inv" data-section="c04" aria-label="Franchising Parrucchiere Rockstar">
+  <div class="wrap">
+    <div class="phase"><span class="label">Gennaio — Marzo 2027</span><span class="verb">Franchising discovery</span></div>
+    <h3 class="display xxl">Franchising<br>Parrucchiere<br>Rockstar</h3>
+
+    <div class="grid sp-l">
+      <p class="c-side label fg">Prima fase di raccolta</p>
+      <ul class="c-main tgrid">
+        <li class="item">Idea di Luca</li>
+        <li class="item">Obiettivo</li>
+        <li class="item">Modello immaginato</li>
+        <li class="item">Eventuali saloni interessati</li>
+        <li class="item">Ruolo dell’Academy</li>
+        <li class="item">Asset già disponibili</li>
+      </ul>
+    </div>
+
+    <ol class="steps sp-xl">
+      <li>
+        <div class="s-n"><span class="label fg">Step</span><span class="num">01</span></div>
+        <div class="s-b">
+          <h4 class="display l">Concept</h4>
+          <p class="display question" style="font-size:clamp(1.7rem,3.6vw,3.4rem)">Perché un parrucchiere dovrebbe entrare nella rete Luca Picchio?</p>
+        </div>
+      </li>
+      <li>
+        <div class="s-n"><span class="label fg">Step</span><span class="num">02</span></div>
+        <div class="s-b">
+          <h4 class="display l">Value proposition</h4>
+          <p class="label">Da verificare</p>
+          <ul class="tags sp-xs">
+            <li>Brand</li><li>Metodo</li><li>Formazione</li><li>Marketing</li><li>Strumenti commerciali</li>
+            <li>Supporto gestionale</li><li>Community</li><li>Convenzioni</li><li>Tecnologia</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="s-n"><span class="label fg">Step</span><span class="num">03</span></div>
+        <div class="s-b">
+          <h4 class="display l">Business model</h4>
+          <p class="label">Definire</p>
+          <ul class="tgrid sp-xs">
+            <li class="item">Entry fee</li><li class="item">Royalty</li><li class="item">Servizi inclusi</li>
+            <li class="item">Servizi opzionali</li><li class="item">Costi centrali</li><li class="item">Sostenibilità affiliato</li>
+            <li class="item">Sostenibilità Luca Picchio</li>
+          </ul>
+          <div class="note sp-m"><p class="label fg">Nota</p><p class="sp-xs">Gli aspetti legali e contrattuali richiedono supporto specialistico dedicato.</p></div>
+        </div>
+      </li>
+      <li>
+        <div class="s-n"><span class="label fg">Step</span><span class="num">04</span></div>
+        <div class="s-b">
+          <h4 class="display l">Standard</h4>
+          <p class="display m" style="font-weight:800">Che tipo di salone può entrare?</p>
+          <ul class="questions sp-m">
+            <li>Location?</li>
+            <li>Numero collaboratori?</li>
+            <li>Fatturato?</li>
+            <li>Posizionamento?</li>
+            <li>Disponibilità alla formazione?</li>
+            <li>Standard estetici?</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="s-n"><span class="label fg">Step</span><span class="num">05</span></div>
+        <div class="s-b">
+          <h4 class="display l">Pilot</h4>
+          <div class="pilot"><span class="num">1 — 3</span><span class="label fg" style="padding-bottom:1.2em">Saloni pilota</span></div>
+          <p class="lede sp-s">Prima di pensare a una rete estesa, validiamo il modello nella realtà.</p>
+        </div>
+      </li>
+      <li>
+        <div class="s-n"><span class="label fg">Step</span><span class="num">06</span></div>
+        <div class="s-b">
+          <h4 class="display l">Go / No-go</h4>
+          <div class="gonogo">
+            <div><b>Go</b><p>Il modello è sufficientemente definito per procedere alla fase pilota.</p></div>
+            <div><b>No-go /<br>review</b><p>Sono necessarie modifiche al modello prima di investire nello sviluppo della rete.</p></div>
+          </div>
+        </div>
+      </li>
+    </ol>
+
+    <div class="grid sp-l">
+      <p class="c-side label">Esito</p>
+      <p class="c-main display l">Il franchising diventa così un progetto aziendale da validare, con un modello e criteri decisionali definiti.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEXT STEP ================= -->
+<section class="band inv next" id="next" data-section="next" aria-labelledby="next-title">
+  <div class="wrap">
+    <p class="label">Grace × Luca Picchio Academy</p>
+    <h2 id="next-title" class="display next-title">Next<br>step.</h2>
+
+    <div class="grid">
+      <ul class="c-half-l tgrid two" style="grid-template-columns:1fr">
+        <li class="item"><span class="label" style="margin-right:12px">01</span>Digital Foundation</li>
+        <li class="item"><span class="label" style="margin-right:12px">02</span>Academy Growth</li>
+        <li class="item"><span class="label" style="margin-right:12px">03</span>Brand Experience</li>
+        <li class="item"><span class="label" style="margin-right:12px">04</span>New Business</li>
+      </ul>
+      <div class="c-half-r">
+        <p class="label">Ottobre 2026</p>
+        <p class="display xl sp-xs">→ Start</p>
+      </div>
+    </div>
+
+    <ol class="actions" aria-label="Next action operative">
+      <li><span class="num">01</span><p>Avvio audit lucapicchio.it</p></li>
+      <li><span class="num">02</span><p>Definizione progetto Restyling Isola</p></li>
+      <li><span class="num">03</span><p>Costruzione Mastery Live Sales Plan</p></li>
+      <li><span class="num">04</span><p>Kick-off Franchising Discovery / gennaio 2027</p></li>
+    </ol>
+
+    <div class="closing">
+      <div>
+        <p class="gp-name">Grace &amp; Partners</p>
+        <p class="gp-tag">Human [Insights] AI</p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:14px">
+        <button class="btn" type="button" data-print style="--fg:#fff;--bg:#000">Print / PDF</button>
+        <p class="print-note muted" id="print-note" role="status" hidden></p>
+        <p class="label">Internal use only</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(() => {
+  const nav = document.getElementById('nav');
+  const bar = document.getElementById('progress');
+  const links = [...document.querySelectorAll('.nav-links a')];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Progress di lettura + colore della nav in base alla banda sottostante */
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      bar.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`;
+      const y = nav.getBoundingClientRect().bottom + 1;
+      const under = document.elementFromPoint(20, y)?.closest('.band');
+      nav.classList.toggle('on-dark', !!under && under.classList.contains('inv'));
+      ticking = false;
+    });
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+  onScroll();
+
+  /* Sezione attiva */
+  const setActive = (id) => links.forEach((a) => a.setAttribute('aria-current', a.dataset.nav === id ? 'true' : 'false'));
+  const bands = [...document.querySelectorAll('[data-section]')];
+  const io = new IntersectionObserver((entries) => {
+    const hit = entries.filter((e) => e.isIntersecting)[0];
+    if (hit) setActive(hit.target.dataset.section);
+  }, { rootMargin: '-40% 0px -59% 0px' });
+  bands.forEach((b) => io.observe(b));
+  const first = document.getElementById('overview');
+  addEventListener('scroll', () => { if (first.getBoundingClientRect().top > innerHeight * 0.4) setActive(''); }, { passive: true });
+
+  /* Reveal leggero: solo per ciò che parte sotto la piega */
+  if (!reduce && 'IntersectionObserver' in window) {
+    const targets = document.querySelectorAll('.band .wrap > *, .dir, .tl-row, .steps > li, .bla-col, .metrics > div, .aog > div, .actions li');
+    const rv = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('revealed');
+        e.target.classList.remove('pending');
+        rv.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    targets.forEach((el) => {
+      if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('pending'); rv.observe(el); }
+    });
+  }
+
+  /* Dettagli lunghi ripiegati su mobile, sempre aperti su desktop e in stampa */
+  const folds = [...document.querySelectorAll('details.fold')];
+  const mq = matchMedia('(max-width: 720px)');
+  const syncFolds = () => folds.forEach((d) => { d.open = !mq.matches; });
+  syncFolds();
+  mq.addEventListener?.('change', syncFolds);
+
+  const prepPrint = () => {
+    folds.forEach((d) => { d.open = true; });
+    document.querySelectorAll('.pending').forEach((el) => el.classList.remove('pending'));
+  };
+  addEventListener('beforeprint', prepPrint);
+  addEventListener('afterprint', syncFolds);
+
+  /* PRINT / PDF
+     Aperto nel browser: window.print().
+     Dentro l'artifact claude.ai la stampa è bloccata: si scarica una copia HTML da stampare. */
+  const note = document.getElementById('print-note');
+  const say = (t) => { note.textContent = t; note.hidden = false; };
+  const selfCopy = () => {
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('.pending').forEach((el) => el.classList.remove('pending'));
+    clone.querySelectorAll('details.fold').forEach((d) => d.setAttribute('open', ''));
+    return '<!doctype html>\n' + clone.outerHTML;
+  };
+  document.querySelectorAll('[data-print]').forEach((btn) => btn.addEventListener('click', async () => {
+    const rt = window.claude;
+    if (!rt || typeof rt.use !== 'function') { prepPrint(); window.print(); return; }
+    let dl = null;
+    try { dl = await rt.use('downloads'); } catch (e) { dl = null; }
+    if (!dl) { say('Per il PDF apri il documento nel browser e usa Stampa → Salva come PDF.'); return; }
+    try {
+      await dl.save({ filename: 'Grace-LPA-Growth-Plan-2026-2027.html', data: selfCopy() });
+      say('Copia scaricata: aprila nel browser e usa Stampa → Salva come PDF.');
+    } catch (e) {
+      say(e && e.code === 'declined' ? 'Download annullato.' : 'Per il PDF apri il documento nel browser e usa Stampa → Salva come PDF.');
+    }
+  }));
+})();
+</script>
