@@ -126,7 +126,10 @@ ul, ol { padding: 0; list-style: none; }
 .nav .btn:hover { background: var(--black); color: var(--white); }
 .nav.on-dark .btn:hover { background: var(--white); color: var(--black); }
 .progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; background: currentColor; transform: scaleX(0); transform-origin: left; }
+@media (max-width: 1560px) { .brand span { display: none; } .nav-links { gap: clamp(10px, 1.3vw, 20px); } .nav-links a { letter-spacing: .1em; } }
 @media (max-width: 1100px) { .nav-links a .full { display: none; } }
+@media (max-width: 900px) { .nav .btn { display: none; } }
+@media (max-width: 480px) { .nav-links { gap: 12px; } .nav-links a { letter-spacing: .06em; } }
 @media (max-width: 720px) {
   .nav .btn { display: none; }
   .nav-in { gap: 14px; }
@@ -156,7 +159,7 @@ ul, ol { padding: 0; list-style: none; }
 
 /* ---------- Sequenza strategica (Prodotto → … → Scale) ---------- */
 .seq { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); border-top: 1px solid var(--fg); }
-.seq li { position: relative; padding: 18px 10px 0 0; }
+.seq li { position: relative; padding: 18px 20px 0 0; }
 .seq li::before { content: ""; position: absolute; left: 0; top: -5px; width: 9px; height: 9px; background: var(--fg); border-radius: 50%; }
 .seq .i { font-family: var(--f-mono); font-size: var(--t-label); letter-spacing: .14em; color: var(--tx2); display: block; margin-bottom: 10px; }
 .seq b { font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; font-size: clamp(.95rem, 1.3vw, 1.2rem); line-height: 1.1; display: block; }
@@ -404,6 +407,49 @@ details.fold > summary { display: none; }
   details.fold[open] > summary { margin-bottom: 12px; }
 }
 
+
+/* ---------- Area 02 · Founder Personal Brand ---------- */
+.founder-sign { border-top: 1px solid var(--ln); padding-top: 22px; max-width: 46em; }
+.founder-sign .m { font-size: clamp(1.4rem, 2.4vw, 2.2rem); font-weight: 800; letter-spacing: -0.035em; }
+.founder-sign .tag { color: var(--fg); }
+.founder-name { font-size: clamp(3rem, 14vw, 14.5rem); letter-spacing: -0.065em; line-height: .84; margin-left: -0.03em; }
+.portrait { aspect-ratio: 4 / 5; max-width: 100%; margin: 0; align-self: start; border: 1px solid var(--black); background: var(--paper-2); display: flex; flex-direction: column; justify-content: space-between; padding: 18px; }
+@media (max-width: 900px) {
+  .portrait { width: min(100%, 360px); }
+}
+.split.duo .word { font-size: clamp(1.9rem, 4.2vw, 4rem); letter-spacing: -0.05em; line-height: .9; }
+.split.duo > div { padding-block: clamp(26px, 3.5vw, 48px); }
+.keywords { display: flex; flex-direction: column; font-size: clamp(3rem, 10vw, 10rem); letter-spacing: -0.06em; line-height: .9; }
+.keywords span:nth-child(2) { color: var(--muted); }
+.keywords span:nth-child(3) { padding-left: clamp(0px, 8vw, 140px); }
+.sub-areas > li { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: 20px; border-top: 1px solid var(--black); padding-block: clamp(32px, 4.5vw, 64px); }
+.sub-areas > li:last-child { border-bottom: 1px solid var(--black); }
+.sa-h { grid-column: 1 / 5; }
+.sa-h .num { font-size: clamp(2.6rem, 5vw, 4.75rem); display: block; letter-spacing: -0.05em; }
+.sa-h h4 { font-size: clamp(1.25rem, 2vw, 1.85rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.035em; line-height: 1; margin-top: 18px; max-width: 11em; }
+.sa-b { grid-column: 5 / 13; }
+@media (max-width: 900px) { .sa-h, .sa-b { grid-column: 1 / -1; } }
+.outputs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--gap); row-gap: clamp(28px, 3.5vw, 48px); }
+.outputs li { border-top: 1px solid var(--black); padding-top: 16px; }
+.outputs .num { font-size: clamp(2rem, 3vw, 2.8rem); display: block; margin-bottom: 18px; }
+.outputs p { font-weight: 700; font-size: clamp(1rem, 1.3vw, 1.2rem); line-height: 1.25; letter-spacing: -0.01em; }
+@media (max-width: 900px) { .outputs { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .outputs { grid-template-columns: 1fr; } }
+
+/* Founder track nella roadmap 18 mesi */
+.g-solid { position: absolute; top: 50%; left: 0; right: 0; height: 4px; margin-top: -2px; background: var(--fg); }
+.g-row.founder { background: var(--paper-2); box-shadow: -12px 0 0 var(--paper-2), 12px 0 0 var(--paper-2); }
+.g-row.founder-steps { align-items: start; }
+.g-periods { display: grid; grid-template-columns: 3fr 3fr 3fr 3fr 6fr; }
+.g-periods > li { border-left: 1px solid var(--ln); padding: 0 12px 0 10px; }
+.g-periods ul { margin-top: 10px; }
+.g-periods ul li { font-size: .8125rem; line-height: 1.4; padding-block: 5px; border-top: 1px solid var(--ln); }
+.g-legend .k4 { height: 4px; background: var(--fg); }
+@media (max-width: 900px) {
+  .g-periods { grid-template-columns: 1fr; row-gap: 18px; }
+  .g-periods > li { border-left: 0; border-top: 1px solid var(--fg); padding: 12px 0 0; }
+}
+
 /* =========================================================
    STAMPA — executive report A4, bianco e nero
    ========================================================= */
@@ -429,6 +475,12 @@ details.fold > summary { display: none; }
   .final { min-height: 0; break-before: page; }
   .final .words { font-size: 54pt; }
   .final .words span:not(:last-child) { color: #555; }
+  .founder-name { font-size: 64pt; }
+  .keywords { font-size: 52pt; }
+  .keywords span:nth-child(2) { color: #555; }
+  .portrait { width: 55mm; }
+  .g-row.founder { box-shadow: none; }
+  .sub-areas > li, .outputs li, .g-periods > li, .founder-head { break-inside: avoid; }
   .sec.grey { --bg: #fff; border-top: .5pt solid #bbb; }
   .prio .now { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .stairs li { margin-top: 0; }
@@ -445,10 +497,11 @@ details.fold > summary { display: none; }
     <nav class="nav-links" aria-label="Sezioni del documento">
       <a href="#overview" data-nav="overview">Overview</a>
       <a href="#s01" data-nav="s01"><b>01</b><span class="full">Brand</span></a>
-      <a href="#s02" data-nav="s02"><b>02</b><span class="full">Digital</span></a>
-      <a href="#s03" data-nav="s03"><b>03</b><span class="full">Acquisition</span></a>
-      <a href="#s04" data-nav="s04"><b>04</b><span class="full">Experience</span></a>
-      <a href="#s05" data-nav="s05"><b>05</b><span class="full">Scale</span></a>
+      <a href="#s02" data-nav="s02"><b>02</b><span class="full">Founder</span></a>
+      <a href="#s03" data-nav="s03"><b>03</b><span class="full">Digital</span></a>
+      <a href="#s04" data-nav="s04"><b>04</b><span class="full">Acquisition</span></a>
+      <a href="#s05" data-nav="s05"><b>05</b><span class="full">Experience</span></a>
+      <a href="#s06" data-nav="s06"><b>06</b><span class="full">Scale</span></a>
       <a href="#roadmap" data-nav="roadmap">Roadmap</a>
     </nav>
     <button class="btn" type="button" data-print>Print / Export PDF</button>
@@ -528,13 +581,34 @@ details.fold > summary { display: none; }
     </div>
 
     <div class="grid sp-xl">
-      <p class="c-side label">Cinque aree di intervento</p>
+      <p class="c-side label fg">Due asset complementari</p>
+      <div class="c-main">
+        <p class="lede">Il percorso di sviluppo di Élite Experience si articola su due asset complementari.</p>
+        <div class="split duo sp-m">
+          <div>
+            <p class="label">Asset 01</p>
+            <span class="word up">Il metodo</span>
+            <p class="m">Un’identità formativa riconoscibile, strutturata e progressivamente replicabile.</p>
+          </div>
+          <div>
+            <p class="label">Asset 02</p>
+            <span class="word up">La fondatrice</span>
+            <p class="m">Una figura professionale autorevole, capace di rappresentare il metodo, sviluppare relazioni e aprire nuove opportunità.</p>
+          </div>
+        </div>
+        <p class="body sp-s">Il personal brand di Elisabetta contribuisce alla crescita di Élite Experience. Parallelamente, la codifica del metodo deve consentire al brand di acquisire una propria autonomia, necessaria per i futuri scenari di network e franchising.</p>
+      </div>
+    </div>
+
+    <div class="grid sp-xl">
+      <p class="c-side label">Sei aree di intervento</p>
       <ol class="c-main areas">
         <li><a href="#s01"><span class="n num">01</span><span class="t">Brand &amp; Product Definition</span><span class="d">Élite deve essere distinguibile. <i aria-hidden="true">→</i></span></a></li>
-        <li><a href="#s02"><span class="n num">02</span><span class="t">Digital &amp; Brand Experience</span><span class="d">Una volta definito il prodotto, ripensiamo la presenza digitale. <i aria-hidden="true">→</i></span></a></li>
-        <li><a href="#s03"><span class="n num">03</span><span class="t">Acquisition &amp; Commercial System</span><span class="d">Trasformare l’interesse in intenzione. <i aria-hidden="true">→</i></span></a></li>
-        <li><a href="#s04"><span class="n num">04</span><span class="t">Customer Experience &amp; Élite Network</span><span class="d">Trasformiamo chi compra in parte del brand. <i aria-hidden="true">→</i></span></a></li>
-        <li><a href="#s05"><span class="n num">05</span><span class="t">Scale &amp; Franchising</span><span class="d">Prima validiamo. Poi replichiamo. <i aria-hidden="true">→</i></span></a></li>
+        <li><a href="#s02"><span class="n num">02</span><span class="t">Founder Personal Brand &amp; Authority</span><span class="d">Behind the method. The person. <i aria-hidden="true">→</i></span></a></li>
+        <li><a href="#s03"><span class="n num">03</span><span class="t">Digital &amp; Brand Experience</span><span class="d">Una volta definito il prodotto, ripensiamo la presenza digitale. <i aria-hidden="true">→</i></span></a></li>
+        <li><a href="#s04"><span class="n num">04</span><span class="t">Acquisition &amp; Commercial System</span><span class="d">Trasformare l’interesse in intenzione. <i aria-hidden="true">→</i></span></a></li>
+        <li><a href="#s05"><span class="n num">05</span><span class="t">Customer Experience &amp; Élite Network</span><span class="d">Trasformiamo chi compra in parte del brand. <i aria-hidden="true">→</i></span></a></li>
+        <li><a href="#s06"><span class="n num">06</span><span class="t">Scale &amp; Franchising</span><span class="d">Prima validiamo. Poi replichiamo. <i aria-hidden="true">→</i></span></a></li>
       </ol>
     </div>
   </div>
@@ -652,17 +726,229 @@ details.fold > summary { display: none; }
 </section>
 
 <!-- =====================================================
-     02 — DIGITAL & BRAND EXPERIENCE
+     02 — FOUNDER PERSONAL BRAND & AUTHORITY
      ===================================================== -->
 <section class="sec opener" id="s02" data-section="s02" aria-labelledby="s02-title">
   <div class="wrap grid">
     <span class="o-n num" aria-hidden="true">02</span>
-    <h2 id="s02-title" class="o-t h up"><span class="sr">02 </span>Digital &amp;<br>Brand Experience</h2>
-    <div class="o-meta"><p class="label">Area 02 · Desiderabilità</p><p class="m">Una volta definito il prodotto, ripensiamo la presenza digitale.</p></div>
+    <h2 id="s02-title" class="o-t h up"><span class="sr">02 </span>Founder Personal<br>Brand &amp; Authority</h2>
+    <div class="o-meta"><p class="label">Area 02 · Autorevolezza · Trasversale</p><p class="m">Élite Experience possiede un asset che merita un percorso di sviluppo dedicato: la sua fondatrice.</p></div>
   </div>
 </section>
 
-<section class="sec" data-section="s02" aria-label="Digital e brand experience, contenuti">
+<section class="sec inv manifesto" data-section="s02" aria-labelledby="behind-title">
+  <div class="wrap">
+    <p class="label">Founder</p>
+    <h3 id="behind-title" class="h up q">Behind the method.<br><span class="tx2">The person.</span></h3>
+    <div class="founder-sign">
+      <p class="m" style="color:var(--fg)">Elisabetta Tancini.</p>
+      <p class="tx2">Founder. Hair Spa Educator.</p>
+      <p class="label sp-s"><span class="tag">Da verificare</span>&nbsp; Le qualifiche definitive dovranno essere verificate prima della pubblicazione esterna.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-section="s02" aria-label="Elisabetta Tancini, obiettivo e premessa">
+  <div class="wrap">
+    <p class="h up founder-name">Elisabetta<br>Tancini</p>
+
+    <div class="grid sp-l founder-body">
+      <figure class="c-side portrait" aria-label="Spazio riservato al ritratto professionale">
+        <span class="label fg">Ritratto professionale</span>
+        <span class="label">Scatto originale da inserire.<br>Nessuna immagine stock o generata.</span>
+      </figure>
+      <div class="c-main">
+        <p class="label fg">Obiettivo</p>
+        <p class="m sp-xs" style="max-width:34em">Sviluppare il posizionamento professionale di Elisabetta Tancini come formatrice e figura di riferimento nel settore Hair Spa, valorizzandone l’esperienza, il metodo e le relazioni con i brand professionali.</p>
+        <p class="label sp-m">Premessa</p>
+        <div class="stack body sp-xs" style="--s:14px">
+          <p class="lede">Le collaborazioni con Z.One e Maletti rappresentano un punto di partenza per consolidare l’autorevolezza professionale di Elisabetta e valutare nuove opportunità di collaborazione, formazione e sviluppo anche oltre il mercato italiano.</p>
+          <p class="tx2">Questa area non è una semplice attività di comunicazione social. È un intervento trasversale, sviluppato progressivamente durante l’intero Development Plan e non da concludere prima di avviare le altre attività.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid sp-l">
+      <p class="c-side label fg">Due identità complementari</p>
+      <div class="c-main">
+        <div class="split duo">
+          <div>
+            <p class="label">Il brand</p>
+            <span class="word up">Élite Experience</span>
+            <p class="m">Il brand, il metodo, la proposta formativa.</p>
+          </div>
+          <div>
+            <p class="label">La professionista</p>
+            <span class="word up">Elisabetta Tancini</span>
+            <p class="m">La professionista, la formatrice, la competenza e la visione che hanno dato origine al metodo.</p>
+          </div>
+        </div>
+        <p class="body sp-s">Le due identità devono rafforzarsi reciprocamente, mantenendo una propria riconoscibilità.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec grey" data-section="s02" aria-label="Expertise, authority, recognition">
+  <div class="wrap">
+    <p class="keywords h up"><span>Expertise.</span><span>Authority.</span><span>Recognition.</span></p>
+    <div class="grid sp-l">
+      <p class="c-side label fg">Linea di sviluppo</p>
+      <div class="c-main"></div>
+    </div>
+    <ol class="seq big sp-s" style="--n:4" aria-label="Linea di sviluppo del personal brand">
+      <li><span class="i">01</span><b>Professional identity</b></li>
+      <li><span class="i">02</span><b>Industry authority</b></li>
+      <li><span class="i">03</span><b>Strategic partnerships</b></li>
+      <li><span class="i">04</span><b>International opportunities</b></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" data-section="s02" aria-labelledby="founder-areas-title">
+  <div class="wrap">
+    <div class="grid">
+      <p class="c-side label fg">Aree di intervento Grace</p>
+      <h3 id="founder-areas-title" class="c-main h xl up">Cinque aree<br>di intervento.</h3>
+    </div>
+
+    <ol class="sub-areas sp-l">
+      <li>
+        <div class="sa-h"><span class="num">02.1</span><h4>Personal Positioning</h4></div>
+        <div class="sa-b">
+          <details class="fold" open>
+            <summary>Interventi · 6</summary>
+            <ul class="dash">
+              <li>Analisi dell’attuale percezione professionale di Elisabetta</li>
+              <li>Definizione del posizionamento personale</li>
+              <li>Identificazione delle competenze distintive</li>
+              <li>Costruzione della narrazione professionale</li>
+              <li>Definizione del rapporto tra Elisabetta e il Metodo Élite Experience</li>
+              <li>Individuazione dei principali interlocutori</li>
+            </ul>
+          </details>
+          <ul class="chips sp-s" aria-label="Interlocutori"><li>Saloni</li><li>Academy</li><li>Brand professionali</li><li>Aziende del settore</li><li>Organizzatori di eventi</li></ul>
+        </div>
+      </li>
+      <li>
+        <div class="sa-h"><span class="num">02.2</span><h4>Personal Brand Identity</h4></div>
+        <div class="sa-b">
+          <details class="fold" open>
+            <summary>Interventi · 8</summary>
+            <ul class="dash cols-2">
+              <li>Direzione artistica dedicata</li>
+              <li>Shooting fotografico professionale</li>
+              <li>Produzione video</li>
+              <li>Biografia istituzionale breve ed estesa</li>
+              <li>Presentazione professionale in italiano e inglese</li>
+              <li>Revisione dei profili Instagram e LinkedIn</li>
+              <li>Definizione del tono di voce personale</li>
+              <li>Identità visiva coerente con Élite Experience, ma riconoscibile autonomamente</li>
+            </ul>
+          </details>
+        </div>
+      </li>
+      <li>
+        <div class="sa-h"><span class="num">02.3</span><h4>Content &amp; Thought Leadership</h4></div>
+        <div class="sa-b">
+          <p class="lede">Sviluppare una linea editoriale che valorizzi Elisabetta come professionista.</p>
+          <p class="label sp-m">Principali territori narrativi</p>
+          <details class="fold sp-xs" open>
+            <summary>Territori · 9</summary>
+            <ul class="dash cols-2">
+              <li>Cultura Hair Spa</li>
+              <li>Ricerca e sviluppo dei rituali</li>
+              <li>Tecniche e manualità</li>
+              <li>Esperienza professionale</li>
+              <li>Formazione e trasferimento delle competenze</li>
+              <li>Evoluzione del settore</li>
+              <li>Partecipazione a eventi</li>
+              <li>Collaborazioni professionali</li>
+              <li>Visione del futuro dell’Hair Spa</li>
+            </ul>
+          </details>
+          <div class="note sp-m"><p class="label fg"><span class="tag solid">Under evaluation</span></p><p class="sp-xs">Valutare lo sviluppo di una rubrica editoriale a firma Elisabetta, con contenuti video, approfondimenti e interventi professionali.</p></div>
+        </div>
+      </li>
+      <li>
+        <div class="sa-h"><span class="num">02.4</span><h4>Partnership &amp; Industry Relations</h4></div>
+        <div class="sa-b">
+          <p class="lede">Capitalizzare le relazioni sviluppate con Z.One e Maletti.</p>
+          <details class="fold sp-s" open>
+            <summary>Interventi · 8</summary>
+            <ul class="dash cols-2">
+              <li>Mappatura delle partnership attive</li>
+              <li>Valorizzazione editoriale delle collaborazioni</li>
+              <li>Produzione di case history professionali</li>
+              <li>Media kit dedicato a Elisabetta</li>
+              <li>Presentazione per potenziali partner</li>
+              <li>Ricerca di opportunità con brand professionali</li>
+              <li>Valutazione di eventi, meeting, academy e attività formative in collaborazione</li>
+              <li>Modello di gestione delle relazioni B2B</li>
+            </ul>
+          </details>
+          <div class="note sp-m"><p class="label fg">Nota</p><p class="sp-xs">Le partnership esistenti sono rappresentate come referenze professionali, senza attribuire ruoli, esclusività o accordi non documentati.</p></div>
+        </div>
+      </li>
+      <li>
+        <div class="sa-h"><span class="num">02.5</span><h4>International Development</h4><p class="sp-s"><span class="tag solid">To be validated</span></p></div>
+        <div class="sa-b">
+          <p class="lede">Una direttrice di sviluppo da esplorare e validare, non un risultato acquisito.</p>
+          <details class="fold sp-s" open>
+            <summary>Possibili interventi · 9</summary>
+            <ul class="dash cols-2">
+              <li>Analisi preliminare dei mercati esteri di interesse</li>
+              <li>Individuazione di brand e partner internazionali</li>
+              <li>Presentazione professionale bilingue</li>
+              <li>Media kit internazionale</li>
+              <li>Sottotitolazione inglese dei contenuti principali</li>
+              <li>Valutazione di masterclass e workshop all’estero</li>
+              <li>Opportunità di formazione presso academy partner</li>
+              <li>Partecipazione a eventi internazionali di settore</li>
+              <li>Valutazione della trasferibilità del Metodo Élite Experience in contesti professionali differenti</li>
+            </ul>
+          </details>
+          <div class="note sp-m"><p class="label fg">Priorità iniziale</p><p class="sp-xs">Costruire gli strumenti necessari per presentare Elisabetta a interlocutori internazionali qualificati.</p></div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" data-section="s02" aria-labelledby="out02-title">
+  <div class="wrap">
+    <div class="grid">
+      <p class="c-side label fg">Expected output · 02</p>
+      <div class="c-main">
+        <h3 id="out02-title" class="h xl up">Al termine della<br>prima fase.</h3>
+        <p class="body tx2 sp-s">Grace dovrà aver costruito:</p>
+      </div>
+    </div>
+    <ol class="outputs sp-l">
+      <li><span class="num">01</span><p>Posizionamento professionale di Elisabetta</p></li>
+      <li><span class="num">02</span><p>Identità personale coerente e riconoscibile</p></li>
+      <li><span class="num">03</span><p>Profilo LinkedIn e Instagram rivisti</p></li>
+      <li><span class="num">04</span><p>Shooting fotografico e video professionale</p></li>
+      <li><span class="num">05</span><p>Biografia istituzionale bilingue</p></li>
+      <li><span class="num">06</span><p>Media kit e presentazione partnership</p></li>
+      <li><span class="num">07</span><p>Piano editoriale dedicato</p></li>
+      <li><span class="num">08</span><p>Prima mappatura delle opportunità nazionali e internazionali</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- =====================================================
+     03 — DIGITAL & BRAND EXPERIENCE
+     ===================================================== -->
+<section class="sec opener" id="s03" data-section="s03" aria-labelledby="s03-title">
+  <div class="wrap grid">
+    <span class="o-n num" aria-hidden="true">03</span>
+    <h2 id="s03-title" class="o-t h up"><span class="sr">03 </span>Digital &amp;<br>Brand Experience</h2>
+    <div class="o-meta"><p class="label">Area 03 · Desiderabilità</p><p class="m">Una volta definito il prodotto, ripensiamo la presenza digitale.</p></div>
+  </div>
+</section>
+
+<section class="sec" data-section="s03" aria-label="Digital e brand experience, contenuti">
   <div class="wrap">
     <div class="grid">
       <p class="c-side label">Perimetro</p>
@@ -699,7 +985,7 @@ details.fold > summary { display: none; }
   </div>
 </section>
 
-<section class="sec grey" data-section="s02" aria-labelledby="vedere-title">
+<section class="sec grey" data-section="s03" aria-labelledby="vedere-title">
   <div class="wrap">
     <h3 id="vedere-title" class="h giant up">Vedere<br>Élite.</h3>
     <div class="grid sp-m">
@@ -721,17 +1007,17 @@ details.fold > summary { display: none; }
 </section>
 
 <!-- =====================================================
-     03 — ACQUISITION & COMMERCIAL SYSTEM
+     04 — ACQUISITION & COMMERCIAL SYSTEM
      ===================================================== -->
-<section class="sec opener" id="s03" data-section="s03" aria-labelledby="s03-title">
+<section class="sec opener" id="s04" data-section="s04" aria-labelledby="s04-title">
   <div class="wrap grid">
-    <span class="o-n num" aria-hidden="true">03</span>
-    <h2 id="s03-title" class="o-t h up"><span class="sr">03 </span>Acquisition &amp;<br>Commercial System</h2>
-    <div class="o-meta"><p class="label">Area 03 · Acquisizione e conversione</p><p class="m">Trasformare l’interesse in intenzione.</p></div>
+    <span class="o-n num" aria-hidden="true">04</span>
+    <h2 id="s04-title" class="o-t h up"><span class="sr">04 </span>Acquisition &amp;<br>Commercial System</h2>
+    <div class="o-meta"><p class="label">Area 04 · Acquisizione e conversione</p><p class="m">Trasformare l’interesse in intenzione.</p></div>
   </div>
 </section>
 
-<section class="sec" data-section="s03" aria-labelledby="acq-title">
+<section class="sec" data-section="s04" aria-labelledby="acq-title">
   <div class="wrap">
     <div class="pillar-head"><h3 id="acq-title">Acquisition</h3><p class="label fg">Meta + Google</p></div>
     <div class="funnel" role="list" aria-label="Progressione: awareness, consideration, conversion">
@@ -753,7 +1039,7 @@ details.fold > summary { display: none; }
   </div>
 </section>
 
-<section class="sec" data-section="s03" aria-labelledby="sales-title">
+<section class="sec" data-section="s04" aria-labelledby="sales-title">
   <div class="wrap">
     <div class="pillar-head"><h3 id="sales-title">Sales</h3><p class="label fg">Sistema CRM interno</p></div>
     <div class="grid">
@@ -787,7 +1073,7 @@ details.fold > summary { display: none; }
   </div>
 </section>
 
-<section class="sec inv tight" data-section="s03" aria-label="Sales proposition">
+<section class="sec inv tight" data-section="s04" aria-label="Sales proposition">
   <div class="wrap">
     <p class="label">Sales proposition</p>
     <blockquote class="pull sp-s">
@@ -797,17 +1083,17 @@ details.fold > summary { display: none; }
 </section>
 
 <!-- =====================================================
-     04 — CUSTOMER EXPERIENCE & ÉLITE NETWORK
+     05 — CUSTOMER EXPERIENCE & ÉLITE NETWORK
      ===================================================== -->
-<section class="sec opener" id="s04" data-section="s04" aria-labelledby="s04-title">
+<section class="sec opener" id="s05" data-section="s05" aria-labelledby="s05-title">
   <div class="wrap grid">
-    <span class="o-n num" aria-hidden="true">04</span>
-    <h2 id="s04-title" class="o-t h up"><span class="sr">04 </span>Customer Experience<br>&amp; Élite Network</h2>
-    <div class="o-meta"><p class="label">Area 04 · Replicabilità</p><p class="m">Trasformiamo chi compra in parte del brand.</p></div>
+    <span class="o-n num" aria-hidden="true">05</span>
+    <h2 id="s05-title" class="o-t h up"><span class="sr">05 </span>Customer Experience<br>&amp; Élite Network</h2>
+    <div class="o-meta"><p class="label">Area 05 · Replicabilità</p><p class="m">Trasformiamo chi compra in parte del brand.</p></div>
   </div>
 </section>
 
-<section class="sec" data-section="s04" aria-label="Da oggi al modello target">
+<section class="sec" data-section="s05" aria-label="Da oggi al modello target">
   <div class="wrap">
     <div class="grid today">
       <p class="c-side label">Today</p>
@@ -844,7 +1130,7 @@ details.fold > summary { display: none; }
   </div>
 </section>
 
-<section class="sec grey" data-section="s04" aria-labelledby="partner-title">
+<section class="sec grey" data-section="s05" aria-labelledby="partner-title">
   <div class="wrap">
     <div class="row" style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap">
       <h3 id="partner-title" class="h xxl up">Élite<br>Experience<br>Partner</h3>
@@ -869,7 +1155,7 @@ details.fold > summary { display: none; }
   </div>
 </section>
 
-<section class="sec inv tight" data-section="s04" aria-label="The test">
+<section class="sec inv tight" data-section="s05" aria-label="The test">
   <div class="wrap">
     <p class="label">The test</p>
     <blockquote class="pull sp-s"><p>“Quanto il Metodo Élite riesce a vivere fuori da Maison BB senza perdere qualità e identità?”</p></blockquote>
@@ -877,17 +1163,17 @@ details.fold > summary { display: none; }
 </section>
 
 <!-- =====================================================
-     05 — SCALE & FRANCHISING
+     06 — SCALE & FRANCHISING
      ===================================================== -->
-<section class="sec opener" id="s05" data-section="s05" aria-labelledby="s05-title">
+<section class="sec opener" id="s06" data-section="s06" aria-labelledby="s06-title">
   <div class="wrap grid">
-    <span class="o-n num" aria-hidden="true">05</span>
-    <h2 id="s05-title" class="o-t h up"><span class="sr">05 </span>Scale &amp;<br>Franchising</h2>
-    <div class="o-meta"><p class="label">Area 05 · Scalabilità · To be validated</p><p class="m">Prima validiamo.<br>Poi replichiamo.</p></div>
+    <span class="o-n num" aria-hidden="true">06</span>
+    <h2 id="s06-title" class="o-t h up"><span class="sr">06 </span>Scale &amp;<br>Franchising</h2>
+    <div class="o-meta"><p class="label">Area 06 · Scalabilità · To be validated</p><p class="m">Prima validiamo.<br>Poi replichiamo.</p></div>
   </div>
 </section>
 
-<section class="sec" data-section="s05" aria-label="Scale e franchising, contenuti">
+<section class="sec" data-section="s06" aria-label="Scale e franchising, contenuti">
   <div class="wrap">
     <div class="grid">
       <p class="c-side label">Premessa</p>
@@ -928,7 +1214,7 @@ details.fold > summary { display: none; }
   </div>
 </section>
 
-<section class="sec grey" data-section="s05" aria-labelledby="models-title">
+<section class="sec grey" data-section="s06" aria-labelledby="models-title">
   <div class="wrap">
     <div class="grid">
       <p class="c-side"><span class="tag">Possible models</span></p>
@@ -1012,7 +1298,7 @@ details.fold > summary { display: none; }
     </div>
     <div class="grid sp-m">
       <p class="c-side"></p>
-      <p class="c-read body tx2">Le fasi non si chiudono quando inizia la successiva: advertising, content, sales e optimization restano attivi in parallelo per tutto il periodo.</p>
+      <p class="c-read body tx2">Le fasi non si chiudono quando inizia la successiva: il founder brand di Elisabetta, advertising, content, sales e optimization restano attivi in parallelo per tutto il periodo.</p>
     </div>
 
     <div class="gantt sp-l" role="table" aria-label="Roadmap a 18 mesi">
@@ -1044,6 +1330,21 @@ details.fold > summary { display: none; }
         <div class="g-track" role="cell"><span class="g-bar line-grow" style="--s:12;--e:18"></span></div>
       </div>
 
+      <div class="g-row group founder" role="row">
+        <div class="g-name" role="rowheader"><span class="label">Area 02 · Always on</span><b>Founder Brand &amp; Industry Relations</b><p>Intervento trasversale, sviluppato per tutto il Development Plan.</p></div>
+        <div class="g-track" role="cell"><span class="g-solid"></span></div>
+      </div>
+      <div class="g-row founder-steps" role="row">
+        <div class="g-name" role="rowheader"><span class="label">Founder track</span><p>Attività per periodo</p></div>
+        <ol class="g-periods" role="cell" aria-label="Attività founder brand per periodo">
+          <li><span class="label fg">0–3 mesi</span><ul><li>Analisi del posizionamento personale</li><li>Definizione della strategia Founder Brand</li><li>Audit dei canali personali</li><li>Mappatura partnership esistenti</li></ul></li>
+          <li><span class="label fg">3–6 mesi</span><ul><li>Shooting e produzione contenuti</li><li>Nuova presenza LinkedIn e Instagram</li><li>Media kit professionale</li><li>Piano editoriale Elisabetta</li><li>Presentazione bilingue</li></ul></li>
+          <li><span class="label fg">6–9 mesi</span><ul><li>Valorizzazione delle partnership</li><li>Sviluppo relazioni B2B</li><li>Contenuti di autorevolezza</li><li>Ricerca opportunità nazionali e internazionali</li></ul></li>
+          <li><span class="label fg">9–12 mesi</span><ul><li>Valutazione workshop ed eventi</li><li>Prime iniziative con partner selezionati</li><li>Test di contenuti e proposte formative per interlocutori esteri</li></ul></li>
+          <li><span class="label fg">12–18 mesi</span><ul><li>Consolidamento delle relazioni professionali</li><li>Valutazione dei risultati</li><li>Definizione delle successive opportunità di sviluppo internazionale</li></ul></li>
+        </ol>
+      </div>
+
       <div class="g-row group" role="row">
         <div class="g-name" role="rowheader"><span class="label">Always on</span><b>Advertising</b></div>
         <div class="g-track" role="cell"><span class="g-always"></span></div>
@@ -1063,6 +1364,7 @@ details.fold > summary { display: none; }
     </div>
     <div class="g-legend sp-s" aria-hidden="true">
       <span><i class="k1"></i>Fase principale</span>
+      <span><i class="k4"></i>Founder brand · always on</span>
       <span><i class="k3"></i>Always on</span>
     </div>
   </div>
@@ -1087,6 +1389,8 @@ details.fold > summary { display: none; }
           <li>Metodo Élite</li>
           <li>Sales analysis</li>
           <li>Digital audit</li>
+          <li>Founder Brand strategy</li>
+          <li>Mappatura partnership esistenti</li>
         </ul>
       </div>
       <div class="next">
@@ -1098,6 +1402,7 @@ details.fold > summary { display: none; }
           <li>Campaign architecture</li>
           <li>CRM</li>
           <li>Customer Experience</li>
+          <li>Founder content, media kit e presentazione bilingue</li>
         </ul>
       </div>
       <div class="later">
@@ -1109,6 +1414,7 @@ details.fold > summary { display: none; }
           <li>Pilot</li>
           <li>Scale model</li>
           <li>Franchising</li>
+          <li>Opportunità internazionali Elisabetta</li>
         </ul>
       </div>
     </div>
