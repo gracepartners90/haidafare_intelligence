@@ -1,0 +1,27 @@
+{
+  "_info": "Registro immagini. official=true: foto fornite da Élite Experience. Per aggiungere una foto: copiarla in src/assets/media e registrarla qui.",
+  "ritratto": {
+    "file": "media/elisabetta-ritratto.jpg", "w": 941, "h": 1672, "official": true,
+    "alt": "Elisabetta Tancini, fondatrice di Élite Experience, ritratta nel suo salone."
+  },
+  "lavatesta": {
+    "file": "media/elisabetta-lavatesta.jpg", "w": 1673, "h": 940, "official": true,
+    "alt": "Elisabetta Tancini esegue una manualità Hair Spa sul cuoio capelluto di una cliente al lavatesta."
+  },
+  "pinda": {
+    "file": "media/elisabetta-pinda.jpg", "w": 1800, "h": 1007, "official": true,
+    "alt": "Elisabetta Tancini prepara un pinda in tessuto accanto ai materiali del rituale."
+  },
+  "dettaglioPinda": {
+    "file": "media/dettaglio-pinda-mani.jpg", "w": 440, "h": 460, "official": true,
+    "alt": "Dettaglio delle mani di Elisabetta Tancini con un pinda in tessuto."
+  },
+  "dettaglioMateriali": {
+    "file": "media/dettaglio-materiali.jpg", "w": 720, "h": 380, "official": true,
+    "alt": "Materiali del rituale: erbe essiccate in vasi di vetro, ciotola in legno e spago."
+  },
+  "dettaglioMani": {
+    "file": "media/dettaglio-mani-cute.jpg", "w": 460, "h": 320, "official": true,
+    "alt": "Dettaglio delle mani durante una manualità sul cuoio capelluto."
+  }
+}

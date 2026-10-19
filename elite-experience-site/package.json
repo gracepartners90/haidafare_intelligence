@@ -1,0 +1,13 @@
+{
+  "name": "elite-experience-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sito Élite Experience — Metodo e Formazione Hair Spa. Generatore statico senza dipendenze.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs && node build.mjs --bundle",
+    "build:deploy": "node build.mjs --pretty",
+    "preview": "npx --yes http-server dist -p 4180 -c-1"
+  },
+  "engines": { "node": ">=18" }
+}

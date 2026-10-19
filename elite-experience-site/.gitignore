@@ -1,0 +1,3 @@
+# Output generato: si versiona solo il file unico di anteprima, apribile con doppio clic
+dist/*
+!dist/elite-experience-prototipo.html

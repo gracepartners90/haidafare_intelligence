@@ -1,0 +1,13 @@
+{
+  "_info": "Sequenza 'Il metodo, in pratica'. Ogni capitolo usa un'immagine del registro media con inquadratura (pos) e ingrandimento (zoom). Quando saranno disponibili i frame dei videocorsi, sostituire 'media' con le nuove immagini. 'video': percorso del video completo della selezione (null = spazio da riempire).",
+  "title": "Il metodo, in pratica.",
+  "line": "Il gesto, i materiali, il rituale: il Metodo Élite visto da vicino.",
+  "secondsPerChapter": 5,
+  "video": null,
+  "chapters": [
+    { "word": "Tecnica", "line": { "text": "La mano lavora sul cuoio capelluto con precisione e misura.", "verified": false }, "media": "lavatesta", "pos": "70% 42%", "zoom": 1.6 },
+    { "word": "Manualità", "line": { "text": "Il gesto si costruisce: ritmo, direzione, continuità.", "verified": false }, "media": "pinda", "pos": "50% 82%", "zoom": 1.75 },
+    { "word": "Protocollo", "line": { "text": "Ogni materiale al suo posto, ogni passaggio in sequenza.", "verified": false }, "media": "pinda", "pos": "6% 82%", "zoom": 1.65 },
+    { "word": "Applicazione", "line": { "text": "Il rituale completo, nel tempo reale del salone.", "verified": false }, "media": "lavatesta", "pos": "55% 48%", "zoom": 1.06 }
+  ]
+}

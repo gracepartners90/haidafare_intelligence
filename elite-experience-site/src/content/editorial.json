@@ -1,0 +1,35 @@
+{
+  "_info": "Journal (Élite & More), collaborazioni e testimonianze. Gli elenchi vuoti sono intenzionali: non pubblicare articoli, partnership o recensioni non reali.",
+  "journal": {
+    "name": "Journal — Élite & More",
+    "categories": [
+      { "slug": "metodo-e-rituali", "name": "Metodo e rituali", "description": "Il Metodo Élite, i rituali e le manualità che lo esprimono." },
+      { "slug": "formazione-hair-spa", "name": "Formazione Hair Spa", "description": "Come si impara l’Hair Spa: percorsi, approfondimenti e orientamento." },
+      { "slug": "professione-e-salone", "name": "Professione e salone", "description": "L’Hair Spa nel lavoro quotidiano del salone." },
+      { "slug": "elisabetta-tancini", "name": "Elisabetta Tancini", "description": "La visione e i contenuti firmati dalla fondatrice." },
+      { "slug": "collaborazioni-ed-eventi", "name": "Collaborazioni ed eventi", "description": "Masterclass, eventi e progetti con aziende del settore." }
+    ],
+    "articles": [],
+    "plan": [
+      { "category": "metodo-e-rituali", "title": "Che cosa significa Hair Spa in salone", "status": "in preparazione" },
+      { "category": "formazione-hair-spa", "title": "Come scegliere il primo percorso Hair Spa", "status": "in preparazione" },
+      { "category": "elisabetta-tancini", "title": "Il gesto come strumento professionale", "status": "in preparazione" }
+    ]
+  },
+  "collaborations": {
+    "types": [
+      { "name": "Collaborazioni con aziende", "text": "Progetti formativi e di contenuto con aziende e brand Hair & Beauty." },
+      { "name": "Attività educational", "text": "Formazione per team, reti commerciali e accademie del settore." },
+      { "name": "Masterclass", "text": "Sessioni dimostrative dedicate ai rituali e alle manualità Hair Spa." },
+      { "name": "Eventi", "text": "Interventi e dimostrazioni in fiere, congressi ed eventi professionali." },
+      { "name": "Progetti speciali", "text": "Iniziative costruite su misura con il partner." },
+      { "name": "Opportunità internazionali", "text": "Collaborazioni e attività formative fuori dall’Italia." }
+    ],
+    "documented": [
+      { "name": "Z.One", "status": "da verificare", "description": null, "logo": null, "period": null },
+      { "name": "Maletti", "status": "da verificare", "description": null, "logo": null, "period": null }
+    ],
+    "events": []
+  },
+  "testimonials": []
+}
