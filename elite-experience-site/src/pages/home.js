@@ -27,15 +27,14 @@ export default [{
         ${btn(ctx, { label: 'Il Metodo Élite', to: 'metodo-elite/', variant: 'ghost-light' })}
       </div>
     </div>
-    <a class="hero__next" href="${ctx.href('#metodo')}"><span>Scopri il metodo</span><i aria-hidden="true"></i></a>
+    <ul class="hero__facts" aria-label="In sintesi">
+      <li><b>Hair Spa</b>rituali, tecniche e manualità</li>
+      <li><b>Un metodo professionale</b>ideato da Elisabetta Tancini</li>
+      <li><b>Formazione</b>online e in presenza</li>
+      <li><b>Per professionisti</b>e saloni</li>
+    </ul>
   </div>
 </section>
-<ul class="orient" aria-label="In sintesi">
-  <li><b>Hair Spa</b>rituali, tecniche e manualità</li>
-  <li><b>Un metodo professionale</b>ideato da Elisabetta Tancini</li>
-  <li><b>Formazione</b>online e in presenza</li>
-  <li><b>Per professionisti</b>e saloni</li>
-</ul>
 
 <!-- 02 IL METODO -->
 <section class="sec home-method" id="metodo">

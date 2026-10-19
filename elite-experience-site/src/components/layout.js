@@ -33,7 +33,8 @@ export function header(ctx) {
 <header class="hdr" data-hdr>
   <div class="hdr__in">
     <a class="hdr__logo" href="${ctx.href('')}" aria-label="Élite Experience — Home">
-      <img ${ctx.src('brand/logo-elite-experience.png')} width="1818" height="246" alt="Élite Experience">
+      <img class="hdr__logo-dark" ${ctx.src('brand/logo-elite-experience.png')} width="1818" height="246" alt="Élite Experience">
+      <img class="hdr__logo-light" ${ctx.src('brand/logo-elite-experience-white.png')} width="1818" height="246" alt="" aria-hidden="true">
     </a>
     <nav class="hdr__nav" aria-label="Navigazione principale"><ul>${navItems(ctx)}</ul></nav>
     ${btn(ctx, { ...headerCta, variant: 'primary', cls: 'btn--sm hdr__cta' })}

@@ -126,7 +126,9 @@ richiama per chiave nelle pagine. I file vanno in `src/assets/media/`. Gli spazi
 senza fotografia mostrano un riquadro con il soggetto da fotografare.
 
 - **Hero della home**: chiave `heroHome`. Per cambiare la foto basta sostituire il file
-  indicato (orizzontale, almeno 2400 px di lato lungo) e aggiornare `w`, `h` e `alt`.
+  indicato (orizzontale, almeno 2000 px di lato lungo) e aggiornare `w`, `h` e `alt`. Il
+  filtro (viraggio nel colore del brand, grana, vignettatura) è applicato in pagina da
+  `sections.css` (sezione "Home: hero"): il file della foto resta originale.
 - **Immagini delle card dei corsi**: campo `cardImage` di ogni corso in `courses.json`
   (chiave della foto e inquadratura).
 - `"provisional": true` segnala una foto provvisoria: con le note di lavorazione attive

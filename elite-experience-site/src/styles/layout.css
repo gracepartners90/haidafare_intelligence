@@ -23,6 +23,15 @@
 .hdr__in { display: flex; align-items: center; gap: clamp(16px, 2vw, 36px); height: var(--hdr); max-width: calc(var(--maxw) + var(--g) * 2); margin: 0 auto; padding: 0 var(--g); }
 .hdr__logo { flex: none; display: block; }
 .hdr__logo img { height: 30px; width: auto; }
+.hdr__logo-light { display: none; }
+/* Intestazione trasparente sopra la hero della home (classe gestita da site.js) */
+.hdr { transition: background-color .45s, border-color .45s; }
+.hdr--over { background: transparent; border-bottom-color: rgba(245, 240, 235, .14); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.hdr--over .hdr__logo-dark { display: none; }
+.hdr--over .hdr__logo-light { display: block; }
+.hdr--over .hdr__nav > ul > li > a, .hdr--over .sub-toggle, .hdr--over .hdr__burger { color: var(--ivory); }
+.hdr--over .hdr__cta { background: transparent; border-color: rgba(245, 240, 235, .6); color: var(--ivory); }
+.hdr--over .hdr__cta:hover { background: var(--ivory); border-color: var(--ivory); color: var(--ink); }
 .hdr__nav { margin-left: auto; }
 .hdr__nav > ul { display: flex; align-items: center; gap: clamp(14px, 1.5vw, 26px); }
 .hdr__nav a, .sub-toggle { display: inline-flex; align-items: center; gap: 6px; padding: 8px 0; font-size: .875rem; font-weight: 500; letter-spacing: .005em; text-decoration: none; background: none; border: 0; position: relative; white-space: nowrap; }

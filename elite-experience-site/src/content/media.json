@@ -1,9 +1,9 @@
 {
   "_info": "Registro immagini. official=true: foto fornite da Élite Experience. Per aggiungere una foto: copiarla in src/assets/media e registrarla qui.",
   "heroHome": {
-    "file": "media/hair-spa-massaggio-testa.jpg", "w": 1344, "h": 768, "official": true,
-    "note": "Hero della home. Per gli schermi grandi è consigliata una versione dello stesso scatto con lato lungo di almeno 2400 px.",
-    "alt": "Manualità Hair Spa sul cuoio capelluto: una cliente rilassata, a occhi chiusi, durante un massaggio alla testa."
+    "file": "media/hair-spa-acqua-hero.jpg", "w": 2000, "h": 1143, "official": true,
+    "note": "Hero della home: la foto viene filtrata in pagina (tono, grana, vignettatura), il file resta originale.",
+    "alt": "Le mani dell'operatrice accompagnano l'acqua sul cuoio capelluto della cliente durante un rituale Hair Spa, accanto a un rubinetto dorato."
   },
   "massaggioTesta": {
     "file": "media/hair-spa-massaggio-testa.jpg", "w": 1344, "h": 768, "official": true,

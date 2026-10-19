@@ -33,9 +33,19 @@
 
   /* ---------- Menu mobile ---------- */
   const burger = $('[data-burger]'), drawer = $('[data-drawer]');
-  const setDrawer = (open) => { if (!drawer) return; drawer.hidden = !open; burger.setAttribute('aria-expanded', String(open)); };
+  const setDrawer = (open) => { if (!drawer) return; drawer.hidden = !open; burger.setAttribute('aria-expanded', String(open)); syncHdr(); };
   if (burger) burger.addEventListener('click', () => setDrawer(drawer.hidden));
   if (drawer) drawer.addEventListener('click', (e) => { if (e.target.closest('a')) setDrawer(false); });
+
+  /* ---------- Intestazione trasparente finché la hero della home è in cima ---------- */
+  const hdr = $('[data-hdr]');
+  function syncHdr() {
+    if (!hdr) return;
+    const hero = $$('.hero').find((h) => h.offsetParent !== null);
+    hdr.classList.toggle('hdr--over', !!hero && window.scrollY < 24 && (!drawer || drawer.hidden));
+  }
+  window.addEventListener('scroll', syncHdr, { passive: true });
+  syncHdr();
 
   /* ---------- Video: apre il file se presente, altrimenti dichiara lo spazio da riempire ---------- */
   const modal = $('[data-vmodal]');
@@ -173,6 +183,7 @@
       if (anchor && selectTab(anchor)) { /* scheda dei contatti */ }
       const el = anchor && target.querySelector(`#${CSS.escape(anchor)}`);
       if (el) el.scrollIntoView(); else window.scrollTo(0, 0);
+      syncHdr();
     };
     window.addEventListener('hashchange', show);
     show();
