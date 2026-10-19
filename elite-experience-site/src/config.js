@@ -41,7 +41,7 @@ export const nav = [
     courses: true, // aggiunge l'elenco delle schede corso
   },
   { label: 'Per i Saloni', to: 'per-i-saloni/' },
-  { label: 'Journal', to: 'journal/' },
+  { label: 'Élite & More', to: 'elite-e-more/' },
   { label: 'Contatti', to: 'contatti/' },
 ];
 

@@ -142,7 +142,7 @@ function coursePage(c, all, collection) {
         <div><dt>Prerequisiti</dt><dd>${val(c.prerequisites, 'Eventuali prerequisiti')}</dd></div>
         <div><dt>Per chi fa già Hair Spa</dt><dd>${tbd('Utilità del corso per chi ha già competenze')}</dd></div>
       </dl>
-      ${c.id === 'wellness-ritual' ? `<p class="note">${draft('Il Wellness Ritual può essere proposto come percorso introduttivo al Metodo Élite, previa conferma del programma ufficiale.')}</p>` : ''}
+      ${c.id === 'wellness-ritual' ? '<p class="note">Il corso ideale per i primi approcci all’Hair Spa.</p>' : ''}
     </div>
     <div>
       ${sectionHead({ eyebrow: 'Come funziona', title: 'Informazioni pratiche' })}

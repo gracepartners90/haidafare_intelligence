@@ -1,7 +1,8 @@
 import { site } from '../config.js';
 import { esc, tbd, draft, eyebrow, sectionHead, btn, arrow, media, slot, tbdBlock, breadcrumb, faqList, form, videoBlock } from '../components/core.js';
-import { courseCard, courseUrl } from '../components/course.js';
+import { courseCard, courseUrl, levelChip } from '../components/course.js';
 import { breadcrumbs } from '../components/seo.js';
+import { latestArticles, articleGrid } from '../components/editorial.js';
 import { page } from '../components/layout.js';
 
 const H = { label: 'Home', to: '' };
@@ -34,7 +35,7 @@ const saloni = {
         <h2 class="h2serif">Acquisire competenze e conoscere i rituali Hair Spa.</h2>
         <p>Per il salone che vuole introdurre l’Hair Spa: capire da dove partire, quali competenze acquisire e quali corsi scegliere per le prime manualità.</p>
         <p class="sub-h">Percorsi consigliati</p>
-        <ul class="taglist"><li><a href="${ctx.href(courseUrl(wellness))}">${esc(wellness.name)}</a> <span class="chip chip--draft">introduttivo · da confermare</span></li><li><a href="${ctx.href('academy/formazione-in-presenza/')}">Formazione in presenza</a></li></ul>
+        <ul class="taglist"><li><a href="${ctx.href(courseUrl(wellness))}">${esc(wellness.name)}</a> ${levelChip(wellness.level)}</li><li><a href="${ctx.href('academy/formazione-in-presenza/')}">Formazione in presenza</a></li></ul>
       </article>
       <article class="need need--dark" id="approfondire">
         <p class="eyebrow">Per chi desidera approfondire</p>
@@ -69,17 +70,6 @@ const saloni = {
   </div>
 </section>
 
-<section class="sec sec--ivory">
-  <div class="wrap">
-    ${sectionHead({ eyebrow: 'Testimonianze', title: 'Dai saloni che si sono formati.' })}
-    <div class="testi">
-      ${videoBlock(ctx, { posterSubject: 'Videotestimonianza di un titolare di salone', title: 'Videotestimonianza', note: 'Inserire una testimonianza reale con autorizzazione.', ratio: '4/5', tone: 'light' })}
-      <figure class="testi__quote testi__quote--text"><blockquote>${tbd('Citazione reale del titolare')}</blockquote><figcaption>${tbd('Nome, salone, città')}</figcaption></figure>
-      <figure class="testi__quote testi__quote--text"><blockquote>${tbd('Citazione reale di un operatore')}</blockquote><figcaption>${tbd('Nome, salone, città')}</figcaption></figure>
-    </div>
-  </div>
-</section>
-
 <section class="sec">
   <div class="wrap split split--4-8">
     <div>${sectionHead({ eyebrow: 'FAQ', title: 'Domande dei saloni' })}</div>
@@ -103,25 +93,25 @@ const saloni = {
   },
 };
 
-/* ---------------- JOURNAL ---------------- */
+/* ---------------- ÉLITE & MORE ---------------- */
 function journalPages(data) {
   const j = data.editorial.journal;
-  const base = [H, { label: 'Journal', to: 'journal/' }];
-  const catLabel = (slug) => j.categories.find((c) => c.slug === slug).name;
-  const planCard = (ctx, a) => `<article class="jcard jcard--plan">${a.image ? media(ctx, a.image, { ratio: '3/2', position: a.imagePos }) : slot({ subject: 'Immagine dell’articolo', ratio: '3/2' })}<p class="jcard__meta"><span>${esc(catLabel(a.category))}</span><span class="chip chip--tbd">In preparazione</span></p><h3 class="jcard__title">${esc(a.title)}</h3><p class="jcard__note">Proposta editoriale: non ancora pubblicato.</p></article>`;
-  const cats = (ctx, active) => `<nav class="cats" aria-label="Categorie del Journal"><ul>
-    <li><a href="${ctx.href('journal/')}"${!active ? ' aria-current="page"' : ''}>Tutti</a></li>
-    ${j.categories.map((c) => `<li><a href="${ctx.href(`journal/categoria/${c.slug}/`)}"${active === c.slug ? ' aria-current="page"' : ''}>${esc(c.name)}</a></li>`).join('')}
+  const base = [H, { label: 'Élite & More', to: 'elite-e-more/' }];
+  const cats = (ctx, active) => `<nav class="cats" aria-label="Categorie di Élite &amp; More"><ul>
+    <li><a href="${ctx.href('elite-e-more/')}"${!active ? ' aria-current="page"' : ''}>Tutti</a></li>
+    ${j.categories.map((c) => `<li><a href="${ctx.href(`elite-e-more/categoria/${c.slug}/`)}"${active === c.slug ? ' aria-current="page"' : ''}>${esc(c.name)}</a></li>`).join('')}
   </ul></nav>`;
+  const toImport = `<p class="empty">Gli articoli di Élite &amp; More sono da importare dal blog attuale (<a href="${j.source}" target="_blank" rel="noopener">elitexperience.it/elite-e-more</a>).</p>`;
 
   const archive = {
-    route: 'journal/',
+    route: 'elite-e-more/',
     render(ctx) {
+      const all = latestArticles(ctx.data);
       const body = `
 <section class="phero phero--center">
   <div class="wrap">
     ${breadcrumb(ctx, base)}
-    ${eyebrow('Journal')}
+    ${eyebrow('Élite Experience')}
     <h1 class="phero__title">Élite &amp; More</h1>
     <p class="phero__lead">Cultura Hair Spa, tecniche e manualità, formazione professionale e la visione di Elisabetta Tancini.</p>
   </div>
@@ -129,31 +119,31 @@ function journalPages(data) {
 <section class="sec sec--tight">
   <div class="wrap">
     ${cats(ctx)}
-    ${j.articles.length ? '' : `<p class="empty">Nessun articolo è ancora pubblicato. Di seguito il piano editoriale in preparazione.</p>`}
-    <div class="jgrid">${j.plan.map((a) => planCard(ctx, a)).join('')}</div>
-    <p class="small">${arrow(ctx, { label: 'Vedi l’impaginazione di un articolo (esempio di layout)', to: 'journal/esempio-impaginazione/' })}</p>
+    ${all.length ? '' : toImport}
+    ${articleGrid(ctx, all, { min: 3 })}
+    <p class="small">${arrow(ctx, { label: 'Vedi l’impaginazione di un articolo (esempio di layout)', to: 'elite-e-more/esempio-impaginazione/' })}</p>
   </div>
 </section>
 <section class="sec sec--ivory">
   <div class="wrap">
-    ${sectionHead({ eyebrow: 'Categorie', title: 'Gli argomenti del Journal.' })}
-    <ul class="catlist">${j.categories.map((c) => `<li><a href="${ctx.href(`journal/categoria/${c.slug}/`)}"><h3 class="h3serif">${esc(c.name)}</h3><p>${esc(c.description)}</p><i aria-hidden="true">→</i></a></li>`).join('')}</ul>
+    ${sectionHead({ eyebrow: 'Categorie', title: 'Gli argomenti di Élite & More.' })}
+    <ul class="catlist">${j.categories.map((c) => `<li><a href="${ctx.href(`elite-e-more/categoria/${c.slug}/`)}"><h3 class="h3serif">${esc(c.name)}</h3><p>${esc(c.description)}</p><i aria-hidden="true">→</i></a></li>`).join('')}</ul>
   </div>
 </section>`;
-      return page(ctx, { title: 'Journal — Élite & More | Élite Experience', description: 'Il Journal di Élite Experience: cultura Hair Spa, tecniche e manualità, formazione professionale, la visione di Elisabetta Tancini, collaborazioni ed eventi.', jsonld: [breadcrumbs(base)], bodyClass: 'p-journal', body });
+      return page(ctx, { title: 'Élite & More — Cultura e formazione Hair Spa | Élite Experience', description: 'Élite & More di Élite Experience: cultura Hair Spa, tecniche e manualità, formazione professionale, la visione di Elisabetta Tancini, collaborazioni ed eventi.', jsonld: [breadcrumbs(base)], bodyClass: 'p-journal', body });
     },
   };
 
   const categories = j.categories.map((cat) => ({
-    route: `journal/categoria/${cat.slug}/`,
+    route: `elite-e-more/categoria/${cat.slug}/`,
     render(ctx) {
-      const crumbs = [...base, { label: cat.name, to: `journal/categoria/${cat.slug}/` }];
-      const plan = j.plan.filter((a) => a.category === cat.slug);
+      const crumbs = [...base, { label: cat.name, to: `elite-e-more/categoria/${cat.slug}/` }];
+      const list = latestArticles(ctx.data, { category: cat.slug });
       const body = `
 <section class="phero phero--center">
   <div class="wrap">
     ${breadcrumb(ctx, crumbs)}
-    ${eyebrow('Journal — Categoria')}
+    ${eyebrow('Élite & More — Categoria')}
     <h1 class="phero__title">${esc(cat.name)}</h1>
     <p class="phero__lead">${esc(cat.description)}</p>
   </div>
@@ -161,24 +151,23 @@ function journalPages(data) {
 <section class="sec sec--tight">
   <div class="wrap">
     ${cats(ctx, cat.slug)}
-    <p class="empty">Nessun articolo pubblicato in questa categoria.</p>
-    ${plan.length ? `<div class="jgrid">${plan.map((a) => planCard(ctx, a)).join('')}</div>` : ''}
+    ${list.length ? articleGrid(ctx, list) : '<p class="empty">Nessun articolo collegato in questa categoria.</p>'}
   </div>
 </section>`;
-      return page(ctx, { title: `${cat.name} — Journal | Élite Experience`, description: `${cat.description} Articoli del Journal di Élite Experience.`, jsonld: [breadcrumbs(crumbs)], bodyClass: 'p-journal', body });
+      return page(ctx, { title: `${cat.name} — Élite & More | Élite Experience`, description: `${cat.description} Articoli di Élite & More.`, jsonld: [breadcrumbs(crumbs)], bodyClass: 'p-journal', body });
     },
   }));
 
   const example = {
-    route: 'journal/esempio-impaginazione/',
+    route: 'elite-e-more/esempio-impaginazione/',
     render(ctx) {
-      const crumbs = [...base, { label: 'Esempio di impaginazione', to: 'journal/esempio-impaginazione/' }];
+      const crumbs = [...base, { label: 'Esempio di impaginazione', to: 'elite-e-more/esempio-impaginazione/' }];
       const body = `
 <article class="article">
   <header class="article__head wrap">
     ${breadcrumb(ctx, crumbs)}
     <p class="article__flag">Esempio di layout — articolo non pubblicato</p>
-    <p class="article__meta"><a href="${ctx.href('journal/categoria/metodo-e-rituali/')}">Metodo e rituali</a> · <time>${tbd('Data di pubblicazione')}</time></p>
+    <p class="article__meta"><a href="${ctx.href('elite-e-more/categoria/metodo-e-rituali/')}">Metodo e rituali</a> · <time>${tbd('Data di pubblicazione')}</time></p>
     <h1 class="article__title">${tbd('Titolo dell’articolo')}</h1>
     <p class="article__lead">${tbd('Sommario: due righe che introducono l’argomento')}</p>
     <div class="article__author">${media(ctx, 'ritratto', { ratio: '1/1', position: '50% 18%', cls: 'avatar' })}<p><b>Elisabetta Tancini</b><span>Fondatrice di Élite Experience</span></p></div>
@@ -187,7 +176,7 @@ function journalPages(data) {
   <div class="article__body wrap-narrow">
     <p>${tbd('Corpo dell’articolo. Paragrafo di apertura.')}</p>
     <h2>${tbd('Sottotitolo di sezione')}</h2>
-    <p>${tbd('Paragrafo. I testi del Journal devono essere originali e verificati.')}</p>
+    <p>${tbd('Paragrafo. I testi devono essere originali e verificati.')}</p>
     <blockquote class="quote"><p>${tbd('Citazione evidenziata')}</p></blockquote>
     <figure>${media(ctx, 'dettaglioMani', { ratio: '16/10' })}<figcaption>${tbd('Didascalia')}</figcaption></figure>
     <p>${tbd('Paragrafo di chiusura.')}</p>
@@ -199,12 +188,12 @@ function journalPages(data) {
   </div>
   <section class="sec sec--ivory">
     <div class="wrap">
-      ${sectionHead({ eyebrow: 'Articoli correlati', title: 'Continua a leggere.' })}
-      <div class="jgrid">${j.plan.map((a) => planCard(ctx, a)).join('')}</div>
+      ${sectionHead({ eyebrow: 'Élite & More', title: 'Continua a leggere.' })}
+      ${articleGrid(ctx, latestArticles(ctx.data, { n: 3 }), { min: 3 })}
     </div>
   </section>
 </article>`;
-      return page(ctx, { title: 'Esempio di impaginazione articolo — Journal | Élite Experience', description: 'Modello di impaginazione degli articoli del Journal di Élite Experience.', noindex: true, bodyClass: 'p-article', body });
+      return page(ctx, { title: 'Esempio di impaginazione articolo — Élite & More | Élite Experience', description: 'Modello di impaginazione degli articoli di Élite & More.', noindex: true, bodyClass: 'p-article', body });
     },
   };
   return [archive, ...categories, example];

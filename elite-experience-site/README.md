@@ -49,11 +49,12 @@ elite-experience-site/
 │   │   ├── courses.json      Schede corso, Élite Ritual Collection, FAQ
 │   │   ├── media.json        Registro delle fotografie ufficiali con testi alternativi
 │   │   ├── practice.json     Sequenza "Il metodo, in pratica"
-│   │   └── editorial.json    Journal, collaborazioni, eventi, testimonianze
+│   │   └── editorial.json    Élite & More (articoli), collaborazioni, eventi
 │   ├── components/           Componenti riutilizzabili (HTML generato da funzioni)
 │   │   ├── core.js           Titoli, pulsanti, immagini, segnaposto, video, FAQ, form
 │   │   ├── layout.js         Header, menu, footer, <head> con metadati SEO
 │   │   ├── course.js         Card corso, livello, prezzo, promozione, collezione
+│   │   ├── editorial.js      Anteprime degli articoli di Élite & More
 │   │   ├── practice.js       Sequenza cinematografica a capitoli
 │   │   └── seo.js            Dati strutturati JSON-LD
 │   ├── pages/                Una funzione per pagina (course.js = modello unico delle schede)
@@ -75,7 +76,7 @@ elite-experience-site/
 | Schede corso (5, da un unico modello) | `/academy/formazione-online/<slug>/` |
 | Formazione in Presenza | `/academy/formazione-in-presenza/` |
 | Per i Saloni | `/per-i-saloni/` |
-| Journal "Elite & More", categorie, articolo | `/journal/…` |
+| Élite & More: archivio, categorie, esempio di articolo | `/elite-e-more/…` (stesso indirizzo del sito attuale) |
 | Contatti (3 moduli) | `/contatti/` |
 | Privacy, 404 | `/privacy/`, `/404.html` |
 
@@ -113,8 +114,10 @@ Campi principali: `name`, `level`, `shortDescription`, `fullDescription`, `heroI
 `promotion`, `purchaseUrl`, `pdf` (percorso in `assets/`, es. `docs/pinda-ritual.pdf`),
 `faq`, `related`.
 
-- **Prezzo**: finché `price` è `null` non viene mostrato alcun prezzo e i dati strutturati
-  del corso non dichiarano un'offerta.
+- **Prezzo**: confermati Wellness Ritual € 190 e gli altri rituali € 290. Con `price` a
+  `null` il prezzo non viene mostrato e i dati strutturati del corso non dichiarano un'offerta.
+- **Livello**: Wellness Ritual "Primi approcci", Pinda e Brushing "Medium", Hairgym "Base e
+  Medium", Relax Full "Pro".
 - **Promozione**: il banner compare solo con `"active": true` **e** condizioni compilate.
 - **Acquisto**: `purchaseUrl` è il link diretto al corso sulla piattaforma
   academy.elitexperience.it; se manca, il pulsante porta alla home della piattaforma.
@@ -162,10 +165,11 @@ riferimenti per la privacy policy e la cookie policy.
 **Elisabetta Tancini** — biografia verificata, percorso professionale, citazione firmata,
 eventuali riconoscimenti, altre fotografie ufficiali (anche verticali, di dettaglio, in aula).
 
-**Corsi** — per ciascuno dei 5 rituali: nome ufficiale, livello, descrizioni, competenze,
-tecniche e manualità, programma per moduli, durata, modalità di accesso, materiali, requisiti,
-prezzo, eventuale promozione con condizioni, link di acquisto, scheda PDF, FAQ, immagini
-e un estratto video autentico. Conferma della composizione della Élite Ritual Collection.
+**Corsi** — per ciascuno dei 5 rituali: nome ufficiale, descrizioni, competenze, tecniche e
+manualità, programma per moduli, durata, modalità di accesso, materiali, requisiti, eventuale
+promozione con condizioni, link di acquisto, scheda PDF, FAQ, immagini e un estratto video
+autentico (prezzi e livelli sono già confermati). Composizione e prezzo della Élite Ritual
+Collection.
 
 **Formazione in presenza** — date, sede, durata, numero di partecipanti, condizioni per la
 formazione nel salone.
@@ -173,9 +177,12 @@ formazione nel salone.
 **Per i Saloni e Collaborazioni** (sezione della pagina di Elisabetta) — servizi effettivamente attivi, stato delle collaborazioni
 con Z.One e Maletti (oggi "da verificare"), loghi autorizzati, eventi documentati.
 
-**Prove sociali** — testimonianze reali con autorizzazione alla pubblicazione.
+**Élite & More** — gli articoli già pubblicati su elitexperience.it/elite-e-more (titolo,
+indirizzo, data, estratto, immagine di copertina): la home mostra automaticamente i 3 più
+recenti. Si inseriscono in `editorial.json` → `journal.articles`.
 
-**Journal** — primi articoli; le categorie e il piano editoriale sono già impostati.
+Le testimonianze sono state tolte dal sito: si possono reintrodurre quando saranno
+disponibili testimonianze reali con autorizzazione alla pubblicazione.
 
 **Video** — estratti dei videocorsi, selezione completa per "Il metodo, in pratica", frame
 per le anteprime.
@@ -188,7 +195,7 @@ per le anteprime.
 - Open Graph per la condivisione.
 - Dati strutturati JSON-LD: EducationalOrganization, WebSite, Person (Elisabetta Tancini),
   Course (con Offer solo se il prezzo è confermato), BreadcrumbList.
-- `sitemap.xml` e `robots.txt` generati; la pagina di esempio del Journal è `noindex`.
+- `sitemap.xml` e `robots.txt` generati; la pagina di esempio di Élite & More è `noindex`.
 - Un solo H1 per pagina, gerarchia dei titoli coerente, testi alternativi su ogni immagine.
 
 ## Accessibilità

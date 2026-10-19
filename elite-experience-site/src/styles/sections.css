@@ -61,6 +61,7 @@
 .picker__go { display: inline-flex; align-items: center; gap: 12px; padding-top: .3em; font-size: var(--t-small); font-weight: 500; white-space: nowrap; }
 .picker__go span { opacity: 0; transform: translateX(-8px); transition: opacity .4s, transform .4s var(--ease); }
 .picker__go i { display: grid; place-items: center; width: 46px; height: 46px; border: 1px solid var(--line-strong); border-radius: 50%; font-style: normal; transition: background-color .3s, color .3s, border-color .3s; }
+.picker__price { color: var(--ink); letter-spacing: .06em; }
 .picker__item.is-on .picker__name { color: var(--choc); }
 .picker__item.is-on .picker__go span { opacity: 1; transform: none; }
 .picker__item.is-on .picker__go i { background: var(--ink); border-color: var(--ink); color: var(--ivory); }
@@ -105,20 +106,23 @@
 .tmode--presence { background: var(--choc); color: var(--white); }
 .tmode--presence .eyebrow { color: var(--beige); }
 
-/* Home: saloni, testimonianze, journal, contatti */
+/* Home: saloni, Élite & More, contatti */
 .paths { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line-strong); }
 .path { padding: clamp(28px, 3vw, 44px) clamp(24px, 3vw, 56px) clamp(28px, 3vw, 44px) 0; }
 .path + .path { padding-left: clamp(24px, 3vw, 56px); border-left: 1px solid var(--line); }
 .path p { margin: 14px 0 22px; color: var(--muted); max-width: 34em; }
-.testi { display: grid; grid-template-columns: 4fr 5fr 4fr; gap: var(--gap); align-items: start; }
-.testi__quote { display: grid; gap: 16px; }
-.testi__quote blockquote { font-family: var(--serif); font-size: 1.4rem; }
-.testi__quote--text { align-self: center; padding: 32px; background: var(--ivory); }
-.testi__quote figcaption { font-size: .8125rem; }
 .jgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
 .jcard__meta { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 18px; font-size: var(--t-micro); letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--choc); }
 .jcard__title { margin-top: 12px; font-size: var(--t-h3); }
 .jcard__note { margin-top: 8px; font-size: .8125rem; color: var(--muted); }
+.jcard { display: flex; flex-direction: column; }
+.jcard__media { display: block; width: 100%; overflow: hidden; }
+.jcard__media .ph img { transition: transform 1.2s var(--ease); }
+.jcard:hover .jcard__media .ph img { transform: scale(1.03); }
+.jcard__title a { text-decoration: none; }
+.jcard__title a:hover { text-decoration: underline; }
+.jcard__excerpt { margin-top: 10px; color: var(--muted); font-size: var(--t-small); }
+.jcard .arrow { align-self: flex-start; margin-top: 16px; }
 .home-contact__in { max-width: 920px; text-align: center; }
 .home-contact__in > p { margin: 18px auto 0; max-width: 36em; color: var(--beige); }
 .home-contact .actions { justify-content: center; }
@@ -332,14 +336,14 @@
   .cgrid { grid-template-columns: 1fr 1fr; }
   .ccard, .ccard--l { grid-column: span 1; }
   .coll { grid-template-columns: 1fr; align-items: start; }
-  .testi, .jgrid, .related { grid-template-columns: 1fr 1fr; }
+  .jgrid, .related { grid-template-columns: 1fr 1fr; }
   .manual__text { grid-column: 1 / -1; grid-row: auto; }
   .manual__a { grid-column: 1 / -1; grid-row: auto; }
   .manual__b { grid-column: 1 / span 6; grid-row: auto; } .manual__c { grid-column: 7 / span 6; grid-row: auto; }
   .contact__info { position: static; grid-template-columns: 200px 1fr; align-items: start; }
 }
 @media (max-width: 760px) {
-  .principles, .guide, .howto, .collab-types, .learn, .duo, .partners, .cgrid, .testi, .jgrid, .related { grid-template-columns: 1fr; }
+  .principles, .guide, .howto, .collab-types, .learn, .duo, .partners, .cgrid, .jgrid, .related { grid-template-columns: 1fr; }
   .qa > div, .linelist li, .specs > div, .facts li { grid-template-columns: 1fr; gap: 4px; }
   .ritual-index a, .catlist a { grid-template-columns: 1fr 24px; gap: 6px 12px; }
   .ritual-index__desc, .catlist p { grid-column: 1; grid-row: 2; }
@@ -359,7 +363,6 @@
   .form__grid { grid-template-columns: 1fr; }
   .field--half { grid-column: 1 / -1; }
   .contact__info { grid-template-columns: 1fr; }
-  .testi__quote--text { padding: 24px; }
   .notes { left: 8px; bottom: 8px; padding: 7px 10px; font-size: .625rem; }
 }
 
@@ -368,8 +371,11 @@
 .seq__stage { --side: max(var(--g), calc((100% - var(--maxw)) / 2)); position: relative; height: calc(100vh - var(--hdr)); height: calc(100svh - var(--hdr)); min-height: 600px; max-height: 960px; overflow: hidden; }
 .seq__frame { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 1.4s cubic-bezier(.4, 0, .2, 1); }
 .seq__frame.is-on { opacity: 1; }
-.seq__frame img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos); transform: scale(var(--z, var(--zoom))); transform-origin: var(--pos); will-change: transform; }
-.seq__shade { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(31, 18, 11, .5) 0%, rgba(31, 18, 11, .12) 34%, rgba(31, 18, 11, .2) 58%, rgba(31, 18, 11, .72) 100%); }
+.seq__frame img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos); transform: scale(var(--z, var(--zoom))); transform-origin: var(--pos); will-change: transform; filter: sepia(.35) saturate(.9) contrast(1.08) brightness(.66); }
+/* Stesso trattamento della hero: viraggio nel colore del brand, grana e vignettatura */
+.seq__frame::after { content: ""; position: absolute; inset: 0; background: var(--choc); mix-blend-mode: color; opacity: .42; }
+.seq__shade::after { content: ""; position: absolute; inset: 0; background: url("brand/grain.png") repeat; background-size: 160px; opacity: .14; mix-blend-mode: overlay; }
+.seq__shade { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(110% 90% at 60% 45%, rgba(31, 18, 11, 0) 0%, rgba(31, 18, 11, .45) 72%, rgba(31, 18, 11, .8) 100%), linear-gradient(180deg, rgba(31, 18, 11, .55) 0%, rgba(31, 18, 11, .1) 34%, rgba(31, 18, 11, .2) 58%, rgba(31, 18, 11, .78) 100%); }
 .seq__intro { position: absolute; left: var(--side); top: clamp(48px, 9vh, 104px); z-index: 3; max-width: 640px; transition: opacity .9s, transform .9s var(--ease); }
 .seq__title { font-family: var(--serif); font-size: var(--t-h1); font-weight: 340; line-height: 1; letter-spacing: -.02em; }
 .seq__intro p { margin-top: 16px; max-width: 26em; color: var(--beige); font-size: var(--t-lead); }

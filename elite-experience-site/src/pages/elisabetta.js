@@ -113,9 +113,9 @@ export default [{
       ${tbdBlock({ title: 'Elenco di eventi, masterclass e interventi documentati', lines: ['Evento — luogo — data', 'Masterclass — organizzatore — data'], note: 'Nessun evento viene mostrato finché non è documentato.' })}
     </div>
     <div>
-      ${sectionHead({ eyebrow: 'Journal di Elisabetta', title: 'Contenuti firmati.' })}
-      <p>I contenuti editoriali firmati da Elisabetta saranno raccolti nella categoria dedicata del Journal.</p>
-      ${arrow(ctx, { label: 'Journal — Elisabetta Tancini', to: 'journal/categoria/elisabetta-tancini/' })}
+      ${sectionHead({ eyebrow: 'Élite & More', title: 'Contenuti firmati.' })}
+      <p>I contenuti firmati da Elisabetta sono raccolti nella categoria dedicata di Élite &amp; More.</p>
+      ${arrow(ctx, { label: 'Élite & More — Elisabetta Tancini', to: 'elite-e-more/categoria/elisabetta-tancini/' })}
     </div>
   </div>
 </section>
@@ -128,7 +128,7 @@ export default [{
     </div>
     <div class="actions">
       ${btn(ctx, { label: 'Proponi una collaborazione', to: 'contatti/#collaborazioni', variant: 'light' })}
-      ${arrow(ctx, { label: 'Collaborazioni ed eventi nel Journal', to: 'journal/categoria/collaborazioni-ed-eventi/', cls: 'arrow--light' })}
+      ${arrow(ctx, { label: 'Collaborazioni ed eventi su Élite & More', to: 'elite-e-more/categoria/collaborazioni-ed-eventi/', cls: 'arrow--light' })}
     </div>
   </div>
 </section>`;

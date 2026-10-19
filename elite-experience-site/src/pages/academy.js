@@ -88,7 +88,7 @@ const academyPage = {
   <div class="wrap">
     ${sectionHead({ eyebrow: 'Guida alla scelta', title: 'Da dove partire.' })}
     <div class="guide">
-      <article><p class="guide__q">Non hai ancora esperienza Hair Spa</p><p>${draft('Il Wellness Ritual può essere il percorso introduttivo da cui iniziare.')}</p>${arrow(ctx, { label: 'Wellness Ritual', to: 'academy/formazione-online/wellness-ritual/' })}</article>
+      <article><p class="guide__q">Non hai ancora esperienza Hair Spa</p><p>Il Wellness Ritual è il corso ideale per i primi approcci all’Hair Spa.</p>${arrow(ctx, { label: 'Wellness Ritual', to: 'academy/formazione-online/wellness-ritual/' })}</article>
       <article><p class="guide__q">Offri già servizi Hair Spa</p><p>Scegli il rituale in base alle manualità che vuoi approfondire, confrontando i programmi delle schede.</p>${arrow(ctx, { label: 'Confronta i corsi', to: '#confronto' })}</article>
       <article><p class="guide__q">Vuoi il percorso completo</p><p>La collezione riunisce tutti i rituali del Metodo Élite in un unico percorso.</p>${arrow(ctx, { label: esc(collection.name), to: 'academy/formazione-online/#collezione' })}</article>
       <article><p class="guide__q">Vuoi imparare con Elisabetta</p><p>La formazione in presenza si svolge ad Arona o direttamente nel tuo salone.</p>${arrow(ctx, { label: 'Formazione in presenza', to: 'academy/formazione-in-presenza/' })}</article>

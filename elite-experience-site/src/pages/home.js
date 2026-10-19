@@ -4,14 +4,14 @@ import { courseUrl, ritualPicker, collectionBand } from '../components/course.js
 import { organization, website } from '../components/seo.js';
 import { page } from '../components/layout.js';
 import { practiceSequence } from '../components/practice.js';
+import { latestArticles, articleGrid } from '../components/editorial.js';
 
 export default [{
   route: '',
   render(ctx) {
-    const { courses, collection, editorial } = ctx.data;
+    const { courses, collection } = ctx.data;
     const pinda = courses.find((c) => c.id === 'pinda-ritual');
     const others = courses.filter((c) => c.id !== 'pinda-ritual');
-    const cat = (slug) => editorial.journal.categories.find((c) => c.slug === slug);
 
     const body = `
 <!-- 01 HERO -->
@@ -160,37 +160,18 @@ ${practiceSequence(ctx)}
   </div>
 </section>
 
-<!-- 08 TESTIMONIANZE -->
-<section class="sec home-testi">
-  <div class="wrap">
-    ${sectionHead({ eyebrow: 'Testimonianze', title: 'Le parole dei professionisti.', lead: 'Spazio riservato a testimonianze reali di chi ha seguito i percorsi: video, fotografie e citazioni, con nome, salone e autorizzazione.' })}
-    <div class="testi">
-      ${videoBlock(ctx, { posterSubject: 'Videotestimonianza di un partecipante', title: 'Videotestimonianza', note: 'Inserire una videotestimonianza reale, con autorizzazione del partecipante.', ratio: '4/5', tone: 'light' })}
-      <figure class="testi__quote">${slot({ subject: 'Ritratto del partecipante nel suo salone', ratio: '1/1' })}<blockquote>${tbd('Citazione reale del partecipante')}</blockquote><figcaption>${tbd('Nome, salone, città')}</figcaption></figure>
-      <figure class="testi__quote testi__quote--text"><blockquote>${tbd('Citazione reale del partecipante')}</blockquote><figcaption>${tbd('Nome, salone, città')}</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<!-- 09 JOURNAL -->
+<!-- 08 ÉLITE & MORE: gli ultimi 3 articoli reali -->
 <section class="sec sec--ivory home-journal">
   <div class="wrap">
     <div class="row-head">
-      ${sectionHead({ eyebrow: 'Journal — Élite & More', title: 'Cultura, tecnica e formazione Hair Spa.' })}
-      ${arrow(ctx, { label: 'Vai al Journal', to: 'journal/' })}
+      ${sectionHead({ eyebrow: 'Élite & More', title: 'Cultura, tecnica e formazione Hair Spa.', lead: 'Gli ultimi articoli pubblicati.' })}
+      ${arrow(ctx, { label: 'Tutti gli articoli', to: 'elite-e-more/' })}
     </div>
-    <div class="jgrid">
-      ${editorial.journal.plan.map((a) => `<article class="jcard jcard--plan">
-        ${a.image ? media(ctx, a.image, { ratio: '3/2', position: a.imagePos }) : slot({ subject: 'Immagine dell’articolo', ratio: '3/2' })}
-        <p class="jcard__meta"><span>${esc(cat(a.category).name)}</span><span class="chip chip--tbd">In preparazione</span></p>
-        <h3 class="jcard__title">${esc(a.title)}</h3>
-        <p class="jcard__note">Proposta editoriale: articolo non ancora pubblicato.</p>
-      </article>`).join('')}
-    </div>
+    ${articleGrid(ctx, latestArticles(ctx.data, { n: 3 }), { min: 3 })}
   </div>
 </section>
 
-<!-- 10 CONTATTI -->
+<!-- 09 CONTATTI -->
 <section class="sec sec--choc home-contact">
   <div class="wrap home-contact__in">
     <h2 class="h2serif">Trova il percorso più adatto al tuo salone.</h2>

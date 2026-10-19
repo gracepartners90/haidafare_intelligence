@@ -1,7 +1,7 @@
 {
-  "_info": "Journal (Élite & More), collaborazioni e testimonianze. Gli elenchi vuoti sono intenzionali: non pubblicare articoli, partnership o recensioni non reali.",
+  "_info": "Élite & More, collaborazioni e testimonianze. Gli elenchi vuoti sono intenzionali: non pubblicare articoli, partnership o recensioni non reali.",
   "journal": {
-    "name": "Journal — Élite & More",
+    "name": "Élite & More",
     "categories": [
       { "slug": "metodo-e-rituali", "name": "Metodo e rituali", "description": "Il Metodo Élite, i rituali e le manualità che lo esprimono." },
       { "slug": "formazione-hair-spa", "name": "Formazione Hair Spa", "description": "Come si impara l’Hair Spa: percorsi, approfondimenti e orientamento." },
@@ -9,12 +9,9 @@
       { "slug": "elisabetta-tancini", "name": "Elisabetta Tancini", "description": "La visione e i contenuti firmati dalla fondatrice." },
       { "slug": "collaborazioni-ed-eventi", "name": "Collaborazioni ed eventi", "description": "Masterclass, eventi e progetti con aziende del settore." }
     ],
-    "articles": [],
-    "plan": [
-      { "category": "metodo-e-rituali", "title": "Che cosa significa Hair Spa in salone", "image": "massaggioTesta", "imagePos": "55% 45%", "status": "in preparazione" },
-      { "category": "formazione-hair-spa", "title": "Come scegliere il primo percorso Hair Spa", "image": "dimostrazione", "imagePos": "50% 60%", "status": "in preparazione" },
-      { "category": "elisabetta-tancini", "title": "Il gesto come strumento professionale", "image": "ritualeOlio", "imagePos": "46% 50%", "status": "in preparazione" }
-    ]
+    "source": "https://elitexperience.it/elite-e-more/",
+    "_articles": "Articoli reali pubblicati su Élite & More, anche in ordine sparso: il sito mostra i più recenti per data. Campi: title, url (indirizzo dell'articolo), date (AAAA-MM-GG), category (slug di una categoria o null), excerpt, image (chiave in media.json o null), imagePos.",
+    "articles": []
   },
   "collaborations": {
     "types": [

@@ -76,7 +76,7 @@ export function collectionBlock(ctx, col, courses) {
 
 // Selettore dei rituali (home): elenco chiaro dei corsi con immagine che cambia al passaggio
 export function ritualPicker(ctx, courses) {
-  const meta = (c) => `<span class="picker__meta"><span>Online</span>${levelChip(c.level)}</span>`;
+  const meta = (c) => `<span class="picker__meta"><span>Online</span>${levelChip(c.level)}${c.price != null ? `<span class="picker__price">€ ${esc(c.price)}</span>` : ''}</span>`;
   return `<div class="picker" data-picker>
     <div class="picker__stage" aria-hidden="true">
       ${courses.map((c, i) => `<div class="picker__img${i === 0 ? ' is-on' : ''}">${courseImage(ctx, c, { fill: true })}<span class="picker__label">${esc(c.name)}</span></div>`).join('')}
