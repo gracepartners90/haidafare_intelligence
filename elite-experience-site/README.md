@@ -69,13 +69,12 @@ elite-experience-site/
 | --- | --- |
 | Home | `/` |
 | Il Metodo Élite | `/metodo-elite/` |
-| Elisabetta Tancini | `/elisabetta-tancini/` |
+| Elisabetta Tancini (con la sezione Collaborazioni) | `/elisabetta-tancini/`, `#collaborazioni` |
 | Academy | `/academy/` |
 | Formazione Online (catalogo) | `/academy/formazione-online/` |
 | Schede corso (5, da un unico modello) | `/academy/formazione-online/<slug>/` |
 | Formazione in Presenza | `/academy/formazione-in-presenza/` |
 | Per i Saloni | `/per-i-saloni/` |
-| Collaborazioni | `/collaborazioni/` |
 | Journal "Elite & More", categorie, articolo | `/journal/…` |
 | Contatti (3 moduli) | `/contatti/` |
 | Privacy, 404 | `/privacy/`, `/404.html` |
@@ -126,6 +125,13 @@ Ogni immagine si registra una volta con chiave, file, dimensioni e testo alterna
 richiama per chiave nelle pagine. I file vanno in `src/assets/media/`. Gli spazi ancora
 senza fotografia mostrano un riquadro con il soggetto da fotografare.
 
+- **Hero della home**: chiave `heroHome`. Per cambiare la foto basta sostituire il file
+  indicato (orizzontale, almeno 2400 px di lato lungo) e aggiornare `w`, `h` e `alt`.
+- **Immagini delle card dei corsi**: campo `cardImage` di ogni corso in `courses.json`
+  (chiave della foto e inquadratura).
+- `"provisional": true` segnala una foto provvisoria: con le note di lavorazione attive
+  compare l'etichetta "Immagine provvisoria".
+
 ### Sequenza "Il metodo, in pratica" (`practice.json`)
 
 Quattro capitoli (Tecnica, Manualità, Protocollo, Applicazione) che scorrono come un film
@@ -162,7 +168,7 @@ e un estratto video autentico. Conferma della composizione della Élite Ritual C
 **Formazione in presenza** — date, sede, durata, numero di partecipanti, condizioni per la
 formazione nel salone.
 
-**Per i Saloni e Collaborazioni** — servizi effettivamente attivi, stato delle collaborazioni
+**Per i Saloni e Collaborazioni** (sezione della pagina di Elisabetta) — servizi effettivamente attivi, stato delle collaborazioni
 con Z.One e Maletti (oggi "da verificare"), loghi autorizzati, eventi documentati.
 
 **Prove sociali** — testimonianze reali con autorizzazione alla pubblicazione.

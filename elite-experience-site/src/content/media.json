@@ -1,5 +1,10 @@
 {
   "_info": "Registro immagini. official=true: foto fornite da Élite Experience. Per aggiungere una foto: copiarla in src/assets/media e registrarla qui.",
+  "heroHome": {
+    "file": "media/elisabetta-lavatesta.jpg", "w": 1673, "h": 940, "official": true, "provisional": true,
+    "note": "Hero della home. Provvisoria: sostituire il file con la fotografia hair spa premium scelta (orizzontale, almeno 2400 px di lato lungo).",
+    "alt": "Manualità Hair Spa sul cuoio capelluto al lavatesta, in un ambiente caldo e raccolto."
+  },
   "ritratto": {
     "file": "media/elisabetta-ritratto.jpg", "w": 941, "h": 1672, "official": true,
     "alt": "Elisabetta Tancini, fondatrice di Élite Experience, ritratta nel suo salone."

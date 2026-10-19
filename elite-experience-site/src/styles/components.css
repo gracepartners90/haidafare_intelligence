@@ -21,6 +21,8 @@
 .btn--ghost:hover { background: var(--ink); color: var(--white); }
 .btn--light { background: var(--ivory); color: var(--ink); }
 .btn--light:hover { background: var(--white); }
+.btn--ghost-light { border-color: rgba(245, 240, 235, .7); color: var(--ivory); }
+.btn--ghost-light:hover { background: var(--ivory); border-color: var(--ivory); color: var(--ink); }
 .btn--sm { padding: .8em 1.2em; font-size: .8125rem; }
 .arrow { display: inline-flex; align-items: center; gap: .6em; padding-bottom: 4px; font-weight: 500; font-size: var(--t-small); text-decoration: none; background: linear-gradient(currentColor, currentColor) left bottom / 100% 1px no-repeat; transition: background-size .5s var(--ease); }
 .arrow i { font-style: normal; transition: transform .4s var(--ease); }
@@ -35,7 +37,7 @@
 
 /* ---------- Segnaposto, bozze, note ---------- */
 .tbd { padding: 0 .3em; background: rgba(222, 208, 196, .5); border-bottom: 1px dashed var(--mid); color: var(--choc); font-style: normal; font-family: var(--sans); font-size: .92em; font-weight: 450; letter-spacing: 0; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-.sec--deep .tbd, .coll .tbd, .sec--choc .tbd, .phero--dark .tbd, .eli-hero .tbd, .tbd-block--dark .tbd { background: rgba(245, 240, 235, .12); border-color: var(--beige); color: var(--beige); }
+.sec--deep .tbd, .coll .tbd, .coll-band .tbd, .sec--choc .tbd, .phero--dark .tbd, .eli-hero .tbd, .tbd-block--dark .tbd { background: rgba(245, 240, 235, .12); border-color: var(--beige); color: var(--beige); }
 .tbd-block { margin-top: 28px; padding: 22px 24px; border: 1px dashed var(--mid); background: rgba(236, 227, 218, .45); }
 .tbd-block--dark, .sec--deep .tbd-block, .sec--choc .tbd-block { background: rgba(245, 240, 235, .06); border-color: rgba(222, 208, 196, .55); }
 .tbd-block__label { font-size: .6875rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: var(--choc); }
@@ -56,6 +58,8 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .ph img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); }
 .ph--fill { position: absolute; inset: 0; }
 .ph figcaption { position: absolute; left: 14px; bottom: 12px; color: var(--white); font-size: .75rem; }
+.ph__flag { display: none; position: absolute; top: 12px; left: 12px; z-index: 2; padding: 3px 8px; border-radius: 3px; background: rgba(61, 36, 22, .82); color: var(--ivory); font: 600 .625rem/1.5 var(--sans); letter-spacing: .1em; text-transform: uppercase; }
+.notes-on .ph__flag { display: block; }
 .slot { position: relative; display: flex; align-items: flex-end; overflow: hidden; margin: 0; background: var(--sand); color: var(--choc); }
 .slot__mark { position: absolute; inset: 0; background: url("brand/lotus.png") center 42% / min(46%, 220px) auto no-repeat; opacity: .14; }
 .slot__text { position: relative; display: block; padding: clamp(16px, 2vw, 24px); font-size: .875rem; line-height: 1.4; max-width: 30em; }

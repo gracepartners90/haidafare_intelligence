@@ -41,7 +41,6 @@ export const nav = [
     courses: true, // aggiunge l'elenco delle schede corso
   },
   { label: 'Per i Saloni', to: 'per-i-saloni/' },
-  { label: 'Collaborazioni', to: 'collaborazioni/' },
   { label: 'Journal', to: 'journal/' },
   { label: 'Contatti', to: 'contatti/' },
 ];

@@ -108,6 +108,16 @@
     });
   });
 
+  /* ---------- Selettore dei rituali: l'immagine segue il corso indicato ---------- */
+  $$('[data-picker]').forEach((picker) => {
+    const items = $$('[data-picker-item]', picker), imgs = $$('.picker__img', picker);
+    const set = (i) => {
+      items.forEach((it, k) => it.classList.toggle('is-on', k === i));
+      imgs.forEach((im, k) => im.classList.toggle('is-on', k === i));
+    };
+    items.forEach((it, i) => { it.addEventListener('mouseenter', () => set(i)); it.addEventListener('focusin', () => set(i)); });
+  });
+
   /* ---------- Il metodo, in pratica: i capitoli scorrono come un film quando la sezione è visibile ---------- */
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const clock = (s) => [Math.floor(s / 3600), Math.floor(s / 60) % 60, s % 60].map((n) => String(n).padStart(2, '0')).join(':');

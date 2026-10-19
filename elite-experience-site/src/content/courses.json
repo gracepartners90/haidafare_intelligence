@@ -1,5 +1,5 @@
 {
-  "_info": "Schede corso. null = dato non ancora documentato: la pagina mostra un campo segnaposto. verified=false = bozza di testo da validare con il programma ufficiale. Non inserire contenuti non presenti nei programmi ufficiali.",
+  "_info": "Schede corso. null = dato non ancora documentato: la pagina mostra un campo segnaposto. verified=false = bozza di testo da validare con il programma ufficiale. Non inserire contenuti non presenti nei programmi ufficiali. cardImage: immagine delle card (media = chiave in media.json, pos = inquadratura, provisional = foto provvisoria da sostituire con lo scatto del rituale).",
   "courses": [
     {
       "id": "wellness-ritual",
@@ -13,6 +13,7 @@
       "fullDescription": null,
       "heroImage": null,
       "heroSlot": "Elisabetta durante il Wellness Ritual: manualità al lavatesta",
+      "cardImage": {"media": "lavatesta", "pos": "52% 45%", "provisional": true},
       "gallery": [],
       "gallerySlots": ["Dettaglio delle mani sul cuoio capelluto", "Passaggio chiave della sequenza", "Postazione e materiali del rituale"],
       "video": null,
@@ -52,6 +53,7 @@
       "fullDescription": null,
       "heroImage": "pinda",
       "heroSlot": null,
+      "cardImage": {"media": "pinda", "pos": "60% 45%", "provisional": false},
       "gallery": ["dettaglioPinda", "dettaglioMateriali"],
       "gallerySlots": ["Applicazione del pinda durante il rituale"],
       "video": null,
@@ -91,6 +93,7 @@
       "fullDescription": null,
       "heroImage": null,
       "heroSlot": "Spazzolatura durante il Brushing Ritual: strumento e gesto",
+      "cardImage": {"media": "pinda", "pos": "10% 70%", "provisional": true},
       "gallery": [],
       "gallerySlots": ["Dettaglio della spazzola e del gesto", "Passaggio chiave della sequenza", "Strumenti del rituale"],
       "video": null,
@@ -130,6 +133,7 @@
       "fullDescription": null,
       "heroImage": null,
       "heroSlot": "Manualità dell’Hairgym Ritual sul cuoio capelluto",
+      "cardImage": {"media": "lavatesta", "pos": "86% 50%", "provisional": true},
       "gallery": [],
       "gallerySlots": ["Dettaglio delle mani", "Passaggio chiave della sequenza", "Postura dell’operatore"],
       "video": null,
@@ -169,6 +173,7 @@
       "fullDescription": null,
       "heroImage": null,
       "heroSlot": "Manualità del Relax Full Ritual",
+      "cardImage": {"media": "pinda", "pos": "96% 55%", "provisional": true},
       "gallery": [],
       "gallerySlots": ["Dettaglio delle mani", "Passaggio chiave della sequenza", "Postazione del rituale"],
       "video": null,

@@ -63,7 +63,7 @@ export function footer(ctx) {
           <li><a href="${ctx.href('metodo-elite/')}">Il Metodo Élite</a></li>
           <li><a href="${ctx.href('elisabetta-tancini/')}">Elisabetta Tancini</a></li>
           <li><a href="${ctx.href('per-i-saloni/')}">Per i Saloni</a></li>
-          <li><a href="${ctx.href('collaborazioni/')}">Collaborazioni</a></li>
+          <li><a href="${ctx.href('elisabetta-tancini/#collaborazioni')}">Collaborazioni</a></li>
           <li><a href="${ctx.href('journal/')}">Journal</a></li>
         </ul></div>
         <div><p class="ftr__h">Academy</p><ul>

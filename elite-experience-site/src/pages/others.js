@@ -103,82 +103,6 @@ const saloni = {
   },
 };
 
-/* ---------------- COLLABORAZIONI ---------------- */
-const collab = {
-  route: 'collaborazioni/',
-  render(ctx) {
-    const { editorial } = ctx.data;
-    const crumbs = [H, { label: 'Collaborazioni', to: 'collaborazioni/' }];
-    const body = `
-<section class="phero phero--split phero--dark">
-  <div class="phero__text">
-    ${breadcrumb(ctx, crumbs)}
-    ${eyebrow('Collaborazioni professionali')}
-    <h1 class="phero__title">Elisabetta Tancini, formatrice Hair Spa per aziende e progetti educational.</h1>
-    <p class="phero__lead">Per brand e aziende Hair &amp; Beauty, distributori, accademie e organizzatori di eventi.</p>
-    <div class="actions">${btn(ctx, { label: 'Proponi una collaborazione', to: 'contatti/#collaborazioni', variant: 'light' })}</div>
-  </div>
-  <div class="phero__media">${media(ctx, 'ritratto', { fill: true, eager: true, position: '50% 22%' })}</div>
-</section>
-
-<section class="sec">
-  <div class="wrap split split--5-7">
-    <div>${sectionHead({ eyebrow: 'Profilo professionale', title: 'Fondatrice di Élite Experience e ideatrice del Metodo Élite.' })}${arrow(ctx, { label: 'Il profilo completo', to: 'elisabetta-tancini/' })}</div>
-    <div class="prose">
-      <p class="lead">Elisabetta Tancini è formatrice Hair Spa: trasferisce rituali, tecniche e manualità ai professionisti attraverso la formazione online e in presenza.</p>
-      ${tbdBlock({ title: 'Competenze per i partner', lines: ['Aree di competenza tecnica', 'Esperienza formativa documentata', 'Lingue di lavoro'], note: 'Profilo da completare con dati verificati, anche per interlocutori internazionali.' })}
-    </div>
-  </div>
-</section>
-
-<section class="sec sec--ivory">
-  <div class="wrap">
-    ${sectionHead({ eyebrow: 'Tipologie di collaborazione', title: 'Ambiti in cui collaborare.' })}
-    <ul class="collab-types">${editorial.collaborations.types.map((t) => `<li><h3 class="h3serif">${esc(t.name)}</h3><p>${esc(t.text)}</p></li>`).join('')}</ul>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    ${sectionHead({ eyebrow: 'Esperienze documentate', title: 'Collaborazioni con brand e aziende.', lead: 'Vengono pubblicate solo collaborazioni documentate con materiali ufficiali.' })}
-    <div class="partners">${editorial.collaborations.documented.map((p) => `<article class="partner"><div class="partner__logo">${tbd('Logo ' + p.name)}</div><h3>${esc(p.name)} <span class="chip chip--tbd">${esc(p.status)}</span></h3><p>${tbd('Tipo di collaborazione, periodo, attività')}</p></article>`).join('')}</div>
-  </div>
-</section>
-
-<section class="sec sec--deep">
-  <div class="wrap split split--6-6">
-    <div>${sectionHead({ eyebrow: 'Eventi e masterclass', title: 'Interventi e attività educational.' })}${tbdBlock({ title: 'Eventi e masterclass documentati', lines: ['Evento — luogo — data', 'Masterclass — organizzatore — data'], tone: 'dark' })}</div>
-    ${videoBlock(ctx, { poster: 'dettaglioPinda', title: 'Elisabetta in masterclass', note: 'Inserire un video autentico di una masterclass o di un evento.', ratio: '4/3' })}
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap split split--6-6">
-    <div>${sectionHead({ eyebrow: 'Per brand e accademie', title: 'Opportunità di collaborazione.' })}</div>
-    <div class="prose">
-      <p>Formazione per reti commerciali e team tecnici, contenuti formativi dedicati, masterclass ed eventi: ogni progetto viene definito insieme al partner.</p>
-      <p class="small">Contenuti internazionali: struttura predisposta per la versione inglese del sito.</p>
-    </div>
-  </div>
-</section>
-
-<section class="sec sec--choc band">
-  <div class="wrap band__in">
-    <h2 class="h2serif">Hai un progetto da proporre?</h2>
-    <div class="actions">${btn(ctx, { label: 'Contatto dedicato alle collaborazioni', to: 'contatti/#collaborazioni', variant: 'light' })}</div>
-  </div>
-</section>`;
-    return page(ctx, {
-      title: 'Collaborazioni — Elisabetta Tancini per aziende, brand ed eventi | Élite Experience',
-      description: 'Collaborazioni professionali con Elisabetta Tancini, formatrice Hair Spa: aziende Hair & Beauty, distributori, accademie, masterclass ed eventi.',
-      jsonld: [breadcrumbs(crumbs)],
-      ogImage: 'ritratto',
-      bodyClass: 'p-collab',
-      body,
-    });
-  },
-};
-
 /* ---------------- JOURNAL ---------------- */
 function journalPages(data) {
   const j = data.editorial.journal;
@@ -383,4 +307,4 @@ const notFound = {
   },
 };
 
-export default (data) => [saloni, collab, ...journalPages(data), contatti, privacy, notFound];
+export default (data) => [saloni, ...journalPages(data), contatti, privacy, notFound];

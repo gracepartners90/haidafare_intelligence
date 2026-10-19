@@ -1,6 +1,6 @@
 import { site } from '../config.js';
 import { esc, tbd, draft, eyebrow, sectionHead, btn, arrow, media, slot, visual, videoBlock, tbdBlock } from '../components/core.js';
-import { courseCard, collectionBlock, courseUrl } from '../components/course.js';
+import { courseUrl, ritualPicker, collectionBand } from '../components/course.js';
 import { organization, website } from '../components/seo.js';
 import { page } from '../components/layout.js';
 import { practiceSequence } from '../components/practice.js';
@@ -16,18 +16,18 @@ export default [{
     const body = `
 <!-- 01 HERO -->
 <section class="hero">
-  <div class="hero__text">
-    ${eyebrow('Élite Experience — Metodo e Formazione Hair Spa')}
-    <h1 class="hero__title">Porta l’esperienza Hair Spa nel tuo salone.</h1>
-    <p class="hero__lead">Un metodo professionale ideato da Elisabetta Tancini, che attraverso percorsi di formazione online e in presenza ti accompagna nell’apprendimento di rituali, tecniche e manualità Hair Spa.</p>
-    <div class="actions">
-      ${btn(ctx, { label: 'Scopri la formazione', to: 'academy/' })}
-      ${btn(ctx, { label: 'Il Metodo Élite', to: 'metodo-elite/', variant: 'ghost' })}
+  <div class="hero__bg">${media(ctx, 'heroHome', { fill: true, eager: true, position: '58% 42%' })}</div>
+  <div class="hero__in">
+    <div class="hero__text">
+      ${eyebrow('Élite Experience — Metodo e Formazione Hair Spa')}
+      <h1 class="hero__title">Porta l’esperienza Hair Spa nel tuo salone.</h1>
+      <p class="hero__lead">Un metodo professionale ideato da Elisabetta Tancini, che attraverso percorsi di formazione online e in presenza ti accompagna nell’apprendimento di rituali, tecniche e manualità Hair Spa.</p>
+      <div class="actions">
+        ${btn(ctx, { label: 'Scopri la formazione', to: 'academy/', variant: 'light' })}
+        ${btn(ctx, { label: 'Il Metodo Élite', to: 'metodo-elite/', variant: 'ghost-light' })}
+      </div>
     </div>
-  </div>
-  <div class="hero__media">
-    ${media(ctx, 'lavatesta', { fill: true, eager: true, position: '62% 45%' })}
-    <p class="hero__cap">Elisabetta Tancini durante una manualità Hair Spa</p>
+    <a class="hero__next" href="${ctx.href('#metodo')}"><span>Scopri il metodo</span><i aria-hidden="true"></i></a>
   </div>
 </section>
 <ul class="orient" aria-label="In sintesi">
@@ -38,21 +38,21 @@ export default [{
 </ul>
 
 <!-- 02 IL METODO -->
-<section class="sec home-method">
-  <div class="wrap split split--7-5">
-    <div>
+<section class="sec home-method" id="metodo">
+  <div class="wrap home-method__grid">
+    <figure class="home-method__media">
+      ${media(ctx, 'lavatesta', { fill: true, position: '70% 45%', alt: 'Le mani di Elisabetta Tancini durante una manualità sul cuoio capelluto.' })}
+      <figcaption>Il gesto al centro del metodo</figcaption>
+    </figure>
+    <div class="home-method__text">
       ${sectionHead({ eyebrow: 'Il Metodo Élite', title: 'Un metodo che prende forma attraverso il gesto.' })}
       <p class="lead">Il Metodo Élite è l’approccio professionale all’Hair Spa ideato da Elisabetta Tancini. Si fonda sull’apprendimento e sull’applicazione di rituali, tecniche e manualità che il professionista porta nel proprio salone.</p>
-      <dl class="qa">
-        <div><dt>Che cos’è</dt><dd>Un metodo professionale Hair Spa, fatto di rituali, tecniche e manualità ideati da Elisabetta Tancini.</dd></div>
-        <div><dt>L’approccio</dt><dd>${draft('Il gesto al centro: ogni rituale si apprende attraverso la manualità, la sequenza e la pratica.')}</dd></div>
-        <div><dt>Metodo, rituali, formazione</dt><dd>Il metodo è la base. I rituali ne sono l’espressione pratica. La formazione è il modo per apprenderli.</dd></div>
-      </dl>
+      <ol class="pillars">
+        <li><span class="pillars__n">01</span><div><h3>Che cos’è</h3><p>Un metodo professionale Hair Spa, fatto di rituali, tecniche e manualità ideati da Elisabetta Tancini.</p></div></li>
+        <li><span class="pillars__n">02</span><div><h3>L’approccio</h3><p>${draft('Il gesto al centro: ogni rituale si apprende attraverso la manualità, la sequenza e la pratica.')}</p></div></li>
+        <li><span class="pillars__n">03</span><div><h3>Metodo, rituali, formazione</h3><p>Il metodo è la base. I rituali ne sono l’espressione pratica. La formazione è il modo per apprenderli.</p></div></li>
+      </ol>
       ${btn(ctx, { label: 'Scopri il Metodo Élite', to: 'metodo-elite/' })}
-    </div>
-    <div class="home-method__media">
-      ${media(ctx, 'dettaglioMani', { ratio: '4/3', cls: 'hm-a' })}
-      ${media(ctx, 'dettaglioMateriali', { ratio: '4/3', cls: 'hm-b' })}
     </div>
   </div>
 </section>
@@ -133,11 +133,12 @@ ${practiceSequence(ctx)}
 <!-- 06 ANTEPRIMA DEI CORSI -->
 <section class="sec sec--beige home-courses">
   <div class="wrap">
-    ${sectionHead({ eyebrow: 'Corsi online', title: 'Scegli cosa vuoi imparare.', lead: 'Ogni corso ha una scheda con le competenze, le tecniche e il programma. Confronta i percorsi e scegli da dove partire.' })}
-    <div class="cgrid">
-      ${courses.map((c, i) => courseCard(ctx, c, { size: i < 3 ? 'm' : 'l' })).join('')}
+    <div class="row-head">
+      ${sectionHead({ eyebrow: 'Corsi online', title: 'Scegli cosa vuoi imparare.', lead: 'Cinque rituali, una scheda per ciascuno: competenze, tecniche e programma del corso.' })}
+      ${arrow(ctx, { label: 'Confronta i corsi', to: 'academy/#confronto' })}
     </div>
-    ${collectionBlock(ctx, collection, courses)}
+    ${ritualPicker(ctx, courses)}
+    ${collectionBand(ctx, collection)}
   </div>
 </section>
 
@@ -160,21 +161,7 @@ ${practiceSequence(ctx)}
   </div>
 </section>
 
-<!-- 08 COLLABORAZIONI -->
-<section class="sec sec--deep home-collab">
-  <div class="wrap split split--5-7">
-    <div>
-      ${sectionHead({ eyebrow: 'Collaborazioni', title: 'Elisabetta Tancini per aziende e progetti educational.' })}
-      <p>Per brand, aziende Hair &amp; Beauty, distributori, accademie e organizzatori di eventi che cercano una formatrice Hair Spa per progetti professionali.</p>
-      ${btn(ctx, { label: 'Proponi una collaborazione', to: 'contatti/#collaborazioni', variant: 'light' })}
-    </div>
-    <ul class="linelist linelist--light">
-      ${editorial.collaborations.types.map((t) => `<li><b>${esc(t.name)}</b><span>${esc(t.text)}</span></li>`).join('')}
-    </ul>
-  </div>
-</section>
-
-<!-- 09 TESTIMONIANZE -->
+<!-- 08 TESTIMONIANZE -->
 <section class="sec home-testi">
   <div class="wrap">
     ${sectionHead({ eyebrow: 'Testimonianze', title: 'Le parole dei professionisti.', lead: 'Spazio riservato a testimonianze reali di chi ha seguito i percorsi: video, fotografie e citazioni, con nome, salone e autorizzazione.' })}
@@ -186,7 +173,7 @@ ${practiceSequence(ctx)}
   </div>
 </section>
 
-<!-- 10 JOURNAL -->
+<!-- 09 JOURNAL -->
 <section class="sec sec--ivory home-journal">
   <div class="wrap">
     <div class="row-head">
@@ -204,7 +191,7 @@ ${practiceSequence(ctx)}
   </div>
 </section>
 
-<!-- 11 CONTATTI -->
+<!-- 10 CONTATTI -->
 <section class="sec sec--choc home-contact">
   <div class="wrap home-contact__in">
     <h2 class="h2serif">Trova il percorso più adatto al tuo salone.</h2>

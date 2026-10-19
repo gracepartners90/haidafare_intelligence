@@ -48,13 +48,15 @@ export function arrow(ctx, { label, to, ext = false, cls = '' }) {
 }
 
 /* ---------- Immagini ---------- */
-export function media(ctx, key, { ratio, cls = '', caption, eager = false, position, fill = false } = {}) {
+export function media(ctx, key, { ratio, cls = '', caption, eager = false, position, fill = false, provisional = false, alt } = {}) {
   const m = ctx.data.media[key];
   if (!m) return slot({ subject: `Immagine "${key}" non registrata`, ratio });
   const style = [ratio ? `aspect-ratio:${ratio}` : '', position ? `--pos:${position}` : ''].filter(Boolean).join(';');
+  // Foto provvisoria: segnalata solo con le note di lavorazione attive
+  const flag = provisional || m.provisional ? '<span class="ph__flag" aria-hidden="true">Immagine provvisoria</span>' : '';
   return `<figure class="ph ${fill ? 'ph--fill' : ''} ${cls}"${style ? ` style="${style}"` : ''}>
-    <img ${ctx.src(m.file)} width="${m.w}" height="${m.h}" alt="${esc(m.alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
-    ${caption ? `<figcaption>${esc(caption)}</figcaption>` : ''}
+    <img ${ctx.src(m.file)} width="${m.w}" height="${m.h}" alt="${esc(alt ?? m.alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
+    ${caption ? `<figcaption>${esc(caption)}</figcaption>` : ''}${flag}
   </figure>`;
 }
 

@@ -22,7 +22,7 @@ export default [{
     </ul>
     <p class="eli-hero__more">${tbd('Ulteriori qualifiche e ruoli documentati')}</p>
     <div class="actions">
-      ${btn(ctx, { label: 'Collaboriamo', to: '#collaboriamo', variant: 'light' })}
+      ${btn(ctx, { label: 'Collaborazioni', to: '#collaborazioni', variant: 'light' })}
       ${arrow(ctx, { label: 'La formazione', to: 'academy/', cls: 'arrow--light' })}
     </div>
   </div>
@@ -75,9 +75,24 @@ export default [{
   </div>
 </section>
 
+<section class="sec sec--ivory eli-collab" id="collaborazioni">
+  <div class="wrap">
+    <div class="split split--5-7">
+      ${sectionHead({ eyebrow: 'Collaborazioni', title: 'Elisabetta Tancini per aziende e progetti educational.' })}
+      <div class="prose">
+        <p class="lead">Per brand e aziende Hair &amp; Beauty, distributori, accademie e organizzatori di eventi che cercano una formatrice Hair Spa per progetti professionali.</p>
+        <p>Formazione per reti commerciali e team tecnici, contenuti formativi dedicati, masterclass ed eventi: ogni progetto viene definito insieme al partner.</p>
+        ${btn(ctx, { label: 'Proponi una collaborazione', to: 'contatti/#collaborazioni' })}
+      </div>
+    </div>
+    <ul class="collab-types">${editorial.collaborations.types.map((t) => `<li><h3 class="h3serif">${esc(t.name)}</h3><p>${esc(t.text)}</p></li>`).join('')}</ul>
+    ${tbdBlock({ title: 'Competenze per i partner', lines: ['Aree di competenza tecnica', 'Esperienza formativa documentata', 'Lingue di lavoro'], note: 'Profilo da completare con dati verificati, anche per interlocutori internazionali.' })}
+  </div>
+</section>
+
 <section class="sec">
   <div class="wrap">
-    ${sectionHead({ eyebrow: 'Collaborazioni professionali', title: 'Con brand e aziende del settore.', lead: 'Collaborazioni da documentare con materiali ufficiali (loghi, periodo, tipo di attività) prima della pubblicazione.' })}
+    ${sectionHead({ eyebrow: 'Esperienze documentate', title: 'Con brand e aziende del settore.', lead: 'Vengono pubblicate solo collaborazioni documentate con materiali ufficiali (loghi, periodo, tipo di attività).' })}
     <div class="partners">
       ${editorial.collaborations.documented.map((p) => `<article class="partner">
         <div class="partner__logo">${tbd('Logo ' + p.name)}</div>
@@ -88,7 +103,7 @@ export default [{
   </div>
 </section>
 
-<section class="sec sec--ivory">
+<section class="sec sec--beige">
   <div class="wrap split split--6-6">
     <div>
       ${sectionHead({ eyebrow: 'Eventi e masterclass', title: 'Attività educational e interventi.' })}
@@ -110,13 +125,13 @@ export default [{
     </div>
     <div class="actions">
       ${btn(ctx, { label: 'Proponi una collaborazione', to: 'contatti/#collaborazioni', variant: 'light' })}
-      ${arrow(ctx, { label: 'Tipologie di collaborazione', to: 'collaborazioni/', cls: 'arrow--light' })}
+      ${arrow(ctx, { label: 'Collaborazioni ed eventi nel Journal', to: 'journal/categoria/collaborazioni-ed-eventi/', cls: 'arrow--light' })}
     </div>
   </div>
 </section>`;
     return page(ctx, {
       title: 'Elisabetta Tancini — Fondatrice di Élite Experience e formatrice Hair Spa',
-      description: 'Elisabetta Tancini è la fondatrice di Élite Experience, ideatrice del Metodo Élite e formatrice Hair Spa. Visione, percorso professionale, insegnamento e collaborazioni.',
+      description: 'Elisabetta Tancini è la fondatrice di Élite Experience, ideatrice del Metodo Élite e formatrice Hair Spa. Visione, percorso professionale, insegnamento e collaborazioni con aziende, accademie ed eventi.',
       jsonld: [person(), breadcrumbs(crumbs)],
       ogImage: 'ritratto',
       ogType: 'profile',
