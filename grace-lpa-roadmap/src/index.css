@@ -1,0 +1,65 @@
+@import 'tailwindcss';
+
+/*
+ * Token di brand.
+ * NOTA: lucapicchio.it non era raggiungibile in fase di sviluppo. Il colore accent
+ * è un segnaposto coerente con l'immaginario "Rockstar": sostituire --color-accent
+ * con il valore esatto del brand dopo la verifica sul sito.
+ */
+@theme {
+  --color-ink: #0a0a0a;
+  --color-coal: #121212;
+  --color-graphite: #1a1a1a;
+  --color-line: #2a2a2a;
+  --color-line-strong: #3d3d3d;
+  --color-mute: #8f8f8f;
+  --color-soft: #c9c9c9;
+  --color-accent: #e3212b;
+  --color-accent-soft: #ff4d55;
+  --color-wait: #f0b429;
+  --color-done: #3ecf7a;
+
+  --font-display: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-ink text-white font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-accent text-white;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent-soft);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+}
+
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-line-strong);
+}
+
+@utility eyebrow {
+  @apply font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-mute;
+}
+
+@utility display {
+  @apply font-display uppercase leading-[0.9] tracking-[0.005em];
+}
+
+/* Texture a righe sottili, riferimento discreto al palco / amplificatori. */
+@utility grille {
+  background-image: repeating-linear-gradient(90deg, rgb(255 255 255 / 0.035) 0 1px, transparent 1px 6px);
+}
