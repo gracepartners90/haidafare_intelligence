@@ -73,8 +73,8 @@ export function visual(ctx, { key, subject, ratio, tone, cls, caption, eager, po
 }
 
 // Video: se manca il file, mostra uno spazio dichiarato (nessun video generico al suo posto)
-export function videoBlock(ctx, { poster, posterSubject, title, note, src, ratio = '16/9', tone = 'dark', cls = '' }) {
-  const bg = poster ? media(ctx, poster, { fill: true }) : slot({ subject: posterSubject || 'Frame del video', tone, fill: true, label: 'Video da inserire' });
+export function videoBlock(ctx, { poster, posterPos, posterSubject, title, note, src, ratio = '16/9', tone = 'dark', cls = '' }) {
+  const bg = poster ? media(ctx, poster, { fill: true, position: posterPos }) : slot({ subject: posterSubject || 'Frame del video', tone, fill: true, label: 'Video da inserire' });
   return `<div class="video ${cls}" style="aspect-ratio:${ratio}">
     ${bg}
     <button class="video__play" type="button" data-video-open data-video-title="${esc(title || 'Video')}" data-video-note="${esc(note || '')}"${src ? ` data-video-src="${ctx.asset(src)}"` : ''}>

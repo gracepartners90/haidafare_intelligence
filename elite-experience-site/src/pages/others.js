@@ -108,7 +108,7 @@ function journalPages(data) {
   const j = data.editorial.journal;
   const base = [H, { label: 'Journal', to: 'journal/' }];
   const catLabel = (slug) => j.categories.find((c) => c.slug === slug).name;
-  const planCard = (ctx, a) => `<article class="jcard jcard--plan">${slot({ subject: 'Immagine dell’articolo', ratio: '3/2' })}<p class="jcard__meta"><span>${esc(catLabel(a.category))}</span><span class="chip chip--tbd">In preparazione</span></p><h3 class="jcard__title">${esc(a.title)}</h3><p class="jcard__note">Proposta editoriale: non ancora pubblicato.</p></article>`;
+  const planCard = (ctx, a) => `<article class="jcard jcard--plan">${a.image ? media(ctx, a.image, { ratio: '3/2', position: a.imagePos }) : slot({ subject: 'Immagine dell’articolo', ratio: '3/2' })}<p class="jcard__meta"><span>${esc(catLabel(a.category))}</span><span class="chip chip--tbd">In preparazione</span></p><h3 class="jcard__title">${esc(a.title)}</h3><p class="jcard__note">Proposta editoriale: non ancora pubblicato.</p></article>`;
   const cats = (ctx, active) => `<nav class="cats" aria-label="Categorie del Journal"><ul>
     <li><a href="${ctx.href('journal/')}"${!active ? ' aria-current="page"' : ''}>Tutti</a></li>
     ${j.categories.map((c) => `<li><a href="${ctx.href(`journal/categoria/${c.slug}/`)}"${active === c.slug ? ' aria-current="page"' : ''}>${esc(c.name)}</a></li>`).join('')}

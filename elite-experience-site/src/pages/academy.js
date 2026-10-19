@@ -28,7 +28,7 @@ const academyPage = {
 
 <section class="modes">
   <article class="mode mode--online">
-    ${videoBlock(ctx, { posterSubject: 'Frame da una videolezione dimostrativa', title: 'Dentro una videolezione', note: 'Inserire un estratto autentico di una videolezione.', ratio: '16/9', tone: 'light' })}
+    ${videoBlock(ctx, { poster: 'ritualeOlio', posterPos: '45% 50%', title: 'Dentro una videolezione', note: 'Inserire un estratto autentico di una videolezione.', ratio: '16/9' })}
     <div class="mode__body">
       <p class="eyebrow">Online</p>
       <h2 class="h2serif">Formazione Online</h2>
@@ -185,7 +185,7 @@ const presencePage = {
     <p class="phero__lead">Percorsi pratici per apprendere tecniche, rituali e manualità Hair Spa direttamente con Elisabetta, presso la sede di Arona o nel tuo salone.</p>
     <div class="actions">${btn(ctx, { label: 'Richiedi informazioni', to: 'contatti/#presenza', variant: 'light' })}</div>
   </div>
-  <div class="phero__media">${media(ctx, 'lavatesta', { fill: true, eager: true, position: '62% 45%' })}</div>
+  <div class="phero__media">${media(ctx, 'dimostrazione', { fill: true, eager: true, position: '50% 55%' })}</div>
 </section>
 
 <section class="sec">
@@ -193,13 +193,13 @@ const presencePage = {
     ${sectionHead({ eyebrow: 'Due modalità', title: 'Ad Arona o nel tuo salone.' })}
     <div class="duo duo--cards">
       <article class="duo__item">
-        ${slot({ subject: 'La sede di Arona: spazio di formazione e postazioni', ratio: '16/10' })}
+        ${media(ctx, 'lavatestaAcqua', { ratio: '16/10', position: '50% 30%', provisional: true })}
         <h3 class="h3serif">Presso la sede di Arona</h3>
         <p>Percorso formativo in presenza presso la sede di Elisabetta.</p>
         <ul class="facts"><li><span>Sede</span>Arona ${tbd('indirizzo')}</li><li><span>Partecipanti</span>${tbd('Formato individuale o di gruppo da confermare')}</li></ul>
       </article>
       <article class="duo__item">
-        ${slot({ subject: 'Elisabetta in formazione con il team di un salone', ratio: '16/10', tone: 'dark' })}
+        ${media(ctx, 'lavatesta', { ratio: '16/10', position: '62% 45%', provisional: true })}
         <h3 class="h3serif">Direttamente nel salone</h3>
         <p>Formazione organizzata presso la sede del professionista, con il suo team.</p>
         <ul class="facts"><li><span>Dove</span>Nel salone del professionista</li><li><span>Area servita</span>${tbd('Zone e trasferte da confermare')}</li></ul>

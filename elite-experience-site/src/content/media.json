@@ -1,9 +1,29 @@
 {
   "_info": "Registro immagini. official=true: foto fornite da Élite Experience. Per aggiungere una foto: copiarla in src/assets/media e registrarla qui.",
   "heroHome": {
-    "file": "media/elisabetta-lavatesta.jpg", "w": 1673, "h": 940, "official": true, "provisional": true,
-    "note": "Hero della home. Provvisoria: sostituire il file con la fotografia hair spa premium scelta (orizzontale, almeno 2400 px di lato lungo).",
-    "alt": "Manualità Hair Spa sul cuoio capelluto al lavatesta, in un ambiente caldo e raccolto."
+    "file": "media/hair-spa-massaggio-testa.jpg", "w": 1344, "h": 768, "official": true,
+    "note": "Hero della home. Per gli schermi grandi è consigliata una versione dello stesso scatto con lato lungo di almeno 2400 px.",
+    "alt": "Manualità Hair Spa sul cuoio capelluto: una cliente rilassata, a occhi chiusi, durante un massaggio alla testa."
+  },
+  "massaggioTesta": {
+    "file": "media/hair-spa-massaggio-testa.jpg", "w": 1344, "h": 768, "official": true,
+    "alt": "Una cliente rilassata, a occhi chiusi, durante un massaggio Hair Spa al cuoio capelluto."
+  },
+  "ritualeOlio": {
+    "file": "media/hair-spa-rituale-olio.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Le mani di un'operatrice versano olio da una caraffa di vetro nel palmo, accanto a ciotole e flaconi del rituale."
+  },
+  "lavatestaAcqua": {
+    "file": "media/elisabetta-lavatesta-acqua.jpg", "w": 941, "h": 1672, "official": true,
+    "alt": "Elisabetta Tancini versa acqua da una caraffa di vetro sui capelli di una cliente al lavatesta."
+  },
+  "dimostrazione": {
+    "file": "media/elisabetta-dimostrazione-live.jpg", "w": 1198, "h": 1600, "official": true,
+    "alt": "Elisabetta Tancini durante una dimostrazione dal vivo di un rituale Hair Spa, con la cliente al lavatesta."
+  },
+  "intervento": {
+    "file": "media/elisabetta-intervento-palco.jpg", "w": 1200, "h": 1600, "official": true,
+    "alt": "Elisabetta Tancini sul palco durante un intervento."
   },
   "ritratto": {
     "file": "media/elisabetta-ritratto.jpg", "w": 941, "h": 1672, "official": true,

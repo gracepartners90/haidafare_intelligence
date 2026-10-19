@@ -71,14 +71,17 @@ export default [{
         <li><b>In presenza</b><span>Percorsi pratici ad Arona o nel salone del professionista.</span></li>
       </ul>
     </div>
-    ${videoBlock(ctx, { poster: 'dettaglioPinda', title: 'Elisabetta in formazione', note: 'Inserire un estratto autentico di Elisabetta durante una lezione.', ratio: '4/5' })}
+    ${videoBlock(ctx, { poster: 'dimostrazione', posterPos: '50% 45%', title: 'Elisabetta in formazione', note: 'Inserire un estratto autentico di Elisabetta durante una lezione.', ratio: '4/5' })}
   </div>
 </section>
 
 <section class="sec sec--ivory eli-collab" id="collaborazioni">
   <div class="wrap">
-    <div class="split split--5-7">
-      ${sectionHead({ eyebrow: 'Collaborazioni', title: 'Elisabetta Tancini per aziende e progetti educational.' })}
+    <div class="split split--5-7 eli-collab__top">
+      <div>
+        ${sectionHead({ eyebrow: 'Collaborazioni', title: 'Elisabetta Tancini per aziende e progetti educational.' })}
+        ${media(ctx, 'intervento', { ratio: '4/5', position: '50% 35%', cls: 'eli-collab__img' })}
+      </div>
       <div class="prose">
         <p class="lead">Per brand e aziende Hair &amp; Beauty, distributori, accademie e organizzatori di eventi che cercano una formatrice Hair Spa per progetti professionali.</p>
         <p>Formazione per reti commerciali e team tecnici, contenuti formativi dedicati, masterclass ed eventi: ogni progetto viene definito insieme al partner.</p>

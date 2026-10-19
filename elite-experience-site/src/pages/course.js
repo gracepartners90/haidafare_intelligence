@@ -1,7 +1,7 @@
 // Modello unico per tutte le schede corso: i contenuti arrivano da src/content/courses.json.
 import { site } from '../config.js';
 import { esc, tbd, draft, eyebrow, sectionHead, btn, arrow, media, slot, visual, tbdBlock, breadcrumb, accordion, faqList, videoBlock } from '../components/core.js';
-import { courseCard, courseUrl, levelChip, priceLine, promoBanner } from '../components/course.js';
+import { courseCard, courseImage, courseUrl, levelChip, priceLine, promoBanner } from '../components/course.js';
 import { course as courseLd, breadcrumbs } from '../components/seo.js';
 import { page } from '../components/layout.js';
 
@@ -78,7 +78,7 @@ function coursePage(c, all, collection) {
     <p class="chero__pdf">${c.pdf ? `<a href="${ctx.asset(c.pdf)}" download>Scarica la scheda tecnica (PDF)</a>` : `Scheda tecnica PDF ${tbd('da allegare')}`}</p>
   </div>
   <div class="chero__media">
-    ${visual(ctx, { key: c.heroImage, subject: c.heroSlot, fill: true, tone: 'dark', eager: true, position: '58% 45%' })}
+    ${c.heroImage ? media(ctx, c.heroImage, { fill: true, eager: true, position: '58% 45%' }) : courseImage(ctx, c, { fill: true })}
     <button class="chero__play" type="button" data-video-open data-video-title="Anteprima — ${esc(c.name)}" data-video-note="Inserire un estratto autentico del corso (non un video generico di trattamento)."${c.video && c.video.src ? ` data-video-src="${ctx.asset(c.video.src)}"` : ''}><span class="video__icon" aria-hidden="true"></span>Anteprima del corso</button>
   </div>
 </section>

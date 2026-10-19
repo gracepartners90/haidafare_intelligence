@@ -11,9 +11,9 @@
     ],
     "articles": [],
     "plan": [
-      { "category": "metodo-e-rituali", "title": "Che cosa significa Hair Spa in salone", "status": "in preparazione" },
-      { "category": "formazione-hair-spa", "title": "Come scegliere il primo percorso Hair Spa", "status": "in preparazione" },
-      { "category": "elisabetta-tancini", "title": "Il gesto come strumento professionale", "status": "in preparazione" }
+      { "category": "metodo-e-rituali", "title": "Che cosa significa Hair Spa in salone", "image": "massaggioTesta", "imagePos": "55% 45%", "status": "in preparazione" },
+      { "category": "formazione-hair-spa", "title": "Come scegliere il primo percorso Hair Spa", "image": "dimostrazione", "imagePos": "50% 60%", "status": "in preparazione" },
+      { "category": "elisabetta-tancini", "title": "Il gesto come strumento professionale", "image": "ritualeOlio", "imagePos": "46% 50%", "status": "in preparazione" }
     ]
   },
   "collaborations": {

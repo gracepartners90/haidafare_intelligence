@@ -16,7 +16,7 @@ export default [{
     const body = `
 <!-- 01 HERO -->
 <section class="hero">
-  <div class="hero__bg">${media(ctx, 'heroHome', { fill: true, eager: true, position: '58% 42%' })}</div>
+  <div class="hero__bg">${media(ctx, 'heroHome', { fill: true, eager: true })}</div>
   <div class="hero__in">
     <div class="hero__text">
       ${eyebrow('Élite Experience — Metodo e Formazione Hair Spa')}
@@ -41,7 +41,7 @@ export default [{
 <section class="sec home-method" id="metodo">
   <div class="wrap home-method__grid">
     <figure class="home-method__media">
-      ${media(ctx, 'lavatesta', { fill: true, position: '70% 45%', alt: 'Le mani di Elisabetta Tancini durante una manualità sul cuoio capelluto.' })}
+      ${media(ctx, 'lavatestaAcqua', { fill: true, position: '50% 80%' })}
       <figcaption>Il gesto al centro del metodo</figcaption>
     </figure>
     <div class="home-method__text">
@@ -110,7 +110,7 @@ ${practiceSequence(ctx)}
   <div class="training-split__intro wrap">${sectionHead({ eyebrow: 'La formazione', title: 'Il metodo diventa formazione.' })}</div>
   <div class="training-split__grid">
     <article class="tmode tmode--online">
-      ${videoBlock(ctx, { posterSubject: 'Frame da una videolezione dimostrativa', title: 'Dentro una videolezione', note: 'Inserire un estratto autentico di una videolezione dei corsi online.', ratio: '16/10', tone: 'light' })}
+      ${videoBlock(ctx, { poster: 'ritualeOlio', posterPos: '45% 50%', title: 'Dentro una videolezione', note: 'Inserire un estratto autentico di una videolezione dei corsi online.', ratio: '16/10' })}
       <div class="tmode__body">
         <p class="eyebrow">Formazione Online</p>
         <h3 class="h3serif">Videolezioni teoriche e dimostrative</h3>
@@ -119,7 +119,7 @@ ${practiceSequence(ctx)}
       </div>
     </article>
     <article class="tmode tmode--presence">
-      ${slot({ subject: 'Elisabetta Tancini in formazione con un gruppo di professionisti ad Arona', ratio: '16/10', tone: 'dark' })}
+      ${media(ctx, 'dimostrazione', { ratio: '16/10', position: '50% 62%' })}
       <div class="tmode__body">
         <p class="eyebrow">Formazione in Presenza</p>
         <h3 class="h3serif">Percorsi pratici con Elisabetta Tancini</h3>
@@ -182,7 +182,7 @@ ${practiceSequence(ctx)}
     </div>
     <div class="jgrid">
       ${editorial.journal.plan.map((a) => `<article class="jcard jcard--plan">
-        ${slot({ subject: 'Immagine dell’articolo', ratio: '3/2' })}
+        ${a.image ? media(ctx, a.image, { ratio: '3/2', position: a.imagePos }) : slot({ subject: 'Immagine dell’articolo', ratio: '3/2' })}
         <p class="jcard__meta"><span>${esc(cat(a.category).name)}</span><span class="chip chip--tbd">In preparazione</span></p>
         <h3 class="jcard__title">${esc(a.title)}</h3>
         <p class="jcard__note">Proposta editoriale: articolo non ancora pubblicato.</p>
