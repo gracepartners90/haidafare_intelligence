@@ -1,5 +1,5 @@
 import { site } from '../config.js';
-import { esc, tbd, draft, eyebrow, sectionHead, btn, arrow, media, slot, visual, videoBlock, tbdBlock } from '../components/core.js';
+import { esc, tbd, draft, eyebrow, sectionHead, btn, arrow, media } from '../components/core.js';
 import { courseUrl, ritualPicker, collectionBand } from '../components/course.js';
 import { organization, website } from '../components/seo.js';
 import { page } from '../components/layout.js';
@@ -102,33 +102,7 @@ export default [{
 <!-- 04b IL METODO, IN PRATICA -->
 ${practiceSequence(ctx)}
 
-<!-- 05 LA FORMAZIONE -->
-<section class="training-split" aria-labelledby="t-form">
-  <h2 class="sr-only" id="t-form">Il metodo diventa formazione</h2>
-  <div class="training-split__intro wrap">${sectionHead({ eyebrow: 'La formazione', title: 'Il metodo diventa formazione.' })}</div>
-  <div class="training-split__grid">
-    <article class="tmode tmode--online">
-      ${videoBlock(ctx, { poster: 'ritualeOlio', posterPos: '45% 50%', title: 'Dentro una videolezione', note: 'Inserire un estratto autentico di una videolezione dei corsi online.', ratio: '16/10' })}
-      <div class="tmode__body">
-        <p class="eyebrow">Formazione Online</p>
-        <h3 class="h3serif">Videolezioni teoriche e dimostrative</h3>
-        <p>Dedicate all’apprendimento dei rituali e delle manualità Hair Spa, da seguire con i tempi del proprio salone.</p>
-        ${btn(ctx, { label: 'Esplora i corsi online', to: 'academy/formazione-online/' })}
-      </div>
-    </article>
-    <article class="tmode tmode--presence">
-      ${media(ctx, 'dimostrazione', { ratio: '16/10', position: '50% 62%' })}
-      <div class="tmode__body">
-        <p class="eyebrow">Formazione in Presenza</p>
-        <h3 class="h3serif">Percorsi pratici con Elisabetta Tancini</h3>
-        <p>Presso la sede di Arona o direttamente nel salone del professionista.</p>
-        ${btn(ctx, { label: 'Scopri la formazione in presenza', to: 'academy/formazione-in-presenza/', variant: 'light' })}
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- 06 ANTEPRIMA DEI CORSI -->
+<!-- 05 ANTEPRIMA DEI CORSI -->
 <section class="sec sec--beige home-courses">
   <div class="wrap">
     <div class="row-head">
@@ -140,7 +114,7 @@ ${practiceSequence(ctx)}
   </div>
 </section>
 
-<!-- 07 PER I SALONI -->
+<!-- 06 PER I SALONI -->
 <section class="sec home-salons">
   <div class="wrap">
     ${sectionHead({ eyebrow: 'Per i saloni', title: 'Ogni salone ha il proprio punto di partenza.' })}
@@ -159,7 +133,7 @@ ${practiceSequence(ctx)}
   </div>
 </section>
 
-<!-- 08 ÉLITE & MORE: gli ultimi 3 articoli reali -->
+<!-- 07 ÉLITE & MORE: gli ultimi 3 articoli reali -->
 <section class="sec sec--ivory home-journal">
   <div class="wrap">
     <div class="row-head">
@@ -170,7 +144,7 @@ ${practiceSequence(ctx)}
   </div>
 </section>
 
-<!-- 09 CONTATTI -->
+<!-- 08 CONTATTI -->
 <section class="sec sec--choc home-contact">
   <div class="wrap home-contact__in">
     <h2 class="h2serif">Trova il percorso più adatto al tuo salone.</h2>

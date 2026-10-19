@@ -97,14 +97,6 @@
 .ritual-index--light .ritual-index__desc { color: var(--muted-light); }
 
 /* Home: formazione */
-.training-split { padding-top: var(--sec); }
-.training-split__grid { display: grid; grid-template-columns: 1fr 1fr; }
-.tmode { display: flex; flex-direction: column; }
-.tmode__body { flex: 1; padding: clamp(32px, 4vw, 64px) max(var(--g), 4vw); }
-.tmode__body > p:not(.eyebrow) { margin: 14px 0 28px; max-width: 32em; }
-.tmode--online { background: var(--ivory); }
-.tmode--presence { background: var(--choc); color: var(--white); }
-.tmode--presence .eyebrow { color: var(--beige); }
 
 /* Home: saloni, Élite & More, contatti */
 .paths { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line-strong); }
@@ -331,7 +323,7 @@
   .hero__facts li:nth-child(n+3) { margin-top: 18px; }
   .home-eli__grid, .ritual-feature, .eli-strip, .enroll__in, .contact__grid { grid-template-columns: 1fr; }
   .home-eli__portrait { max-width: 520px; }
-  .training-split__grid, .modes, .needs, .paths { grid-template-columns: 1fr; }
+  .modes, .needs, .paths { grid-template-columns: 1fr; }
   .path + .path { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
   .cgrid { grid-template-columns: 1fr 1fr; }
   .ccard, .ccard--l { grid-column: span 1; }
