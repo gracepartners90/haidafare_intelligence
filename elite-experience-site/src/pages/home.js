@@ -16,7 +16,7 @@ export default [{
     const body = `
 <!-- 01 HERO -->
 <section class="hero">
-  <div class="hero__bg">${media(ctx, 'heroHome', { fill: true, eager: true })}</div>
+  <div class="hero__bg">${media(ctx, 'heroHome', { fill: true, eager: true, position: '0% 0%' })}</div>
   <div class="hero__in">
     <div class="hero__text">
       <h1 class="hero__title">Porta l’esperienza Hair Spa nel tuo salone.</h1>

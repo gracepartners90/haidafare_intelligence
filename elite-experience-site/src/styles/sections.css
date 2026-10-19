@@ -7,15 +7,15 @@
 .hero { position: relative; display: flex; height: 100vh; height: 100svh; min-height: 640px; max-height: 1160px; margin-top: calc(var(--hdr) * -1); overflow: hidden; background: #1F120B; color: var(--ivory); isolation: isolate; }
 .hero__bg { position: absolute; inset: 0; }
 .hero__bg .ph { background: #1F120B; animation: hero-in 2.6s var(--ease) both; }
-/* Trattamento fotografico: tono caldo desaturato, contrasto morbido, viraggio nel colore del brand, grana e vignettatura */
-.hero__bg .ph img { object-position: 0% 46%; filter: sepia(.35) saturate(.9) contrast(1.08) brightness(.7); transform-origin: 0% 46%; animation: hero-drift 24s cubic-bezier(.2, .6, .2, 1) both; }
-.hero__bg .ph::after { content: ""; position: absolute; inset: 0; background: var(--choc); mix-blend-mode: color; opacity: .42; }
+/* Trattamento fotografico: oro e acqua in evidenza, contrasto deciso, leggero viraggio nel colore del brand, grana e vignettatura */
+.hero__bg .ph img { object-position: var(--pos, 0% 46%); filter: sepia(.12) saturate(1.12) contrast(1.16) brightness(.9); transform-origin: var(--pos, 0% 46%); animation: hero-drift 24s cubic-bezier(.2, .6, .2, 1) both; }
+.hero__bg .ph::after { content: ""; position: absolute; inset: 0; background: var(--choc); mix-blend-mode: color; opacity: .16; }
 .hero__bg::before { content: ""; position: absolute; inset: 0; z-index: 2; background: url("brand/grain.png") repeat; background-size: 160px; opacity: .14; mix-blend-mode: overlay; pointer-events: none; }
-.hero__bg::after { content: ""; position: absolute; inset: 0; z-index: 1; background: radial-gradient(110% 85% at 72% 38%, rgba(31, 18, 11, 0) 0%, rgba(31, 18, 11, .5) 68%, rgba(31, 18, 11, .82) 100%), linear-gradient(90deg, rgba(31, 18, 11, .82) 0%, rgba(31, 18, 11, .5) 38%, rgba(31, 18, 11, .08) 72%), linear-gradient(0deg, rgba(31, 18, 11, .78) 0%, rgba(31, 18, 11, 0) 46%), linear-gradient(180deg, rgba(31, 18, 11, .55) 0%, rgba(31, 18, 11, 0) 22%); }
+.hero__bg::after { content: ""; position: absolute; inset: 0; z-index: 1; background: radial-gradient(110% 85% at 66% 40%, rgba(31, 18, 11, 0) 0%, rgba(31, 18, 11, .28) 70%, rgba(31, 18, 11, .7) 100%), linear-gradient(90deg, rgba(31, 18, 11, .86) 0%, rgba(31, 18, 11, .58) 32%, rgba(31, 18, 11, .12) 58%, rgba(31, 18, 11, 0) 78%), linear-gradient(0deg, rgba(31, 18, 11, .78) 0%, rgba(31, 18, 11, 0) 46%), linear-gradient(180deg, rgba(31, 18, 11, .55) 0%, rgba(31, 18, 11, 0) 22%); }
 @keyframes hero-in { from { opacity: 0; } to { opacity: 1; } }
-@keyframes hero-drift { from { transform: scale(1.16); } to { transform: scale(1.06); } }
+@keyframes hero-drift { from { transform: scale(1.18); } to { transform: scale(1.1); } }
 .hero__in { position: relative; z-index: 3; display: flex; flex-direction: column; justify-content: flex-end; width: 100%; max-width: calc(var(--maxw) + var(--g) * 2); margin: 0 auto; padding: calc(var(--hdr) + 48px) var(--g) clamp(28px, 4.5vh, 48px); }
-.hero__text { max-width: 660px; }
+.hero__text { max-width: min(780px, 54vw); }
 .hero .eyebrow { color: var(--beige); }
 .hero__title { font-size: clamp(2.75rem, 6vw, 6.2rem); font-weight: 300; line-height: .98; letter-spacing: -.025em; font-variation-settings: "opsz" 72; }
 .hero__lead { margin-top: clamp(20px, 2.2vw, 30px); max-width: 34em; font-size: var(--t-lead); line-height: 1.55; color: rgba(245, 240, 235, .82); }
@@ -343,7 +343,7 @@
   /* Mobile: immagine in alto, testo sotto su fondo scuro, senza coprire il soggetto */
   .hero { display: block; height: auto; min-height: 0; max-height: none; }
   .hero__bg { position: relative; height: calc(56vh + var(--hdr)); height: calc(56svh + var(--hdr)); min-height: 380px; }
-  .hero__bg .ph img { object-position: 46% 50%; }
+  .hero__bg .ph img { object-position: 62% 0%; transform-origin: 62% 0%; }
   .hero__bg::after { background: radial-gradient(120% 90% at 60% 40%, rgba(31, 18, 11, 0) 0%, rgba(31, 18, 11, .45) 75%), linear-gradient(0deg, #1F120B 0%, rgba(31, 18, 11, .45) 30%, rgba(31, 18, 11, 0) 58%), linear-gradient(180deg, rgba(31, 18, 11, .6) 0%, rgba(31, 18, 11, 0) 30%); }
   .hero__in { margin-top: -64px; padding-top: 0; padding-bottom: 40px; }
   .hero__facts { margin-top: 40px; }
