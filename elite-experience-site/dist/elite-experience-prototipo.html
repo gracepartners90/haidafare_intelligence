@@ -300,6 +300,15 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .acc__item summary i::after { transform: rotate(90deg); }
 .acc__item[open] summary i::after { transform: rotate(0); }
 .acc__body { padding: 0 0 24px; color: var(--muted); max-width: 46em; }
+.acc__body .arrow { margin-top: 12px; color: var(--ink); }
+.faqg__group + .faqg__group { margin-top: clamp(40px, 4vw, 56px); }
+.faqg__title { margin-bottom: 6px; color: var(--choc); font-family: var(--sans); font-size: var(--t-micro); font-weight: 600; letter-spacing: .16em; text-transform: uppercase; scroll-margin-top: calc(var(--hdr) + 24px); }
+.faqg__group { scroll-margin-top: calc(var(--hdr) + 24px); }
+.faq-aside { position: sticky; top: calc(var(--hdr) + 32px); align-self: start; }
+.faq-index { display: grid; gap: 8px; margin: 24px 0 28px; padding-left: 14px; border-left: 1px solid var(--line-strong); }
+.faq-index a { font-family: var(--serif); font-size: 1.15rem; text-decoration: none; }
+.faq-index a:hover { text-decoration: underline; }
+@media (max-width: 1024px) { .faq-aside { position: static; } }
 .acc--program summary b { margin-right: 14px; font-size: var(--t-micro); letter-spacing: .14em; text-transform: uppercase; color: var(--choc); }
 .acc--program summary em { margin-left: auto; margin-right: 12px; font-style: normal; color: var(--muted); font-size: .875rem; }
 
@@ -871,7 +880,6 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
   </figure></div>
   <div class="hero__in">
     <div class="hero__text">
-      <p class="eyebrow ">Élite Experience — Metodo e Formazione Hair Spa</p>
       <h1 class="hero__title">Porta l’esperienza Hair Spa nel tuo salone.</h1>
       <p class="hero__lead">Un metodo professionale ideato da Elisabetta Tancini, che attraverso percorsi di formazione online e in presenza ti accompagna nell’apprendimento di rituali, tecniche e manualità Hair Spa.</p>
       <div class="actions">
@@ -1867,39 +1875,109 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
   </div>
 </section>
 
-<section class="sec">
-  <div class="wrap split split--5-7">
-    <div>
+<section class="sec" id="faq">
+  <div class="wrap split split--4-8">
+    <div class="faq-aside">
       <header class="shead shead--left ">
     <p class="eyebrow ">FAQ</p>
     <h2 class="shead__title">Domande frequenti.</h2>
     
   </header>
+      <ul class="faq-index"><li><a href="#/academy/@faq-scegliere">Scegliere il corso</a></li><li><a href="#/academy/@faq-prezzi">Prezzi e acquisto</a></li><li><a href="#/academy/@faq-online">Come funzionano i corsi online</a></li><li><a href="#/academy/@faq-presenza">Formazione in presenza</a></li><li><a href="#/academy/@faq-metodo">Il Metodo Élite</a></li></ul>
       <p>Non trovi la risposta? <a class="arrow " href="#/contatti/@formazione"><span>Scrivici</span><i aria-hidden="true">→</i></a></p>
       <p class="platform"><a class="btn btn--ghost " href="https://academy.elitexperience.it/" target="_blank" rel="noopener" ><span>Accedi alla piattaforma Academy</span><i aria-hidden="true">↗</i></a></p>
     </div>
+    <div class="faqg"><div class="faqg__group" id="faq-scegliere">
+    <h3 class="faqg__title">Scegliere il corso</h3>
     <div class="acc "><details class="acc__item">
+      <summary><span>Da quale corso conviene iniziare?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Dal Wellness Ritual: è il corso ideale per i primi approcci all’Hair Spa.</p><a class="arrow " href="#/academy/formazione-online/wellness-ritual/"><span>Scopri il Wellness Ritual</span><i aria-hidden="true">→</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>Serve esperienza Hair Spa per iniziare?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Per iniziare no: il Wellness Ritual è pensato per i primi approcci all’Hair Spa. Gli altri corsi hanno livello Medium, Base e Medium o Pro, per chi vuole approfondire.</p></div>
+    </details><details class="acc__item">
+      <summary><span>Che livello hanno i corsi?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Wellness Ritual: primi approcci. Pinda Ritual e Brushing Ritual: Medium. Hairgym Ritual: Base e Medium. Relax Full Ritual: Pro.</p><a class="arrow " href="#/academy/@confronto"><span>Confronta i corsi</span><i aria-hidden="true">→</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>Che differenza c’è tra i rituali?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Ogni rituale è un’espressione pratica del Metodo Élite, con tecniche, manualità e sequenze proprie. La scheda di ciascun corso descrive competenze, tecniche e programma.</p></div>
+    </details><details class="acc__item">
       <summary><span>Che differenza c’è tra formazione online e in presenza?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p>La formazione online si basa su videolezioni teoriche e dimostrative dedicate ai rituali e alle manualità Hair Spa. La formazione in presenza è un percorso pratico con Elisabetta Tancini, presso la sede di Arona o direttamente nel salone.</p></div>
+    </details></div>
+  </div><div class="faqg__group" id="faq-prezzi">
+    <h3 class="faqg__title">Prezzi e acquisto</h3>
+    <div class="acc "><details class="acc__item">
+      <summary><span>Quanto costano i corsi online?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Il Wellness Ritual costa 190 €. Pinda Ritual, Brushing Ritual, Hairgym Ritual e Relax Full Ritual costano 290 € ciascuno.</p></div>
+    </details><details class="acc__item">
+      <summary><span>Dove si acquistano i corsi online?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Sulla piattaforma Élite Experience Academy, academy.elitexperience.it.</p><a class="arrow " href="https://academy.elitexperience.it/" target="_blank" rel="noopener"><span>Vai alla piattaforma Academy</span><i aria-hidden="true">↗</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>È possibile acquistare più corsi insieme?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="draft">Sì, con la Élite Ritual Collection, che riunisce i cinque rituali del Metodo Élite in un unico percorso. Prezzo e condizioni sono da confermare.</span></p></div>
+    </details><details class="acc__item">
+      <summary><span>Sono previste promozioni o codici sconto?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
+    </details><details class="acc__item">
+      <summary><span>Quali metodi di pagamento sono accettati?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
+    </details></div>
+  </div><div class="faqg__group" id="faq-online">
+    <h3 class="faqg__title">Come funzionano i corsi online</h3>
+    <div class="acc "><details class="acc__item">
+      <summary><span>Come sono fatte le lezioni?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Sono videolezioni teoriche e dimostrative, dedicate all’apprendimento dei rituali e delle manualità Hair Spa.</p></div>
     </details><details class="acc__item">
       <summary><span>Come si accede ai corsi online?</span><i aria-hidden="true"></i></summary>
-      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
+      <div class="acc__body"><p><span class="draft">Dopo l’acquisto, il corso si segue sulla piattaforma Élite Experience Academy.</span></p></div>
+    </details><details class="acc__item">
+      <summary><span>Posso seguire le lezioni con i miei tempi?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="draft">Sì: le videolezioni si seguono online, con i tempi del proprio salone.</span></p></div>
     </details><details class="acc__item">
       <summary><span>Per quanto tempo restano disponibili le lezioni?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details><details class="acc__item">
-      <summary><span>Serve esperienza Hair Spa per iniziare?</span><i aria-hidden="true"></i></summary>
+      <summary><span>Da quali dispositivi posso seguire i corsi?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details><details class="acc__item">
       <summary><span>Sono previsti materiali didattici o attestati?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details><details class="acc__item">
-      <summary><span>È possibile acquistare più corsi insieme?</span><i aria-hidden="true"></i></summary>
-      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
-    </details><details class="acc__item">
       <summary><span>Come posso ricevere assistenza durante il corso?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details></div>
+  </div><div class="faqg__group" id="faq-presenza">
+    <h3 class="faqg__title">Formazione in presenza</h3>
+    <div class="acc "><details class="acc__item">
+      <summary><span>Dove si svolge la formazione in presenza?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Presso la sede di Arona oppure direttamente nel salone del professionista.</p></div>
+    </details><details class="acc__item">
+      <summary><span>Chi tiene la formazione in presenza?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Elisabetta Tancini, ideatrice del Metodo Élite e formatrice Hair Spa.</p></div>
+    </details><details class="acc__item">
+      <summary><span>È possibile formare più operatori dello stesso salone?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="draft">Sì: la formazione nel salone si svolge con il tuo team. Numero di partecipanti e organizzazione si definiscono su richiesta.</span></p></div>
+    </details><details class="acc__item">
+      <summary><span>Come si richiede la formazione in presenza?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="draft">Compilando il modulo dedicato nella pagina Contatti: verrai ricontattato per definire modalità e date.</span></p><a class="arrow " href="#/contatti/@presenza"><span>Richiedi la formazione in presenza</span><i aria-hidden="true">→</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>Quanto costa la formazione in presenza?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
+    </details></div>
+  </div><div class="faqg__group" id="faq-metodo">
+    <h3 class="faqg__title">Il Metodo Élite</h3>
+    <div class="acc "><details class="acc__item">
+      <summary><span>Che cos’è il Metodo Élite?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>È l’approccio professionale all’Hair Spa ideato da Elisabetta Tancini: si fonda sull’apprendimento e sull’applicazione di rituali, tecniche e manualità che il professionista porta nel proprio salone.</p><a class="arrow " href="#/metodo-elite/"><span>Scopri il Metodo Élite</span><i aria-hidden="true">→</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>Chi è Elisabetta Tancini?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>È la fondatrice di Élite Experience, ideatrice del Metodo Élite e formatrice Hair Spa.</p><a class="arrow " href="#/elisabetta-tancini/"><span>Conosci Elisabetta</span><i aria-hidden="true">→</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>A chi si rivolge la formazione?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>A professionisti e saloni che vogliono introdurre l’Hair Spa nei propri servizi o approfondire rituali e manualità.</p></div>
+    </details></div>
+  </div></div>
   </div>
 </section></section>
 <section class="route p-online" data-route="academy/formazione-online/" data-title="Formazione Online Hair Spa — Corsi del Metodo Élite | Élite Experience" hidden>
@@ -2042,7 +2120,78 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
   </div></div>
 </section>
 
-<section class="sec">
+<section class="sec" id="faq-online">
+  <div class="wrap split split--4-8">
+    <div class="faq-aside"><header class="shead shead--left ">
+    <p class="eyebrow ">FAQ</p>
+    <h2 class="shead__title">Domande sui corsi online.</h2>
+    
+  </header><p><a class="arrow " href="#/academy/@faq"><span>Tutte le domande frequenti</span><i aria-hidden="true">→</i></a></p></div>
+    <div class="faqg"><div class="faqg__group">
+    <h3 class="faqg__title">Scegliere il corso</h3>
+    <div class="acc "><details class="acc__item">
+      <summary><span>Da quale corso conviene iniziare?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Dal Wellness Ritual: è il corso ideale per i primi approcci all’Hair Spa.</p><a class="arrow " href="#/academy/formazione-online/wellness-ritual/"><span>Scopri il Wellness Ritual</span><i aria-hidden="true">→</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>Serve esperienza Hair Spa per iniziare?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Per iniziare no: il Wellness Ritual è pensato per i primi approcci all’Hair Spa. Gli altri corsi hanno livello Medium, Base e Medium o Pro, per chi vuole approfondire.</p></div>
+    </details><details class="acc__item">
+      <summary><span>Che livello hanno i corsi?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Wellness Ritual: primi approcci. Pinda Ritual e Brushing Ritual: Medium. Hairgym Ritual: Base e Medium. Relax Full Ritual: Pro.</p><a class="arrow " href="#/academy/@confronto"><span>Confronta i corsi</span><i aria-hidden="true">→</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>Che differenza c’è tra i rituali?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Ogni rituale è un’espressione pratica del Metodo Élite, con tecniche, manualità e sequenze proprie. La scheda di ciascun corso descrive competenze, tecniche e programma.</p></div>
+    </details><details class="acc__item">
+      <summary><span>Che differenza c’è tra formazione online e in presenza?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>La formazione online si basa su videolezioni teoriche e dimostrative dedicate ai rituali e alle manualità Hair Spa. La formazione in presenza è un percorso pratico con Elisabetta Tancini, presso la sede di Arona o direttamente nel salone.</p></div>
+    </details></div>
+  </div><div class="faqg__group">
+    <h3 class="faqg__title">Prezzi e acquisto</h3>
+    <div class="acc "><details class="acc__item">
+      <summary><span>Quanto costano i corsi online?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Il Wellness Ritual costa 190 €. Pinda Ritual, Brushing Ritual, Hairgym Ritual e Relax Full Ritual costano 290 € ciascuno.</p></div>
+    </details><details class="acc__item">
+      <summary><span>Dove si acquistano i corsi online?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Sulla piattaforma Élite Experience Academy, academy.elitexperience.it.</p><a class="arrow " href="https://academy.elitexperience.it/" target="_blank" rel="noopener"><span>Vai alla piattaforma Academy</span><i aria-hidden="true">↗</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>È possibile acquistare più corsi insieme?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="draft">Sì, con la Élite Ritual Collection, che riunisce i cinque rituali del Metodo Élite in un unico percorso. Prezzo e condizioni sono da confermare.</span></p></div>
+    </details><details class="acc__item">
+      <summary><span>Sono previste promozioni o codici sconto?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
+    </details><details class="acc__item">
+      <summary><span>Quali metodi di pagamento sono accettati?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
+    </details></div>
+  </div><div class="faqg__group">
+    <h3 class="faqg__title">Come funzionano i corsi online</h3>
+    <div class="acc "><details class="acc__item">
+      <summary><span>Come sono fatte le lezioni?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Sono videolezioni teoriche e dimostrative, dedicate all’apprendimento dei rituali e delle manualità Hair Spa.</p></div>
+    </details><details class="acc__item">
+      <summary><span>Come si accede ai corsi online?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="draft">Dopo l’acquisto, il corso si segue sulla piattaforma Élite Experience Academy.</span></p></div>
+    </details><details class="acc__item">
+      <summary><span>Posso seguire le lezioni con i miei tempi?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="draft">Sì: le videolezioni si seguono online, con i tempi del proprio salone.</span></p></div>
+    </details><details class="acc__item">
+      <summary><span>Per quanto tempo restano disponibili le lezioni?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
+    </details><details class="acc__item">
+      <summary><span>Da quali dispositivi posso seguire i corsi?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
+    </details><details class="acc__item">
+      <summary><span>Sono previsti materiali didattici o attestati?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
+    </details><details class="acc__item">
+      <summary><span>Come posso ricevere assistenza durante il corso?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
+    </details></div>
+  </div></div>
+  </div>
+</section>
+
+<section class="sec sec--ivory">
   <div class="wrap split split--6-6">
     <div><header class="shead shead--left ">
     <p class="eyebrow ">Non sai da dove iniziare?</p>
@@ -2166,6 +2315,32 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
         <div><dt>Investimento</dt><dd><span class="tbd">Non pubblicato: su richiesta, da confermare</span></dd></div>
       </dl>
     </div>
+  </div>
+</section>
+
+<section class="sec" id="faq-presenza">
+  <div class="wrap split split--4-8">
+    <div class="faq-aside"><header class="shead shead--left ">
+    <p class="eyebrow ">FAQ</p>
+    <h2 class="shead__title">Domande sulla formazione in presenza.</h2>
+    
+  </header><p><a class="arrow " href="#/academy/@faq"><span>Tutte le domande frequenti</span><i aria-hidden="true">→</i></a></p></div>
+    <div class="acc "><details class="acc__item">
+      <summary><span>Dove si svolge la formazione in presenza?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Presso la sede di Arona oppure direttamente nel salone del professionista.</p></div>
+    </details><details class="acc__item">
+      <summary><span>Chi tiene la formazione in presenza?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Elisabetta Tancini, ideatrice del Metodo Élite e formatrice Hair Spa.</p></div>
+    </details><details class="acc__item">
+      <summary><span>È possibile formare più operatori dello stesso salone?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="draft">Sì: la formazione nel salone si svolge con il tuo team. Numero di partecipanti e organizzazione si definiscono su richiesta.</span></p></div>
+    </details><details class="acc__item">
+      <summary><span>Come si richiede la formazione in presenza?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="draft">Compilando il modulo dedicato nella pagina Contatti: verrai ricontattato per definire modalità e date.</span></p><a class="arrow " href="#/contatti/@presenza"><span>Richiedi la formazione in presenza</span><i aria-hidden="true">→</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>Quanto costa la formazione in presenza?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
+    </details></div>
   </div>
 </section>
 
@@ -2399,16 +2574,28 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
     
   </header></div>
     <div class="acc "><details class="acc__item">
+      <summary><span>Quanto costa il Wellness Ritual?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>190 €. Il corso si acquista sulla piattaforma Élite Experience Academy.</p><a class="arrow " href="https://academy.elitexperience.it/" target="_blank" rel="noopener"><span>Vai alla piattaforma Academy</span><i aria-hidden="true">↗</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>Il Wellness Ritual è adatto a chi inizia?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Sì: è il corso ideale per i primi approcci all’Hair Spa.</p></div>
+    </details><details class="acc__item">
+      <summary><span>Come sono fatte le lezioni?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Sono videolezioni teoriche e dimostrative, dedicate all’apprendimento dei rituali e delle manualità Hair Spa.</p></div>
+    </details><details class="acc__item">
       <summary><span>Come si accede ai corsi online?</span><i aria-hidden="true"></i></summary>
-      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
+      <div class="acc__body"><p><span class="draft">Dopo l’acquisto, il corso si segue sulla piattaforma Élite Experience Academy.</span></p></div>
+    </details><details class="acc__item">
+      <summary><span>Posso seguire le lezioni con i miei tempi?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="draft">Sì: le videolezioni si seguono online, con i tempi del proprio salone.</span></p></div>
     </details><details class="acc__item">
       <summary><span>Per quanto tempo restano disponibili le lezioni?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details><details class="acc__item">
-      <summary><span>Serve esperienza Hair Spa per iniziare?</span><i aria-hidden="true"></i></summary>
+      <summary><span>Sono previsti materiali didattici o attestati?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details><details class="acc__item">
-      <summary><span>Sono previsti materiali didattici o attestati?</span><i aria-hidden="true"></i></summary>
+      <summary><span>Come posso ricevere assistenza durante il corso?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details></div>
   </div>
@@ -2683,16 +2870,28 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
     
   </header></div>
     <div class="acc "><details class="acc__item">
+      <summary><span>Quanto costa il Pinda Ritual?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>290 €. Il corso si acquista sulla piattaforma Élite Experience Academy.</p><a class="arrow " href="https://academy.elitexperience.it/" target="_blank" rel="noopener"><span>Vai alla piattaforma Academy</span><i aria-hidden="true">↗</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>Che livello ha il Pinda Ritual?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Livello Medium. Per i primi approcci all’Hair Spa il corso consigliato è il Wellness Ritual.</p><a class="arrow " href="#/academy/formazione-online/wellness-ritual/"><span>Wellness Ritual</span><i aria-hidden="true">→</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>Come sono fatte le lezioni?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Sono videolezioni teoriche e dimostrative, dedicate all’apprendimento dei rituali e delle manualità Hair Spa.</p></div>
+    </details><details class="acc__item">
       <summary><span>Come si accede ai corsi online?</span><i aria-hidden="true"></i></summary>
-      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
+      <div class="acc__body"><p><span class="draft">Dopo l’acquisto, il corso si segue sulla piattaforma Élite Experience Academy.</span></p></div>
+    </details><details class="acc__item">
+      <summary><span>Posso seguire le lezioni con i miei tempi?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="draft">Sì: le videolezioni si seguono online, con i tempi del proprio salone.</span></p></div>
     </details><details class="acc__item">
       <summary><span>Per quanto tempo restano disponibili le lezioni?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details><details class="acc__item">
-      <summary><span>Serve esperienza Hair Spa per iniziare?</span><i aria-hidden="true"></i></summary>
+      <summary><span>Sono previsti materiali didattici o attestati?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details><details class="acc__item">
-      <summary><span>Sono previsti materiali didattici o attestati?</span><i aria-hidden="true"></i></summary>
+      <summary><span>Come posso ricevere assistenza durante il corso?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details></div>
   </div>
@@ -2967,16 +3166,28 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
     
   </header></div>
     <div class="acc "><details class="acc__item">
+      <summary><span>Quanto costa il Brushing Ritual?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>290 €. Il corso si acquista sulla piattaforma Élite Experience Academy.</p><a class="arrow " href="https://academy.elitexperience.it/" target="_blank" rel="noopener"><span>Vai alla piattaforma Academy</span><i aria-hidden="true">↗</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>Che livello ha il Brushing Ritual?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Livello Medium. Per i primi approcci all’Hair Spa il corso consigliato è il Wellness Ritual.</p><a class="arrow " href="#/academy/formazione-online/wellness-ritual/"><span>Wellness Ritual</span><i aria-hidden="true">→</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>Come sono fatte le lezioni?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Sono videolezioni teoriche e dimostrative, dedicate all’apprendimento dei rituali e delle manualità Hair Spa.</p></div>
+    </details><details class="acc__item">
       <summary><span>Come si accede ai corsi online?</span><i aria-hidden="true"></i></summary>
-      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
+      <div class="acc__body"><p><span class="draft">Dopo l’acquisto, il corso si segue sulla piattaforma Élite Experience Academy.</span></p></div>
+    </details><details class="acc__item">
+      <summary><span>Posso seguire le lezioni con i miei tempi?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="draft">Sì: le videolezioni si seguono online, con i tempi del proprio salone.</span></p></div>
     </details><details class="acc__item">
       <summary><span>Per quanto tempo restano disponibili le lezioni?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details><details class="acc__item">
-      <summary><span>Serve esperienza Hair Spa per iniziare?</span><i aria-hidden="true"></i></summary>
+      <summary><span>Sono previsti materiali didattici o attestati?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details><details class="acc__item">
-      <summary><span>Sono previsti materiali didattici o attestati?</span><i aria-hidden="true"></i></summary>
+      <summary><span>Come posso ricevere assistenza durante il corso?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details></div>
   </div>
@@ -3251,16 +3462,28 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
     
   </header></div>
     <div class="acc "><details class="acc__item">
+      <summary><span>Quanto costa il Hairgym Ritual?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>290 €. Il corso si acquista sulla piattaforma Élite Experience Academy.</p><a class="arrow " href="https://academy.elitexperience.it/" target="_blank" rel="noopener"><span>Vai alla piattaforma Academy</span><i aria-hidden="true">↗</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>Che livello ha il Hairgym Ritual?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Livello Base e Medium. Per i primi approcci all’Hair Spa il corso consigliato è il Wellness Ritual.</p><a class="arrow " href="#/academy/formazione-online/wellness-ritual/"><span>Wellness Ritual</span><i aria-hidden="true">→</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>Come sono fatte le lezioni?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Sono videolezioni teoriche e dimostrative, dedicate all’apprendimento dei rituali e delle manualità Hair Spa.</p></div>
+    </details><details class="acc__item">
       <summary><span>Come si accede ai corsi online?</span><i aria-hidden="true"></i></summary>
-      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
+      <div class="acc__body"><p><span class="draft">Dopo l’acquisto, il corso si segue sulla piattaforma Élite Experience Academy.</span></p></div>
+    </details><details class="acc__item">
+      <summary><span>Posso seguire le lezioni con i miei tempi?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="draft">Sì: le videolezioni si seguono online, con i tempi del proprio salone.</span></p></div>
     </details><details class="acc__item">
       <summary><span>Per quanto tempo restano disponibili le lezioni?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details><details class="acc__item">
-      <summary><span>Serve esperienza Hair Spa per iniziare?</span><i aria-hidden="true"></i></summary>
+      <summary><span>Sono previsti materiali didattici o attestati?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details><details class="acc__item">
-      <summary><span>Sono previsti materiali didattici o attestati?</span><i aria-hidden="true"></i></summary>
+      <summary><span>Come posso ricevere assistenza durante il corso?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details></div>
   </div>
@@ -3535,16 +3758,28 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
     
   </header></div>
     <div class="acc "><details class="acc__item">
+      <summary><span>Quanto costa il Relax Full Ritual?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>290 €. Il corso si acquista sulla piattaforma Élite Experience Academy.</p><a class="arrow " href="https://academy.elitexperience.it/" target="_blank" rel="noopener"><span>Vai alla piattaforma Academy</span><i aria-hidden="true">↗</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>Che livello ha il Relax Full Ritual?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Livello Pro. Per i primi approcci all’Hair Spa il corso consigliato è il Wellness Ritual.</p><a class="arrow " href="#/academy/formazione-online/wellness-ritual/"><span>Wellness Ritual</span><i aria-hidden="true">→</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>Come sono fatte le lezioni?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Sono videolezioni teoriche e dimostrative, dedicate all’apprendimento dei rituali e delle manualità Hair Spa.</p></div>
+    </details><details class="acc__item">
       <summary><span>Come si accede ai corsi online?</span><i aria-hidden="true"></i></summary>
-      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
+      <div class="acc__body"><p><span class="draft">Dopo l’acquisto, il corso si segue sulla piattaforma Élite Experience Academy.</span></p></div>
+    </details><details class="acc__item">
+      <summary><span>Posso seguire le lezioni con i miei tempi?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="draft">Sì: le videolezioni si seguono online, con i tempi del proprio salone.</span></p></div>
     </details><details class="acc__item">
       <summary><span>Per quanto tempo restano disponibili le lezioni?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details><details class="acc__item">
-      <summary><span>Serve esperienza Hair Spa per iniziare?</span><i aria-hidden="true"></i></summary>
+      <summary><span>Sono previsti materiali didattici o attestati?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details><details class="acc__item">
-      <summary><span>Sono previsti materiali didattici o attestati?</span><i aria-hidden="true"></i></summary>
+      <summary><span>Come posso ricevere assistenza durante il corso?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
     </details></div>
   </div>
@@ -3768,13 +4003,19 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
       <div class="acc__body"><p>La formazione online si basa su videolezioni teoriche e dimostrative dedicate ai rituali e alle manualità Hair Spa. La formazione in presenza è un percorso pratico con Elisabetta Tancini, presso la sede di Arona o direttamente nel salone.</p></div>
     </details><details class="acc__item">
       <summary><span>Serve esperienza Hair Spa per iniziare?</span><i aria-hidden="true"></i></summary>
-      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
+      <div class="acc__body"><p>Per iniziare no: il Wellness Ritual è pensato per i primi approcci all’Hair Spa. Gli altri corsi hanno livello Medium, Base e Medium o Pro, per chi vuole approfondire.</p></div>
+    </details><details class="acc__item">
+      <summary><span>Dove si svolge la formazione in presenza?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>Presso la sede di Arona oppure direttamente nel salone del professionista.</p></div>
     </details><details class="acc__item">
       <summary><span>È possibile formare più operatori dello stesso salone?</span><i aria-hidden="true"></i></summary>
-      <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
+      <div class="acc__body"><p><span class="draft">Sì: la formazione nel salone si svolge con il tuo team. Numero di partecipanti e organizzazione si definiscono su richiesta.</span></p></div>
     </details><details class="acc__item">
-      <summary><span>La formazione può svolgersi nel mio salone?</span><i aria-hidden="true"></i></summary>
-      <div class="acc__body"><p>Sì: la formazione in presenza può essere organizzata direttamente presso la sede del professionista.</p></div>
+      <summary><span>Come si richiede la formazione in presenza?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p><span class="draft">Compilando il modulo dedicato nella pagina Contatti: verrai ricontattato per definire modalità e date.</span></p><a class="arrow " href="#/contatti/@presenza"><span>Richiedi la formazione in presenza</span><i aria-hidden="true">→</i></a></div>
+    </details><details class="acc__item">
+      <summary><span>A chi si rivolge la formazione?</span><i aria-hidden="true"></i></summary>
+      <div class="acc__body"><p>A professionisti e saloni che vogliono introdurre l’Hair Spa nei propri servizi o approfondire rituali e manualità.</p></div>
     </details></div>
   </div>
 </section>

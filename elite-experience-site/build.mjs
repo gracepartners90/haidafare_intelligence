@@ -25,7 +25,7 @@ const data = {
   media: read('src/content/media.json'),
   courses: [...coursesFile.courses].sort((a, b) => a.order - b.order),
   collection: coursesFile.collection,
-  faq: coursesFile.faq,
+  faq: read('src/content/faq.json'),
   editorial: read('src/content/editorial.json'),
   practice: read('src/content/practice.json'),
 };

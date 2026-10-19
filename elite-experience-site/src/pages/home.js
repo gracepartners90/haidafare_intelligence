@@ -19,7 +19,6 @@ export default [{
   <div class="hero__bg">${media(ctx, 'heroHome', { fill: true, eager: true })}</div>
   <div class="hero__in">
     <div class="hero__text">
-      ${eyebrow('Élite Experience — Metodo e Formazione Hair Spa')}
       <h1 class="hero__title">Porta l’esperienza Hair Spa nel tuo salone.</h1>
       <p class="hero__lead">Un metodo professionale ideato da Elisabetta Tancini, che attraverso percorsi di formazione online e in presenza ti accompagna nell’apprendimento di rituali, tecniche e manualità Hair Spa.</p>
       <div class="actions">

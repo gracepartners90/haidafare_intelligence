@@ -1,7 +1,7 @@
 import { site } from '../config.js';
-import { esc, tbd, draft, eyebrow, sectionHead, btn, arrow, media, slot, tbdBlock, breadcrumb, faqList, videoBlock } from '../components/core.js';
+import { esc, tbd, draft, eyebrow, sectionHead, btn, arrow, media, slot, tbdBlock, breadcrumb, faqList, faqAll, faqGroups, videoBlock } from '../components/core.js';
 import { courseCard, collectionBlock, courseUrl, levelChip, priceLine, promoBanner } from '../components/course.js';
-import { breadcrumbs } from '../components/seo.js';
+import { breadcrumbs, faqPage } from '../components/seo.js';
 import { page } from '../components/layout.js';
 
 const cAcademy = [{ label: 'Home', to: '' }, { label: 'Academy', to: 'academy/' }];
@@ -96,20 +96,21 @@ const academyPage = {
   </div>
 </section>
 
-<section class="sec">
-  <div class="wrap split split--5-7">
-    <div>
+<section class="sec" id="faq">
+  <div class="wrap split split--4-8">
+    <div class="faq-aside">
       ${sectionHead({ eyebrow: 'FAQ', title: 'Domande frequenti.' })}
+      <ul class="faq-index">${faq.groups.map((g) => `<li><a href="${ctx.href(`#faq-${g.id}`)}">${esc(g.title)}</a></li>`).join('')}</ul>
       <p>Non trovi la risposta? ${arrow(ctx, { label: 'Scrivici', to: 'contatti/#formazione' })}</p>
       <p class="platform">${btn(ctx, { label: 'Accedi alla piattaforma Academy', to: site.academyUrl, ext: true, variant: 'ghost' })}</p>
     </div>
-    ${faqList(faq)}
+    ${faqGroups(ctx, faq.groups, { idPrefix: 'faq-' })}
   </div>
 </section>`;
     return page(ctx, {
       title: 'Academy — Formazione Hair Spa online e in presenza | Élite Experience',
       description: 'L’Academy di Élite Experience: corsi online e formazione in presenza con Elisabetta Tancini per apprendere rituali, tecniche e manualità Hair Spa. Confronta i corsi e scegli il percorso.',
-      jsonld: [breadcrumbs(cAcademy)],
+      jsonld: [breadcrumbs(cAcademy), faqPage(faqAll(ctx.data))],
       bodyClass: 'p-academy',
       body,
     });
@@ -119,7 +120,7 @@ const academyPage = {
 const onlinePage = {
   route: 'academy/formazione-online/',
   render(ctx) {
-    const { courses, collection } = ctx.data;
+    const { courses, collection, faq } = ctx.data;
     const body = `
 <section class="phero phero--split phero--light">
   <div class="phero__text">
@@ -155,7 +156,14 @@ const onlinePage = {
   <div class="wrap">${collectionBlock(ctx, collection, courses)}</div>
 </section>
 
-<section class="sec">
+<section class="sec" id="faq-online">
+  <div class="wrap split split--4-8">
+    <div class="faq-aside">${sectionHead({ eyebrow: 'FAQ', title: 'Domande sui corsi online.' })}<p>${arrow(ctx, { label: 'Tutte le domande frequenti', to: 'academy/#faq' })}</p></div>
+    ${faqGroups(ctx, faq.groups.filter((g) => ['scegliere', 'prezzi', 'online'].includes(g.id)))}
+  </div>
+</section>
+
+<section class="sec sec--ivory">
   <div class="wrap split split--6-6">
     <div>${sectionHead({ eyebrow: 'Non sai da dove iniziare?', title: 'Ti aiutiamo a scegliere.' })}</div>
     <div><p class="lead">Raccontaci la tua esperienza e il tuo salone: ti indichiamo il percorso più adatto.</p>${btn(ctx, { label: 'Richiedi informazioni', to: 'contatti/#formazione' })}</div>
@@ -175,7 +183,7 @@ const onlinePage = {
 const presencePage = {
   route: 'academy/formazione-in-presenza/',
   render(ctx) {
-    const { courses } = ctx.data;
+    const { courses, faq } = ctx.data;
     const body = `
 <section class="phero phero--split phero--dark">
   <div class="phero__text">
@@ -247,6 +255,13 @@ const presencePage = {
         <div><dt>Investimento</dt><dd>${tbd('Non pubblicato: su richiesta, da confermare')}</dd></div>
       </dl>
     </div>
+  </div>
+</section>
+
+<section class="sec" id="faq-presenza">
+  <div class="wrap split split--4-8">
+    <div class="faq-aside">${sectionHead({ eyebrow: 'FAQ', title: 'Domande sulla formazione in presenza.' })}<p>${arrow(ctx, { label: 'Tutte le domande frequenti', to: 'academy/#faq' })}</p></div>
+    ${faqList(faq.groups.find((g) => g.id === 'presenza').items, ctx)}
   </div>
 </section>
 

@@ -104,6 +104,15 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .acc__item summary i::after { transform: rotate(90deg); }
 .acc__item[open] summary i::after { transform: rotate(0); }
 .acc__body { padding: 0 0 24px; color: var(--muted); max-width: 46em; }
+.acc__body .arrow { margin-top: 12px; color: var(--ink); }
+.faqg__group + .faqg__group { margin-top: clamp(40px, 4vw, 56px); }
+.faqg__title { margin-bottom: 6px; color: var(--choc); font-family: var(--sans); font-size: var(--t-micro); font-weight: 600; letter-spacing: .16em; text-transform: uppercase; scroll-margin-top: calc(var(--hdr) + 24px); }
+.faqg__group { scroll-margin-top: calc(var(--hdr) + 24px); }
+.faq-aside { position: sticky; top: calc(var(--hdr) + 32px); align-self: start; }
+.faq-index { display: grid; gap: 8px; margin: 24px 0 28px; padding-left: 14px; border-left: 1px solid var(--line-strong); }
+.faq-index a { font-family: var(--serif); font-size: 1.15rem; text-decoration: none; }
+.faq-index a:hover { text-decoration: underline; }
+@media (max-width: 1024px) { .faq-aside { position: static; } }
 .acc--program summary b { margin-right: 14px; font-size: var(--t-micro); letter-spacing: .14em; text-transform: uppercase; color: var(--choc); }
 .acc--program summary em { margin-left: auto; margin-right: 12px; font-style: normal; color: var(--muted); font-size: .875rem; }
 

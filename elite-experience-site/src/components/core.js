@@ -100,11 +100,33 @@ export function accordion(items, { cls = '' } = {}) {
     </details>`).join('')}</div>`;
 }
 
-export function faqList(items) {
+// FAQ: risposta confermata, bozza (verified = false) o segnaposto (a = null), con link facoltativo
+export function faqList(items, ctx) {
   return accordion(items.map((f) => ({
     title: esc(f.q),
-    body: f.a ? `<p>${esc(f.a)}</p>` : `<p>${tbd('Risposta da confermare con Élite Experience')}</p>`,
+    body: f.a
+      ? `<p>${f.verified === false ? draft(f.a) : esc(f.a)}</p>${f.link && ctx ? arrow(ctx, { label: f.link.label, to: f.link.to, ext: !!f.link.ext }) : ''}`
+      : `<p>${tbd('Risposta da confermare con Élite Experience')}</p>`,
   })));
+}
+
+export const faqAll = (data) => data.faq.groups.flatMap((g) => g.items);
+
+export function faqPick(data, ids) {
+  const all = faqAll(data);
+  return ids.map((id) => {
+    const f = all.find((x) => x.id === id);
+    if (!f) throw new Error(`FAQ "${id}" non presente in faq.json`);
+    return f;
+  });
+}
+
+// FAQ divise per tema (gruppi di faq.json)
+export function faqGroups(ctx, groups, { idPrefix } = {}) {
+  return `<div class="faqg">${groups.map((g) => `<div class="faqg__group"${idPrefix ? ` id="${idPrefix}${g.id}"` : ''}>
+    <h3 class="faqg__title">${esc(g.title)}</h3>
+    ${faqList(g.items, ctx)}
+  </div>`).join('')}</div>`;
 }
 
 /* ---------- Form ---------- */

@@ -1,5 +1,5 @@
 import { site } from '../config.js';
-import { esc, tbd, draft, eyebrow, sectionHead, btn, arrow, media, slot, tbdBlock, breadcrumb, faqList, form, videoBlock } from '../components/core.js';
+import { esc, tbd, draft, eyebrow, sectionHead, btn, arrow, media, slot, tbdBlock, breadcrumb, faqList, faqPick, form, videoBlock } from '../components/core.js';
 import { courseCard, courseUrl, levelChip } from '../components/course.js';
 import { breadcrumbs } from '../components/seo.js';
 import { latestArticles, articleGrid } from '../components/editorial.js';
@@ -11,7 +11,7 @@ const H = { label: 'Home', to: '' };
 const saloni = {
   route: 'per-i-saloni/',
   render(ctx) {
-    const { courses, faq } = ctx.data;
+    const { courses } = ctx.data;
     const crumbs = [H, { label: 'Per i Saloni', to: 'per-i-saloni/' }];
     const wellness = courses.find((c) => c.id === 'wellness-ritual');
     const body = `
@@ -73,7 +73,7 @@ const saloni = {
 <section class="sec">
   <div class="wrap split split--4-8">
     <div>${sectionHead({ eyebrow: 'FAQ', title: 'Domande dei saloni' })}</div>
-    ${faqList([faq[0], faq[3], { q: 'È possibile formare più operatori dello stesso salone?', a: null }, { q: 'La formazione può svolgersi nel mio salone?', a: 'Sì: la formazione in presenza può essere organizzata direttamente presso la sede del professionista.', verified: true }])}
+    ${faqList(faqPick(ctx.data, ['online-presenza', 'esperienza', 'presenza-dove', 'presenza-team', 'presenza-richiesta', 'per-chi']), ctx)}
   </div>
 </section>
 

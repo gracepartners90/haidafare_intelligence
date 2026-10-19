@@ -211,14 +211,5 @@
     "price": null,
     "promotion": { "active": false, "percent": 20, "code": null, "conditions": null, "validUntil": null },
     "purchaseUrl": null
-  },
-  "faq": [
-    { "q": "Che differenza c’è tra formazione online e in presenza?", "a": "La formazione online si basa su videolezioni teoriche e dimostrative dedicate ai rituali e alle manualità Hair Spa. La formazione in presenza è un percorso pratico con Elisabetta Tancini, presso la sede di Arona o direttamente nel salone.", "verified": true },
-    { "q": "Come si accede ai corsi online?", "a": null },
-    { "q": "Per quanto tempo restano disponibili le lezioni?", "a": null },
-    { "q": "Serve esperienza Hair Spa per iniziare?", "a": null },
-    { "q": "Sono previsti materiali didattici o attestati?", "a": null },
-    { "q": "È possibile acquistare più corsi insieme?", "a": null },
-    { "q": "Come posso ricevere assistenza durante il corso?", "a": null }
-  ]
+  }
 }

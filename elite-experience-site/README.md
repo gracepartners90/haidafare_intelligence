@@ -46,7 +46,8 @@ elite-experience-site/
 ├── src/
 │   ├── config.js             Dati del sito, contatti, social, navigazione
 │   ├── content/              CONTENUTI (si modificano qui)
-│   │   ├── courses.json      Schede corso, Élite Ritual Collection, FAQ
+│   │   ├── courses.json      Schede corso, Élite Ritual Collection
+│   │   ├── faq.json          Domande frequenti divise per tema
 │   │   ├── media.json        Registro delle fotografie ufficiali con testi alternativi
 │   │   ├── practice.json     Sequenza "Il metodo, in pratica"
 │   │   └── editorial.json    Élite & More (articoli), collaborazioni, eventi

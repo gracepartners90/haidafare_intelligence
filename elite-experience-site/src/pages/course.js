@@ -1,8 +1,8 @@
 // Modello unico per tutte le schede corso: i contenuti arrivano da src/content/courses.json.
 import { site } from '../config.js';
-import { esc, tbd, draft, eyebrow, sectionHead, btn, arrow, media, slot, visual, tbdBlock, breadcrumb, accordion, faqList, videoBlock } from '../components/core.js';
+import { esc, tbd, draft, eyebrow, sectionHead, btn, arrow, media, slot, visual, tbdBlock, breadcrumb, accordion, faqList, faqPick, videoBlock } from '../components/core.js';
 import { courseCard, courseImage, courseUrl, levelChip, priceLine, promoBanner } from '../components/course.js';
-import { course as courseLd, breadcrumbs } from '../components/seo.js';
+import { course as courseLd, breadcrumbs, faqPage } from '../components/seo.js';
 import { page } from '../components/layout.js';
 
 const list = (items, fallback) => (items && items.length
@@ -188,7 +188,7 @@ function coursePage(c, all, collection) {
 <section class="sec">
   <div class="wrap split split--4-8">
     <div>${sectionHead({ eyebrow: 'FAQ', title: 'Domande sul corso' })}</div>
-    ${c.faq && c.faq.length ? faqList(c.faq) : faqList(ctx.data.faq.slice(1, 5))}
+    ${faqList(courseFaq(ctx, c), ctx)}
   </div>
 </section>
 
@@ -206,13 +206,26 @@ function coursePage(c, all, collection) {
       return page(ctx, {
         title: `${c.name} — Corso online Hair Spa | Élite Experience Academy`,
         description: `${c.name}: scheda tecnica del corso online del Metodo Élite. Cosa imparerai, tecniche e manualità, programma, a chi è rivolto e iscrizione.`,
-        jsonld: [courseLd(c), breadcrumbs(crumbs)],
+        jsonld: [courseLd(c), breadcrumbs(crumbs), faqPage(courseFaq(ctx, c))],
         ogImage: c.heroImage || 'lavatesta',
         bodyClass: 'p-course',
         body,
       });
     },
   };
+}
+
+// Domande del corso: prezzo e livello dai dati del corso, poi le domande generali sui corsi online
+function courseFaq(ctx, c) {
+  const wellness = ctx.data.courses.find((x) => x.id === 'wellness-ritual');
+  const items = [];
+  if (c.price != null) items.push({ q: `Quanto costa il ${c.name}?`, a: `${c.price} €. Il corso si acquista sulla piattaforma Élite Experience Academy.`, verified: true, link: { label: 'Vai alla piattaforma Academy', to: c.purchaseUrl || site.academyUrl, ext: true } });
+  if (c.level) {
+    items.push(c.id === 'wellness-ritual'
+      ? { q: `Il ${c.name} è adatto a chi inizia?`, a: 'Sì: è il corso ideale per i primi approcci all’Hair Spa.', verified: c.level.verified }
+      : { q: `Che livello ha il ${c.name}?`, a: `Livello ${c.level.label}. Per i primi approcci all’Hair Spa il corso consigliato è il ${wellness.name}.`, verified: c.level.verified, link: { label: wellness.name, to: courseUrl(wellness) } });
+  }
+  return [...items, ...(c.faq || []), ...faqPick(ctx.data, ['lezioni', 'accesso', 'tempi', 'durata-accesso', 'materiali', 'assistenza'])];
 }
 
 export default (data) => data.courses.map((c) => coursePage(c, data.courses, data.collection));

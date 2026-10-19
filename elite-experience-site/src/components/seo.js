@@ -51,3 +51,10 @@ export const breadcrumbs = (items) => ({
   '@type': 'BreadcrumbList',
   itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.label, item: `${site.url}/${it.to}` })),
 });
+
+// Solo le risposte confermate entrano nei dati strutturati
+export const faqPage = (items) => ({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.filter((f) => f.a && f.verified !== false).map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+});
