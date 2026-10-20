@@ -28,6 +28,7 @@ npm run preview    # serve dist/ su http://localhost:4180
 | `npm run build` | Sito statico in `dist/` con link `…/index.html`, più il file unico di anteprima |
 | `npm run build:deploy` | Sito statico con URL puliti (`/metodo-elite/`) per la pubblicazione |
 | `npm run preview` | Server locale su `dist/` |
+| `npm start` | Server dell'anteprima di revisione (`server.mjs`): nascosta ai motori di ricerca, con password se è impostata `PREVIEW_PASSWORD` |
 
 **Il sito multipagina va aperto tramite un server HTTP** (`npm run preview` o qualsiasi
 hosting statico): aperto con doppio clic dal file system, il browser blocca i font.
@@ -237,6 +238,16 @@ La struttura è predisposta (`locales` in `config.js`, `hreflang` nel `<head>`).
 attivarla: aggiungere `'en'` a `locales`, tradurre i contenuti di `src/content/` in file
 paralleli (es. `courses.en.json`) e generare le pagine sotto `/en/`. La pagina di
 Elisabetta Tancini è la prima candidata alla traduzione.
+
+## Anteprima di revisione (Railway)
+
+L'anteprima online è un servizio Railway collegato al ramo di lavoro: a ogni push esegue
+`npm run build` e `npm start` dalla cartella `elite-experience-site`. `server.mjs` serve `dist/`
+senza dipendenze, risponde a `/healthz` per il controllo di salute e tiene l'anteprima
+nascosta: intestazione `X-Robots-Tag: noindex` e `robots.txt` che esclude tutto. Con le
+variabili `PREVIEW_PASSWORD` (e `PREVIEW_USER`, predefinito `elite`) chiede la password; senza
+`PREVIEW_PASSWORD` resta accessibile a chi ha l'indirizzo. Le note di lavorazione sono attive
+come nel file unico.
 
 ## Pubblicazione
 
