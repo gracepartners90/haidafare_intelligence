@@ -21,9 +21,9 @@ export function fullHero(ctx, { image, position, slides, eyebrow, title, lead, e
 }
 
 // Immagine a tutto schermo, con lieve avvicinamento quando entra nella pagina
-export function fullImage(ctx, image, { position, caption, provisional = false, cls = '' } = {}) {
+export function fullImage(ctx, image, { position, positionMobile, caption, provisional = false, cls = '' } = {}) {
   return `<section class="fullimg ${cls}" data-reveal>
-  ${media(ctx, image, { fill: true, position, provisional })}
+  ${media(ctx, image, { fill: true, position, positionMobile, provisional })}
   ${caption ? `<p class="fullimg__cap">${esc(caption)}</p>` : ''}
 </section>`;
 }

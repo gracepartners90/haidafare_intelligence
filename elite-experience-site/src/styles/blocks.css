@@ -113,7 +113,7 @@
 .partners-sec .partners { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .partners-sec .partner { display: grid; justify-items: center; padding: clamp(36px, 4vw, 56px) 24px; text-align: center; }
 .partners-sec .partner__logo { position: relative; width: 100%; height: 110px; margin-bottom: 18px; background: none; }
-.partner__logo img { width: auto; max-height: 72px; }
+.partner__logo img { width: auto; max-width: min(280px, 90%); height: auto; max-height: 72px; }
 .partner__word { color: var(--ink); font-size: clamp(1.8rem, 2.6vw, 2.4rem); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
 .partner__flag { top: 0; left: 50%; transform: translateX(-50%); white-space: nowrap; }
 .partners-sec .partner__role { margin: 0; color: var(--choc); font-size: var(--t-micro); font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }

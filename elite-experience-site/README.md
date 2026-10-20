@@ -141,6 +141,10 @@ senza fotografia mostrano un riquadro con il soggetto da fotografare.
 - **Immagini delle card dei corsi**: campo `cardImage` di ogni corso in `courses.json`
   (chiave della foto e inquadratura).
 - **Immagine a tutto schermo della scheda corso**: campo `sectionImage`.
+- **Loghi dei partner**: in `src/assets/partners/` (PNG con fondo trasparente), collegati in
+  `editorial.json` → `collaborations.documented[].logo`.
+- **Inquadratura su mobile**: `positionMobile` (pagine) o `posMobile` (sequenza) sposta il
+  soggetto al centro quando lo schermo è stretto.
 - `"provisional": true` segnala una foto provvisoria: con le note di lavorazione attive
   compare l'etichetta "Immagine provvisoria".
 
@@ -194,9 +198,6 @@ Ritual Collection sono già compilati.
 
 **Formazione in presenza** — durata e condizioni (sede Maison BB ad Arona, max 8
 partecipanti e calendario da concordare sono già indicati).
-
-**Collaborazioni** (pagina di Elisabetta) — loghi ufficiali di Z.One e Maletti (partnership
-attive, ruolo «Hair Spa Educator»): oggi al loro posto c'è il nome in lettere.
 
 **Élite & More** — gli articoli reali (titolo, data, estratto, immagine, testo) al posto dei
 tre esempi.

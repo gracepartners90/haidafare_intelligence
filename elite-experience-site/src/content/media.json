@@ -82,6 +82,18 @@
     "file": "media/elisabetta-palco-dimostrazione.jpg", "w": 1672, "h": 941, "official": true,
     "alt": "Elisabetta Tancini durante una dimostrazione dal vivo sul palco: muove un bastone della pioggia sopra la cliente distesa al lavatesta."
   },
+  "formatricePalco": {
+    "file": "media/elisabetta-formatrice-palco.jpg", "w": 941, "h": 1672, "official": true,
+    "alt": "Elisabetta Tancini esegue una manualità Hair Spa sulla cliente distesa al lavatesta, durante una dimostrazione dal vivo."
+  },
+  "formazioneGruppo": {
+    "file": "media/elisabetta-formazione-gruppo.jpg", "w": 1086, "h": 1942, "official": true,
+    "alt": "Durante una formazione in presenza, un gruppo di professioniste osserva e riprende una manualità al lavatesta."
+  },
+  "consulenzaSalone": {
+    "file": "media/elisabetta-consulenza-salone.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Elisabetta Tancini sorride durante una consulenza con una cliente nel suo salone, tra pareti in legno e prodotti del rituale."
+  },
   "acquaMani": {
     "file": "media/hair-spa-acqua-mani.jpg", "w": 2000, "h": 1143, "official": true,
     "alt": "Le mani dell'operatrice accompagnano l'acqua sul cuoio capelluto della cliente durante un rituale Hair Spa, accanto a un rubinetto dorato."

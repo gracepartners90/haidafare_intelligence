@@ -46,7 +46,7 @@ ${fullHero(ctx, {
       <h2 class="bio__title">L’esperienza di un’imprenditrice.<br>La visione di una formatrice.</h2>
     </header>
     <div class="bio__grid">
-      <div class="bio__head">${media(ctx, 'lavatestaAcqua', { ratio: '4/5', position: '50% 30%', cls: 'bio__img' })}</div>
+      <div class="bio__head">${media(ctx, 'formatricePalco', { ratio: '4/5', position: '50% 28%', cls: 'bio__img' })}</div>
       <div class="bio__text">
         ${bio.map((t, i) => `<p${i === 0 ? ' class="lead"' : ''}>${t}</p>`).join('')}
       </div>
@@ -66,7 +66,7 @@ ${fullHero(ctx, {
         <li><b>In presenza</b><span>Percorsi formativi ad Arona o direttamente nel salone del professionista, per apprendere le manualità a stretto contatto con Elisabetta, attraverso dimostrazioni, esercitazioni e confronto diretto.</span></li>
       </ul>
     </div>
-    ${videoBlock(ctx, { poster: 'dimostrazione', posterPos: '50% 45%', title: 'Elisabetta in formazione', note: 'Inserire un estratto autentico di Elisabetta durante una lezione.', ratio: '4/5' })}
+    ${videoBlock(ctx, { poster: 'formazioneGruppo', posterPos: '50% 52%', title: 'Elisabetta in formazione', note: 'Inserire un estratto autentico di Elisabetta durante una lezione.', ratio: '4/5' })}
   </div>
 </section>
 
@@ -82,14 +82,14 @@ ${fullHero(ctx, {
   </div>
 </section>
 
-${fullImage(ctx, 'intervento', { position: '50% 26%' })}
+${fullImage(ctx, 'consulenzaSalone', { position: '30% 35%', positionMobile: '8% 35%' })}
 
 <section class="sec partners-sec">
   <div class="wrap">
     ${sectionHead({ eyebrow: 'Collaborazioni', title: 'Partnership attive.' })}
     <div class="partners">
       ${editorial.collaborations.documented.map((p) => `<article class="partner">
-        <div class="partner__logo">${p.logo ? `<img ${ctx.src(p.logo)} alt="${esc(p.name)}">` : `<span class="partner__word">${esc(p.name)}</span><span class="ph__flag partner__flag" aria-hidden="true">Logo ufficiale da inserire</span>`}</div>
+        <div class="partner__logo">${p.logo ? `<img ${ctx.src(p.logo)}${p.logoW ? ` width="${p.logoW}" height="${p.logoH}"` : ''} alt="${esc(p.name)}" loading="lazy">` : `<span class="partner__word">${esc(p.name)}</span><span class="ph__flag partner__flag" aria-hidden="true">Logo ufficiale da inserire</span>`}</div>
         <h3 class="partner__name sr-only">${esc(p.name)}</h3>
         <p class="partner__role">${esc(p.role)}</p>
       </article>`).join('')}
