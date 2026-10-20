@@ -1,4 +1,4 @@
-import { esc, draft, eyebrow, sectionHead, btn, media, videoBlock } from '../components/core.js';
+import { esc, eyebrow, sectionHead, btn, media, videoBlock } from '../components/core.js';
 import { person, breadcrumbs } from '../components/seo.js';
 import { page } from '../components/layout.js';
 import { fullHero, fullImage, signedQuote } from '../components/blocks.js';
@@ -28,14 +28,14 @@ ${fullHero(ctx, {
     { image: 'dimostrazione', position: '50% 42%' },
   ],
   eyebrow: 'Fondatrice di Élite Experience',
-  title: '<span class="rv"><span>Elisabetta</span></span> <span class="rv"><em>Tancini</em></span>',
+  title: '<span class="rv"><span>Elisabetta</span></span> <span class="rv"><span>Tancini</span></span>',
   lead: 'Imprenditrice, Hair Spa Specialist e formatrice internazionale.',
 })}
 
 <section class="sec vision">
   <div class="wrap">
     ${eyebrow('La sua visione')}
-    ${signedQuote(draft('L’Hair Spa è l’arte di dare tempo: al gesto, alla persona, alla cura che li unisce.'), { cls: 'signed--xl' })}
+    ${signedQuote(esc('L’Hair Spa è l’arte di dare tempo: al gesto, alla persona, alla cura che li unisce.'), { cls: 'signed--xl' })}
   </div>
 </section>
 
@@ -43,7 +43,7 @@ ${fullHero(ctx, {
   <div class="wrap bio__grid">
     <div class="bio__head">
       ${eyebrow('Il percorso professionale')}
-      <h2 class="display-name display-name--m">Elisabetta <em>Tancini</em></h2>
+      <h2 class="display-name display-name--m">Elisabetta Tancini</h2>
       <p class="bio__sub">L’esperienza di un’imprenditrice. La visione di una formatrice.</p>
       ${media(ctx, 'lavatestaAcqua', { ratio: '4/5', position: '50% 30%', cls: 'bio__img' })}
     </div>

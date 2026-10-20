@@ -8,16 +8,20 @@ export function levelChip(level) {
   return `<span class="chip${level.verified ? '' : ' chip--draft'}">${esc(level.label)}${level.verified ? '' : ' · da confermare'}</span>`;
 }
 
-// Prezzo in formato italiano (1.600), con «IVA inclusa» quando confermato
-export const euro = (n) => `€ ${Number(n).toLocaleString('it-IT')}`;
+// Prezzo in formato italiano (1.200, anche a quattro cifre), con «IVA inclusa» quando confermato
+export const euro = (n) => `€ ${String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`;
 export const priceText = (item) => (item.price == null ? '' : `${euro(item.price)}${item.vatIncluded ? ' IVA inclusa' : ''}`);
 
-export function priceLine(item) {
+export function priceLine(item, { compare } = {}) {
   if (item.price == null) return `<p class="price">${tbd('Prezzo da verificare')}</p>`;
   const promo = item.promotion && item.promotion.active
     ? ` <span class="promo">-${item.promotion.percent}%${item.promotion.code ? ` con codice ${esc(item.promotion.code)}` : ''}</span>` : '';
-  return `<p class="price">${euro(item.price)}${item.vatIncluded ? ' <small>IVA inclusa</small>' : ''}${promo}</p>`;
+  const was = compare > item.price ? `<small class="price__was">${euro(compare)} acquistando i corsi singolarmente</small>` : '';
+  return `<p class="price">${euro(item.price)}${item.vatIncluded ? ' <small>IVA inclusa</small>' : ''}${promo}${was}</p>`;
 }
+
+// Somma dei prezzi dei corsi inclusi nella collezione (per mostrare lo sconto)
+const coursesTotal = (col, courses) => col.includes.reduce((s, id) => s + ((courses.find((c) => c.id === id) || {}).price || 0), 0);
 
 // Le promozioni compaiono solo se attive e con condizioni confermate
 export function promoBanner(item) {
@@ -61,7 +65,7 @@ export function collectionBlock(ctx, col, courses) {
       return `<li><span>${String(i + 1).padStart(2, '0')}</span><a href="${ctx.href(courseUrl(c))}">${esc(c.name)}</a></li>`;
     }).join('')}</ol>
     <div class="coll__foot">
-      ${priceLine(col)}
+      ${priceLine(col, { compare: coursesTotal(col, courses) })}
       ${promoBanner(col)}
       ${col.purchaseUrl ? btn(ctx, { label: 'Acquista la collezione', to: col.purchaseUrl, ext: true, variant: 'light' }) : btn(ctx, { label: 'Vai alla piattaforma Academy', to: site.academyUrl, ext: true, variant: 'light' })}
     </div>
@@ -101,7 +105,7 @@ export function collectionBand(ctx, col) {
       <p class="coll-band__desc">${draft(col.description)}</p>
     </div>
     <div class="coll-band__foot">
-      ${priceLine(col)}
+      ${priceLine(col, { compare: coursesTotal(col, ctx.data.courses) })}
       ${promoBanner(col)}
       ${col.purchaseUrl ? btn(ctx, { label: 'Acquista la collezione', to: col.purchaseUrl, ext: true, variant: 'light' }) : btn(ctx, { label: 'Vai alla piattaforma Academy', to: site.academyUrl, ext: true, variant: 'light' })}
     </div>

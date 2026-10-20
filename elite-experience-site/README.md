@@ -117,10 +117,10 @@ Campi principali: `name`, `level`, `shortDescription` (la frase di «Cosa impare
 `purchaseUrl`, `faq`, `related`.
 
 - **Prezzo**: confermati Wellness Ritual € 190 e gli altri rituali € 290, IVA inclusa
-  (`vatIncluded`); Élite Ritual Collection € 1.600. Con `price` a `null` il prezzo non viene
-  mostrato e i dati strutturati del corso non dichiarano un'offerta.
-- **Durata e modalità**: «Videolezione online», 1 h (indicate per il Wellness Ritual e
-  applicate per ora a tutti i corsi: da confermare corso per corso).
+  (`vatIncluded`); Élite Ritual Collection € 1.200, scontata rispetto ai corsi singoli (il sito
+  mostra in automatico la somma dei corsi inclusi, € 1.350, quando è più alta). Con `price` a
+  `null` il prezzo non viene mostrato e i dati strutturati del corso non dichiarano un'offerta.
+- **Durata e modalità**: «Videolezione online», 1 h per tutti i corsi.
 - **Livello**: Wellness Ritual "Primi approcci", Pinda e Brushing "Medium", Hairgym "Base e
   Medium", Relax Full "Pro".
 - **Promozione**: il banner compare solo con `"active": true` **e** condizioni compilate.
@@ -182,15 +182,13 @@ Il prototipo è completo nella struttura; questi dati servono per andare online.
 **Brand e contatti** — email, telefono, indirizzo della sede di Arona, P. IVA, profili social,
 riferimenti per la privacy policy e la cookie policy.
 
-**Elisabetta Tancini** — conferma delle due citazioni firmate (oggi in bozza: home e «La sua
-visione»), eventuali riconoscimenti, altre fotografie ufficiali (anche verticali, di
-dettaglio, in aula).
+**Elisabetta Tancini** — eventuali riconoscimenti, altre fotografie ufficiali (anche verticali,
+di dettaglio, in aula). Le due citazioni firmate (home e «La sua visione») sono approvate.
 
-**Corsi** — per ciascuno dei 5 rituali: nome ufficiale, durata (oggi 1 h per tutti),
-profilo consigliato, prerequisiti, disponibilità dei contenuti, requisiti tecnici,
-eventuale promozione con condizioni, link di acquisto, immagini e un estratto video autentico
-(prezzi, livelli, tecniche e «Cosa imparerai» sono già confermati). Conferma del prezzo della
-Élite Ritual Collection (€ 1.600) rispetto alla somma dei singoli corsi (€ 1.350).
+**Corsi** — per ciascuno dei 5 rituali: nome ufficiale, profilo consigliato, prerequisiti,
+disponibilità dei contenuti, requisiti tecnici, eventuale promozione con condizioni, link di
+acquisto, immagini e un estratto video autentico (prezzi, durata, livelli, tecniche, «Cosa
+imparerai» e prezzo della Élite Ritual Collection sono già confermati).
 
 **Formazione in presenza** — durata e condizioni (sede Maison BB ad Arona, max 8
 partecipanti e calendario da concordare sono già indicati).

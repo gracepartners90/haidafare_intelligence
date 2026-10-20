@@ -49,10 +49,10 @@ ${fullHero(ctx, {
   <div class="wrap home-eli__grid">
     <div class="home-eli__text">
       ${eyebrow('La fondatrice')}
-      <h2 class="display-name">Elisabetta <em>Tancini</em></h2>
+      <h2 class="display-name">Elisabetta Tancini</h2>
       <p class="home-eli__sub">La professionista dietro il Metodo Élite.</p>
       <p>Imprenditrice, Hair Spa Specialist e formatrice internazionale, Elisabetta Tancini è la fondatrice di Élite Experience e l’ideatrice del Metodo Élite. Il metodo nasce dal suo lavoro in salone e si trasmette attraverso la formazione online e in presenza.</p>
-      ${signedQuote(draft('Ogni gesto ha un tempo e un’intenzione. Insegnarlo significa trasmettere la cura che c’è dietro.'))}
+      ${signedQuote(esc('Ogni gesto ha un tempo e un’intenzione. Insegnarlo significa trasmettere la cura che c’è dietro.'))}
       <div class="actions">${btn(ctx, { label: 'Conosci Elisabetta', to: 'elisabetta-tancini/', variant: 'light' })}</div>
     </div>
     <div class="home-eli__portrait">${media(ctx, 'ritratto', { ratio: '4/5', position: '50% 22%' })}</div>

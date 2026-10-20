@@ -21,7 +21,7 @@
 .hero__title .rv + .rv > * { animation-delay: .16s; }
 @keyframes rv-up { from { transform: translateY(105%); } to { transform: none; } }
 .hero--eli .hero__text { max-width: none; }
-.hero--eli .hero__title { font-size: clamp(3.4rem, 9vw, 9.6rem); line-height: .9; letter-spacing: -.03em; }
+.hero--eli .hero__title { font-size: clamp(3.4rem, 9vw, 9.6rem); font-weight: 400; line-height: .9; letter-spacing: -.03em; font-variation-settings: "opsz" 48; }
 .hero--eli .hero__lead { animation: fade-up 1.2s .5s var(--ease) both; }
 @keyframes fade-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
@@ -66,11 +66,12 @@
 /* Dichiarazione firmata */
 .signed { margin: 30px 0 34px; }
 .signed blockquote p { font-family: var(--serif); font-size: clamp(1.4rem, 2vw, 1.85rem); font-style: italic; font-weight: 300; line-height: 1.35; }
-.signed figcaption { margin-top: 4px; }
+.signed figcaption { margin-top: clamp(22px, 2.6vw, 34px); }
 .signed__sign { display: inline-block; color: var(--beige); font-family: "Mrs Saint Delafield", "Brush Script MT", cursive; font-size: clamp(2.8rem, 4.4vw, 3.8rem); line-height: 1.15; transform: rotate(-4deg); transform-origin: left center; }
 .sec:not(.sec--deep):not(.sec--choc) .signed__sign { color: var(--choc); }
 .signed--xl { margin: 16px 0 0; }
 .signed--xl blockquote p { max-width: 18em; font-size: clamp(2rem, 4.2vw, 4rem); line-height: 1.14; }
+.signed--xl figcaption { margin-top: clamp(28px, 3.4vw, 48px); }
 .signed--xl .signed__sign { font-size: clamp(3.4rem, 6vw, 5.2rem); }
 
 /* ---------- Metodo ---------- */
@@ -165,6 +166,8 @@
 .ccard__foot .price { margin: 0; font-size: 1.2rem; }
 .ccard .ccard__foot .arrow { margin-top: 0; }
 .price small { color: var(--muted); font-family: var(--sans); font-size: .75rem; }
+.price .price__was { display: block; margin-top: 4px; letter-spacing: .02em; }
+.coll .price small, .coll-band .price small { color: var(--muted-light); }
 .sec--choc .price small, .sec--deep .price small { color: var(--muted-light); }
 
 /* ---------- Formazione in presenza: cosa si apprende ---------- */

@@ -834,7 +834,7 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .hero__title .rv + .rv > * { animation-delay: .16s; }
 @keyframes rv-up { from { transform: translateY(105%); } to { transform: none; } }
 .hero--eli .hero__text { max-width: none; }
-.hero--eli .hero__title { font-size: clamp(3.4rem, 9vw, 9.6rem); line-height: .9; letter-spacing: -.03em; }
+.hero--eli .hero__title { font-size: clamp(3.4rem, 9vw, 9.6rem); font-weight: 400; line-height: .9; letter-spacing: -.03em; font-variation-settings: "opsz" 48; }
 .hero--eli .hero__lead { animation: fade-up 1.2s .5s var(--ease) both; }
 @keyframes fade-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
@@ -879,11 +879,12 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 /* Dichiarazione firmata */
 .signed { margin: 30px 0 34px; }
 .signed blockquote p { font-family: var(--serif); font-size: clamp(1.4rem, 2vw, 1.85rem); font-style: italic; font-weight: 300; line-height: 1.35; }
-.signed figcaption { margin-top: 4px; }
+.signed figcaption { margin-top: clamp(22px, 2.6vw, 34px); }
 .signed__sign { display: inline-block; color: var(--beige); font-family: "Mrs Saint Delafield", "Brush Script MT", cursive; font-size: clamp(2.8rem, 4.4vw, 3.8rem); line-height: 1.15; transform: rotate(-4deg); transform-origin: left center; }
 .sec:not(.sec--deep):not(.sec--choc) .signed__sign { color: var(--choc); }
 .signed--xl { margin: 16px 0 0; }
 .signed--xl blockquote p { max-width: 18em; font-size: clamp(2rem, 4.2vw, 4rem); line-height: 1.14; }
+.signed--xl figcaption { margin-top: clamp(28px, 3.4vw, 48px); }
 .signed--xl .signed__sign { font-size: clamp(3.4rem, 6vw, 5.2rem); }
 
 /* ---------- Metodo ---------- */
@@ -978,6 +979,8 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .ccard__foot .price { margin: 0; font-size: 1.2rem; }
 .ccard .ccard__foot .arrow { margin-top: 0; }
 .price small { color: var(--muted); font-family: var(--sans); font-size: .75rem; }
+.price .price__was { display: block; margin-top: 4px; letter-spacing: .02em; }
+.coll .price small, .coll-band .price small { color: var(--muted-light); }
 .sec--choc .price small, .sec--deep .price small { color: var(--muted-light); }
 
 /* ---------- Formazione in presenza: cosa si apprende ---------- */
@@ -1281,11 +1284,11 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   <div class="wrap home-eli__grid">
     <div class="home-eli__text">
       <p class="eyebrow ">La fondatrice</p>
-      <h2 class="display-name">Elisabetta <em>Tancini</em></h2>
+      <h2 class="display-name">Elisabetta Tancini</h2>
       <p class="home-eli__sub">La professionista dietro il Metodo Élite.</p>
       <p>Imprenditrice, Hair Spa Specialist e formatrice internazionale, Elisabetta Tancini è la fondatrice di Élite Experience e l’ideatrice del Metodo Élite. Il metodo nasce dal suo lavoro in salone e si trasmette attraverso la formazione online e in presenza.</p>
       <figure class="signed ">
-  <blockquote><p><span class="draft">Ogni gesto ha un tempo e un’intenzione. Insegnarlo significa trasmettere la cura che c’è dietro.</span></p></blockquote>
+  <blockquote><p>Ogni gesto ha un tempo e un’intenzione. Insegnarlo significa trasmettere la cura che c’è dietro.</p></blockquote>
   <figcaption><span class="signed__sign" aria-hidden="true">Elisabetta Tancini</span><span class="sr-only">Elisabetta Tancini</span></figcaption>
 </figure>
       <div class="actions"><a class="btn btn--light " href="#/elisabetta-tancini/" ><span>Conosci Elisabetta</span><i aria-hidden="true">→</i></a></div>
@@ -1493,7 +1496,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
       <p class="coll-band__desc"><span class="draft">La collezione completa dei rituali del Metodo Élite in un unico percorso formativo.</span></p>
     </div>
     <div class="coll-band__foot">
-      <p class="price">€ 1600</p>
+      <p class="price">€ 1.200<small class="price__was">€ 1.350 acquistando i corsi singolarmente</small></p>
       
       <a class="btn btn--light " href="https://academy.elitexperience.it/" target="_blank" rel="noopener" ><span>Vai alla piattaforma Academy</span><i aria-hidden="true">↗</i></a>
     </div>
@@ -1735,7 +1738,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   <div class="hero__in">
     <div class="hero__text">
       <p class="eyebrow">Fondatrice di Élite Experience</p>
-      <h1 class="hero__title"><span class="rv"><span>Elisabetta</span></span> <span class="rv"><em>Tancini</em></span></h1>
+      <h1 class="hero__title"><span class="rv"><span>Elisabetta</span></span> <span class="rv"><span>Tancini</span></span></h1>
       <p class="hero__lead">Imprenditrice, Hair Spa Specialist e formatrice internazionale.</p>
       
     </div>
@@ -1747,7 +1750,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   <div class="wrap">
     <p class="eyebrow ">La sua visione</p>
     <figure class="signed signed--xl">
-  <blockquote><p><span class="draft">L’Hair Spa è l’arte di dare tempo: al gesto, alla persona, alla cura che li unisce.</span></p></blockquote>
+  <blockquote><p>L’Hair Spa è l’arte di dare tempo: al gesto, alla persona, alla cura che li unisce.</p></blockquote>
   <figcaption><span class="signed__sign" aria-hidden="true">Elisabetta Tancini</span><span class="sr-only">Elisabetta Tancini</span></figcaption>
 </figure>
   </div>
@@ -1757,7 +1760,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   <div class="wrap bio__grid">
     <div class="bio__head">
       <p class="eyebrow ">Il percorso professionale</p>
-      <h2 class="display-name display-name--m">Elisabetta <em>Tancini</em></h2>
+      <h2 class="display-name display-name--m">Elisabetta Tancini</h2>
       <p class="bio__sub">L’esperienza di un’imprenditrice. La visione di una formatrice.</p>
       <figure class="ph  bio__img" style="aspect-ratio:4/5;--pos:50% 30%">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/elisabetta-lavatesta-acqua.jpg" width="941" height="1672" alt="Elisabetta Tancini versa acqua da una caraffa di vetro sui capelli di una cliente al lavatesta." loading="lazy" decoding="async">
@@ -2054,7 +2057,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
       <div class="acc__body"><p>Sulla piattaforma Élite Experience Academy, academy.elitexperience.it.</p><a class="arrow " href="https://academy.elitexperience.it/" target="_blank" rel="noopener"><span>Vai alla piattaforma Academy</span><i aria-hidden="true">↗</i></a></div>
     </details><details class="acc__item">
       <summary><span>È possibile acquistare più corsi insieme?</span><i aria-hidden="true"></i></summary>
-      <div class="acc__body"><p>Sì, con la Élite Ritual Collection, che riunisce i cinque rituali del Metodo Élite in un unico percorso, al prezzo di 1.600 €.</p></div>
+      <div class="acc__body"><p>Sì, con la Élite Ritual Collection, che riunisce i cinque rituali del Metodo Élite in un unico percorso, al prezzo scontato di 1.200 €, invece dei 1.350 € dei cinque corsi acquistati singolarmente.</p></div>
     </details><details class="acc__item">
       <summary><span>Sono previste promozioni o codici sconto?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
@@ -2236,7 +2239,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     </div>
     <ol class="coll__list"><li><span>01</span><a href="#/academy/formazione-online/wellness-ritual/">Wellness Ritual</a></li><li><span>02</span><a href="#/academy/formazione-online/pinda-ritual/">Pinda Ritual</a></li><li><span>03</span><a href="#/academy/formazione-online/brushing-ritual/">Brushing Ritual</a></li><li><span>04</span><a href="#/academy/formazione-online/hairgym-ritual/">Hairgym Ritual</a></li><li><span>05</span><a href="#/academy/formazione-online/relax-full-ritual/">Relax Full Ritual</a></li></ol>
     <div class="coll__foot">
-      <p class="price">€ 1600</p>
+      <p class="price">€ 1.200<small class="price__was">€ 1.350 acquistando i corsi singolarmente</small></p>
       
       <a class="btn btn--light " href="https://academy.elitexperience.it/" target="_blank" rel="noopener" ><span>Vai alla piattaforma Academy</span><i aria-hidden="true">↗</i></a>
     </div>
@@ -2278,7 +2281,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
       <div class="acc__body"><p>Sulla piattaforma Élite Experience Academy, academy.elitexperience.it.</p><a class="arrow " href="https://academy.elitexperience.it/" target="_blank" rel="noopener"><span>Vai alla piattaforma Academy</span><i aria-hidden="true">↗</i></a></div>
     </details><details class="acc__item">
       <summary><span>È possibile acquistare più corsi insieme?</span><i aria-hidden="true"></i></summary>
-      <div class="acc__body"><p>Sì, con la Élite Ritual Collection, che riunisce i cinque rituali del Metodo Élite in un unico percorso, al prezzo di 1.600 €.</p></div>
+      <div class="acc__body"><p>Sì, con la Élite Ritual Collection, che riunisce i cinque rituali del Metodo Élite in un unico percorso, al prezzo scontato di 1.200 €, invece dei 1.350 € dei cinque corsi acquistati singolarmente.</p></div>
     </details><details class="acc__item">
       <summary><span>Sono previste promozioni o codici sconto?</span><i aria-hidden="true"></i></summary>
       <div class="acc__body"><p><span class="tbd">Risposta da confermare con Élite Experience</span></p></div>
