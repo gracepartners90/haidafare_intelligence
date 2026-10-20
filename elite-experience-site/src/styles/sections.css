@@ -395,3 +395,5 @@
   .seq__bar button { font-size: .5625rem; letter-spacing: .08em; }
   .seq__tc { display: none; }
 }
+/* Sequenza: inquadratura dedicata agli schermi piccoli, se indicata */
+@media (max-width: 760px) { .seq__frame img { object-position: var(--pos-m, var(--pos)); transform-origin: var(--pos-m, var(--pos)); } }

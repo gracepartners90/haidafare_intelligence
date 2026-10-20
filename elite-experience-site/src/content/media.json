@@ -46,6 +46,10 @@
     "file": "media/hair-spa-arco-dorato.jpg", "w": 1920, "h": 1080, "official": true,
     "alt": "Un arco dorato fa scendere fili d'acqua sui capelli della cliente, rilassata a occhi chiusi, mentre l'operatrice lavora sul cuoio capelluto."
   },
+  "pettiniAmbra": {
+    "file": "media/hair-spa-pettini-ambra.jpg", "w": 1920, "h": 1080, "official": true,
+    "alt": "Le mani dell'operatrice lavorano sul cuoio capelluto della cliente, distesa a occhi chiusi al lavatesta, con due strumenti da massaggio color ambra."
+  },
   "acquaMani": {
     "file": "media/hair-spa-acqua-mani.jpg", "w": 2000, "h": 1143, "official": true,
     "alt": "Le mani dell'operatrice accompagnano l'acqua sul cuoio capelluto della cliente durante un rituale Hair Spa, accanto a un rubinetto dorato."

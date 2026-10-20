@@ -9,7 +9,7 @@ export function practiceSequence(ctx, { id = 'in-pratica', compact = false } = {
   <div class="seq__stage">
     ${d.chapters.map((c, i) => {
       const m = ctx.data.media[c.media];
-      return `<figure class="seq__frame${i === 0 ? ' is-on' : ''}" style="--pos:${c.pos};--zoom:${c.zoom}">
+      return `<figure class="seq__frame${i === 0 ? ' is-on' : ''}" style="--pos:${c.pos};--zoom:${c.zoom}${c.posMobile ? `;--pos-m:${c.posMobile}` : ''}">
         <img ${ctx.src(m.file)} width="${m.w}" height="${m.h}" alt="${esc(m.alt)}" loading="lazy" decoding="async">
       </figure>`;
     }).join('')}

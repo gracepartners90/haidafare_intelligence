@@ -1,11 +1,11 @@
 {
-  "_info": "Sequenza 'Il metodo, in pratica'. Ogni capitolo usa un'immagine del registro media con inquadratura (pos) e ingrandimento (zoom). Quando saranno disponibili i frame dei videocorsi, sostituire 'media' con le nuove immagini. 'video': percorso del video completo della selezione (null = spazio da riempire).",
+  "_info": "Sequenza 'Il metodo, in pratica'. Ogni capitolo usa un'immagine del registro media con inquadratura (pos, posMobile facoltativa per gli schermi piccoli) e ingrandimento (zoom). Quando saranno disponibili i frame dei videocorsi, sostituire 'media' con le nuove immagini. 'video': percorso del video completo della selezione (null = spazio da riempire).",
   "title": "Il metodo, in pratica.",
   "line": "Il gesto, i materiali, il rituale: il Metodo Élite visto da vicino.",
   "secondsPerChapter": 5,
   "video": null,
   "chapters": [
-    { "word": "Tecnica", "line": { "text": "La mano lavora sul cuoio capelluto con precisione e misura.", "verified": false }, "media": "lavatesta", "pos": "70% 42%", "zoom": 1.6 },
+    { "word": "Tecnica", "line": { "text": "La mano lavora sul cuoio capelluto con precisione e misura.", "verified": false }, "media": "pettiniAmbra", "pos": "26% 50%", "posMobile": "40% 50%", "zoom": 1.04 },
     { "word": "Manualità", "line": { "text": "Il gesto si costruisce: ritmo, direzione, continuità.", "verified": false }, "media": "arcoDorato", "pos": "50% 45%", "zoom": 1.06 },
     { "word": "Protocollo", "line": { "text": "Ogni materiale al suo posto, ogni passaggio in sequenza.", "verified": false }, "media": "ciotolaLegno", "pos": "58% 50%", "zoom": 1.06 },
     { "word": "Applicazione", "line": { "text": "Il rituale completo, nel tempo reale del salone.", "verified": false }, "media": "olioFronte", "pos": "50% 42%", "zoom": 1.04 }
