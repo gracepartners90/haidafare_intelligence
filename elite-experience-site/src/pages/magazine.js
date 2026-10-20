@@ -24,7 +24,7 @@ export default (data) => {
       const body = `
 ${magazineIssue(ctx)}
 
-<section class="sec mag-archive" id="archivio">
+<section class="sec sec--deep mag-archive" id="archivio">
   <div class="wrap split split--4-8">
     <div>
       ${sectionHead({ eyebrow: 'Élite & More', title: 'Tutti gli articoli.' })}

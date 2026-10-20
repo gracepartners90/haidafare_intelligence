@@ -31,7 +31,7 @@ function pageWrap({ id, tone, n, N, cls = '', body }) {
   </section>`;
 }
 
-function cover(ctx, { issue, arts, folios, minutes }) {
+function cover(ctx, { issue, arts }) {
   const a = arts[0];
   return `<div class="pg-cover">
     <div class="pg-cover__main">
@@ -45,14 +45,7 @@ function cover(ctx, { issue, arts, folios, minutes }) {
         ${arrow(ctx, { label: 'Leggi l’articolo', to: articlePath(a) })}
       </div>
     </div>
-    <div class="pg-cover__side">
-      <div class="pg-cover__photo">${media(ctx, a.image, { fill: true, eager: true, position: a.imagePos, alt: '' })}</div>
-      <div class="pg-cover__inside">
-        <p class="mag-eyebrow">In questo numero</p>
-        <ol>${arts.map((x, i) => `<li><a href="${ctx.href(`#p-${pad(folios[i])}`)}"><span>p. ${pad(folios[i])}</span>${esc(x.title)}</a></li>`).join('')}</ol>
-        <p class="pg-cover__count">${arts.length} articoli · ${minutes} min di lettura</p>
-      </div>
-    </div>
+    <div class="pg-cover__photo">${media(ctx, a.image, { fill: true, eager: true, position: a.imagePos, alt: '' })}</div>
   </div>`;
 }
 
@@ -86,7 +79,7 @@ function opening(ctx, a, variant, folio) {
       <h2 class="pg-open__title"><a href="${ctx.href(articlePath(a))}">${esc(a.title)}</a>${sample(a)}</h2>
       <p class="pg-open__excerpt">${esc(a.excerpt)}</p>
       <p class="pg-open__by">di Redazione Élite &amp; More</p>
-      ${arrow(ctx, { label: 'Leggi l’articolo', to: articlePath(a), cls: variant === 'B' ? 'arrow--light' : '' })}
+      ${arrow(ctx, { label: 'Leggi l’articolo', to: articlePath(a), cls: 'arrow--light' })}
     </div>`;
   const big = `<span class="pg-open__folio" aria-hidden="true">${pad(folio)}</span>`;
   if (variant === 'C') return `<div class="pg-open pg-open--C">${big}${text}</div>`;
@@ -120,12 +113,12 @@ export function magazineIssue(ctx) {
   const variants = arts.map((_, i) => (i === 0 ? 'C' : i % 2 ? 'B' : 'A'));
   const N = arts.length + 3;
   const pages = [
-    pageWrap({ id: 'p-01', tone: 'paper', n: 1, N, cls: 'pg--cover', body: cover(ctx, ctxIssue) }),
-    pageWrap({ id: 'p-02', tone: 'paper', n: 2, N, body: toc(ctx, ctxIssue) }),
-    ...arts.map((a, i) => pageWrap({ id: `p-${pad(folios[i])}`, tone: variants[i] === 'B' ? 'ink' : 'paper', n: folios[i], N, body: opening(ctx, a, variants[i], folios[i]) })),
+    pageWrap({ id: 'p-01', tone: 'ink', n: 1, N, cls: 'pg--cover', body: cover(ctx, ctxIssue) }),
+    pageWrap({ id: 'p-02', tone: 'ink', n: 2, N, body: toc(ctx, ctxIssue) }),
+    ...arts.map((a, i) => pageWrap({ id: `p-${pad(folios[i])}`, tone: 'ink', n: folios[i], N, body: opening(ctx, a, variants[i], folios[i]) })),
     pageWrap({ id: `p-${pad(N)}`, tone: 'ink', n: N, N, cls: 'pg--end', body: end(ctx, ctxIssue) }),
   ];
-  return `<div class="sfoglio" data-sfoglio data-tone="paper">
+  return `<div class="sfoglio" data-sfoglio data-tone="ink">
   <nav class="sfoglio__nav" aria-label="Sfoglia il numero">
     <button type="button" class="sfoglio__btn" data-dir="-1" aria-label="Pagina precedente">‹</button>
     <button type="button" class="sfoglio__btn" data-dir="1" aria-label="Pagina successiva">›</button>

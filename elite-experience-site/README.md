@@ -156,9 +156,10 @@ sequenza resta ferma e si sfoglia con i capitoli.
 
 ### Élite & More (`editorial.json` → `journal`)
 
-Il magazine segue il modello «a numeri» di Rockstar Notes: un **numero** (`issue`: numero,
-mese, sottotitolo) si sfoglia come una rivista — copertina, sommario, un'apertura per ogni
-articolo (tre impaginazioni che si alternano), pagina di fine — in orizzontale su desktop
+Il magazine segue il modello «a numeri» di Rockstar Notes, sul marrone scuro del sito: un
+**numero** (`issue`: numero, mese, sottotitolo) si sfoglia come una rivista — copertina con la
+foto dell'articolo principale, sommario, un'apertura per ogni articolo (tre impaginazioni che
+si alternano), pagina di fine — in orizzontale su desktop
 (frecce, rotellina, tastiera ← → PagSu PagGiù, link del sommario) e come pila di pagine su
 mobile o senza JavaScript. Sotto il numero: l'archivio a registro e le rubriche
 (`categories`). Ogni articolo (`articles`) ha titolo, rubrica, data, minuti di lettura,
