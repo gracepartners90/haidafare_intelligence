@@ -6,7 +6,8 @@ import { course as courseLd, breadcrumbs, faqPage } from '../components/seo.js';
 import { page } from '../components/layout.js';
 import { fullImage } from '../components/blocks.js';
 
-const val = (v, label) => (v ? esc(v) : tbd(label));
+// Testo definitivo, bozza ({ text, verified: false }) o segnaposto se manca
+const val = (v, label) => (v == null ? tbd(label) : typeof v === 'string' ? esc(v) : draft(v));
 
 // Le sei voci di «Cosa imparerai»
 const competencies = (c) => `<ol class="learn">${(c.competencies || []).map((x, i) => `<li><span class="learn__n">${String(i + 1).padStart(2, '0')}</span><div><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p></div></li>`).join('')}</ol>`;
@@ -60,7 +61,7 @@ function coursePage(c, all, collection) {
         <div><dt>Profilo</dt><dd>${val(c.audience, 'Profilo professionale consigliato')}</dd></div>
         <div><dt>Livello</dt><dd>${levelChip(c.level)}</dd></div>
         <div><dt>Prerequisiti</dt><dd>${val(c.prerequisites, 'Eventuali prerequisiti')}</dd></div>
-        <div><dt>Per chi fa già Hair Spa</dt><dd>${tbd('Utilità del corso per chi ha già competenze')}</dd></div>
+        <div><dt>Per chi fa già Hair Spa</dt><dd>${val(c.forExperienced, 'Utilità del corso per chi ha già competenze')}</dd></div>
       </dl>
       ${c.id === 'wellness-ritual' ? '<p class="note">Il corso ideale per i primi approcci all’Hair Spa.</p>' : ''}
     </div>

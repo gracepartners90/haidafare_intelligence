@@ -1,11 +1,11 @@
 {
-  "_info": "Schede corso. null = dato non ancora documentato: la pagina mostra un campo segnaposto. verified=false = bozza da validare. shortDescription = frase del corso; competencies = le sei voci di «Cosa imparerai»; techniques = tecniche principali (tabella di confronto). cardImage: immagine delle card (media = chiave in media.json, pos = inquadratura, provisional = foto provvisoria). vatIncluded: il prezzo è mostrato «IVA inclusa».",
+  "_info": "Schede corso. null = dato non ancora documentato: la pagina mostra un campo segnaposto. verified=false = bozza da validare. shortDescription = frase del corso; competencies = le sei voci di «Cosa imparerai»; techniques = tecniche principali (tabella di confronto). audience, prerequisites, forExperienced = «A chi è rivolto»; availability, requirements = «Informazioni pratiche». cardImage: immagine delle card (media = chiave in media.json, pos = inquadratura, provisional = foto provvisoria). vatIncluded: il prezzo è mostrato «IVA inclusa».",
   "courses": [
     {
       "id": "wellness-ritual",
       "slug": "wellness-ritual",
       "name": "Wellness Ritual",
-      "nameVerified": false,
+      "nameVerified": true,
       "order": 1,
       "modes": [
         "online"
@@ -58,13 +58,16 @@
         "Detersione",
         "Manualità"
       ],
-      "audience": null,
-      "prerequisites": null,
+      "audience": "Parrucchieri e professionisti del benessere che si avvicinano all’Hair Spa e vogliono introdurre in salone un primo rituale strutturato.",
+      "prerequisites": "Nessuno: è il corso da cui iniziare.",
       "access": "Account dedicato su piattaforma Academy",
       "fruition": "Video di 1 ora",
-      "availability": null,
+      "availability": {
+        "text": "Accesso illimitato alle videolezioni dal tuo account Academy.",
+        "verified": false
+      },
       "support": "Team Élite Experience",
-      "requirements": null,
+      "requirements": "Computer, tablet o smartphone con connessione a internet.",
       "price": 190,
       "promotion": {
         "active": false,
@@ -96,13 +99,14 @@
         "media": "acquaMani",
         "pos": "45% 50%",
         "provisional": true
-      }
+      },
+      "forExperienced": "Un ripasso completo delle basi del Metodo Élite (accoglienza, detersione, manualità) per rendere il servizio uniforme in tutto il team."
     },
     {
       "id": "pinda-ritual",
       "slug": "pinda-ritual",
       "name": "Pinda Ritual",
-      "nameVerified": false,
+      "nameVerified": true,
       "order": 2,
       "modes": [
         "online"
@@ -155,13 +159,16 @@
         "Pressione",
         "Sensorialità"
       ],
-      "audience": null,
-      "prerequisites": null,
+      "audience": "Professionisti che conoscono le basi dell’Hair Spa e vogliono arricchire il menu con un rituale sensoriale, basato sul calore dei pinda.",
+      "prerequisites": "È consigliata una prima esperienza di manualità Hair Spa, ad esempio con il Wellness Ritual.",
       "access": "Account dedicato su piattaforma Academy",
       "fruition": "Video di 1 ora",
-      "availability": null,
+      "availability": {
+        "text": "Accesso illimitato alle videolezioni dal tuo account Academy.",
+        "verified": false
+      },
       "support": "Team Élite Experience",
-      "requirements": null,
+      "requirements": "Computer, tablet o smartphone con connessione a internet.",
       "price": 290,
       "promotion": {
         "active": false,
@@ -193,13 +200,14 @@
         "media": "ritualeOlio",
         "pos": "46% 50%",
         "provisional": true
-      }
+      },
+      "forExperienced": "Aggiunge al servizio l’uso dei pinda riscaldati e delle pressioni avvolgenti: un rituale distintivo, dedicato al rilassamento."
     },
     {
       "id": "brushing-ritual",
       "slug": "brushing-ritual",
       "name": "Brushing Ritual",
-      "nameVerified": false,
+      "nameVerified": true,
       "order": 3,
       "modes": [
         "online"
@@ -252,13 +260,16 @@
         "Styling",
         "Finishing"
       ],
-      "audience": null,
-      "prerequisites": null,
+      "audience": "Parrucchieri che vogliono trasformare la spazzolatura in un gesto tecnico e integrarla nell’esperienza Hair Spa, fino allo styling finale.",
+      "prerequisites": "È consigliata una prima esperienza di manualità Hair Spa, ad esempio con il Wellness Ritual.",
       "access": "Account dedicato su piattaforma Academy",
       "fruition": "Video di 1 ora",
-      "availability": null,
+      "availability": {
+        "text": "Accesso illimitato alle videolezioni dal tuo account Academy.",
+        "verified": false
+      },
       "support": "Team Élite Experience",
-      "requirements": null,
+      "requirements": "Computer, tablet o smartphone con connessione a internet.",
       "price": 290,
       "promotion": {
         "active": false,
@@ -290,13 +301,14 @@
         "media": "lavatesta",
         "pos": "50% 40%",
         "provisional": true
-      }
+      },
+      "forExperienced": "Collega il trattamento allo styling e al finishing, e trasforma una fase tradizionale del lavoro in un servizio strutturato, con consigli per il mantenimento a casa."
     },
     {
       "id": "hairgym-ritual",
       "slug": "hairgym-ritual",
       "name": "Hairgym Ritual",
-      "nameVerified": false,
+      "nameVerified": true,
       "order": 4,
       "modes": [
         "online"
@@ -349,13 +361,16 @@
         "Ritmo",
         "Pressioni"
       ],
-      "audience": null,
-      "prerequisites": null,
+      "audience": "Professionisti che vogliono proporre un trattamento dinamico e funzionale, dedicato al benessere del cuoio capelluto.",
+      "prerequisites": "Nessuno per il livello base; per il livello medium è utile una prima esperienza di manualità Hair Spa.",
       "access": "Account dedicato su piattaforma Academy",
       "fruition": "Video di 1 ora",
-      "availability": null,
+      "availability": {
+        "text": "Accesso illimitato alle videolezioni dal tuo account Academy.",
+        "verified": false
+      },
       "support": "Team Élite Experience",
-      "requirements": null,
+      "requirements": "Computer, tablet o smartphone con connessione a internet.",
       "price": 290,
       "promotion": {
         "active": false,
@@ -387,13 +402,14 @@
         "media": "massaggioTesta",
         "pos": "58% 45%",
         "provisional": true
-      }
+      },
+      "forExperienced": "Porta nel salone manualità attive, pressioni mirate e ritmi alternati, con la possibilità di proporre cicli di trattamento e percorsi di mantenimento."
     },
     {
       "id": "relax-full-ritual",
       "slug": "relax-full-ritual",
       "name": "Relax Full Ritual",
-      "nameVerified": false,
+      "nameVerified": true,
       "order": 5,
       "modes": [
         "online"
@@ -446,13 +462,16 @@
         "Calore",
         "Rilassamento"
       ],
-      "audience": null,
-      "prerequisites": null,
+      "audience": "Professionisti esperti che vogliono proporre il rituale più completo del Metodo Élite: un’esperienza Hair Spa immersiva e di alto livello.",
+      "prerequisites": "È consigliata una solida esperienza nelle manualità Hair Spa e nei rituali del Metodo Élite.",
       "access": "Account dedicato su piattaforma Academy",
       "fruition": "Video di 1 ora",
-      "availability": null,
+      "availability": {
+        "text": "Accesso illimitato alle videolezioni dal tuo account Academy.",
+        "verified": false
+      },
       "support": "Team Élite Experience",
-      "requirements": null,
+      "requirements": "Computer, tablet o smartphone con connessione a internet.",
       "price": 290,
       "promotion": {
         "active": false,
@@ -484,16 +503,17 @@
         "media": "heroHome",
         "pos": "30% 30%",
         "provisional": true
-      }
+      },
+      "forExperienced": "Unisce massaggio di testa, collo e spalle, calore e vapore in un servizio premium, da proporre come trattamento di punta o come regalo."
     }
   ],
   "collection": {
     "id": "collection",
     "name": "Élite Ritual Collection",
-    "nameVerified": false,
+    "nameVerified": true,
     "description": {
       "text": "La collezione completa dei rituali del Metodo Élite in un unico percorso formativo.",
-      "verified": false
+      "verified": true
     },
     "includes": [
       "wellness-ritual",

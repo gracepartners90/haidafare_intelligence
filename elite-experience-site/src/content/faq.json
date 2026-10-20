@@ -103,18 +103,20 @@
         {
           "id": "tempi",
           "q": "Posso seguire le lezioni con i miei tempi?",
-          "a": "Sì: le videolezioni si seguono online, con i tempi del proprio salone.",
-          "verified": false
+          "a": "Sì: le videolezioni si seguono online quando vuoi, con i tempi del tuo salone.",
+          "verified": true
         },
         {
           "id": "durata-accesso",
           "q": "Per quanto tempo restano disponibili le lezioni?",
-          "a": null
+          "a": "L’accesso alle videolezioni è illimitato: restano sempre disponibili nel tuo account sulla piattaforma Academy.",
+          "verified": false
         },
         {
           "id": "dispositivi",
           "q": "Da quali dispositivi posso seguire i corsi?",
-          "a": null
+          "a": "Da computer, tablet o smartphone, con una connessione a internet: basta accedere al tuo account sulla piattaforma Academy.",
+          "verified": true
         },
         {
           "id": "materiali",

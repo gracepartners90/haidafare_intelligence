@@ -112,7 +112,8 @@ FAQ e continua la formazione.
 Campi principali: `name`, `level`, `shortDescription` (la frase di «Cosa imparerai»),
 `competencies` (le sei voci), `techniques` (le tre tecniche del confronto in Formazione online),
 `mode`, `duration`, `heroImage`, `cardImage`, `sectionImage`, `video`
-(`{ "src": "video/…mp4", "poster": "chiaveMedia" }`), `audience`, `prerequisites`, `access`,
+(`{ "src": "video/…mp4", "poster": "chiaveMedia" }`), `audience`, `prerequisites`,
+`forExperienced` (per chi fa già Hair Spa), `access`,
 `fruition`, `availability`, `support`, `requirements`, `price`, `vatIncluded`, `promotion`,
 `purchaseUrl`, `faq`, `related`.
 
@@ -185,10 +186,11 @@ riferimenti per la privacy policy e la cookie policy.
 **Elisabetta Tancini** — eventuali riconoscimenti, altre fotografie ufficiali (anche verticali,
 di dettaglio, in aula). Le due citazioni firmate (home e «La sua visione») sono approvate.
 
-**Corsi** — per ciascuno dei 5 rituali: nome ufficiale, profilo consigliato, prerequisiti,
-disponibilità dei contenuti, requisiti tecnici, eventuale promozione con condizioni, link di
-acquisto, immagini e un estratto video autentico (prezzi, durata, livelli, tecniche, «Cosa
-imparerai» e prezzo della Élite Ritual Collection sono già confermati).
+**Corsi** — per ciascuno dei 5 rituali: conferma della disponibilità dei contenuti (oggi in
+bozza: «accesso illimitato»), eventuale promozione con condizioni, link di acquisto, immagini e
+un estratto video autentico. Prezzi, durata, livelli, tecniche, «Cosa imparerai», profilo
+consigliato, prerequisiti, requisiti tecnici e prezzo della Élite Ritual Collection sono già
+compilati.
 
 **Formazione in presenza** — durata e condizioni (sede Maison BB ad Arona, max 8
 partecipanti e calendario da concordare sono già indicati).
