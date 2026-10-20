@@ -77,7 +77,7 @@ export function ritualPicker(ctx, courses) {
   const meta = (c) => `<span class="picker__meta"><span>Online</span>${levelChip(c.level)}${c.price != null ? `<span class="picker__price">${euro(c.price)}</span>` : ''}</span>`;
   return `<div class="picker" data-picker>
     <div class="picker__stage" aria-hidden="true">
-      ${courses.map((c, i) => `<div class="picker__img${i === 0 ? ' is-on' : ''}">${courseImage(ctx, c, { fill: true })}<span class="picker__label">${esc(c.name)}</span></div>`).join('')}
+      ${courses.map((c, i) => `<div class="picker__img${i === 0 ? ' is-on' : ''}">${courseImage(ctx, c, { fill: true })}</div>`).join('')}
     </div>
     <ol class="picker__list">
       ${courses.map((c, i) => `<li class="picker__item${i === 0 ? ' is-on' : ''}" data-picker-item="${i}">

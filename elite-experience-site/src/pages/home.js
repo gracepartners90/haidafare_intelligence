@@ -29,7 +29,6 @@ ${fullHero(ctx, {
   <div class="wrap home-method__grid">
     <figure class="home-method__media">
       ${media(ctx, 'lavatestaAcqua', { fill: true, position: '50% 80%' })}
-      <figcaption>Il gesto al centro del metodo</figcaption>
     </figure>
     <div class="home-method__text">
       ${sectionHead({ eyebrow: 'Il Metodo Élite', title: 'Un metodo che prende forma attraverso il gesto.' })}
@@ -93,7 +92,7 @@ ${practiceSequence(ctx)}
   <div class="wrap">
     <div class="row-head">
       ${sectionHead({ eyebrow: 'Formazione online', title: 'Il metodo, un rituale alla volta.', lead: 'Cinque rituali completi: competenze, tecniche e programma del corso.' })}
-      ${arrow(ctx, { label: 'Confronta i corsi', to: 'academy/#confronto' })}
+      ${arrow(ctx, { label: 'Scopri i corsi online', to: 'academy/formazione-online/#confronto' })}
     </div>
     ${ritualPicker(ctx, courses)}
     ${collectionBand(ctx, collection)}

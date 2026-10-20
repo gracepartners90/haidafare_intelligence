@@ -97,7 +97,7 @@ ${c.sectionImage ? fullImage(ctx, c.sectionImage.media, { position: c.sectionIma
 <!-- 06 FAQ -->
 <section class="sec">
   <div class="wrap split split--4-8">
-    <div>${sectionHead({ eyebrow: 'FAQ', title: 'Domande sul corso' })}</div>
+    <div>${sectionHead({ eyebrow: 'FAQ', title: 'Rispondiamo ai tuoi dubbi.' })}</div>
     ${faqList(courseFaq(ctx, c), ctx)}
   </div>
 </section>

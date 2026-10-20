@@ -74,8 +74,8 @@ elite-experience-site/
 | Home | `/` |
 | Il Metodo Élite | `/metodo-elite/` |
 | Elisabetta Tancini (con la sezione Collaborazioni) | `/elisabetta-tancini/`, `#collaborazioni` |
-| Academy (panoramica, «Da dove parte il tuo salone?», confronto dei corsi) | `/academy/`, `#percorsi`, `#confronto` |
-| Formazione Online (catalogo) | `/academy/formazione-online/` |
+| Academy (panoramica, «Da dove parte il tuo salone?») | `/academy/`, `#percorsi` |
+| Formazione Online (i cinque rituali a confronto e la collezione) | `/academy/formazione-online/`, `#confronto`, `#collezione` |
 | Schede corso (5, da un unico modello) | `/academy/formazione-online/<slug>/` |
 | Formazione in Presenza | `/academy/formazione-in-presenza/` |
 | Élite & More: il numero da sfogliare, archivio, rubriche, articoli | `/elite-e-more/…` (stesso indirizzo del sito attuale) |
@@ -110,7 +110,7 @@ imparerai, a chi è rivolto e informazioni pratiche, immagine a tutto schermo, i
 FAQ e continua la formazione.
 
 Campi principali: `name`, `level`, `shortDescription` (la frase di «Cosa imparerai»),
-`competencies` (le sei voci), `techniques` (le tre tecniche del confronto in Academy),
+`competencies` (le sei voci), `techniques` (le tre tecniche del confronto in Formazione online),
 `mode`, `duration`, `heroImage`, `cardImage`, `sectionImage`, `video`
 (`{ "src": "video/…mp4", "poster": "chiaveMedia" }`), `audience`, `prerequisites`, `access`,
 `fruition`, `availability`, `support`, `requirements`, `price`, `vatIncluded`, `promotion`,

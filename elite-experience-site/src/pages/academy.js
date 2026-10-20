@@ -1,9 +1,9 @@
 import { site } from '../config.js';
-import { esc, eyebrow, sectionHead, btn, arrow, media, faqList, faqAll, faqGroups } from '../components/core.js';
-import { courseCard, collectionBlock, courseImage, courseUrl, levelChip, priceText } from '../components/course.js';
+import { esc, draft, eyebrow, sectionHead, btn, arrow, media, faqList, faqAll, faqGroups } from '../components/core.js';
+import { collectionBlock, courseImage, courseUrl, levelChip, priceText } from '../components/course.js';
 import { breadcrumbs, faqPage } from '../components/seo.js';
 import { page } from '../components/layout.js';
-import { fullHero } from '../components/blocks.js';
+import { fullHero, fullImage } from '../components/blocks.js';
 
 const cAcademy = [{ label: 'Home', to: '' }, { label: 'Academy', to: 'academy/' }];
 const cOnline = [...cAcademy, { label: 'Formazione Online', to: 'academy/formazione-online/' }];
@@ -17,6 +17,21 @@ const levelMeter = (level) => {
   return `<span class="lvl" role="img" aria-label="Livello ${esc(level ? level.label : 'da definire')}">${LEVELS.map((_, i) => `<i${on.includes(i) ? ' class="on"' : ''}></i>`).join('')}</span>`;
 };
 
+// Confronto dei cinque rituali, con la breve descrizione di ogni corso
+const compareCards = (ctx, courses) => `<div class="cmp" role="list">
+      ${courses.map((c, i) => `<article class="cmp__card" role="listitem">
+        <a class="cmp__media" href="${ctx.href(courseUrl(c))}" tabindex="-1" aria-hidden="true">${courseImage(ctx, c, { ratio: '3/2' })}</a>
+        <p class="cmp__n">${String(i + 1).padStart(2, '0')}</p>
+        <h3 class="cmp__name"><a href="${ctx.href(courseUrl(c))}">${esc(c.name)}</a></h3>
+        <p class="cmp__desc">${draft(c.shortDescription)}</p>
+        <div class="cmp__row"><span class="cmp__k">Livello</span><span class="cmp__level">${levelMeter(c.level)}<b>${esc(c.level ? c.level.label : '')}</b></span></div>
+        <div class="cmp__row"><span class="cmp__k">Tecniche principali</span><span class="cmp__tech">${(c.techniques || []).map((t) => esc(t)).join(' · ')}</span></div>
+        <div class="cmp__row"><span class="cmp__k">Modalità</span><span>Online</span></div>
+        <p class="cmp__price">${esc(priceText(c))}</p>
+        ${arrow(ctx, { label: 'Scheda del corso', to: courseUrl(c), cls: 'arrow--light' })}
+      </article>`).join('')}
+    </div>`;
+
 /* ---------------- PANORAMICA ---------------- */
 const academyPage = {
   route: 'academy/',
@@ -26,7 +41,7 @@ const academyPage = {
     const min = Math.min(...courses.map((c) => c.price).filter((p) => p != null));
     const body = `
 ${fullHero(ctx, {
-  image: 'ritualeOlio', position: '46% 50%',
+  image: 'ritualeOlio', position: '46% 50%', cls: 'hero--line',
   eyebrow: 'Élite Experience Academy',
   title: 'La formazione Hair Spa del Metodo <em>Élite</em>.',
   lead: 'Percorsi online e in presenza per apprendere rituali, tecniche e manualità Hair Spa, pensati per professionisti e saloni.',
@@ -34,7 +49,7 @@ ${fullHero(ctx, {
 
 <section class="sec modes-sec" id="modalita">
   <div class="wrap">
-    ${sectionHead({ eyebrow: 'Due modalità', title: 'Online o in presenza: lo stesso metodo.', lead: 'Scegli come imparare. Le due modalità condividono rituali, tecniche e manualità del Metodo Élite.' })}
+    ${sectionHead({ eyebrow: 'Due modalità', title: 'Online o in presenza: lo stesso metodo.', lead: 'Scegli come imparare. Le due modalità condividono rituali, tecniche e manualità del Metodo Élite.', cls: 'shead--wide' })}
     <div class="switch" data-switch>
       <div class="switch__tabs" role="tablist" aria-label="Modalità di formazione">
         <button type="button" role="tab" id="sw-online" aria-controls="sw-p-online" aria-selected="true"><span>01</span>Formazione online</button>
@@ -74,12 +89,12 @@ ${fullHero(ctx, {
   <div class="wrap">
     ${sectionHead({ eyebrow: 'Due esigenze', title: 'Da dove parte il tuo salone?' })}
     <div class="needs">
-      <article class="need" id="iniziare">
+      <article class="need need--choc" id="iniziare">
         <p class="eyebrow">Per chi desidera iniziare</p>
         <h3 class="h2serif">Acquisire competenze e conoscere i rituali Hair Spa.</h3>
         <p>Per il salone che vuole introdurre l’Hair Spa: capire da dove partire, quali competenze acquisire e quali corsi scegliere per le prime manualità.</p>
         <p class="sub-h">Percorsi consigliati</p>
-        <ul class="taglist"><li><a href="${ctx.href(courseUrl(wellness))}">${esc(wellness.name)}</a> ${levelChip(wellness.level)}</li><li><a href="${ctx.href('academy/formazione-in-presenza/')}">Formazione in presenza</a></li></ul>
+        <ul class="taglist taglist--light"><li><a href="${ctx.href(courseUrl(wellness))}">${esc(wellness.name)}</a> ${levelChip(wellness.level)}</li><li><a href="${ctx.href('academy/formazione-in-presenza/')}">Formazione in presenza</a></li></ul>
       </article>
       <article class="need need--dark" id="approfondire">
         <p class="eyebrow">Per chi desidera approfondire</p>
@@ -92,31 +107,12 @@ ${fullHero(ctx, {
   </div>
 </section>
 
-<section class="sec sec--deep compare-sec" id="confronto">
-  <div class="wrap">
-    <div class="row-head">
-      ${sectionHead({ eyebrow: 'Confronta i corsi', title: 'Cinque rituali, a confronto.' })}
-      <ol class="lvl-legend" aria-label="Scala dei livelli">${LEVELS.map((l, i) => `<li><span class="lvl">${LEVELS.map((_, k) => `<i${k === i ? ' class="on"' : ''}></i>`).join('')}</span>${esc(l)}</li>`).join('')}</ol>
-    </div>
-    <div class="cmp" role="list">
-      ${courses.map((c, i) => `<article class="cmp__card" role="listitem">
-        <a class="cmp__media" href="${ctx.href(courseUrl(c))}" tabindex="-1" aria-hidden="true">${courseImage(ctx, c, { ratio: '3/2' })}</a>
-        <p class="cmp__n">${String(i + 1).padStart(2, '0')}</p>
-        <h3 class="cmp__name"><a href="${ctx.href(courseUrl(c))}">${esc(c.name)}</a></h3>
-        <div class="cmp__row"><span class="cmp__k">Livello</span><span class="cmp__level">${levelMeter(c.level)}<b>${esc(c.level ? c.level.label : '')}</b></span></div>
-        <div class="cmp__row"><span class="cmp__k">Tecniche principali</span><span class="cmp__tech">${(c.techniques || []).map((t) => esc(t)).join(' · ')}</span></div>
-        <div class="cmp__row"><span class="cmp__k">Modalità</span><span>Online</span></div>
-        <p class="cmp__price">${esc(priceText(c))}</p>
-        ${arrow(ctx, { label: 'Scheda del corso', to: courseUrl(c), cls: 'arrow--light' })}
-      </article>`).join('')}
-    </div>
-  </div>
-</section>
+${fullImage(ctx, 'acquaMani', { position: '45% 50%' })}
 
 <section class="sec" id="faq">
   <div class="wrap split split--4-8">
     <div class="faq-aside">
-      ${sectionHead({ eyebrow: 'FAQ', title: 'Domande frequenti.' })}
+      ${sectionHead({ eyebrow: 'FAQ', title: 'Rispondiamo ai tuoi dubbi.' })}
       <ul class="faq-index">${faq.groups.map((g) => `<li><a href="${ctx.href(`#faq-${g.id}`)}">${esc(g.title)}</a></li>`).join('')}</ul>
       <p>Non trovi la risposta? ${arrow(ctx, { label: 'Scrivici', to: 'contatti/#formazione' })}</p>
       <p class="platform">${btn(ctx, { label: 'Accedi alla piattaforma Academy', to: site.academyUrl, ext: true, variant: 'ghost' })}</p>
@@ -126,7 +122,7 @@ ${fullHero(ctx, {
 </section>`;
     return page(ctx, {
       title: 'Academy — Formazione Hair Spa online e in presenza | Élite Experience',
-      description: 'L’Academy di Élite Experience: formazione Hair Spa online e in presenza con Elisabetta Tancini. Due modalità, cinque rituali a confronto e il percorso giusto per il tuo salone.',
+      description: 'L’Academy di Élite Experience: formazione Hair Spa online e in presenza con Elisabetta Tancini. Due modalità e il percorso giusto per il tuo salone.',
       jsonld: [breadcrumbs(cAcademy), faqPage(faqAll(ctx.data))],
       bodyClass: 'p-academy',
       body,
@@ -158,20 +154,20 @@ ${fullHero(ctx, {
   </div>
 </section>
 
-<section class="sec sec--beige" id="catalogo">
+<section class="sec sec--deep compare-sec" id="confronto">
   <div class="wrap">
-    ${sectionHead({ eyebrow: 'Catalogo', title: 'Scegli il rituale da imparare.', lead: 'Per ogni corso: cosa imparerai, tecniche principali, livello e prezzo.' })}
-    <div class="cgrid">${courses.map((c) => courseCard(ctx, c)).join('')}</div>
+    <div class="row-head">
+      ${sectionHead({ eyebrow: 'Scopri i corsi online', title: 'Cinque rituali, a confronto.' })}
+      <ol class="lvl-legend" aria-label="Scala dei livelli">${LEVELS.map((l, i) => `<li><span class="lvl">${LEVELS.map((_, k) => `<i${k === i ? ' class="on"' : ''}></i>`).join('')}</span>${esc(l)}</li>`).join('')}</ol>
+    </div>
+    ${compareCards(ctx, courses)}
+    <div id="collezione">${collectionBlock(ctx, collection, courses)}</div>
   </div>
-</section>
-
-<section class="sec sec--deep" id="collezione">
-  <div class="wrap">${collectionBlock(ctx, collection, courses)}</div>
 </section>
 
 <section class="sec" id="faq-online">
   <div class="wrap split split--4-8">
-    <div class="faq-aside">${sectionHead({ eyebrow: 'FAQ', title: 'Domande sui corsi online.' })}<p>${arrow(ctx, { label: 'Tutte le domande frequenti', to: 'academy/#faq' })}</p></div>
+    <div class="faq-aside">${sectionHead({ eyebrow: 'FAQ', title: 'Rispondiamo ai tuoi dubbi.' })}<p>${arrow(ctx, { label: 'Tutte le domande frequenti', to: 'academy/#faq' })}</p></div>
     ${faqGroups(ctx, faq.groups.filter((g) => ['scegliere', 'prezzi', 'online'].includes(g.id)))}
   </div>
 </section>
@@ -252,7 +248,7 @@ ${fullHero(ctx, {
 
 <section class="sec" id="faq-presenza">
   <div class="wrap split split--4-8">
-    <div class="faq-aside">${sectionHead({ eyebrow: 'FAQ', title: 'Domande sulla formazione in presenza.' })}<p>${arrow(ctx, { label: 'Tutte le domande frequenti', to: 'academy/#faq' })}</p></div>
+    <div class="faq-aside">${sectionHead({ eyebrow: 'FAQ', title: 'Rispondiamo ai tuoi dubbi.' })}<p>${arrow(ctx, { label: 'Tutte le domande frequenti', to: 'academy/#faq' })}</p></div>
     ${faqList(faq.groups.find((g) => g.id === 'presenza').items, ctx)}
   </div>
 </section>

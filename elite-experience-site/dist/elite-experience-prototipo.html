@@ -271,8 +271,6 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .video__icon { flex: none; display: grid; place-items: center; width: clamp(54px, 5vw, 72px); aspect-ratio: 1; border: 1px solid rgba(255, 255, 255, .85); border-radius: 50%; transition: background-color .3s, color .3s; }
 .video__icon::before { content: ""; margin-left: 4px; border-left: 12px solid currentColor; border-top: 8px solid transparent; border-bottom: 8px solid transparent; }
 .video__play:hover .video__icon { background: var(--ivory); color: var(--ink); }
-.video__label { display: grid; gap: 2px; padding-bottom: 6px; font-size: 1.05rem; font-family: var(--serif); }
-.video__label small { font: 600 .6875rem var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--beige); }
 .video .slot__text { display: none; }
 .vmodal { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; padding: var(--g); background: rgba(30, 18, 12, .82); }
 .vmodal[hidden] { display: none; }
@@ -444,7 +442,6 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .home-method__grid { display: grid; grid-template-columns: 5fr 6fr; gap: clamp(40px, 6vw, 112px); }
 .home-method__media { position: relative; min-height: 600px; margin: 0; overflow: hidden; background: var(--sand); }
 .home-method__media::after { content: ""; position: absolute; inset: 55% 0 0; background: linear-gradient(rgba(31, 18, 11, 0), rgba(31, 18, 11, .5)); pointer-events: none; }
-.home-method__media figcaption { position: absolute; left: 22px; bottom: 18px; z-index: 2; color: var(--ivory); font-size: .6875rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; }
 .home-method__text { align-self: center; }
 .pillars { margin: clamp(28px, 3vw, 40px) 0 clamp(32px, 3vw, 44px); border-top: 1px solid var(--line-strong); }
 .pillars li { display: grid; grid-template-columns: 52px 1fr; gap: 12px; padding: 22px 0; border-bottom: 1px solid var(--line); }
@@ -461,7 +458,6 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .picker__img .ph img { transform: scale(1.05); transition: transform 1.6s var(--ease); }
 .picker__img.is-on .ph img { transform: none; }
 .picker__img::after { content: ""; position: absolute; inset: 50% 0 0; background: linear-gradient(rgba(31, 18, 11, 0), rgba(31, 18, 11, .6)); }
-.picker__label { position: absolute; left: clamp(20px, 2.4vw, 32px); bottom: clamp(18px, 2.2vw, 28px); z-index: 2; color: var(--ivory); font-family: var(--serif); font-size: clamp(1.6rem, 2.4vw, 2.4rem); font-weight: 300; }
 .picker__list { border-top: 1px solid var(--line-strong); }
 .picker__item { border-bottom: 1px solid var(--line-strong); }
 .picker__link { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: 8px 20px; align-items: start; padding: clamp(22px, 2.4vw, 32px) 0; color: var(--ink); text-decoration: none; }
@@ -657,9 +653,12 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .need { padding: clamp(28px, 4vw, 56px); background: var(--ivory); }
 .need .h2serif { font-size: clamp(1.6rem, 2.4vw, 2.3rem); margin-bottom: 16px; }
 .need > p:not(.eyebrow):not(.sub-h) { color: var(--muted); }
-.need--dark { background: var(--deep); color: var(--ivory); }
-.need--dark .eyebrow, .need--dark .sub-h { color: var(--beige); }
+.need--dark, .need--choc { background: var(--deep); color: var(--ivory); }
+.need--choc { background: var(--choc); }
+.need--dark .eyebrow, .need--dark .sub-h, .need--choc .eyebrow, .need--choc .sub-h { color: var(--beige); }
 .need--dark > p:not(.eyebrow):not(.sub-h) { color: var(--muted-light); }
+.need--choc > p:not(.eyebrow):not(.sub-h) { color: rgba(245, 240, 235, .86); }
+.need--choc .chip { border-color: var(--line-light); color: var(--ivory); }
 .collab-types { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 var(--gap); border-top: 1px solid var(--line-strong); }
 .collab-types li { padding: 28px 0; border-bottom: 1px solid var(--line); }
 .collab-types p { margin-top: 10px; color: var(--muted); }
@@ -874,6 +873,13 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 /* ---------- Home ---------- */
 .home-eli__grid { grid-template-columns: 6fr 5fr; }
 .shead--line { max-width: none; }
+.shead--wide { max-width: none; }
+.shead--wide .shead__lead { max-width: none; }
+@media (min-width: 1100px) {
+  .shead--wide .shead__lead { white-space: nowrap; }
+  .hero--line .hero__text, .hero--line .hero__lead { max-width: none; }
+  .hero--line .hero__lead { white-space: nowrap; }
+}
 .shead--line .shead__title { white-space: nowrap; font-size: clamp(1.6rem, 3.1vw, 3.15rem); }
 
 /* Dichiarazione firmata */
@@ -884,7 +890,7 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .sec:not(.sec--deep):not(.sec--choc) .signed__sign { color: var(--choc); }
 .signed--xl { margin: 16px 0 0; }
 .signed--xl blockquote p { max-width: 18em; font-size: clamp(2rem, 4.2vw, 4rem); line-height: 1.14; }
-.signed--xl figcaption { margin-top: clamp(52px, 5.4vw, 80px); }
+.signed--xl figcaption { margin-top: clamp(72px, 8vw, 128px); }
 .signed--xl .signed__sign { font-size: clamp(3.4rem, 6vw, 5.2rem); }
 
 /* ---------- Metodo ---------- */
@@ -900,15 +906,16 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 /* ---------- Elisabetta ---------- */
 .bio__grid { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(40px, 6vw, 112px); align-items: start; }
 .bio__head { position: sticky; top: calc(var(--hdr) + 32px); }
-.bio__sub { max-width: 18em; margin-top: 18px; color: var(--choc); font-family: var(--serif); font-size: clamp(1.3rem, 1.8vw, 1.7rem); font-style: italic; }
-.bio__img { max-width: 420px; margin-top: 32px; }
+.bio__top { margin-bottom: clamp(40px, 5vw, 80px); }
+.bio__title { font-size: clamp(2rem, 4vw, 4rem); font-weight: 300; line-height: 1.1; letter-spacing: -.015em; }
+.bio__img { max-width: 420px; }
 .bio__text p { color: var(--muted); }
 .bio__text p + p { margin-top: 1.15em; }
 .bio__text .lead { color: var(--ink); }
 .bio__text p:last-child { padding-left: 22px; border-left: 1px solid var(--mid); color: var(--ink); font-family: var(--serif); font-size: clamp(1.25rem, 1.6vw, 1.5rem); font-style: italic; line-height: 1.4; }
 .teach .lead { margin-bottom: 16px; }
-.teach p:not(.lead):not(.eyebrow) { max-width: 36em; color: var(--muted-light); }
-.teach .teach__intro { margin: 30px 0 14px; color: var(--beige); font-size: var(--t-micro); font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.teach p:not(.lead):not(.eyebrow):not(.teach__intro) { max-width: 36em; color: var(--muted-light); }
+.teach .teach__intro { max-width: none; margin: 30px 0 14px; color: var(--beige); font-size: var(--t-micro); font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
 .teach .linelist li { grid-template-columns: 120px 1fr; }
 .eli-collab .prose > p { color: var(--muted); }
 .eli-collab .prose > .lead { color: var(--ink); }
@@ -954,7 +961,9 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .cmp__media { display: block; }
 .cmp__media .ph img { filter: sepia(.1) contrast(1.05); }
 .cmp__n { margin: 18px 18px 0; color: var(--beige); font-family: var(--serif); }
-.cmp__name { margin: 4px 18px 14px; font-size: 1.45rem; }
+.cmp__name { margin: 4px 18px 10px; font-size: 1.45rem; }
+.cmp__desc { margin: 0 18px 14px; color: var(--muted-light); font-size: .875rem; line-height: 1.5; }
+.compare-sec .coll { margin-top: clamp(64px, 7vw, 112px); padding: clamp(40px, 5vw, 72px) 0 0; border-top: 1px solid rgba(245, 240, 235, .14); }
 .cmp__name a { text-decoration: none; }
 .cmp__name a:hover { text-decoration: underline; }
 .cmp__row { display: grid; gap: 4px; margin: 0 18px; padding: 12px 0; border-top: 1px solid rgba(245, 240, 235, .14); font-size: .9375rem; }
@@ -1260,7 +1269,6 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/elisabetta-lavatesta-acqua.jpg" width="941" height="1672" alt="Elisabetta Tancini versa acqua da una caraffa di vetro sui capelli di una cliente al lavatesta." loading="lazy" decoding="async">
     
   </figure>
-      <figcaption>Il gesto al centro del metodo</figcaption>
     </figure>
     <div class="home-method__text">
       <header class="shead shead--left ">
@@ -1394,26 +1402,26 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     <h2 class="shead__title">Il metodo, un rituale alla volta.</h2>
     <p class="shead__lead">Cinque rituali completi: competenze, tecniche e programma del corso.</p>
   </header>
-      <a class="arrow " href="#/academy/@confronto"><span>Confronta i corsi</span><i aria-hidden="true">→</i></a>
+      <a class="arrow " href="#/academy/formazione-online/@confronto"><span>Scopri i corsi online</span><i aria-hidden="true">→</i></a>
     </div>
     <div class="picker" data-picker>
     <div class="picker__stage" aria-hidden="true">
       <div class="picker__img is-on"><figure class="ph ph--fill " style="--pos:55% 45%">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/hair-spa-massaggio-testa.jpg" width="1344" height="768" alt="Una cliente rilassata, a occhi chiusi, durante un massaggio Hair Spa al cuoio capelluto." loading="lazy" decoding="async">
     <span class="ph__flag" aria-hidden="true">Immagine provvisoria</span>
-  </figure><span class="picker__label">Wellness Ritual</span></div><div class="picker__img"><figure class="ph ph--fill ">
+  </figure></div><div class="picker__img"><figure class="ph ph--fill ">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/elisabetta-pinda.jpg" width="1800" height="1007" alt="Elisabetta Tancini prepara un pinda in tessuto accanto ai materiali del rituale." loading="lazy" decoding="async">
     
-  </figure><span class="picker__label">Pinda Ritual</span></div><div class="picker__img"><figure class="ph ph--fill " style="--pos:50% 45%">
+  </figure></div><div class="picker__img"><figure class="ph ph--fill " style="--pos:50% 45%">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/hair-spa-cascata-dorata.jpg" width="1024" height="1024" alt="Lavatesta Hair Spa con rubinetto dorato: l'acqua scende a cascata sui capelli della cliente, rilassata a occhi chiusi, tra candele e asciugamani." loading="lazy" decoding="async">
     <span class="ph__flag" aria-hidden="true">Immagine provvisoria</span>
-  </figure><span class="picker__label">Brushing Ritual</span></div><div class="picker__img"><figure class="ph ph--fill " style="--pos:86% 50%">
+  </figure></div><div class="picker__img"><figure class="ph ph--fill " style="--pos:86% 50%">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/elisabetta-lavatesta.jpg" width="1673" height="940" alt="Elisabetta Tancini esegue una manualità Hair Spa sul cuoio capelluto di una cliente al lavatesta." loading="lazy" decoding="async">
     <span class="ph__flag" aria-hidden="true">Immagine provvisoria</span>
-  </figure><span class="picker__label">Hairgym Ritual</span></div><div class="picker__img"><figure class="ph ph--fill " style="--pos:50% 78%">
+  </figure></div><div class="picker__img"><figure class="ph ph--fill " style="--pos:50% 78%">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/elisabetta-lavatesta-acqua.jpg" width="941" height="1672" alt="Elisabetta Tancini versa acqua da una caraffa di vetro sui capelli di una cliente al lavatesta." loading="lazy" decoding="async">
     <span class="ph__flag" aria-hidden="true">Immagine provvisoria</span>
-  </figure><span class="picker__label">Relax Full Ritual</span></div>
+  </figure></div>
     </div>
     <ol class="picker__list">
       <li class="picker__item is-on" data-picker-item="0">
@@ -1618,16 +1626,16 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   <figure class="fader__item is-on"><figure class="ph ph--fill " style="--pos:58% 45%">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/hair-spa-massaggio-testa.jpg" width="1344" height="768" alt="Una cliente rilassata, a occhi chiusi, durante un massaggio Hair Spa al cuoio capelluto." loading="lazy" decoding="async">
     
-  </figure><figcaption>Pressione</figcaption></figure><figure class="fader__item"><figure class="ph ph--fill " style="--pos:70% 45%">
+  </figure></figure><figure class="fader__item"><figure class="ph ph--fill " style="--pos:70% 45%">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/elisabetta-lavatesta.jpg" width="1673" height="940" alt="Elisabetta Tancini esegue una manualità Hair Spa sul cuoio capelluto di una cliente al lavatesta." loading="lazy" decoding="async">
     
-  </figure><figcaption>Ritmo</figcaption></figure><figure class="fader__item"><figure class="ph ph--fill " style="--pos:45% 50%">
+  </figure></figure><figure class="fader__item"><figure class="ph ph--fill " style="--pos:45% 50%">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/hair-spa-acqua-mani.jpg" width="2000" height="1143" alt="Le mani dell'operatrice accompagnano l'acqua sul cuoio capelluto della cliente durante un rituale Hair Spa, accanto a un rubinetto dorato." loading="lazy" decoding="async">
     
-  </figure><figcaption>Continuità</figcaption></figure><figure class="fader__item"><figure class="ph ph--fill " style="--pos:46% 50%">
+  </figure></figure><figure class="fader__item"><figure class="ph ph--fill " style="--pos:46% 50%">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/hair-spa-rituale-olio.jpg" width="2000" height="1125" alt="Le mani di un'operatrice versano olio da una caraffa di vetro nel palmo, accanto a ciotole e flaconi del rituale." loading="lazy" decoding="async">
     
-  </figure><figcaption>Strumenti</figcaption></figure>
+  </figure></figure>
   <ol class="fader__dots" aria-hidden="true"><li class="is-on"></li><li></li><li></li><li></li></ol>
 </div>
   </div>
@@ -1718,7 +1726,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/elisabetta-pinda.jpg" width="1800" height="1007" alt="Elisabetta Tancini prepara un pinda in tessuto accanto ai materiali del rituale." loading="lazy" decoding="async">
     
   </figure>
-  <p class="fullimg__cap">Elisabetta Tancini, ideatrice del Metodo Élite</p>
+  
 </section></section>
 <section class="route p-eli" data-route="elisabetta-tancini/" data-title="Elisabetta Tancini — Hair Spa Specialist, formatrice e fondatrice di Élite Experience" hidden>
 <section class="hero hero--eli">
@@ -1748,27 +1756,28 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
 
 <section class="sec vision">
   <div class="wrap">
-    <p class="eyebrow ">La sua visione</p>
+    <p class="eyebrow ">Vision</p>
     <figure class="signed signed--xl">
-  <blockquote><p>L’Hair Spa è l’arte di dare tempo: al gesto, alla persona, alla cura che li unisce.</p></blockquote>
+  <blockquote><p>L’Hair Spa è l’arte di dare tempo:<br>al gesto, alla persona, alla cura che li unisce.</p></blockquote>
   <figcaption><span class="signed__sign" aria-hidden="true">Elisabetta Tancini</span><span class="sr-only">Elisabetta Tancini</span></figcaption>
 </figure>
   </div>
 </section>
 
 <section class="sec sec--ivory bio" id="percorso">
-  <div class="wrap bio__grid">
-    <div class="bio__head">
+  <div class="wrap">
+    <header class="bio__top">
       <p class="eyebrow ">Il percorso professionale</p>
-      <h2 class="display-name display-name--m">Elisabetta Tancini</h2>
-      <p class="bio__sub">L’esperienza di un’imprenditrice. La visione di una formatrice.</p>
-      <figure class="ph  bio__img" style="aspect-ratio:4/5;--pos:50% 30%">
+      <h2 class="bio__title">L’esperienza di un’imprenditrice.<br>La visione di una formatrice.</h2>
+    </header>
+    <div class="bio__grid">
+      <div class="bio__head"><figure class="ph  bio__img" style="aspect-ratio:4/5;--pos:50% 30%">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/elisabetta-lavatesta-acqua.jpg" width="941" height="1672" alt="Elisabetta Tancini versa acqua da una caraffa di vetro sui capelli di una cliente al lavatesta." loading="lazy" decoding="async">
     
-  </figure>
-    </div>
-    <div class="bio__text">
-      <p class="lead">Imprenditrice, Hair Spa Specialist e formatrice internazionale, Elisabetta Tancini ha costruito il proprio percorso professionale unendo l’esperienza quotidiana in salone alla ricerca e all’evoluzione delle tecniche dedicate al mondo Hair Spa.</p><p>Alla guida di Maison BB, il suo salone ad Arona, vive ogni giorno la professione da una doppia prospettiva: quella di chi lavora a contatto con le persone e quella di chi conosce le esigenze, le responsabilità e le sfide di un’impresa nel settore Hair &amp; Beauty.</p><p>Parallelamente, la sua attività di formatrice la porta a collaborare a livello internazionale con importanti protagonisti dell’industria Hair, condividendo competenze, tecniche e una visione dell’Hair Spa in cui precisione delle manualità, sensibilità e cura del dettaglio diventano elementi distintivi.</p><p>Da questo incontro tra esperienza imprenditoriale, pratica professionale e formazione nasce Élite Experience, il metodo attraverso cui Elisabetta interpreta l’Hair Spa e trasmette il proprio sapere ai professionisti che desiderano introdurre o perfezionare questa disciplina nel proprio salone.</p><p>Per Elisabetta, formare significa andare oltre la dimostrazione di un rituale: significa insegnare a comprenderne ogni gesto, acquisire sicurezza nelle manualità e sviluppare una propria consapevolezza professionale.</p>
+  </figure></div>
+      <div class="bio__text">
+        <p class="lead">Imprenditrice, Hair Spa Specialist e formatrice internazionale, Elisabetta Tancini ha costruito il proprio percorso professionale unendo l’esperienza quotidiana in salone alla ricerca e all’evoluzione delle tecniche dedicate al mondo Hair Spa.</p><p>Alla guida di Maison BB, il suo salone ad Arona, vive ogni giorno la professione da una doppia prospettiva: quella di chi lavora a contatto con le persone e quella di chi conosce le esigenze, le responsabilità e le sfide di un’impresa nel settore Hair &amp; Beauty.</p><p>Parallelamente, la sua attività di formatrice la porta a collaborare a livello internazionale con importanti protagonisti dell’industria Hair, condividendo competenze, tecniche e una visione dell’Hair Spa in cui precisione delle manualità, sensibilità e cura del dettaglio diventano elementi distintivi.</p><p>Da questo incontro tra esperienza imprenditoriale, pratica professionale e formazione nasce Élite Experience, il metodo attraverso cui Elisabetta interpreta l’Hair Spa e trasmette il proprio sapere ai professionisti che desiderano introdurre o perfezionare questa disciplina nel proprio salone.</p><p>Per Elisabetta, formare significa andare oltre la dimostrazione di un rituale: significa insegnare a comprenderne ogni gesto, acquisire sicurezza nelle manualità e sviluppare una propria consapevolezza professionale.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1777,7 +1786,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   <div class="wrap split split--7-5">
     <div>
       <header class="shead shead--left ">
-    <p class="eyebrow ">L’insegnamento</p>
+    <p class="eyebrow ">La formazione</p>
     <h2 class="shead__title">Una visione da condividere.</h2>
     
   </header>
@@ -1796,7 +1805,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   </figure>
     <button class="video__play" type="button" data-video-open data-video-title="Elisabetta in formazione" data-video-note="Inserire un estratto autentico di Elisabetta durante una lezione.">
       <span class="video__icon" aria-hidden="true"></span>
-      <span class="video__label"><small>Anteprima video</small>Elisabetta in formazione</span>
+      <span class="sr-only">Anteprima video: Elisabetta in formazione</span>
     </button>
   </div>
   </div>
@@ -1823,7 +1832,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/elisabetta-intervento-palco.jpg" width="1200" height="1600" alt="Elisabetta Tancini sul palco durante un intervento." loading="lazy" decoding="async">
     
   </figure>
-  <p class="fullimg__cap">Elisabetta Tancini durante un intervento</p>
+  
 </section>
 
 <section class="sec partners-sec">
@@ -1857,7 +1866,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   </div>
 </section></section>
 <section class="route p-academy" data-route="academy/" data-title="Academy — Formazione Hair Spa online e in presenza | Élite Experience" hidden>
-<section class="hero ">
+<section class="hero hero--line">
   <div class="hero__bg"><figure class="ph ph--fill " style="--pos:46% 50%">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/hair-spa-rituale-olio.jpg" width="2000" height="1125" alt="Le mani di un'operatrice versano olio da una caraffa di vetro nel palmo, accanto a ciotole e flaconi del rituale." fetchpriority="high" decoding="async">
     
@@ -1875,7 +1884,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
 
 <section class="sec modes-sec" id="modalita">
   <div class="wrap">
-    <header class="shead shead--left ">
+    <header class="shead shead--left shead--wide">
     <p class="eyebrow ">Due modalità</p>
     <h2 class="shead__title">Online o in presenza: lo stesso metodo.</h2>
     <p class="shead__lead">Scegli come imparare. Le due modalità condividono rituali, tecniche e manualità del Metodo Élite.</p>
@@ -1923,12 +1932,12 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     
   </header>
     <div class="needs">
-      <article class="need" id="iniziare">
+      <article class="need need--choc" id="iniziare">
         <p class="eyebrow">Per chi desidera iniziare</p>
         <h3 class="h2serif">Acquisire competenze e conoscere i rituali Hair Spa.</h3>
         <p>Per il salone che vuole introdurre l’Hair Spa: capire da dove partire, quali competenze acquisire e quali corsi scegliere per le prime manualità.</p>
         <p class="sub-h">Percorsi consigliati</p>
-        <ul class="taglist"><li><a href="#/academy/formazione-online/wellness-ritual/">Wellness Ritual</a> <span class="chip">Primi approcci</span></li><li><a href="#/academy/formazione-in-presenza/">Formazione in presenza</a></li></ul>
+        <ul class="taglist taglist--light"><li><a href="#/academy/formazione-online/wellness-ritual/">Wellness Ritual</a> <span class="chip">Primi approcci</span></li><li><a href="#/academy/formazione-in-presenza/">Formazione in presenza</a></li></ul>
       </article>
       <article class="need need--dark" id="approfondire">
         <p class="eyebrow">Per chi desidera approfondire</p>
@@ -1941,80 +1950,12 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   </div>
 </section>
 
-<section class="sec sec--deep compare-sec" id="confronto">
-  <div class="wrap">
-    <div class="row-head">
-      <header class="shead shead--left ">
-    <p class="eyebrow ">Confronta i corsi</p>
-    <h2 class="shead__title">Cinque rituali, a confronto.</h2>
+<section class="fullimg " data-reveal>
+  <figure class="ph ph--fill " style="--pos:45% 50%">
+    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/hair-spa-acqua-mani.jpg" width="2000" height="1143" alt="Le mani dell'operatrice accompagnano l'acqua sul cuoio capelluto della cliente durante un rituale Hair Spa, accanto a un rubinetto dorato." loading="lazy" decoding="async">
     
-  </header>
-      <ol class="lvl-legend" aria-label="Scala dei livelli"><li><span class="lvl"><i class="on"></i><i></i><i></i><i></i></span>Primi approcci</li><li><span class="lvl"><i></i><i class="on"></i><i></i><i></i></span>Base</li><li><span class="lvl"><i></i><i></i><i class="on"></i><i></i></span>Medium</li><li><span class="lvl"><i></i><i></i><i></i><i class="on"></i></span>Pro</li></ol>
-    </div>
-    <div class="cmp" role="list">
-      <article class="cmp__card" role="listitem">
-        <a class="cmp__media" href="#/academy/formazione-online/wellness-ritual/" tabindex="-1" aria-hidden="true"><figure class="ph  " style="aspect-ratio:3/2;--pos:55% 45%">
-    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/hair-spa-massaggio-testa.jpg" width="1344" height="768" alt="Una cliente rilassata, a occhi chiusi, durante un massaggio Hair Spa al cuoio capelluto." loading="lazy" decoding="async">
-    <span class="ph__flag" aria-hidden="true">Immagine provvisoria</span>
-  </figure></a>
-        <p class="cmp__n">01</p>
-        <h3 class="cmp__name"><a href="#/academy/formazione-online/wellness-ritual/">Wellness Ritual</a></h3>
-        <div class="cmp__row"><span class="cmp__k">Livello</span><span class="cmp__level"><span class="lvl" role="img" aria-label="Livello Primi approcci"><i class="on"></i><i></i><i></i><i></i></span><b>Primi approcci</b></span></div>
-        <div class="cmp__row"><span class="cmp__k">Tecniche principali</span><span class="cmp__tech">Accoglienza · Detersione · Manualità</span></div>
-        <div class="cmp__row"><span class="cmp__k">Modalità</span><span>Online</span></div>
-        <p class="cmp__price">€ 190 IVA inclusa</p>
-        <a class="arrow arrow--light" href="#/academy/formazione-online/wellness-ritual/"><span>Scheda del corso</span><i aria-hidden="true">→</i></a>
-      </article><article class="cmp__card" role="listitem">
-        <a class="cmp__media" href="#/academy/formazione-online/pinda-ritual/" tabindex="-1" aria-hidden="true"><figure class="ph  " style="aspect-ratio:3/2">
-    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/elisabetta-pinda.jpg" width="1800" height="1007" alt="Elisabetta Tancini prepara un pinda in tessuto accanto ai materiali del rituale." loading="lazy" decoding="async">
-    
-  </figure></a>
-        <p class="cmp__n">02</p>
-        <h3 class="cmp__name"><a href="#/academy/formazione-online/pinda-ritual/">Pinda Ritual</a></h3>
-        <div class="cmp__row"><span class="cmp__k">Livello</span><span class="cmp__level"><span class="lvl" role="img" aria-label="Livello Medium"><i></i><i></i><i class="on"></i><i></i></span><b>Medium</b></span></div>
-        <div class="cmp__row"><span class="cmp__k">Tecniche principali</span><span class="cmp__tech">Calore · Pressione · Sensorialità</span></div>
-        <div class="cmp__row"><span class="cmp__k">Modalità</span><span>Online</span></div>
-        <p class="cmp__price">€ 290 IVA inclusa</p>
-        <a class="arrow arrow--light" href="#/academy/formazione-online/pinda-ritual/"><span>Scheda del corso</span><i aria-hidden="true">→</i></a>
-      </article><article class="cmp__card" role="listitem">
-        <a class="cmp__media" href="#/academy/formazione-online/brushing-ritual/" tabindex="-1" aria-hidden="true"><figure class="ph  " style="aspect-ratio:3/2;--pos:50% 45%">
-    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/hair-spa-cascata-dorata.jpg" width="1024" height="1024" alt="Lavatesta Hair Spa con rubinetto dorato: l'acqua scende a cascata sui capelli della cliente, rilassata a occhi chiusi, tra candele e asciugamani." loading="lazy" decoding="async">
-    <span class="ph__flag" aria-hidden="true">Immagine provvisoria</span>
-  </figure></a>
-        <p class="cmp__n">03</p>
-        <h3 class="cmp__name"><a href="#/academy/formazione-online/brushing-ritual/">Brushing Ritual</a></h3>
-        <div class="cmp__row"><span class="cmp__k">Livello</span><span class="cmp__level"><span class="lvl" role="img" aria-label="Livello Medium"><i></i><i></i><i class="on"></i><i></i></span><b>Medium</b></span></div>
-        <div class="cmp__row"><span class="cmp__k">Tecniche principali</span><span class="cmp__tech">Spazzolatura · Styling · Finishing</span></div>
-        <div class="cmp__row"><span class="cmp__k">Modalità</span><span>Online</span></div>
-        <p class="cmp__price">€ 290 IVA inclusa</p>
-        <a class="arrow arrow--light" href="#/academy/formazione-online/brushing-ritual/"><span>Scheda del corso</span><i aria-hidden="true">→</i></a>
-      </article><article class="cmp__card" role="listitem">
-        <a class="cmp__media" href="#/academy/formazione-online/hairgym-ritual/" tabindex="-1" aria-hidden="true"><figure class="ph  " style="aspect-ratio:3/2;--pos:86% 50%">
-    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/elisabetta-lavatesta.jpg" width="1673" height="940" alt="Elisabetta Tancini esegue una manualità Hair Spa sul cuoio capelluto di una cliente al lavatesta." loading="lazy" decoding="async">
-    <span class="ph__flag" aria-hidden="true">Immagine provvisoria</span>
-  </figure></a>
-        <p class="cmp__n">04</p>
-        <h3 class="cmp__name"><a href="#/academy/formazione-online/hairgym-ritual/">Hairgym Ritual</a></h3>
-        <div class="cmp__row"><span class="cmp__k">Livello</span><span class="cmp__level"><span class="lvl" role="img" aria-label="Livello Base e Medium"><i></i><i class="on"></i><i class="on"></i><i></i></span><b>Base e Medium</b></span></div>
-        <div class="cmp__row"><span class="cmp__k">Tecniche principali</span><span class="cmp__tech">Stimolazione · Ritmo · Pressioni</span></div>
-        <div class="cmp__row"><span class="cmp__k">Modalità</span><span>Online</span></div>
-        <p class="cmp__price">€ 290 IVA inclusa</p>
-        <a class="arrow arrow--light" href="#/academy/formazione-online/hairgym-ritual/"><span>Scheda del corso</span><i aria-hidden="true">→</i></a>
-      </article><article class="cmp__card" role="listitem">
-        <a class="cmp__media" href="#/academy/formazione-online/relax-full-ritual/" tabindex="-1" aria-hidden="true"><figure class="ph  " style="aspect-ratio:3/2;--pos:50% 78%">
-    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/elisabetta-lavatesta-acqua.jpg" width="941" height="1672" alt="Elisabetta Tancini versa acqua da una caraffa di vetro sui capelli di una cliente al lavatesta." loading="lazy" decoding="async">
-    <span class="ph__flag" aria-hidden="true">Immagine provvisoria</span>
-  </figure></a>
-        <p class="cmp__n">05</p>
-        <h3 class="cmp__name"><a href="#/academy/formazione-online/relax-full-ritual/">Relax Full Ritual</a></h3>
-        <div class="cmp__row"><span class="cmp__k">Livello</span><span class="cmp__level"><span class="lvl" role="img" aria-label="Livello Pro"><i></i><i></i><i></i><i class="on"></i></span><b>Pro</b></span></div>
-        <div class="cmp__row"><span class="cmp__k">Tecniche principali</span><span class="cmp__tech">Massaggio · Calore · Rilassamento</span></div>
-        <div class="cmp__row"><span class="cmp__k">Modalità</span><span>Online</span></div>
-        <p class="cmp__price">€ 290 IVA inclusa</p>
-        <a class="arrow arrow--light" href="#/academy/formazione-online/relax-full-ritual/"><span>Scheda del corso</span><i aria-hidden="true">→</i></a>
-      </article>
-    </div>
-  </div>
+  </figure>
+  
 </section>
 
 <section class="sec" id="faq">
@@ -2022,7 +1963,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     <div class="faq-aside">
       <header class="shead shead--left ">
     <p class="eyebrow ">FAQ</p>
-    <h2 class="shead__title">Domande frequenti.</h2>
+    <h2 class="shead__title">Rispondiamo ai tuoi dubbi.</h2>
     
   </header>
       <ul class="faq-index"><li><a href="#/academy/@faq-scegliere">Scegliere il corso</a></li><li><a href="#/academy/@faq-prezzi">Prezzi e acquisto</a></li><li><a href="#/academy/@faq-online">Come funzionano i corsi online</a></li><li><a href="#/academy/@faq-presenza">Formazione in presenza</a></li><li><a href="#/academy/@faq-metodo">Il Metodo Élite</a></li></ul>
@@ -2154,84 +2095,85 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   </div>
 </section>
 
-<section class="sec sec--beige" id="catalogo">
+<section class="sec sec--deep compare-sec" id="confronto">
   <div class="wrap">
-    <header class="shead shead--left ">
-    <p class="eyebrow ">Catalogo</p>
-    <h2 class="shead__title">Scegli il rituale da imparare.</h2>
-    <p class="shead__lead">Per ogni corso: cosa imparerai, tecniche principali, livello e prezzo.</p>
+    <div class="row-head">
+      <header class="shead shead--left ">
+    <p class="eyebrow ">Scopri i corsi online</p>
+    <h2 class="shead__title">Cinque rituali, a confronto.</h2>
+    
   </header>
-    <div class="cgrid"><article class="ccard">
-    <a class="ccard__media" href="#/academy/formazione-online/wellness-ritual/" tabindex="-1" aria-hidden="true"><figure class="ph  " style="aspect-ratio:4/5;--pos:55% 45%">
+      <ol class="lvl-legend" aria-label="Scala dei livelli"><li><span class="lvl"><i class="on"></i><i></i><i></i><i></i></span>Primi approcci</li><li><span class="lvl"><i></i><i class="on"></i><i></i><i></i></span>Base</li><li><span class="lvl"><i></i><i></i><i class="on"></i><i></i></span>Medium</li><li><span class="lvl"><i></i><i></i><i></i><i class="on"></i></span>Pro</li></ol>
+    </div>
+    <div class="cmp" role="list">
+      <article class="cmp__card" role="listitem">
+        <a class="cmp__media" href="#/academy/formazione-online/wellness-ritual/" tabindex="-1" aria-hidden="true"><figure class="ph  " style="aspect-ratio:3/2;--pos:55% 45%">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/hair-spa-massaggio-testa.jpg" width="1344" height="768" alt="Una cliente rilassata, a occhi chiusi, durante un massaggio Hair Spa al cuoio capelluto." loading="lazy" decoding="async">
     <span class="ph__flag" aria-hidden="true">Immagine provvisoria</span>
   </figure></a>
-    <div class="ccard__body">
-      <p class="ccard__meta"><span>Formazione online</span><span class="chip">Primi approcci</span></p>
-      <h3 class="ccard__name"><a href="#/academy/formazione-online/wellness-ritual/">Wellness Ritual</a></h3>
-      <p class="ccard__lab">Cosa imparerai</p>
-      <p class="ccard__desc">Le basi del Metodo Élite Experience: accoglienza, manualità e struttura del trattamento Hair Spa.</p>
-      <ul class="ccard__tech"><li>Accoglienza</li><li>Detersione</li><li>Manualità</li></ul>
-      <div class="ccard__foot"><p class="price">€ 190 <small>IVA inclusa</small></p><a class="arrow " href="#/academy/formazione-online/wellness-ritual/"><span>Scopri il corso</span><i aria-hidden="true">→</i></a></div>
-    </div>
-  </article><article class="ccard">
-    <a class="ccard__media" href="#/academy/formazione-online/pinda-ritual/" tabindex="-1" aria-hidden="true"><figure class="ph  " style="aspect-ratio:4/5">
+        <p class="cmp__n">01</p>
+        <h3 class="cmp__name"><a href="#/academy/formazione-online/wellness-ritual/">Wellness Ritual</a></h3>
+        <p class="cmp__desc">Le basi del Metodo Élite Experience: accoglienza, manualità e struttura del trattamento Hair Spa.</p>
+        <div class="cmp__row"><span class="cmp__k">Livello</span><span class="cmp__level"><span class="lvl" role="img" aria-label="Livello Primi approcci"><i class="on"></i><i></i><i></i><i></i></span><b>Primi approcci</b></span></div>
+        <div class="cmp__row"><span class="cmp__k">Tecniche principali</span><span class="cmp__tech">Accoglienza · Detersione · Manualità</span></div>
+        <div class="cmp__row"><span class="cmp__k">Modalità</span><span>Online</span></div>
+        <p class="cmp__price">€ 190 IVA inclusa</p>
+        <a class="arrow arrow--light" href="#/academy/formazione-online/wellness-ritual/"><span>Scheda del corso</span><i aria-hidden="true">→</i></a>
+      </article><article class="cmp__card" role="listitem">
+        <a class="cmp__media" href="#/academy/formazione-online/pinda-ritual/" tabindex="-1" aria-hidden="true"><figure class="ph  " style="aspect-ratio:3/2">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/elisabetta-pinda.jpg" width="1800" height="1007" alt="Elisabetta Tancini prepara un pinda in tessuto accanto ai materiali del rituale." loading="lazy" decoding="async">
     
   </figure></a>
-    <div class="ccard__body">
-      <p class="ccard__meta"><span>Formazione online</span><span class="chip">Medium</span></p>
-      <h3 class="ccard__name"><a href="#/academy/formazione-online/pinda-ritual/">Pinda Ritual</a></h3>
-      <p class="ccard__lab">Cosa imparerai</p>
-      <p class="ccard__desc">Il calore incontra la manualità, dando forma a un’esperienza sensoriale avvolgente.</p>
-      <ul class="ccard__tech"><li>Calore</li><li>Pressione</li><li>Sensorialità</li></ul>
-      <div class="ccard__foot"><p class="price">€ 290 <small>IVA inclusa</small></p><a class="arrow " href="#/academy/formazione-online/pinda-ritual/"><span>Scopri il corso</span><i aria-hidden="true">→</i></a></div>
-    </div>
-  </article><article class="ccard">
-    <a class="ccard__media" href="#/academy/formazione-online/brushing-ritual/" tabindex="-1" aria-hidden="true"><figure class="ph  " style="aspect-ratio:4/5;--pos:50% 45%">
+        <p class="cmp__n">02</p>
+        <h3 class="cmp__name"><a href="#/academy/formazione-online/pinda-ritual/">Pinda Ritual</a></h3>
+        <p class="cmp__desc">Il calore incontra la manualità, dando forma a un’esperienza sensoriale avvolgente.</p>
+        <div class="cmp__row"><span class="cmp__k">Livello</span><span class="cmp__level"><span class="lvl" role="img" aria-label="Livello Medium"><i></i><i></i><i class="on"></i><i></i></span><b>Medium</b></span></div>
+        <div class="cmp__row"><span class="cmp__k">Tecniche principali</span><span class="cmp__tech">Calore · Pressione · Sensorialità</span></div>
+        <div class="cmp__row"><span class="cmp__k">Modalità</span><span>Online</span></div>
+        <p class="cmp__price">€ 290 IVA inclusa</p>
+        <a class="arrow arrow--light" href="#/academy/formazione-online/pinda-ritual/"><span>Scheda del corso</span><i aria-hidden="true">→</i></a>
+      </article><article class="cmp__card" role="listitem">
+        <a class="cmp__media" href="#/academy/formazione-online/brushing-ritual/" tabindex="-1" aria-hidden="true"><figure class="ph  " style="aspect-ratio:3/2;--pos:50% 45%">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/hair-spa-cascata-dorata.jpg" width="1024" height="1024" alt="Lavatesta Hair Spa con rubinetto dorato: l'acqua scende a cascata sui capelli della cliente, rilassata a occhi chiusi, tra candele e asciugamani." loading="lazy" decoding="async">
     <span class="ph__flag" aria-hidden="true">Immagine provvisoria</span>
   </figure></a>
-    <div class="ccard__body">
-      <p class="ccard__meta"><span>Formazione online</span><span class="chip">Medium</span></p>
-      <h3 class="ccard__name"><a href="#/academy/formazione-online/brushing-ritual/">Brushing Ritual</a></h3>
-      <p class="ccard__lab">Cosa imparerai</p>
-      <p class="ccard__desc">La spazzolatura si trasforma in un gesto professionale, parte integrante dell’esperienza Hair Spa.</p>
-      <ul class="ccard__tech"><li>Spazzolatura</li><li>Styling</li><li>Finishing</li></ul>
-      <div class="ccard__foot"><p class="price">€ 290 <small>IVA inclusa</small></p><a class="arrow " href="#/academy/formazione-online/brushing-ritual/"><span>Scopri il corso</span><i aria-hidden="true">→</i></a></div>
-    </div>
-  </article><article class="ccard">
-    <a class="ccard__media" href="#/academy/formazione-online/hairgym-ritual/" tabindex="-1" aria-hidden="true"><figure class="ph  " style="aspect-ratio:4/5;--pos:86% 50%">
+        <p class="cmp__n">03</p>
+        <h3 class="cmp__name"><a href="#/academy/formazione-online/brushing-ritual/">Brushing Ritual</a></h3>
+        <p class="cmp__desc">La spazzolatura si trasforma in un gesto professionale, parte integrante dell’esperienza Hair Spa.</p>
+        <div class="cmp__row"><span class="cmp__k">Livello</span><span class="cmp__level"><span class="lvl" role="img" aria-label="Livello Medium"><i></i><i></i><i class="on"></i><i></i></span><b>Medium</b></span></div>
+        <div class="cmp__row"><span class="cmp__k">Tecniche principali</span><span class="cmp__tech">Spazzolatura · Styling · Finishing</span></div>
+        <div class="cmp__row"><span class="cmp__k">Modalità</span><span>Online</span></div>
+        <p class="cmp__price">€ 290 IVA inclusa</p>
+        <a class="arrow arrow--light" href="#/academy/formazione-online/brushing-ritual/"><span>Scheda del corso</span><i aria-hidden="true">→</i></a>
+      </article><article class="cmp__card" role="listitem">
+        <a class="cmp__media" href="#/academy/formazione-online/hairgym-ritual/" tabindex="-1" aria-hidden="true"><figure class="ph  " style="aspect-ratio:3/2;--pos:86% 50%">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/elisabetta-lavatesta.jpg" width="1673" height="940" alt="Elisabetta Tancini esegue una manualità Hair Spa sul cuoio capelluto di una cliente al lavatesta." loading="lazy" decoding="async">
     <span class="ph__flag" aria-hidden="true">Immagine provvisoria</span>
   </figure></a>
-    <div class="ccard__body">
-      <p class="ccard__meta"><span>Formazione online</span><span class="chip">Base e Medium</span></p>
-      <h3 class="ccard__name"><a href="#/academy/formazione-online/hairgym-ritual/">Hairgym Ritual</a></h3>
-      <p class="ccard__lab">Cosa imparerai</p>
-      <p class="ccard__desc">Manualità dinamiche e pressioni mirate per un approccio funzionale al benessere del cuoio capelluto.</p>
-      <ul class="ccard__tech"><li>Stimolazione</li><li>Ritmo</li><li>Pressioni</li></ul>
-      <div class="ccard__foot"><p class="price">€ 290 <small>IVA inclusa</small></p><a class="arrow " href="#/academy/formazione-online/hairgym-ritual/"><span>Scopri il corso</span><i aria-hidden="true">→</i></a></div>
-    </div>
-  </article><article class="ccard">
-    <a class="ccard__media" href="#/academy/formazione-online/relax-full-ritual/" tabindex="-1" aria-hidden="true"><figure class="ph  " style="aspect-ratio:4/5;--pos:50% 78%">
+        <p class="cmp__n">04</p>
+        <h3 class="cmp__name"><a href="#/academy/formazione-online/hairgym-ritual/">Hairgym Ritual</a></h3>
+        <p class="cmp__desc">Manualità dinamiche e pressioni mirate per un approccio funzionale al benessere del cuoio capelluto.</p>
+        <div class="cmp__row"><span class="cmp__k">Livello</span><span class="cmp__level"><span class="lvl" role="img" aria-label="Livello Base e Medium"><i></i><i class="on"></i><i class="on"></i><i></i></span><b>Base e Medium</b></span></div>
+        <div class="cmp__row"><span class="cmp__k">Tecniche principali</span><span class="cmp__tech">Stimolazione · Ritmo · Pressioni</span></div>
+        <div class="cmp__row"><span class="cmp__k">Modalità</span><span>Online</span></div>
+        <p class="cmp__price">€ 290 IVA inclusa</p>
+        <a class="arrow arrow--light" href="#/academy/formazione-online/hairgym-ritual/"><span>Scheda del corso</span><i aria-hidden="true">→</i></a>
+      </article><article class="cmp__card" role="listitem">
+        <a class="cmp__media" href="#/academy/formazione-online/relax-full-ritual/" tabindex="-1" aria-hidden="true"><figure class="ph  " style="aspect-ratio:3/2;--pos:50% 78%">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/elisabetta-lavatesta-acqua.jpg" width="941" height="1672" alt="Elisabetta Tancini versa acqua da una caraffa di vetro sui capelli di una cliente al lavatesta." loading="lazy" decoding="async">
     <span class="ph__flag" aria-hidden="true">Immagine provvisoria</span>
   </figure></a>
-    <div class="ccard__body">
-      <p class="ccard__meta"><span>Formazione online</span><span class="chip">Pro</span></p>
-      <h3 class="ccard__name"><a href="#/academy/formazione-online/relax-full-ritual/">Relax Full Ritual</a></h3>
-      <p class="ccard__lab">Cosa imparerai</p>
-      <p class="ccard__desc">Un’esperienza Hair Spa immersiva, in cui manualità, calore e attenzione sensoriale si incontrano.</p>
-      <ul class="ccard__tech"><li>Massaggio</li><li>Calore</li><li>Rilassamento</li></ul>
-      <div class="ccard__foot"><p class="price">€ 290 <small>IVA inclusa</small></p><a class="arrow " href="#/academy/formazione-online/relax-full-ritual/"><span>Scopri il corso</span><i aria-hidden="true">→</i></a></div>
+        <p class="cmp__n">05</p>
+        <h3 class="cmp__name"><a href="#/academy/formazione-online/relax-full-ritual/">Relax Full Ritual</a></h3>
+        <p class="cmp__desc">Un’esperienza Hair Spa immersiva, in cui manualità, calore e attenzione sensoriale si incontrano.</p>
+        <div class="cmp__row"><span class="cmp__k">Livello</span><span class="cmp__level"><span class="lvl" role="img" aria-label="Livello Pro"><i></i><i></i><i></i><i class="on"></i></span><b>Pro</b></span></div>
+        <div class="cmp__row"><span class="cmp__k">Tecniche principali</span><span class="cmp__tech">Massaggio · Calore · Rilassamento</span></div>
+        <div class="cmp__row"><span class="cmp__k">Modalità</span><span>Online</span></div>
+        <p class="cmp__price">€ 290 IVA inclusa</p>
+        <a class="arrow arrow--light" href="#/academy/formazione-online/relax-full-ritual/"><span>Scheda del corso</span><i aria-hidden="true">→</i></a>
+      </article>
     </div>
-  </article></div>
-  </div>
-</section>
-
-<section class="sec sec--deep" id="collezione">
-  <div class="wrap"><div class="coll">
+    <div id="collezione"><div class="coll">
     <div class="coll__head">
       <p class="eyebrow">La collezione completa</p>
       <h3 class="coll__name">Élite Ritual Collection</h3>
@@ -2244,13 +2186,14 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
       <a class="btn btn--light " href="https://academy.elitexperience.it/" target="_blank" rel="noopener" ><span>Vai alla piattaforma Academy</span><i aria-hidden="true">↗</i></a>
     </div>
   </div></div>
+  </div>
 </section>
 
 <section class="sec" id="faq-online">
   <div class="wrap split split--4-8">
     <div class="faq-aside"><header class="shead shead--left ">
     <p class="eyebrow ">FAQ</p>
-    <h2 class="shead__title">Domande sui corsi online.</h2>
+    <h2 class="shead__title">Rispondiamo ai tuoi dubbi.</h2>
     
   </header><p><a class="arrow " href="#/academy/@faq"><span>Tutte le domande frequenti</span><i aria-hidden="true">→</i></a></p></div>
     <div class="faqg"><div class="faqg__group">
@@ -2398,7 +2341,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   <div class="wrap split split--4-8">
     <div class="faq-aside"><header class="shead shead--left ">
     <p class="eyebrow ">FAQ</p>
-    <h2 class="shead__title">Domande sulla formazione in presenza.</h2>
+    <h2 class="shead__title">Rispondiamo ai tuoi dubbi.</h2>
     
   </header><p><a class="arrow " href="#/academy/@faq"><span>Tutte le domande frequenti</span><i aria-hidden="true">→</i></a></p></div>
     <div class="acc "><details class="acc__item">
@@ -2526,7 +2469,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   <div class="wrap split split--4-8">
     <div><header class="shead shead--left ">
     <p class="eyebrow ">FAQ</p>
-    <h2 class="shead__title">Domande sul corso</h2>
+    <h2 class="shead__title">Rispondiamo ai tuoi dubbi.</h2>
     
   </header></div>
     <div class="acc "><details class="acc__item">
@@ -2693,7 +2636,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   <div class="wrap split split--4-8">
     <div><header class="shead shead--left ">
     <p class="eyebrow ">FAQ</p>
-    <h2 class="shead__title">Domande sul corso</h2>
+    <h2 class="shead__title">Rispondiamo ai tuoi dubbi.</h2>
     
   </header></div>
     <div class="acc "><details class="acc__item">
@@ -2860,7 +2803,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   <div class="wrap split split--4-8">
     <div><header class="shead shead--left ">
     <p class="eyebrow ">FAQ</p>
-    <h2 class="shead__title">Domande sul corso</h2>
+    <h2 class="shead__title">Rispondiamo ai tuoi dubbi.</h2>
     
   </header></div>
     <div class="acc "><details class="acc__item">
@@ -3027,7 +2970,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   <div class="wrap split split--4-8">
     <div><header class="shead shead--left ">
     <p class="eyebrow ">FAQ</p>
-    <h2 class="shead__title">Domande sul corso</h2>
+    <h2 class="shead__title">Rispondiamo ai tuoi dubbi.</h2>
     
   </header></div>
     <div class="acc "><details class="acc__item">
@@ -3194,7 +3137,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   <div class="wrap split split--4-8">
     <div><header class="shead shead--left ">
     <p class="eyebrow ">FAQ</p>
-    <h2 class="shead__title">Domande sul corso</h2>
+    <h2 class="shead__title">Rispondiamo ai tuoi dubbi.</h2>
     
   </header></div>
     <div class="acc "><details class="acc__item">

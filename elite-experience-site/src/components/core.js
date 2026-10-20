@@ -79,7 +79,7 @@ export function videoBlock(ctx, { poster, posterPos, posterSubject, title, note,
     ${bg}
     <button class="video__play" type="button" data-video-open data-video-title="${esc(title || 'Video')}" data-video-note="${esc(note || '')}"${src ? ` data-video-src="${ctx.asset(src)}"` : ''}>
       <span class="video__icon" aria-hidden="true"></span>
-      <span class="video__label"><small>Anteprima video</small>${esc(title || '')}</span>
+      <span class="sr-only">Anteprima video${title ? `: ${esc(title)}` : ''}</span>
     </button>
   </div>`;
 }

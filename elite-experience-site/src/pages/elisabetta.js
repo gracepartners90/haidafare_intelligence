@@ -34,21 +34,22 @@ ${fullHero(ctx, {
 
 <section class="sec vision">
   <div class="wrap">
-    ${eyebrow('La sua visione')}
-    ${signedQuote(esc('L’Hair Spa è l’arte di dare tempo: al gesto, alla persona, alla cura che li unisce.'), { cls: 'signed--xl' })}
+    ${eyebrow('Vision')}
+    ${signedQuote(`${esc('L’Hair Spa è l’arte di dare tempo:')}<br>${esc('al gesto, alla persona, alla cura che li unisce.')}`, { cls: 'signed--xl' })}
   </div>
 </section>
 
 <section class="sec sec--ivory bio" id="percorso">
-  <div class="wrap bio__grid">
-    <div class="bio__head">
+  <div class="wrap">
+    <header class="bio__top">
       ${eyebrow('Il percorso professionale')}
-      <h2 class="display-name display-name--m">Elisabetta Tancini</h2>
-      <p class="bio__sub">L’esperienza di un’imprenditrice. La visione di una formatrice.</p>
-      ${media(ctx, 'lavatestaAcqua', { ratio: '4/5', position: '50% 30%', cls: 'bio__img' })}
-    </div>
-    <div class="bio__text">
-      ${bio.map((t, i) => `<p${i === 0 ? ' class="lead"' : ''}>${t}</p>`).join('')}
+      <h2 class="bio__title">L’esperienza di un’imprenditrice.<br>La visione di una formatrice.</h2>
+    </header>
+    <div class="bio__grid">
+      <div class="bio__head">${media(ctx, 'lavatestaAcqua', { ratio: '4/5', position: '50% 30%', cls: 'bio__img' })}</div>
+      <div class="bio__text">
+        ${bio.map((t, i) => `<p${i === 0 ? ' class="lead"' : ''}>${t}</p>`).join('')}
+      </div>
     </div>
   </div>
 </section>
@@ -56,7 +57,7 @@ ${fullHero(ctx, {
 <section class="sec sec--deep teach">
   <div class="wrap split split--7-5">
     <div>
-      ${sectionHead({ eyebrow: 'L’insegnamento', title: 'Una visione da condividere.' })}
+      ${sectionHead({ eyebrow: 'La formazione', title: 'Una visione da condividere.' })}
       <p class="lead">Le competenze prendono forma attraverso lo studio, la comprensione e la pratica.</p>
       <p>Elisabetta mostra ogni gesto, ne approfondisce la tecnica e la sequenza, accompagnando il professionista nell’apprendimento delle manualità e nella loro applicazione all’interno dei rituali Hair Spa.</p>
       <p class="teach__intro">Due modalità formative, pensate per rispondere a esigenze differenti:</p>
@@ -81,7 +82,7 @@ ${fullHero(ctx, {
   </div>
 </section>
 
-${fullImage(ctx, 'intervento', { position: '50% 26%', caption: 'Elisabetta Tancini durante un intervento' })}
+${fullImage(ctx, 'intervento', { position: '50% 26%' })}
 
 <section class="sec partners-sec">
   <div class="wrap">

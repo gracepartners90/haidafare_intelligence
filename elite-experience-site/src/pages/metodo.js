@@ -59,10 +59,10 @@ ${fullHero(ctx, {
       </ol>
     </div>
     ${fader(ctx, [
-      { image: 'massaggioTesta', position: '58% 45%', caption: 'Pressione' },
-      { image: 'lavatesta', position: '70% 45%', caption: 'Ritmo' },
-      { image: 'acquaMani', position: '45% 50%', caption: 'Continuità' },
-      { image: 'ritualeOlio', position: '46% 50%', caption: 'Strumenti' },
+      { image: 'massaggioTesta', position: '58% 45%' },
+      { image: 'lavatesta', position: '70% 45%' },
+      { image: 'acquaMani', position: '45% 50%' },
+      { image: 'ritualeOlio', position: '46% 50%' },
     ], { cls: 'hands__fader' })}
   </div>
 </section>
@@ -95,7 +95,7 @@ ${practiceSequence(ctx, { id: 'in-pratica-metodo' })}
   </div>
 </section>
 
-${fullImage(ctx, 'pinda', { position: '62% 45%', caption: 'Elisabetta Tancini, ideatrice del Metodo Élite' })}`;
+${fullImage(ctx, 'pinda', { position: '62% 45%' })}`;
     return page(ctx, {
       title: 'Il Metodo Élite — Metodo professionale Hair Spa | Élite Experience',
       description: 'Il Metodo Élite è il metodo professionale Hair Spa ideato da Elisabetta Tancini: rituali, tecniche e manualità che si apprendono con la formazione online e in presenza.',
