@@ -50,6 +50,22 @@
     "file": "media/hair-spa-pettini-ambra.jpg", "w": 1920, "h": 1080, "official": true,
     "alt": "Le mani dell'operatrice lavorano sul cuoio capelluto della cliente, distesa a occhi chiusi al lavatesta, con due strumenti da massaggio color ambra."
   },
+  "pressioneSpalle": {
+    "file": "media/metodo-pressione-spalle.jpg", "w": 2000, "h": 1123, "official": true,
+    "alt": "Le mani dell'operatrice premono sulle spalle della cliente, distesa sul lettino Hair Spa con una maschera sugli occhi."
+  },
+  "ritmoElisabetta": {
+    "file": "media/metodo-ritmo-elisabetta.jpg", "w": 2000, "h": 1123, "official": true,
+    "alt": "Elisabetta Tancini lavora al lavatesta con l'arco dorato, accanto alla cliente distesa con una maschera sugli occhi."
+  },
+  "continuitaPennello": {
+    "file": "media/metodo-continuita-pennello.jpg", "w": 1601, "h": 900, "official": true,
+    "alt": "Con un pennello l'operatrice applica il trattamento sul cuoio capelluto, tenendo la testa della cliente con l'altra mano."
+  },
+  "strumentiPinda": {
+    "file": "media/metodo-strumenti-pinda-erbe.jpg", "w": 2000, "h": 1121, "official": true,
+    "alt": "Le mani chiudono con lo spago un pinda di tessuto, accanto a vasi di vetro pieni di erbe essiccate e a ciotole di legno."
+  },
   "acquaMani": {
     "file": "media/hair-spa-acqua-mani.jpg", "w": 2000, "h": 1143, "official": true,
     "alt": "Le mani dell'operatrice accompagnano l'acqua sul cuoio capelluto della cliente durante un rituale Hair Spa, accanto a un rubinetto dorato."

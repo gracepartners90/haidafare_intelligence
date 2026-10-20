@@ -59,10 +59,10 @@ ${fullHero(ctx, {
       </ol>
     </div>
     ${fader(ctx, [
-      { image: 'massaggioTesta', position: '58% 45%' },
-      { image: 'lavatesta', position: '70% 45%' },
-      { image: 'acquaMani', position: '45% 50%' },
-      { image: 'ritualeOlio', position: '46% 50%' },
+      { image: 'pressioneSpalle', position: '50% 50%' },
+      { image: 'ritmoElisabetta', position: '94% 40%' },
+      { image: 'continuitaPennello', position: '48% 45%' },
+      { image: 'strumentiPinda', position: '46% 55%' },
     ], { cls: 'hands__fader' })}
   </div>
 </section>
