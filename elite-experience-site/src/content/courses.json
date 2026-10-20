@@ -120,8 +120,8 @@
       "heroImage": "pinda",
       "heroSlot": null,
       "cardImage": {
-        "media": "pinda",
-        "pos": "60% 45%",
+        "media": "pindaLino",
+        "pos": "50% 55%",
         "provisional": false
       },
       "video": null,
@@ -218,9 +218,9 @@
       "heroImage": null,
       "heroSlot": "Spazzolatura durante il Brushing Ritual: strumento e gesto",
       "cardImage": {
-        "media": "cascataDorata",
-        "pos": "50% 45%",
-        "provisional": true
+        "media": "spazzolaLegno",
+        "pos": "56% 50%",
+        "provisional": false
       },
       "video": null,
       "competencies": [
@@ -316,9 +316,9 @@
       "heroImage": null,
       "heroSlot": "Manualità dell’Hairgym Ritual sul cuoio capelluto",
       "cardImage": {
-        "media": "lavatesta",
-        "pos": "86% 50%",
-        "provisional": true
+        "media": "elisabettaCute",
+        "pos": "20% 40%",
+        "provisional": false
       },
       "video": null,
       "competencies": [

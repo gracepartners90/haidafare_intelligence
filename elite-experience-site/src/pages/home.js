@@ -15,7 +15,7 @@ export default [{
     const body = `
 <!-- 01 HERO -->
 ${fullHero(ctx, {
-  image: 'heroHome', position: '0% 0%', cls: 'hero--home',
+  image: 'petaliRosa', position: '62% 45%', cls: 'hero--home',
   title: 'Porta l’esperienza Hair Spa nel tuo salone.',
   lead: 'Un metodo professionale ideato da Elisabetta Tancini, che attraverso percorsi di formazione online e in presenza ti accompagna nell’apprendimento di rituali, tecniche e manualità Hair Spa.',
   extra: `<div class="actions">
@@ -63,7 +63,7 @@ ${fullHero(ctx, {
   <div class="wrap">
     ${sectionHead({ eyebrow: 'I rituali', title: 'Il metodo, attraverso le manualità.', lead: 'Ogni rituale è un’espressione pratica del Metodo Élite, con tecniche, manualità e sequenze proprie. Ognuno ha una scheda dedicata con il programma del corso.' })}
     <article class="ritual-feature">
-      <div class="ritual-feature__media">${media(ctx, 'pinda', { ratio: '16/9', position: '55% 50%' })}</div>
+      <div class="ritual-feature__media">${media(ctx, 'pindaLino', { ratio: '16/9', position: '50% 55%' })}</div>
       <div class="ritual-feature__text">
         <p class="eyebrow">Rituale</p>
         <h3 class="h3serif">${esc(pinda.name)}</h3>

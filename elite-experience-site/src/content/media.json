@@ -5,6 +5,27 @@
     "note": "Hero della home: foto fornita dal brand, specchiata in orizzontale per lasciare libero il lato del testo. Il trattamento (tono, grana, vignettatura) è applicato in pagina. Per gli schermi grandi è consigliata una versione con lato lungo di almeno 2400 px.",
     "alt": "Rituale Hair Spa al lavatesta: un arco dorato fa scendere l'acqua in fili sottili sui capelli della cliente, rilassata a occhi chiusi, in una luce calda e ambrata."
   },
+  "petaliRosa": {
+    "file": "media/hair-spa-petali-rosa-specchio.jpg", "w": 1664, "h": 1109, "official": true,
+    "note": "Hero della home: foto fornita dal brand, specchiata in orizzontale per lasciare libero il lato del testo. Per gli schermi grandi è consigliata una versione con lato lungo di almeno 2400 px.",
+    "alt": "Rituale Hair Spa al lavatesta: petali di rosa sui capelli della cliente, rilassata a occhi chiusi, mentre l'operatrice ne versa altri da una coppa di vetro."
+  },
+  "olioFronte": {
+    "file": "media/hair-spa-olio-fronte.jpg", "w": 1922, "h": 1080, "official": true,
+    "alt": "Un filo d'olio scende sulla fronte della cliente, distesa a occhi chiusi, durante un rituale Hair Spa."
+  },
+  "pindaLino": {
+    "file": "media/pinda-mani-lino.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Le mani dell'operatrice tengono due pinda di lino legati con lo spago, appoggiati su un asciugamano."
+  },
+  "spazzolaLegno": {
+    "file": "media/brushing-spazzola-legno.jpg", "w": 1672, "h": 941, "official": true,
+    "alt": "Spazzolatura con una spazzola in legno sui capelli bagnati della cliente al lavatesta."
+  },
+  "elisabettaCute": {
+    "file": "media/elisabetta-hairgym-cuoio-capelluto.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Elisabetta Tancini esegue una manualità sul cuoio capelluto di una cliente nel suo salone."
+  },
   "acquaMani": {
     "file": "media/hair-spa-acqua-mani.jpg", "w": 2000, "h": 1143, "official": true,
     "alt": "Le mani dell'operatrice accompagnano l'acqua sul cuoio capelluto della cliente durante un rituale Hair Spa, accanto a un rubinetto dorato."
