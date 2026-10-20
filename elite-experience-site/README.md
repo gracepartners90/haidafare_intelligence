@@ -186,11 +186,10 @@ riferimenti per la privacy policy e la cookie policy.
 **Elisabetta Tancini** — eventuali riconoscimenti, altre fotografie ufficiali (anche verticali,
 di dettaglio, in aula). Le due citazioni firmate (home e «La sua visione») sono approvate.
 
-**Corsi** — per ciascuno dei 5 rituali: conferma della disponibilità dei contenuti (oggi in
-bozza: «accesso illimitato»), eventuale promozione con condizioni, link di acquisto, immagini e
-un estratto video autentico. Prezzi, durata, livelli, tecniche, «Cosa imparerai», profilo
-consigliato, prerequisiti, requisiti tecnici e prezzo della Élite Ritual Collection sono già
-compilati.
+**Corsi** — per ciascuno dei 5 rituali: eventuale promozione con condizioni, link di acquisto,
+immagini e un estratto video autentico. Prezzi, durata, accesso illimitato, livelli, tecniche,
+«Cosa imparerai», profilo consigliato, prerequisiti, requisiti tecnici e prezzo della Élite
+Ritual Collection sono già compilati.
 
 **Formazione in presenza** — durata e condizioni (sede Maison BB ad Arona, max 8
 partecipanti e calendario da concordare sono già indicati).

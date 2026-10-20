@@ -62,10 +62,7 @@
       "prerequisites": "Nessuno: è il corso da cui iniziare.",
       "access": "Account dedicato su piattaforma Academy",
       "fruition": "Video di 1 ora",
-      "availability": {
-        "text": "Accesso illimitato alle videolezioni dal tuo account Academy.",
-        "verified": false
-      },
+      "availability": "Accesso illimitato alle videolezioni dal tuo account Academy.",
       "support": "Team Élite Experience",
       "requirements": "Computer, tablet o smartphone con connessione a internet.",
       "price": 190,
@@ -163,10 +160,7 @@
       "prerequisites": "È consigliata una prima esperienza di manualità Hair Spa, ad esempio con il Wellness Ritual.",
       "access": "Account dedicato su piattaforma Academy",
       "fruition": "Video di 1 ora",
-      "availability": {
-        "text": "Accesso illimitato alle videolezioni dal tuo account Academy.",
-        "verified": false
-      },
+      "availability": "Accesso illimitato alle videolezioni dal tuo account Academy.",
       "support": "Team Élite Experience",
       "requirements": "Computer, tablet o smartphone con connessione a internet.",
       "price": 290,
@@ -264,10 +258,7 @@
       "prerequisites": "È consigliata una prima esperienza di manualità Hair Spa, ad esempio con il Wellness Ritual.",
       "access": "Account dedicato su piattaforma Academy",
       "fruition": "Video di 1 ora",
-      "availability": {
-        "text": "Accesso illimitato alle videolezioni dal tuo account Academy.",
-        "verified": false
-      },
+      "availability": "Accesso illimitato alle videolezioni dal tuo account Academy.",
       "support": "Team Élite Experience",
       "requirements": "Computer, tablet o smartphone con connessione a internet.",
       "price": 290,
@@ -365,10 +356,7 @@
       "prerequisites": "Nessuno per il livello base; per il livello medium è utile una prima esperienza di manualità Hair Spa.",
       "access": "Account dedicato su piattaforma Academy",
       "fruition": "Video di 1 ora",
-      "availability": {
-        "text": "Accesso illimitato alle videolezioni dal tuo account Academy.",
-        "verified": false
-      },
+      "availability": "Accesso illimitato alle videolezioni dal tuo account Academy.",
       "support": "Team Élite Experience",
       "requirements": "Computer, tablet o smartphone con connessione a internet.",
       "price": 290,
@@ -466,10 +454,7 @@
       "prerequisites": "È consigliata una solida esperienza nelle manualità Hair Spa e nei rituali del Metodo Élite.",
       "access": "Account dedicato su piattaforma Academy",
       "fruition": "Video di 1 ora",
-      "availability": {
-        "text": "Accesso illimitato alle videolezioni dal tuo account Academy.",
-        "verified": false
-      },
+      "availability": "Accesso illimitato alle videolezioni dal tuo account Academy.",
       "support": "Team Élite Experience",
       "requirements": "Computer, tablet o smartphone con connessione a internet.",
       "price": 290,

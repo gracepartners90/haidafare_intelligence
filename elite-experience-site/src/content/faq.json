@@ -110,7 +110,7 @@
           "id": "durata-accesso",
           "q": "Per quanto tempo restano disponibili le lezioni?",
           "a": "L’accesso alle videolezioni è illimitato: restano sempre disponibili nel tuo account sulla piattaforma Academy.",
-          "verified": false
+          "verified": true
         },
         {
           "id": "dispositivi",
