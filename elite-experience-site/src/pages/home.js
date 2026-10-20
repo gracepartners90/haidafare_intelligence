@@ -68,7 +68,7 @@ ${fullHero(ctx, {
         <p class="eyebrow">Rituale</p>
         <h3 class="h3serif">${esc(pinda.name)}</h3>
         <p>${draft(pinda.shortDescription)}</p>
-        ${media(ctx, 'dettaglioPinda', { ratio: '1/1', cls: 'ritual-feature__detail' })}
+        ${media(ctx, 'pindaAsciugamano', { ratio: '1/1', position: '52% 60%', cls: 'ritual-feature__detail' })}
         ${arrow(ctx, { label: 'Approfondisci il rituale', to: courseUrl(pinda) })}
       </div>
     </article>

@@ -22,9 +22,9 @@
       "heroImage": null,
       "heroSlot": "Elisabetta durante il Wellness Ritual: manualità al lavatesta",
       "cardImage": {
-        "media": "massaggioTesta",
-        "pos": "55% 45%",
-        "provisional": true
+        "media": "elisabettaWellness",
+        "pos": "42% 35%",
+        "provisional": false
       },
       "video": null,
       "competencies": [
@@ -414,9 +414,9 @@
       "heroImage": null,
       "heroSlot": "Manualità del Relax Full Ritual",
       "cardImage": {
-        "media": "lavatestaAcqua",
-        "pos": "50% 78%",
-        "provisional": true
+        "media": "aerografoCute",
+        "pos": "55% 40%",
+        "provisional": false
       },
       "video": null,
       "competencies": [

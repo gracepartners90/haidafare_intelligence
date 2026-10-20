@@ -26,6 +26,26 @@
     "file": "media/elisabetta-hairgym-cuoio-capelluto.jpg", "w": 2000, "h": 1125, "official": true,
     "alt": "Elisabetta Tancini esegue una manualità sul cuoio capelluto di una cliente nel suo salone."
   },
+  "aerografoCute": {
+    "file": "media/relax-aerografo-cute.jpg", "w": 2000, "h": 1121, "official": true,
+    "alt": "L'operatrice applica un trattamento sul cuoio capelluto con l'aerografo, tenendo la testa della cliente con l'altra mano."
+  },
+  "pindaAsciugamano": {
+    "file": "media/pinda-lino-asciugamano.jpg", "w": 2000, "h": 1118, "official": true,
+    "alt": "Due pinda di lino legati con lo spago, appoggiati sull'asciugamano ricamato Maison BB."
+  },
+  "elisabettaWellness": {
+    "file": "media/elisabetta-wellness-manualita.jpg", "w": 2000, "h": 1124, "official": true,
+    "alt": "Elisabetta Tancini appoggia le mani sui capelli di una cliente, nel suo salone, mentre spiega la manualità."
+  },
+  "ciotolaLegno": {
+    "file": "media/hair-spa-ciotola-legno.jpg", "w": 2000, "h": 1126, "official": true,
+    "alt": "Con una ciotola di legno l'operatrice versa acqua sui capelli della cliente, distesa a occhi chiusi al lavatesta."
+  },
+  "arcoDorato": {
+    "file": "media/hair-spa-arco-dorato.jpg", "w": 1920, "h": 1080, "official": true,
+    "alt": "Un arco dorato fa scendere fili d'acqua sui capelli della cliente, rilassata a occhi chiusi, mentre l'operatrice lavora sul cuoio capelluto."
+  },
   "acquaMani": {
     "file": "media/hair-spa-acqua-mani.jpg", "w": 2000, "h": 1143, "official": true,
     "alt": "Le mani dell'operatrice accompagnano l'acqua sul cuoio capelluto della cliente durante un rituale Hair Spa, accanto a un rubinetto dorato."
