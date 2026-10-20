@@ -3,28 +3,249 @@
   "journal": {
     "name": "Élite & More",
     "categories": [
-      { "slug": "metodo-e-rituali", "name": "Metodo e rituali", "description": "Il Metodo Élite, i rituali e le manualità che lo esprimono." },
-      { "slug": "formazione-hair-spa", "name": "Formazione Hair Spa", "description": "Come si impara l’Hair Spa: percorsi, approfondimenti e orientamento." },
-      { "slug": "professione-e-salone", "name": "Professione e salone", "description": "L’Hair Spa nel lavoro quotidiano del salone." },
-      { "slug": "elisabetta-tancini", "name": "Elisabetta Tancini", "description": "La visione e i contenuti firmati dalla fondatrice." },
-      { "slug": "collaborazioni-ed-eventi", "name": "Collaborazioni ed eventi", "description": "Masterclass, eventi e progetti con aziende del settore." }
+      {
+        "slug": "metodo-e-rituali",
+        "name": "Metodo e rituali",
+        "description": "Il Metodo Élite, i rituali e le manualità che lo esprimono."
+      },
+      {
+        "slug": "formazione-hair-spa",
+        "name": "Formazione Hair Spa",
+        "description": "Come si impara l’Hair Spa: percorsi, approfondimenti e orientamento."
+      },
+      {
+        "slug": "professione-e-salone",
+        "name": "Professione e salone",
+        "description": "L’Hair Spa nel lavoro quotidiano del salone."
+      },
+      {
+        "slug": "elisabetta-tancini",
+        "name": "Elisabetta Tancini",
+        "description": "La visione e i contenuti firmati dalla fondatrice."
+      },
+      {
+        "slug": "collaborazioni-ed-eventi",
+        "name": "Collaborazioni ed eventi",
+        "description": "Masterclass, eventi e progetti con aziende del settore."
+      }
     ],
     "source": "https://elitexperience.it/elite-e-more/",
-    "_articles": "Articoli reali pubblicati su Élite & More, anche in ordine sparso: il sito mostra i più recenti per data. Campi: title, url (indirizzo dell'articolo), date (AAAA-MM-GG), category (slug di una categoria o null), excerpt, image (chiave in media.json o null), imagePos.",
-    "articles": []
+    "_articles": "Articoli di Élite & More. sample = true: articolo di esempio scritto per l'anteprima del magazine (con le note di lavorazione attive compare l'etichetta «Esempio»). body: paragrafi (p), titoletti (h2) e citazioni (quote). Il numero mostra gli articoli dal più recente.",
+    "articles": [
+      {
+        "slug": "hair-spa-cuoio-capelluto-cuore-del-salone",
+        "sample": true,
+        "title": "Hair Spa: quando il cuoio capelluto diventa il cuore del salone",
+        "category": "professione-e-salone",
+        "date": "2026-10-14",
+        "minutes": 4,
+        "excerpt": "Non più un passaggio veloce al lavatesta, ma un momento dedicato: l’Hair Spa trasforma la cura della cute in un’esperienza che il cliente riconosce e ricorda.",
+        "image": "cascataDorata",
+        "imagePos": "50% 45%",
+        "body": [
+          {
+            "type": "p",
+            "text": "Per anni il lavatesta è stato un luogo di passaggio: pochi minuti tra l’accoglienza e il servizio tecnico, spesso vissuti di fretta. L’Hair Spa ribalta questa prospettiva e lo trasforma nel punto in cui l’esperienza del salone prende forma."
+          },
+          {
+            "type": "h2",
+            "text": "La cute al centro"
+          },
+          {
+            "type": "p",
+            "text": "Il cuoio capelluto è pelle, e come ogni pelle chiede attenzione, metodo e tempo. Un rituale Hair Spa parte da qui: dall’osservazione, dalla consulenza, dalla scelta dei prodotti e delle manualità più adatte alla persona che si ha davanti."
+          },
+          {
+            "type": "p",
+            "text": "Non si tratta di aggiungere un massaggio a fine shampoo, ma di costruire un trattamento con una propria sequenza, un inizio e una conclusione riconoscibili. È la struttura a distinguere un rituale da un gesto occasionale."
+          },
+          {
+            "type": "quote",
+            "text": "Il tempo dedicato è già parte del trattamento."
+          },
+          {
+            "type": "h2",
+            "text": "Un’esperienza, non un passaggio"
+          },
+          {
+            "type": "p",
+            "text": "Luce morbida, temperatura dell’acqua, ritmo dei gesti, silenzio: ogni dettaglio contribuisce a far percepire al cliente che quel momento è pensato per lui. È questa coerenza a trasformare un servizio in un rituale."
+          },
+          {
+            "type": "p",
+            "text": "Per il salone significa poter proporre un servizio distintivo, con un valore chiaro e una durata definita, da inserire nel menu dei trattamenti accanto ai servizi tecnici."
+          },
+          {
+            "type": "h2",
+            "text": "Da dove cominciare"
+          },
+          {
+            "type": "p",
+            "text": "Il primo passo è la formazione: imparare un protocollo strutturato, allenare la manualità e organizzare la postazione. Solo così il rituale diventa replicabile, giorno dopo giorno, con la stessa qualità."
+          }
+        ]
+      },
+      {
+        "slug": "pressione-ritmo-continuita-gesto-hair-spa",
+        "sample": true,
+        "title": "Pressione, ritmo, continuità: la grammatica del gesto Hair Spa",
+        "category": "metodo-e-rituali",
+        "date": "2026-10-07",
+        "minutes": 4,
+        "excerpt": "Nelle manualità Hair Spa la tecnica si misura nei dettagli: quanta pressione, con quale ritmo, senza mai interrompere il contatto. I tre elementi che rendono un gesto professionale.",
+        "image": "massaggioTesta",
+        "imagePos": "55% 45%",
+        "body": [
+          {
+            "type": "p",
+            "text": "Chi riceve un rituale Hair Spa raramente sa dare un nome a ciò che sente. Percepisce però, subito, la differenza tra un gesto improvvisato e un gesto costruito. Quella differenza ha una grammatica precisa."
+          },
+          {
+            "type": "h2",
+            "text": "La pressione"
+          },
+          {
+            "type": "p",
+            "text": "È la prima cosa che il cliente avverte. Troppo leggera, il gesto si perde; troppo intensa, diventa invadente. La pressione giusta si adatta alla zona trattata e alla persona, e si regola con la sensibilità più che con la forza."
+          },
+          {
+            "type": "h2",
+            "text": "Il ritmo"
+          },
+          {
+            "type": "p",
+            "text": "Un rituale ha un tempo interno. Movimenti lenti e regolari accompagnano verso la distensione, sequenze più dinamiche stimolano la cute. Saper alternare i ritmi, senza strappi, è ciò che dà forma all’esperienza."
+          },
+          {
+            "type": "quote",
+            "text": "Un gesto professionale non si nota: si sente."
+          },
+          {
+            "type": "h2",
+            "text": "La continuità"
+          },
+          {
+            "type": "p",
+            "text": "Il contatto non si interrompe. Le mani passano da una manualità all’altra, da un’area all’altra, senza pause che riportino il cliente al rumore del salone. La continuità è ciò che rende fluido un rituale, dall’inizio alla fine."
+          },
+          {
+            "type": "h2",
+            "text": "Allenare la mano"
+          },
+          {
+            "type": "p",
+            "text": "Pressione, ritmo e continuità si imparano: osservando, comprendendo il perché di ogni passaggio e ripetendo finché il gesto diventa naturale. È il lavoro che ogni percorso di formazione Hair Spa mette al centro."
+          }
+        ]
+      },
+      {
+        "slug": "introdurre-hair-spa-nel-menu-del-salone",
+        "sample": true,
+        "title": "Dal primo rituale al menu del salone: come introdurre l’Hair Spa",
+        "category": "formazione-hair-spa",
+        "date": "2026-09-30",
+        "minutes": 5,
+        "excerpt": "Portare l’Hair Spa in salone è un percorso: si parte da un rituale, si costruisce la postazione, si allena il gesto, si forma il team. Le tappe per farlo con metodo.",
+        "image": "ritualeOlio",
+        "imagePos": "46% 50%",
+        "body": [
+          {
+            "type": "p",
+            "text": "Introdurre l’Hair Spa non significa cambiare il proprio salone dall’oggi al domani. È un percorso graduale, che parte da un rituale ben appreso e cresce insieme alla sicurezza di chi lo esegue."
+          },
+          {
+            "type": "h2",
+            "text": "Scegliere il primo rituale"
+          },
+          {
+            "type": "p",
+            "text": "Conviene iniziare da un protocollo che insegni le basi: l’accoglienza, la detersione, le prime manualità e la struttura del trattamento. Su queste fondamenta si potranno aggiungere, in seguito, rituali più specifici."
+          },
+          {
+            "type": "h2",
+            "text": "Preparare la postazione"
+          },
+          {
+            "type": "p",
+            "text": "Il rituale vive in uno spazio: il lavatesta o il lettino, i prodotti, gli strumenti, la luce. Prepararli con cura, e sempre allo stesso modo, è parte integrante del servizio."
+          },
+          {
+            "type": "h2",
+            "text": "Allenare il gesto"
+          },
+          {
+            "type": "p",
+            "text": "La manualità si costruisce con la pratica. Ripetere la sequenza, prima sui colleghi e poi sui clienti, permette di trovare fluidità e di eseguire il rituale con naturalezza."
+          },
+          {
+            "type": "quote",
+            "text": "Un rituale diventa servizio quando si può ripetere, ogni giorno, con la stessa qualità."
+          },
+          {
+            "type": "h2",
+            "text": "Dargli un posto nel menu"
+          },
+          {
+            "type": "p",
+            "text": "Nome, durata, modo di presentarlo al cliente: un servizio Hair Spa ha bisogno di un posto chiaro nel menu del salone, accanto ai servizi tecnici."
+          },
+          {
+            "type": "h2",
+            "text": "Coinvolgere il team"
+          },
+          {
+            "type": "p",
+            "text": "Quando più operatori condividono lo stesso metodo, il rituale diventa un linguaggio comune del salone e l’esperienza resta coerente, chiunque la esegua."
+          }
+        ]
+      }
+    ],
+    "issue": {
+      "n": 1,
+      "label": "Ottobre 2026",
+      "tagline": "Cultura, tecnica e formazione Hair Spa."
+    }
   },
   "collaborations": {
     "types": [
-      { "name": "Collaborazioni con aziende", "text": "Progetti formativi e di contenuto con aziende e brand Hair & Beauty." },
-      { "name": "Attività educational", "text": "Formazione per team, reti commerciali e accademie del settore." },
-      { "name": "Masterclass", "text": "Sessioni dimostrative dedicate ai rituali e alle manualità Hair Spa." },
-      { "name": "Eventi", "text": "Interventi e dimostrazioni in fiere, congressi ed eventi professionali." },
-      { "name": "Progetti speciali", "text": "Iniziative costruite su misura con il partner." },
-      { "name": "Opportunità internazionali", "text": "Collaborazioni e attività formative fuori dall’Italia." }
+      {
+        "name": "Collaborazioni con aziende",
+        "text": "Progetti formativi e di contenuto con aziende e brand Hair & Beauty."
+      },
+      {
+        "name": "Attività educational",
+        "text": "Formazione per team, reti commerciali e accademie del settore."
+      },
+      {
+        "name": "Masterclass",
+        "text": "Sessioni dimostrative dedicate ai rituali e alle manualità Hair Spa."
+      },
+      {
+        "name": "Eventi",
+        "text": "Interventi e dimostrazioni in fiere, congressi ed eventi professionali."
+      },
+      {
+        "name": "Progetti speciali",
+        "text": "Iniziative costruite su misura con il partner."
+      },
+      {
+        "name": "Opportunità internazionali",
+        "text": "Collaborazioni e attività formative fuori dall’Italia."
+      }
     ],
     "documented": [
-      { "name": "Z.One", "status": "da verificare", "description": null, "logo": null, "period": null },
-      { "name": "Maletti", "status": "da verificare", "description": null, "logo": null, "period": null }
+      {
+        "name": "Z.One",
+        "role": "Hair Spa Educator",
+        "logo": null,
+        "status": "attiva"
+      },
+      {
+        "name": "Maletti",
+        "role": "Hair Spa Educator",
+        "logo": null,
+        "status": "attiva"
+      }
     ],
     "events": []
   },

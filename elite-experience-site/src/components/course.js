@@ -8,11 +8,15 @@ export function levelChip(level) {
   return `<span class="chip${level.verified ? '' : ' chip--draft'}">${esc(level.label)}${level.verified ? '' : ' · da confermare'}</span>`;
 }
 
+// Prezzo in formato italiano (1.600), con «IVA inclusa» quando confermato
+export const euro = (n) => `€ ${Number(n).toLocaleString('it-IT')}`;
+export const priceText = (item) => (item.price == null ? '' : `${euro(item.price)}${item.vatIncluded ? ' IVA inclusa' : ''}`);
+
 export function priceLine(item) {
   if (item.price == null) return `<p class="price">${tbd('Prezzo da verificare')}</p>`;
   const promo = item.promotion && item.promotion.active
     ? ` <span class="promo">-${item.promotion.percent}%${item.promotion.code ? ` con codice ${esc(item.promotion.code)}` : ''}</span>` : '';
-  return `<p class="price">€ ${esc(item.price)}${promo}</p>`;
+  return `<p class="price">${euro(item.price)}${item.vatIncluded ? ' <small>IVA inclusa</small>' : ''}${promo}</p>`;
 }
 
 // Le promozioni compaiono solo se attive e con condizioni confermate
@@ -22,14 +26,6 @@ export function promoBanner(item) {
   return `<p class="promo-banner"><b>-${p.percent}%</b> ${p.code ? `con il codice <code>${esc(p.code)}</code> — ` : ''}${esc(p.conditions)}${p.validUntil ? ` (fino al ${esc(p.validUntil)})` : ''}</p>`;
 }
 
-export function outcomes(c, n = 3) {
-  if (c.competencies && c.competencies.length) {
-    return `<ul class="outcomes">${c.competencies.slice(0, n).map((x) => `<li>${esc(x.title || x)}</li>`).join('')}</ul>`;
-  }
-  const slots = ['Tecnica principale insegnata', 'Manualità / sequenza operativa', 'Applicazione nel rituale in salone'];
-  return `<ul class="outcomes outcomes--tbd">${slots.slice(0, n).map((x) => `<li>${tbd(x)}</li>`).join('')}</ul>`;
-}
-
 // Immagine del corso nelle card: foto del corso, altrimenti cardImage (anche provvisoria)
 export function courseImage(ctx, c, { ratio, cls, fill } = {}) {
   const ci = c.cardImage;
@@ -37,24 +33,22 @@ export function courseImage(ctx, c, { ratio, cls, fill } = {}) {
   return visual(ctx, { key: c.heroImage, subject: c.heroSlot, ratio, cls, fill, tone: c.order % 2 ? 'light' : 'dark' });
 }
 
-// Card editoriale del corso (catalogo, pagine interne)
-export function courseCard(ctx, c, { showPrice = false, cta = 'Scopri il programma', size = 'm' } = {}) {
-  return `<article class="ccard ccard--${size}">
-    <a class="ccard__media" href="${ctx.href(courseUrl(c))}" tabindex="-1" aria-hidden="true">
-      ${courseImage(ctx, c, { ratio: size === 'l' ? '16/10' : '4/5' })}
-    </a>
+// Card del corso, uguale per tutti: foto, livello, cosa imparerai, tecniche, prezzo
+export function courseCard(ctx, c, { cta = 'Scopri il corso' } = {}) {
+  return `<article class="ccard">
+    <a class="ccard__media" href="${ctx.href(courseUrl(c))}" tabindex="-1" aria-hidden="true">${courseImage(ctx, c, { ratio: '4/5' })}</a>
     <div class="ccard__body">
       <p class="ccard__meta"><span>Formazione online</span>${levelChip(c.level)}</p>
       <h3 class="ccard__name"><a href="${ctx.href(courseUrl(c))}">${esc(c.name)}</a></h3>
-      <p class="ccard__desc">${draft(c.shortDescription)}</p>
       <p class="ccard__lab">Cosa imparerai</p>
-      ${outcomes(c)}
-      ${showPrice ? priceLine(c) : ''}
-      ${arrow(ctx, { label: cta, to: courseUrl(c) })}
+      <p class="ccard__desc">${draft(c.shortDescription)}</p>
+      ${c.techniques ? `<ul class="ccard__tech">${c.techniques.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
+      <div class="ccard__foot">${priceLine(c)}${arrow(ctx, { label: cta, to: courseUrl(c) })}</div>
     </div>
   </article>`;
 }
 
+// Collezione completa (catalogo online)
 export function collectionBlock(ctx, col, courses) {
   return `<div class="coll">
     <div class="coll__head">
@@ -76,7 +70,7 @@ export function collectionBlock(ctx, col, courses) {
 
 // Selettore dei rituali (home): elenco chiaro dei corsi con immagine che cambia al passaggio
 export function ritualPicker(ctx, courses) {
-  const meta = (c) => `<span class="picker__meta"><span>Online</span>${levelChip(c.level)}${c.price != null ? `<span class="picker__price">€ ${esc(c.price)}</span>` : ''}</span>`;
+  const meta = (c) => `<span class="picker__meta"><span>Online</span>${levelChip(c.level)}${c.price != null ? `<span class="picker__price">${euro(c.price)}</span>` : ''}</span>`;
   return `<div class="picker" data-picker>
     <div class="picker__stage" aria-hidden="true">
       ${courses.map((c, i) => `<div class="picker__img${i === 0 ? ' is-on' : ''}">${courseImage(ctx, c, { fill: true })}<span class="picker__label">${esc(c.name)}</span></div>`).join('')}

@@ -40,9 +40,8 @@ export const nav = [
     ],
     courses: true, // aggiunge l'elenco delle schede corso
   },
-  { label: 'Per i Saloni', to: 'per-i-saloni/' },
   { label: 'Élite & More', to: 'elite-e-more/' },
   { label: 'Contatti', to: 'contatti/' },
 ];
 
-export const headerCta = { label: 'Scopri la formazione', to: 'academy/' };
+export const headerCta = { label: 'Accedi in piattaforma', to: site.academyUrl, ext: true };

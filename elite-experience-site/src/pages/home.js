@@ -1,10 +1,9 @@
-import { site } from '../config.js';
-import { esc, tbd, draft, eyebrow, sectionHead, btn, arrow, media } from '../components/core.js';
+import { esc, draft, eyebrow, sectionHead, btn, arrow, media } from '../components/core.js';
 import { courseUrl, ritualPicker, collectionBand } from '../components/course.js';
 import { organization, website } from '../components/seo.js';
 import { page } from '../components/layout.js';
 import { practiceSequence } from '../components/practice.js';
-import { latestArticles, articleGrid } from '../components/editorial.js';
+import { fullHero, fullVideo, signedQuote } from '../components/blocks.js';
 
 export default [{
   route: '',
@@ -15,25 +14,15 @@ export default [{
 
     const body = `
 <!-- 01 HERO -->
-<section class="hero">
-  <div class="hero__bg">${media(ctx, 'heroHome', { fill: true, eager: true, position: '0% 0%' })}</div>
-  <div class="hero__in">
-    <div class="hero__text">
-      <h1 class="hero__title">Porta l’esperienza Hair Spa nel tuo salone.</h1>
-      <p class="hero__lead">Un metodo professionale ideato da Elisabetta Tancini, che attraverso percorsi di formazione online e in presenza ti accompagna nell’apprendimento di rituali, tecniche e manualità Hair Spa.</p>
-      <div class="actions">
+${fullHero(ctx, {
+  image: 'heroHome', position: '0% 0%', cls: 'hero--home',
+  title: 'Porta l’esperienza Hair Spa nel tuo salone.',
+  lead: 'Un metodo professionale ideato da Elisabetta Tancini, che attraverso percorsi di formazione online e in presenza ti accompagna nell’apprendimento di rituali, tecniche e manualità Hair Spa.',
+  extra: `<div class="actions">
         ${btn(ctx, { label: 'Scopri la formazione', to: 'academy/', variant: 'light' })}
         ${btn(ctx, { label: 'Il Metodo Élite', to: 'metodo-elite/', variant: 'ghost-light' })}
-      </div>
-    </div>
-    <ul class="hero__facts" aria-label="In sintesi">
-      <li><b>Hair Spa</b>rituali, tecniche e manualità</li>
-      <li><b>Un metodo professionale</b>ideato da Elisabetta Tancini</li>
-      <li><b>Formazione</b>online e in presenza</li>
-      <li><b>Per professionisti</b>e saloni</li>
-    </ul>
-  </div>
-</section>
+      </div>`,
+})}
 
 <!-- 02 IL METODO -->
 <section class="sec home-method" id="metodo">
@@ -58,18 +47,15 @@ export default [{
 <!-- 03 ELISABETTA TANCINI -->
 <section class="sec sec--deep home-eli">
   <div class="wrap home-eli__grid">
-    <div class="home-eli__portrait">${media(ctx, 'ritratto', { ratio: '4/5', position: '50% 22%' })}</div>
     <div class="home-eli__text">
       ${eyebrow('La fondatrice')}
       <h2 class="display-name">Elisabetta <em>Tancini</em></h2>
       <p class="home-eli__sub">La professionista dietro il Metodo Élite.</p>
-      <p>Fondatrice di Élite Experience e ideatrice del Metodo Élite, Elisabetta Tancini è formatrice Hair Spa. Il metodo nasce dal suo lavoro di professionista e si trasmette attraverso la formazione online e in presenza.</p>
-      <blockquote class="quote quote--tbd"><p>${tbd('Dichiarazione di Elisabetta sulla sua visione dell’Hair Spa — da raccogliere')}</p></blockquote>
-      <div class="actions">
-        ${btn(ctx, { label: 'Conosci Elisabetta', to: 'elisabetta-tancini/', variant: 'light' })}
-        ${arrow(ctx, { label: 'Il suo percorso', to: 'elisabetta-tancini/#percorso', cls: 'arrow--light' })}
-      </div>
+      <p>Imprenditrice, Hair Spa Specialist e formatrice internazionale, Elisabetta Tancini è la fondatrice di Élite Experience e l’ideatrice del Metodo Élite. Il metodo nasce dal suo lavoro in salone e si trasmette attraverso la formazione online e in presenza.</p>
+      ${signedQuote(draft('Ogni gesto ha un tempo e un’intenzione. Insegnarlo significa trasmettere la cura che c’è dietro.'))}
+      <div class="actions">${btn(ctx, { label: 'Conosci Elisabetta', to: 'elisabetta-tancini/', variant: 'light' })}</div>
     </div>
+    <div class="home-eli__portrait">${media(ctx, 'ritratto', { ratio: '4/5', position: '50% 22%' })}</div>
   </div>
 </section>
 
@@ -106,7 +92,7 @@ ${practiceSequence(ctx)}
 <section class="sec sec--beige home-courses">
   <div class="wrap">
     <div class="row-head">
-      ${sectionHead({ eyebrow: 'Corsi online', title: 'Scegli cosa vuoi imparare.', lead: 'Cinque rituali, una scheda per ciascuno: competenze, tecniche e programma del corso.' })}
+      ${sectionHead({ eyebrow: 'Formazione online', title: 'Il metodo, un rituale alla volta.', lead: 'Cinque rituali completi: competenze, tecniche e programma del corso.' })}
       ${arrow(ctx, { label: 'Confronta i corsi', to: 'academy/#confronto' })}
     </div>
     ${ritualPicker(ctx, courses)}
@@ -117,32 +103,28 @@ ${practiceSequence(ctx)}
 <!-- 06 PER I SALONI -->
 <section class="sec home-salons">
   <div class="wrap">
-    ${sectionHead({ eyebrow: 'Per i saloni', title: 'Ogni salone ha il proprio punto di partenza.' })}
+    ${sectionHead({ eyebrow: 'Per i saloni', title: 'Ogni salone ha il proprio punto di partenza.', cls: 'shead--line' })}
     <div class="paths">
       <article class="path">
         <h3 class="h3serif">Iniziare con l’Hair Spa</h3>
-        <p>Per chi vuole avvicinarsi al settore e introdurre nuove competenze nel salone: conoscere i rituali, acquisire le prime manualità, capire da dove partire.</p>
-        ${arrow(ctx, { label: 'Da dove iniziare', to: 'per-i-saloni/#iniziare' })}
+        <p>Per chi vuole avvicinarsi al mondo Hair Spa e introdurre nuove competenze nel salone: conoscere i rituali, acquisire le prime manualità, capire da dove partire.</p>
+        ${arrow(ctx, { label: 'Da dove iniziare', to: 'academy/#percorsi' })}
       </article>
       <article class="path">
         <h3 class="h3serif">Approfondire l’Hair Spa</h3>
         <p>Per chi ha già esperienza e desidera perfezionare o ampliare le manualità, conoscendo le differenze tra i singoli rituali.</p>
-        ${arrow(ctx, { label: 'Come approfondire', to: 'per-i-saloni/#approfondire' })}
+        ${arrow(ctx, { label: 'Come approfondire', to: 'academy/#percorsi' })}
       </article>
     </div>
   </div>
 </section>
 
-<!-- 07 ÉLITE & MORE: gli ultimi 3 articoli reali -->
-<section class="sec sec--ivory home-journal">
-  <div class="wrap">
-    <div class="row-head">
-      ${sectionHead({ eyebrow: 'Élite & More', title: 'Cultura, tecnica e formazione Hair Spa.', lead: 'Gli ultimi articoli pubblicati.' })}
-      ${arrow(ctx, { label: 'Tutti gli articoli', to: 'elite-e-more/' })}
-    </div>
-    ${articleGrid(ctx, latestArticles(ctx.data, { n: 3 }), { min: 3 })}
-  </div>
-</section>
+<!-- 07 VIDEO A TUTTO SCHERMO -->
+${fullVideo(ctx, {
+  poster: 'acquaMani', position: '40% 50%', eyebrow: 'Il Metodo Élite in video',
+  title: 'Il gesto, <em>in movimento</em>.',
+  src: null, note: 'Spazio per il video di presentazione del Metodo Élite (formato orizzontale 16:9).',
+})}
 
 <!-- 08 CONTATTI -->
 <section class="sec sec--choc home-contact">
@@ -151,7 +133,6 @@ ${practiceSequence(ctx)}
     <p>Raccontaci da dove parti: ti aiutiamo a orientarti tra formazione online, formazione in presenza e singoli rituali.</p>
     <div class="actions">
       ${btn(ctx, { label: 'Richiedi informazioni', to: 'contatti/#formazione', variant: 'light' })}
-      ${arrow(ctx, { label: 'Proposte di collaborazione', to: 'contatti/#collaborazioni', cls: 'arrow--light' })}
     </div>
   </div>
 </section>`;

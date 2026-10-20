@@ -13,6 +13,7 @@ import elisabetta from './src/pages/elisabetta.js';
 import academy from './src/pages/academy.js';
 import course from './src/pages/course.js';
 import others from './src/pages/others.js';
+import magazine from './src/pages/magazine.js';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
@@ -30,7 +31,7 @@ const data = {
   practice: read('src/content/practice.json'),
 };
 
-const pages = [...home, ...metodo, ...elisabetta, ...academy, ...course(data), ...others(data)];
+const pages = [...home, ...metodo, ...elisabetta, ...academy, ...course(data), ...magazine(data), ...others(data)];
 const PIXEL = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
 function makeCtx(route, dirOverride) {
@@ -58,7 +59,7 @@ function makeCtx(route, dirOverride) {
   };
 }
 
-const css = ['tokens', 'base', 'layout', 'components', 'sections']
+const css = ['tokens', 'base', 'layout', 'components', 'sections', 'blocks', 'magazine']
   .map((f) => fs.readFileSync(path.join(root, 'src/styles', `${f}.css`), 'utf8')).join('\n');
 const js = fs.readFileSync(path.join(root, 'src/scripts/site.js'), 'utf8');
 

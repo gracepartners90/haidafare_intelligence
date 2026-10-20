@@ -1,8 +1,9 @@
-import { esc, draft, eyebrow, sectionHead, btn, arrow, media, slot, tbdBlock, breadcrumb } from '../components/core.js';
-import { courseUrl, levelChip } from '../components/course.js';
+import { esc, draft, sectionHead, arrow } from '../components/core.js';
+import { courseUrl } from '../components/course.js';
 import { breadcrumbs } from '../components/seo.js';
 import { page } from '../components/layout.js';
 import { practiceSequence } from '../components/practice.js';
+import { fullHero, fullImage, fader } from '../components/blocks.js';
 
 const crumbs = [{ label: 'Home', to: '' }, { label: 'Il Metodo Élite', to: 'metodo-elite/' }];
 
@@ -17,22 +18,21 @@ export default [{
       ['L’applicazione in salone', 'La formazione è pensata per essere portata nel lavoro quotidiano del salone.'],
     ];
     const body = `
-<section class="phero phero--split">
-  <div class="phero__text">
-    ${breadcrumb(ctx, crumbs)}
-    ${eyebrow('Élite Experience')}
-    <h1 class="phero__title">Il Metodo Élite</h1>
-    <p class="phero__lead">Un metodo professionale Hair Spa ideato da Elisabetta Tancini, che si esprime attraverso rituali, tecniche e manualità.</p>
-  </div>
-  <div class="phero__media">${media(ctx, 'lavatesta', { fill: true, eager: true, position: '68% 45%' })}</div>
-</section>
+${fullHero(ctx, {
+  image: 'lavatesta', position: '62% 40%',
+  eyebrow: 'Élite Experience',
+  title: 'Il Metodo <em>Élite</em>',
+  lead: 'Un metodo professionale Hair Spa ideato da Elisabetta Tancini, che si esprime attraverso rituali, tecniche e manualità.',
+})}
 
-<section class="sec">
+<section class="sec origin">
   <div class="wrap split split--5-7">
     <div>${sectionHead({ eyebrow: 'Origine e visione', title: 'Un metodo nato dal lavoro di una professionista.' })}</div>
-    <div class="prose">
+    <div class="prose origin__text">
       <p class="lead">Il Metodo Élite nasce dall’esperienza professionale di Elisabetta Tancini ed è il patrimonio su cui si fonda Élite Experience: un modo di intendere l’Hair Spa che unisce rituale, tecnica e manualità.</p>
-      ${tbdBlock({ title: 'Il racconto dell’origine del metodo', lines: ['Quando e in quale contesto professionale nasce il metodo', 'L’esigenza da cui è partita Elisabetta', 'Come il metodo si è sviluppato nel tempo'], note: 'Da raccogliere con Elisabetta Tancini.' })}
+      <p>Prende forma nella pratica quotidiana di Maison BB, il salone che Elisabetta guida ad Arona, e nell’attività di formatrice internazionale al fianco di importanti protagonisti dell’industria Hair. Due prospettive che si incontrano: quella di chi lavora ogni giorno a contatto con le persone e quella di chi conosce le esigenze, le responsabilità e le sfide di un’impresa nel settore Hair &amp; Beauty.</p>
+      <p>Il metodo traduce questa esperienza in un sistema: rituali strutturati, tecniche precise e manualità che si possono apprendere, ripetere e portare nel proprio salone. Ogni rituale ha una sequenza riconoscibile, dall’accoglienza alla conclusione dell’esperienza, e ogni gesto ha una ragione.</p>
+      <p>La visione è un Hair Spa in cui precisione delle manualità, sensibilità e cura del dettaglio diventano elementi distintivi: per il cliente, un’esperienza da ricordare; per il salone, un servizio di valore, riconoscibile e replicabile.</p>
     </div>
   </div>
 </section>
@@ -46,16 +46,24 @@ export default [{
   </div>
 </section>
 
-<section class="sec manual">
-  <div class="wrap manual__grid">
-    <div class="manual__text">
+<section class="sec hands">
+  <div class="wrap hands__grid">
+    <div class="hands__text">
       ${sectionHead({ eyebrow: 'La centralità delle manualità', title: 'Il metodo passa attraverso le mani.' })}
       <p class="lead">Nel Metodo Élite le manualità sono il contenuto principale: il modo in cui la mano lavora, la sequenza dei passaggi, l’uso degli strumenti e dei materiali.</p>
-      ${tbdBlock({ title: 'Tecniche e manualità documentate', lines: ['Elenco delle tecniche del metodo', 'Strumenti e materiali utilizzati', 'Elementi che distinguono il Metodo Élite'], note: 'Da compilare sui programmi ufficiali dei corsi.' })}
+      <ol class="hands__list">
+        <li><span>01</span><div><h3>Pressione</h3><p>Dosata sulla persona e sulla zona trattata, regolata con la sensibilità più che con la forza.</p></div></li>
+        <li><span>02</span><div><h3>Ritmo</h3><p>Lento e avvolgente o dinamico e stimolante: ogni rituale ha un tempo proprio, che si alterna senza strappi.</p></div></li>
+        <li><span>03</span><div><h3>Continuità</h3><p>Il contatto non si interrompe: le mani passano da un passaggio all’altro, dall’accoglienza alla conclusione.</p></div></li>
+        <li><span>04</span><div><h3>Strumenti</h3><p>Lettino ad acqua, pinda riscaldati, spazzole, calore e vapore: ogni rituale ha i suoi materiali e la sua postazione.</p></div></li>
+      </ol>
     </div>
-    ${media(ctx, 'dettaglioMani', { ratio: '4/3', cls: 'manual__a' })}
-    ${media(ctx, 'dettaglioPinda', { ratio: '4/5', cls: 'manual__b' })}
-    ${media(ctx, 'dettaglioMateriali', { ratio: '16/9', cls: 'manual__c' })}
+    ${fader(ctx, [
+      { image: 'massaggioTesta', position: '58% 45%', caption: 'Pressione' },
+      { image: 'lavatesta', position: '70% 45%', caption: 'Ritmo' },
+      { image: 'acquaMani', position: '45% 50%', caption: 'Continuità' },
+      { image: 'ritualeOlio', position: '46% 50%', caption: 'Strumenti' },
+    ], { cls: 'hands__fader' })}
   </div>
 </section>
 
@@ -87,27 +95,7 @@ ${practiceSequence(ctx, { id: 'in-pratica-metodo' })}
   </div>
 </section>
 
-<section class="sec sec--ivory">
-  <div class="wrap eli-strip">
-    ${media(ctx, 'ritratto', { ratio: '4/5', position: '50% 22%' })}
-    <div>
-      ${eyebrow('L’ideatrice del metodo')}
-      <h2 class="display-name display-name--m">Elisabetta <em>Tancini</em></h2>
-      <p class="lead">Fondatrice di Élite Experience, ideatrice del Metodo Élite e formatrice Hair Spa.</p>
-      ${btn(ctx, { label: 'Conosci Elisabetta', to: 'elisabetta-tancini/' })}
-    </div>
-  </div>
-</section>
-
-<section class="sec sec--choc band">
-  <div class="wrap band__in">
-    <h2 class="h2serif">Impara il Metodo Élite.</h2>
-    <div class="actions">
-      ${btn(ctx, { label: 'Scopri la formazione', to: 'academy/', variant: 'light' })}
-      ${arrow(ctx, { label: 'Richiedi informazioni', to: 'contatti/#formazione', cls: 'arrow--light' })}
-    </div>
-  </div>
-</section>`;
+${fullImage(ctx, 'pinda', { position: '62% 45%', caption: 'Elisabetta Tancini, ideatrice del Metodo Élite' })}`;
     return page(ctx, {
       title: 'Il Metodo Élite — Metodo professionale Hair Spa | Élite Experience',
       description: 'Il Metodo Élite è il metodo professionale Hair Spa ideato da Elisabetta Tancini: rituali, tecniche e manualità che si apprendono con la formazione online e in presenza.',

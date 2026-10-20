@@ -63,7 +63,7 @@ export function footer(ctx) {
         <div><p class="ftr__h">Élite Experience</p><ul>
           <li><a href="${ctx.href('metodo-elite/')}">Il Metodo Élite</a></li>
           <li><a href="${ctx.href('elisabetta-tancini/')}">Elisabetta Tancini</a></li>
-          <li><a href="${ctx.href('per-i-saloni/')}">Per i Saloni</a></li>
+          <li><a href="${ctx.href('academy/#percorsi')}">Per i saloni</a></li>
           <li><a href="${ctx.href('elisabetta-tancini/#collaborazioni')}">Collaborazioni</a></li>
           <li><a href="${ctx.href('elite-e-more/')}">Élite &amp; More</a></li>
         </ul></div>

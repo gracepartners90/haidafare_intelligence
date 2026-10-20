@@ -28,7 +28,8 @@ export const person = () => ({
   '@type': 'Person',
   '@id': `${site.url}/elisabetta-tancini/#person`,
   name: 'Elisabetta Tancini',
-  jobTitle: 'Fondatrice di Élite Experience e formatrice Hair Spa',
+  jobTitle: 'Hair Spa Specialist e formatrice internazionale',
+  description: 'Imprenditrice, Hair Spa Specialist e formatrice internazionale, fondatrice di Élite Experience e ideatrice del Metodo Élite.',
   worksFor: { '@id': `${site.url}/#organization` },
   image: `${site.url}/assets/media/elisabetta-ritratto.jpg`,
   url: `${site.url}/elisabetta-tancini/`,
@@ -57,4 +58,27 @@ export const faqPage = (items) => ({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: items.filter((f) => f.a && f.verified !== false).map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+});
+
+export const blog = () => ({
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  '@id': `${site.url}/elite-e-more/#blog`,
+  name: 'Élite & More',
+  description: 'Il magazine Hair Spa di Élite Experience.',
+  url: `${site.url}/elite-e-more/`,
+  inLanguage: 'it-IT',
+  publisher: { '@id': `${site.url}/#organization` },
+});
+
+export const blogPosting = (a) => ({
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: a.title,
+  description: a.excerpt,
+  datePublished: a.date,
+  inLanguage: 'it-IT',
+  author: { '@type': 'Organization', name: 'Redazione Élite & More' },
+  isPartOf: { '@id': `${site.url}/elite-e-more/#blog` },
+  url: `${site.url}/elite-e-more/${a.slug}/`,
 });

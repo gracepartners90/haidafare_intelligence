@@ -5,55 +5,199 @@
       "id": "scegliere",
       "title": "Scegliere il corso",
       "items": [
-        { "id": "primo-corso", "q": "Da quale corso conviene iniziare?", "a": "Dal Wellness Ritual: è il corso ideale per i primi approcci all’Hair Spa.", "verified": true, "link": { "label": "Scopri il Wellness Ritual", "to": "academy/formazione-online/wellness-ritual/" } },
-        { "id": "esperienza", "q": "Serve esperienza Hair Spa per iniziare?", "a": "Per iniziare no: il Wellness Ritual è pensato per i primi approcci all’Hair Spa. Gli altri corsi hanno livello Medium, Base e Medium o Pro, per chi vuole approfondire.", "verified": true },
-        { "id": "livelli", "q": "Che livello hanno i corsi?", "a": "Wellness Ritual: primi approcci. Pinda Ritual e Brushing Ritual: Medium. Hairgym Ritual: Base e Medium. Relax Full Ritual: Pro.", "verified": true, "link": { "label": "Confronta i corsi", "to": "academy/#confronto" } },
-        { "id": "differenze-rituali", "q": "Che differenza c’è tra i rituali?", "a": "Ogni rituale è un’espressione pratica del Metodo Élite, con tecniche, manualità e sequenze proprie. La scheda di ciascun corso descrive competenze, tecniche e programma.", "verified": true },
-        { "id": "online-presenza", "q": "Che differenza c’è tra formazione online e in presenza?", "a": "La formazione online si basa su videolezioni teoriche e dimostrative dedicate ai rituali e alle manualità Hair Spa. La formazione in presenza è un percorso pratico con Elisabetta Tancini, presso la sede di Arona o direttamente nel salone.", "verified": true }
+        {
+          "id": "primo-corso",
+          "q": "Da quale corso conviene iniziare?",
+          "a": "Dal Wellness Ritual: è il corso ideale per i primi approcci all’Hair Spa.",
+          "verified": true,
+          "link": {
+            "label": "Scopri il Wellness Ritual",
+            "to": "academy/formazione-online/wellness-ritual/"
+          }
+        },
+        {
+          "id": "esperienza",
+          "q": "Serve esperienza Hair Spa per iniziare?",
+          "a": "Per iniziare no: il Wellness Ritual è pensato per i primi approcci all’Hair Spa. Gli altri corsi hanno livello Medium, Base e Medium o Pro, per chi vuole approfondire.",
+          "verified": true
+        },
+        {
+          "id": "livelli",
+          "q": "Che livello hanno i corsi?",
+          "a": "Wellness Ritual: primi approcci. Pinda Ritual e Brushing Ritual: Medium. Hairgym Ritual: Base e Medium. Relax Full Ritual: Pro.",
+          "verified": true,
+          "link": {
+            "label": "Confronta i corsi",
+            "to": "academy/#confronto"
+          }
+        },
+        {
+          "id": "differenze-rituali",
+          "q": "Che differenza c’è tra i rituali?",
+          "a": "Ogni rituale è un’espressione pratica del Metodo Élite, con tecniche, manualità e sequenze proprie. La scheda di ciascun corso descrive competenze, tecniche e programma.",
+          "verified": true
+        },
+        {
+          "id": "online-presenza",
+          "q": "Che differenza c’è tra formazione online e in presenza?",
+          "a": "La formazione online si basa su videolezioni teoriche e dimostrative dedicate ai rituali e alle manualità Hair Spa. La formazione in presenza è un percorso pratico con Elisabetta Tancini, presso la sede di Arona o direttamente nel salone.",
+          "verified": true
+        }
       ]
     },
     {
       "id": "prezzi",
       "title": "Prezzi e acquisto",
       "items": [
-        { "id": "prezzi", "q": "Quanto costano i corsi online?", "a": "Il Wellness Ritual costa 190 €. Pinda Ritual, Brushing Ritual, Hairgym Ritual e Relax Full Ritual costano 290 € ciascuno.", "verified": true },
-        { "id": "acquisto", "q": "Dove si acquistano i corsi online?", "a": "Sulla piattaforma Élite Experience Academy, academy.elitexperience.it.", "verified": true, "link": { "label": "Vai alla piattaforma Academy", "to": "https://academy.elitexperience.it/", "ext": true } },
-        { "id": "collezione", "q": "È possibile acquistare più corsi insieme?", "a": "Sì, con la Élite Ritual Collection, che riunisce i cinque rituali del Metodo Élite in un unico percorso. Prezzo e condizioni sono da confermare.", "verified": false },
-        { "id": "promozioni", "q": "Sono previste promozioni o codici sconto?", "a": null },
-        { "id": "pagamento", "q": "Quali metodi di pagamento sono accettati?", "a": null }
+        {
+          "id": "prezzi",
+          "q": "Quanto costano i corsi online?",
+          "a": "Il Wellness Ritual costa 190 € IVA inclusa. Pinda Ritual, Brushing Ritual, Hairgym Ritual e Relax Full Ritual costano 290 € IVA inclusa ciascuno.",
+          "verified": true
+        },
+        {
+          "id": "acquisto",
+          "q": "Dove si acquistano i corsi online?",
+          "a": "Sulla piattaforma Élite Experience Academy, academy.elitexperience.it.",
+          "verified": true,
+          "link": {
+            "label": "Vai alla piattaforma Academy",
+            "to": "https://academy.elitexperience.it/",
+            "ext": true
+          }
+        },
+        {
+          "id": "collezione",
+          "q": "È possibile acquistare più corsi insieme?",
+          "a": "Sì, con la Élite Ritual Collection, che riunisce i cinque rituali del Metodo Élite in un unico percorso, al prezzo di 1.600 €.",
+          "verified": true
+        },
+        {
+          "id": "promozioni",
+          "q": "Sono previste promozioni o codici sconto?",
+          "a": null
+        },
+        {
+          "id": "pagamento",
+          "q": "Quali metodi di pagamento sono accettati?",
+          "a": null
+        }
       ]
     },
     {
       "id": "online",
       "title": "Come funzionano i corsi online",
       "items": [
-        { "id": "lezioni", "q": "Come sono fatte le lezioni?", "a": "Sono videolezioni teoriche e dimostrative, dedicate all’apprendimento dei rituali e delle manualità Hair Spa.", "verified": true },
-        { "id": "accesso", "q": "Come si accede ai corsi online?", "a": "Dopo l’acquisto, il corso si segue sulla piattaforma Élite Experience Academy.", "verified": false },
-        { "id": "tempi", "q": "Posso seguire le lezioni con i miei tempi?", "a": "Sì: le videolezioni si seguono online, con i tempi del proprio salone.", "verified": false },
-        { "id": "durata-accesso", "q": "Per quanto tempo restano disponibili le lezioni?", "a": null },
-        { "id": "dispositivi", "q": "Da quali dispositivi posso seguire i corsi?", "a": null },
-        { "id": "materiali", "q": "Sono previsti materiali didattici o attestati?", "a": null },
-        { "id": "assistenza", "q": "Come posso ricevere assistenza durante il corso?", "a": null }
+        {
+          "id": "lezioni",
+          "q": "Come sono fatte le lezioni?",
+          "a": "Ogni corso è una videolezione online di 1 ora, teorica e dimostrativa, dedicata ai rituali e alle manualità Hair Spa.",
+          "verified": true
+        },
+        {
+          "id": "accesso",
+          "q": "Come si accede ai corsi online?",
+          "a": "Con un account dedicato sulla piattaforma Élite Experience Academy, dove si segue il corso.",
+          "verified": true
+        },
+        {
+          "id": "tempi",
+          "q": "Posso seguire le lezioni con i miei tempi?",
+          "a": "Sì: le videolezioni si seguono online, con i tempi del proprio salone.",
+          "verified": false
+        },
+        {
+          "id": "durata-accesso",
+          "q": "Per quanto tempo restano disponibili le lezioni?",
+          "a": null
+        },
+        {
+          "id": "dispositivi",
+          "q": "Da quali dispositivi posso seguire i corsi?",
+          "a": null
+        },
+        {
+          "id": "materiali",
+          "q": "Sono previsti materiali didattici o attestati?",
+          "a": null
+        },
+        {
+          "id": "assistenza",
+          "q": "Come posso ricevere assistenza durante il corso?",
+          "a": "Puoi contare sul team Élite Experience.",
+          "verified": true
+        }
       ]
     },
     {
       "id": "presenza",
       "title": "Formazione in presenza",
       "items": [
-        { "id": "presenza-dove", "q": "Dove si svolge la formazione in presenza?", "a": "Presso la sede di Arona oppure direttamente nel salone del professionista.", "verified": true },
-        { "id": "presenza-chi", "q": "Chi tiene la formazione in presenza?", "a": "Elisabetta Tancini, ideatrice del Metodo Élite e formatrice Hair Spa.", "verified": true },
-        { "id": "presenza-team", "q": "È possibile formare più operatori dello stesso salone?", "a": "Sì: la formazione nel salone si svolge con il tuo team. Numero di partecipanti e organizzazione si definiscono su richiesta.", "verified": false },
-        { "id": "presenza-richiesta", "q": "Come si richiede la formazione in presenza?", "a": "Compilando il modulo dedicato nella pagina Contatti: verrai ricontattato per definire modalità e date.", "verified": false, "link": { "label": "Richiedi la formazione in presenza", "to": "contatti/#presenza" } },
-        { "id": "presenza-costo", "q": "Quanto costa la formazione in presenza?", "a": null }
+        {
+          "id": "presenza-dove",
+          "q": "Dove si svolge la formazione in presenza?",
+          "a": "Presso il salone Maison BB ad Arona oppure direttamente nel salone del professionista.",
+          "verified": true
+        },
+        {
+          "id": "presenza-chi",
+          "q": "Chi tiene la formazione in presenza?",
+          "a": "Elisabetta Tancini, ideatrice del Metodo Élite e formatrice Hair Spa.",
+          "verified": true
+        },
+        {
+          "id": "presenza-team",
+          "q": "È possibile formare più operatori dello stesso salone?",
+          "a": "Sì: la formazione nel salone coinvolge il team del salone. Presso Maison BB ad Arona i gruppi sono di massimo 8 persone.",
+          "verified": true
+        },
+        {
+          "id": "presenza-richiesta",
+          "q": "Come si richiede la formazione in presenza?",
+          "a": "Compilando il modulo dedicato nella pagina Contatti: verrai ricontattato per definire modalità e date.",
+          "verified": false,
+          "link": {
+            "label": "Richiedi la formazione in presenza",
+            "to": "contatti/#presenza"
+          }
+        },
+        {
+          "id": "presenza-costo",
+          "q": "Quanto costa la formazione in presenza?",
+          "a": null
+        }
       ]
     },
     {
       "id": "metodo",
       "title": "Il Metodo Élite",
       "items": [
-        { "id": "metodo", "q": "Che cos’è il Metodo Élite?", "a": "È l’approccio professionale all’Hair Spa ideato da Elisabetta Tancini: si fonda sull’apprendimento e sull’applicazione di rituali, tecniche e manualità che il professionista porta nel proprio salone.", "verified": true, "link": { "label": "Scopri il Metodo Élite", "to": "metodo-elite/" } },
-        { "id": "elisabetta", "q": "Chi è Elisabetta Tancini?", "a": "È la fondatrice di Élite Experience, ideatrice del Metodo Élite e formatrice Hair Spa.", "verified": true, "link": { "label": "Conosci Elisabetta", "to": "elisabetta-tancini/" } },
-        { "id": "per-chi", "q": "A chi si rivolge la formazione?", "a": "A professionisti e saloni che vogliono introdurre l’Hair Spa nei propri servizi o approfondire rituali e manualità.", "verified": true }
+        {
+          "id": "metodo",
+          "q": "Che cos’è il Metodo Élite?",
+          "a": "È l’approccio professionale all’Hair Spa ideato da Elisabetta Tancini: si fonda sull’apprendimento e sull’applicazione di rituali, tecniche e manualità che il professionista porta nel proprio salone.",
+          "verified": true,
+          "link": {
+            "label": "Scopri il Metodo Élite",
+            "to": "metodo-elite/"
+          }
+        },
+        {
+          "id": "elisabetta",
+          "q": "Chi è Elisabetta Tancini?",
+          "a": "Imprenditrice, Hair Spa Specialist e formatrice internazionale, guida il salone Maison BB ad Arona. È la fondatrice di Élite Experience e l’ideatrice del Metodo Élite.",
+          "verified": true,
+          "link": {
+            "label": "Conosci Elisabetta",
+            "to": "elisabetta-tancini/"
+          }
+        },
+        {
+          "id": "per-chi",
+          "q": "A chi si rivolge la formazione?",
+          "a": "A professionisti e saloni che vogliono introdurre l’Hair Spa nei propri servizi o approfondire rituali e manualità.",
+          "verified": true
+        }
       ]
     }
   ]

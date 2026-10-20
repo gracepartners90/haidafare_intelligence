@@ -1,97 +1,114 @@
 import { site } from '../config.js';
-import { esc, tbd, draft, eyebrow, sectionHead, btn, arrow, media, slot, tbdBlock, breadcrumb, faqList, faqAll, faqGroups, videoBlock } from '../components/core.js';
-import { courseCard, collectionBlock, courseUrl, levelChip, priceLine, promoBanner } from '../components/course.js';
+import { esc, eyebrow, sectionHead, btn, arrow, media, faqList, faqAll, faqGroups } from '../components/core.js';
+import { courseCard, collectionBlock, courseImage, courseUrl, levelChip, priceText } from '../components/course.js';
 import { breadcrumbs, faqPage } from '../components/seo.js';
 import { page } from '../components/layout.js';
+import { fullHero } from '../components/blocks.js';
 
 const cAcademy = [{ label: 'Home', to: '' }, { label: 'Academy', to: 'academy/' }];
 const cOnline = [...cAcademy, { label: 'Formazione Online', to: 'academy/formazione-online/' }];
 const cPresence = [...cAcademy, { label: 'Formazione in Presenza', to: 'academy/formazione-in-presenza/' }];
 
+// Livelli su una scala di quattro gradini, per il confronto visivo
+const LEVELS = ['Primi approcci', 'Base', 'Medium', 'Pro'];
+const levelSteps = { 'Primi approcci': [0], 'Base e Medium': [1, 2], Medium: [2], Pro: [3] };
+const levelMeter = (level) => {
+  const on = (level && levelSteps[level.label]) || [];
+  return `<span class="lvl" role="img" aria-label="Livello ${esc(level ? level.label : 'da definire')}">${LEVELS.map((_, i) => `<i${on.includes(i) ? ' class="on"' : ''}></i>`).join('')}</span>`;
+};
+
+/* ---------------- PANORAMICA ---------------- */
 const academyPage = {
   route: 'academy/',
   render(ctx) {
     const { courses, collection, faq } = ctx.data;
+    const wellness = courses.find((c) => c.id === 'wellness-ritual');
+    const min = Math.min(...courses.map((c) => c.price).filter((p) => p != null));
     const body = `
-<section class="phero phero--center">
+${fullHero(ctx, {
+  image: 'ritualeOlio', position: '46% 50%',
+  eyebrow: 'Élite Experience Academy',
+  title: 'La formazione Hair Spa del Metodo <em>Élite</em>.',
+  lead: 'Percorsi online e in presenza per apprendere rituali, tecniche e manualità Hair Spa, pensati per professionisti e saloni.',
+})}
+
+<section class="sec modes-sec" id="modalita">
   <div class="wrap">
-    ${breadcrumb(ctx, cAcademy)}
-    ${eyebrow('Élite Experience Academy')}
-    <h1 class="phero__title">La formazione Hair Spa del Metodo Élite.</h1>
-    <p class="phero__lead">Percorsi online e in presenza per apprendere rituali, tecniche e manualità Hair Spa, pensati per professionisti e saloni.</p>
-    <div class="actions actions--center">
-      ${btn(ctx, { label: 'Esplora i corsi online', to: 'academy/formazione-online/' })}
-      ${btn(ctx, { label: 'Formazione in presenza', to: 'academy/formazione-in-presenza/', variant: 'ghost' })}
+    ${sectionHead({ eyebrow: 'Due modalità', title: 'Online o in presenza: lo stesso metodo.', lead: 'Scegli come imparare. Le due modalità condividono rituali, tecniche e manualità del Metodo Élite.' })}
+    <div class="switch" data-switch>
+      <div class="switch__tabs" role="tablist" aria-label="Modalità di formazione">
+        <button type="button" role="tab" id="sw-online" aria-controls="sw-p-online" aria-selected="true"><span>01</span>Formazione online</button>
+        <button type="button" role="tab" id="sw-presenza" aria-controls="sw-p-presenza" aria-selected="false" tabindex="-1"><span>02</span>Formazione in presenza</button>
+      </div>
+      <div class="switch__panel" role="tabpanel" id="sw-p-online" aria-labelledby="sw-online">
+        <div class="switch__lead">
+          <p class="switch__big">Impara con i tuoi tempi, <em>dove vuoi</em>.</p>
+          <p>Videolezioni teoriche e dimostrative dedicate all’apprendimento dei rituali e delle manualità Hair Spa. Ogni corso ha una scheda con competenze, tecniche e programma.</p>
+          ${arrow(ctx, { label: 'Scopri la formazione online', to: 'academy/formazione-online/' })}
+        </div>
+        <dl class="switch__facts">
+          <div><dt>Modalità</dt><dd>Videolezioni teoriche e dimostrative</dd></div>
+          <div><dt>Accesso</dt><dd>Account dedicato su piattaforma Academy</dd></div>
+          <div><dt>Acquisto</dt><dd>Sulla piattaforma Academy</dd></div>
+          <div><dt>Corsi</dt><dd>${courses.length} rituali, da ${esc(priceText({ price: min, vatIncluded: true }))}</dd></div>
+        </dl>
+      </div>
+      <div class="switch__panel" role="tabpanel" id="sw-p-presenza" aria-labelledby="sw-presenza" hidden>
+        <div class="switch__lead">
+          <p class="switch__big">Impara <em>accanto a Elisabetta</em>.</p>
+          <p>Percorsi pratici con Elisabetta Tancini, presso il salone Maison BB ad Arona o direttamente nel salone del professionista.</p>
+          ${arrow(ctx, { label: 'Scopri la formazione in presenza', to: 'academy/formazione-in-presenza/' })}
+        </div>
+        <dl class="switch__facts">
+          <div><dt>Con</dt><dd>Elisabetta Tancini</dd></div>
+          <div><dt>Dove</dt><dd>Arona – Salone Maison BB, o nel tuo salone</dd></div>
+          <div><dt>Partecipanti</dt><dd>Max 8 persone ad Arona, il team del salone nel tuo salone</dd></div>
+          <div><dt>Calendario</dt><dd>Disponibilità da concordare</dd></div>
+        </dl>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="modes">
-  <article class="mode mode--online">
-    ${videoBlock(ctx, { poster: 'ritualeOlio', posterPos: '45% 50%', title: 'Dentro una videolezione', note: 'Inserire un estratto autentico di una videolezione.', ratio: '16/9' })}
-    <div class="mode__body">
-      <p class="eyebrow">Online</p>
-      <h2 class="h2serif">Formazione Online</h2>
-      <p>Videolezioni teoriche e dimostrative dedicate all’apprendimento dei rituali e delle manualità Hair Spa. Ogni corso ha una scheda tecnica con competenze, tecniche e programma.</p>
-      <ul class="facts">
-        <li><span>Formato</span>Videolezioni teoriche e dimostrative</li>
-        <li><span>Accesso</span>${tbd('Modalità di accesso da confermare')}</li>
-        <li><span>Acquisto</span>Sulla piattaforma Academy</li>
-      </ul>
-      ${btn(ctx, { label: 'Vai al catalogo online', to: 'academy/formazione-online/' })}
-    </div>
-  </article>
-  <article class="mode mode--presence">
-    ${media(ctx, 'lavatesta', { ratio: '16/9', position: '60% 45%' })}
-    <div class="mode__body">
-      <p class="eyebrow">In presenza</p>
-      <h2 class="h2serif">Formazione in Presenza</h2>
-      <p>Percorsi pratici con Elisabetta Tancini, presso la sede di Arona o direttamente nel salone del professionista.</p>
-      <ul class="facts facts--light">
-        <li><span>Con</span>Elisabetta Tancini</li>
-        <li><span>Dove</span>Arona o nel tuo salone</li>
-        <li><span>Calendario</span>${tbd('Disponibilità da confermare')}</li>
-      </ul>
-      ${btn(ctx, { label: 'Scopri la formazione in presenza', to: 'academy/formazione-in-presenza/', variant: 'light' })}
-    </div>
-  </article>
-</section>
-
-<section class="sec sec--beige">
+<section class="sec sec--ivory" id="percorsi">
   <div class="wrap">
-    ${sectionHead({ eyebrow: 'Corsi disponibili', title: 'I corsi online del Metodo Élite.' })}
-    <div class="cgrid">${courses.map((c, i) => courseCard(ctx, c, { size: i < 3 ? 'm' : 'l', cta: 'Scopri cosa imparerai' })).join('')}</div>
-    ${collectionBlock(ctx, collection, courses)}
-  </div>
-</section>
-
-<section class="sec" id="confronto">
-  <div class="wrap">
-    ${sectionHead({ eyebrow: 'Confronta i corsi', title: 'Le differenze tra i percorsi.', lead: 'Il confronto si completa con i dati dei programmi ufficiali.' })}
-    <div class="table-wrap" role="region" aria-label="Confronto tra i corsi" tabindex="0">
-      <table class="compare">
-        <thead><tr><th scope="col">Corso</th><th scope="col">Modalità</th><th scope="col">Livello</th><th scope="col">Tecniche principali</th><th scope="col">Prezzo</th><th scope="col"><span class="sr-only">Scheda</span></th></tr></thead>
-        <tbody>${courses.map((c) => `<tr>
-          <th scope="row">${esc(c.name)}</th>
-          <td>Online</td>
-          <td>${levelChip(c.level)}</td>
-          <td>${c.techniques ? esc(c.techniques.map((t) => t.title || t).join(', ')) : tbd('Da programma ufficiale')}</td>
-          <td>${c.price != null ? `€ ${esc(c.price)}` : tbd('Da verificare')}</td>
-          <td><a class="arrow" href="${ctx.href(courseUrl(c))}"><span>Scheda</span><i aria-hidden="true">→</i></a></td>
-        </tr>`).join('')}</tbody>
-      </table>
+    ${sectionHead({ eyebrow: 'Due esigenze', title: 'Da dove parte il tuo salone?' })}
+    <div class="needs">
+      <article class="need" id="iniziare">
+        <p class="eyebrow">Per chi desidera iniziare</p>
+        <h3 class="h2serif">Acquisire competenze e conoscere i rituali Hair Spa.</h3>
+        <p>Per il salone che vuole introdurre l’Hair Spa: capire da dove partire, quali competenze acquisire e quali corsi scegliere per le prime manualità.</p>
+        <p class="sub-h">Percorsi consigliati</p>
+        <ul class="taglist"><li><a href="${ctx.href(courseUrl(wellness))}">${esc(wellness.name)}</a> ${levelChip(wellness.level)}</li><li><a href="${ctx.href('academy/formazione-in-presenza/')}">Formazione in presenza</a></li></ul>
+      </article>
+      <article class="need need--dark" id="approfondire">
+        <p class="eyebrow">Per chi desidera approfondire</p>
+        <h3 class="h2serif">Perfezionare le manualità e ampliare il repertorio.</h3>
+        <p>Per il salone che offre già servizi Hair Spa e vuole conoscere nuove manualità e le differenze tra i singoli rituali.</p>
+        <p class="sub-h">Percorsi consigliati</p>
+        <ul class="taglist taglist--light">${courses.filter((c) => c.id !== 'wellness-ritual').map((c) => `<li><a href="${ctx.href(courseUrl(c))}">${esc(c.name)}</a></li>`).join('')}<li><a href="${ctx.href('academy/formazione-online/#collezione')}">${esc(collection.name)}</a></li></ul>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="sec sec--ivory">
+<section class="sec sec--deep compare-sec" id="confronto">
   <div class="wrap">
-    ${sectionHead({ eyebrow: 'Guida alla scelta', title: 'Da dove partire.' })}
-    <div class="guide">
-      <article><p class="guide__q">Non hai ancora esperienza Hair Spa</p><p>Il Wellness Ritual è il corso ideale per i primi approcci all’Hair Spa.</p>${arrow(ctx, { label: 'Wellness Ritual', to: 'academy/formazione-online/wellness-ritual/' })}</article>
-      <article><p class="guide__q">Offri già servizi Hair Spa</p><p>Scegli il rituale in base alle manualità che vuoi approfondire, confrontando i programmi delle schede.</p>${arrow(ctx, { label: 'Confronta i corsi', to: '#confronto' })}</article>
-      <article><p class="guide__q">Vuoi il percorso completo</p><p>La collezione riunisce tutti i rituali del Metodo Élite in un unico percorso.</p>${arrow(ctx, { label: esc(collection.name), to: 'academy/formazione-online/#collezione' })}</article>
-      <article><p class="guide__q">Vuoi imparare con Elisabetta</p><p>La formazione in presenza si svolge ad Arona o direttamente nel tuo salone.</p>${arrow(ctx, { label: 'Formazione in presenza', to: 'academy/formazione-in-presenza/' })}</article>
+    <div class="row-head">
+      ${sectionHead({ eyebrow: 'Confronta i corsi', title: 'Cinque rituali, a confronto.' })}
+      <ol class="lvl-legend" aria-label="Scala dei livelli">${LEVELS.map((l, i) => `<li><span class="lvl">${LEVELS.map((_, k) => `<i${k === i ? ' class="on"' : ''}></i>`).join('')}</span>${esc(l)}</li>`).join('')}</ol>
+    </div>
+    <div class="cmp" role="list">
+      ${courses.map((c, i) => `<article class="cmp__card" role="listitem">
+        <a class="cmp__media" href="${ctx.href(courseUrl(c))}" tabindex="-1" aria-hidden="true">${courseImage(ctx, c, { ratio: '3/2' })}</a>
+        <p class="cmp__n">${String(i + 1).padStart(2, '0')}</p>
+        <h3 class="cmp__name"><a href="${ctx.href(courseUrl(c))}">${esc(c.name)}</a></h3>
+        <div class="cmp__row"><span class="cmp__k">Livello</span><span class="cmp__level">${levelMeter(c.level)}<b>${esc(c.level ? c.level.label : '')}</b></span></div>
+        <div class="cmp__row"><span class="cmp__k">Tecniche principali</span><span class="cmp__tech">${(c.techniques || []).map((t) => esc(t)).join(' · ')}</span></div>
+        <div class="cmp__row"><span class="cmp__k">Modalità</span><span>Online</span></div>
+        <p class="cmp__price">${esc(priceText(c))}</p>
+        ${arrow(ctx, { label: 'Scheda del corso', to: courseUrl(c), cls: 'arrow--light' })}
+      </article>`).join('')}
     </div>
   </div>
 </section>
@@ -109,7 +126,7 @@ const academyPage = {
 </section>`;
     return page(ctx, {
       title: 'Academy — Formazione Hair Spa online e in presenza | Élite Experience',
-      description: 'L’Academy di Élite Experience: corsi online e formazione in presenza con Elisabetta Tancini per apprendere rituali, tecniche e manualità Hair Spa. Confronta i corsi e scegli il percorso.',
+      description: 'L’Academy di Élite Experience: formazione Hair Spa online e in presenza con Elisabetta Tancini. Due modalità, cinque rituali a confronto e il percorso giusto per il tuo salone.',
       jsonld: [breadcrumbs(cAcademy), faqPage(faqAll(ctx.data))],
       bodyClass: 'p-academy',
       body,
@@ -117,38 +134,34 @@ const academyPage = {
   },
 };
 
+/* ---------------- FORMAZIONE ONLINE ---------------- */
 const onlinePage = {
   route: 'academy/formazione-online/',
   render(ctx) {
     const { courses, collection, faq } = ctx.data;
     const body = `
-<section class="phero phero--split phero--light">
-  <div class="phero__text">
-    ${breadcrumb(ctx, cOnline)}
-    ${eyebrow('Academy — Formazione Online')}
-    <h1 class="phero__title">Formazione Online</h1>
-    <p class="phero__lead">Videolezioni teoriche e dimostrative dedicate all’apprendimento dei rituali e delle manualità Hair Spa del Metodo Élite.</p>
-    <div class="actions">${btn(ctx, { label: 'Vedi i corsi', to: '#catalogo' })}${btn(ctx, { label: 'Piattaforma Academy', to: site.academyUrl, ext: true, variant: 'ghost' })}</div>
-  </div>
-  <div class="phero__media">${media(ctx, 'pinda', { fill: true, eager: true, position: '60% 45%' })}</div>
-</section>
+${fullHero(ctx, {
+  image: 'pinda', position: '62% 40%',
+  eyebrow: 'Academy',
+  title: 'Formazione <em>Online</em>',
+  lead: 'Videolezioni teoriche e dimostrative dedicate all’apprendimento dei rituali e delle manualità Hair Spa del Metodo Élite.',
+})}
 
 <section class="sec sec--ivory">
   <div class="wrap">
-    ${sectionHead({ eyebrow: 'Come funziona', title: 'Imparare online il Metodo Élite.' })}
-    <ul class="howto">
-      <li><h3>Le videolezioni</h3><p>Lezioni teoriche e dimostrative su rituali e manualità.</p></li>
-      <li><h3>Accesso</h3><p>${tbd('Modalità e durata dell’accesso da confermare')}</p></li>
-      <li><h3>Materiali</h3><p>${tbd('Materiali inclusi da confermare')}</p></li>
-      <li><h3>Assistenza</h3><p>${tbd('Modalità di assistenza da confermare')}</p></li>
+    ${sectionHead({ eyebrow: 'Le modalità del percorso', title: 'Imparare online il Metodo Élite.' })}
+    <ul class="howto howto--3">
+      <li><span class="howto__n">01</span><h3>Le videolezioni</h3><p>Lezioni teoriche e dimostrative su rituali e manualità.</p></li>
+      <li><span class="howto__n">02</span><h3>Accesso</h3><p>Video di 1 ora, accesso in piattaforma Academy.</p></li>
+      <li><span class="howto__n">03</span><h3>Assistenza</h3><p>Team Élite Experience.</p></li>
     </ul>
   </div>
 </section>
 
 <section class="sec sec--beige" id="catalogo">
   <div class="wrap">
-    ${sectionHead({ eyebrow: 'Catalogo', title: 'Scegli il rituale da imparare.', lead: 'Per ogni corso: descrizione, risultati di apprendimento, livello e accesso alla scheda completa.' })}
-    <div class="cgrid">${courses.map((c, i) => courseCard(ctx, c, { size: i < 3 ? 'm' : 'l', showPrice: true, cta: 'Scopri cosa imparerai' })).join('')}</div>
+    ${sectionHead({ eyebrow: 'Catalogo', title: 'Scegli il rituale da imparare.', lead: 'Per ogni corso: cosa imparerai, tecniche principali, livello e prezzo.' })}
+    <div class="cgrid">${courses.map((c) => courseCard(ctx, c)).join('')}</div>
   </div>
 </section>
 
@@ -171,7 +184,7 @@ const onlinePage = {
 </section>`;
     return page(ctx, {
       title: 'Formazione Online Hair Spa — Corsi del Metodo Élite | Élite Experience',
-      description: 'I corsi online del Metodo Élite: Wellness Ritual, Pinda Ritual, Brushing Ritual, Hairgym Ritual e Relax Full Ritual. Videolezioni teoriche e dimostrative su rituali e manualità Hair Spa.',
+      description: 'I corsi online del Metodo Élite: Wellness Ritual, Pinda Ritual, Brushing Ritual, Hairgym Ritual e Relax Full Ritual. Videolezioni di 1 ora su piattaforma Academy, da 190 € IVA inclusa.',
       jsonld: [breadcrumbs(cOnline)],
       ogImage: 'pinda',
       bodyClass: 'p-online',
@@ -180,21 +193,26 @@ const onlinePage = {
   },
 };
 
+/* ---------------- FORMAZIONE IN PRESENZA ---------------- */
+const learn = [
+  ['Manualità', 'Pressione, ritmo e continuità del gesto, allenati con dimostrazioni ed esercitazioni guidate.'],
+  ['Sequenze', 'La struttura completa del rituale: accoglienza, consulenza, detersione, manualità e conclusione dell’esperienza.'],
+  ['Strumenti e postazione', 'Preparazione della postazione e uso dei materiali e degli strumenti previsti da ciascun rituale.'],
+  ['Applicazione in salone', 'Come portare il rituale nel lavoro quotidiano, organizzarne i tempi e renderlo replicabile.'],
+  ['Confronto diretto', 'Domande, correzioni e consigli sul proprio modo di lavorare, a stretto contatto con Elisabetta.'],
+];
+
 const presencePage = {
   route: 'academy/formazione-in-presenza/',
   render(ctx) {
     const { courses, faq } = ctx.data;
     const body = `
-<section class="phero phero--split phero--dark">
-  <div class="phero__text">
-    ${breadcrumb(ctx, cPresence)}
-    ${eyebrow('Academy — Formazione in Presenza')}
-    <h1 class="phero__title">Formazione in Presenza con Elisabetta Tancini</h1>
-    <p class="phero__lead">Percorsi pratici per apprendere tecniche, rituali e manualità Hair Spa direttamente con Elisabetta, presso la sede di Arona o nel tuo salone.</p>
-    <div class="actions">${btn(ctx, { label: 'Richiedi informazioni', to: 'contatti/#presenza', variant: 'light' })}</div>
-  </div>
-  <div class="phero__media">${media(ctx, 'dimostrazione', { fill: true, eager: true, position: '50% 55%' })}</div>
-</section>
+${fullHero(ctx, {
+  image: 'dimostrazione', position: '50% 42%',
+  eyebrow: 'Academy',
+  title: 'Formazione <em>in presenza</em>',
+  lead: 'Percorsi pratici per apprendere tecniche, rituali e manualità Hair Spa direttamente con Elisabetta Tancini, presso il salone Maison BB ad Arona o nel tuo salone.',
+})}
 
 <section class="sec">
   <div class="wrap">
@@ -203,57 +221,31 @@ const presencePage = {
       <article class="duo__item">
         ${media(ctx, 'lavatestaAcqua', { ratio: '16/10', position: '50% 30%', provisional: true })}
         <h3 class="h3serif">Presso la sede di Arona</h3>
-        <p>Percorso formativo in presenza presso la sede di Elisabetta.</p>
-        <ul class="facts"><li><span>Sede</span>Arona ${tbd('indirizzo')}</li><li><span>Partecipanti</span>${tbd('Formato individuale o di gruppo da confermare')}</li></ul>
+        <p>Percorso formativo in presenza presso Maison BB, il salone di Elisabetta ad Arona.</p>
+        <ul class="facts"><li><span>Sede</span>Arona – Salone Maison BB</li><li><span>Partecipanti</span>Max 8 persone</li></ul>
       </article>
       <article class="duo__item">
         ${media(ctx, 'lavatesta', { ratio: '16/10', position: '62% 45%', provisional: true })}
         <h3 class="h3serif">Direttamente nel salone</h3>
         <p>Formazione organizzata presso la sede del professionista, con il suo team.</p>
-        <ul class="facts"><li><span>Dove</span>Nel salone del professionista</li><li><span>Area servita</span>${tbd('Zone e trasferte da confermare')}</li></ul>
+        <ul class="facts"><li><span>Dove</span>Nel salone del professionista</li><li><span>Partecipanti</span>Team del salone</li></ul>
       </article>
     </div>
   </div>
 </section>
 
-<section class="sec sec--ivory">
-  <div class="wrap split split--5-7">
-    <div>${sectionHead({ eyebrow: 'Il percorso', title: 'Presentazione e obiettivi formativi.' })}</div>
-    <div class="prose">
-      <p class="lead">La formazione in presenza permette di apprendere il Metodo Élite con Elisabetta Tancini, lavorando sul gesto in modo diretto.</p>
-      ${tbdBlock({ title: 'Obiettivi formativi', lines: ['Obiettivo 1', 'Obiettivo 2', 'Obiettivo 3'], note: 'Da definire sul programma ufficiale della formazione in presenza.' })}
-    </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap split split--6-6">
-    <div>
+<section class="sec sec--deep learnp">
+  <div class="wrap">
+    <div class="learnp__head">
       ${sectionHead({ eyebrow: 'Cosa si apprende', title: 'Competenze, tecniche e rituali.' })}
-      ${tbdBlock({ title: 'Competenze acquisite', lines: ['Competenza tecnica', 'Manualità', 'Organizzazione del rituale in salone'] })}
-      <p class="sub-h">Rituali che possono essere affrontati</p>
-      <ul class="taglist">${courses.map((c) => `<li><a href="${ctx.href(courseUrl(c))}">${esc(c.name)}</a></li>`).join('')}</ul>
-      <p class="small">${tbd('Confermare quali rituali sono inclusi nella formazione in presenza')}</p>
+      <p class="lead">In presenza il metodo si apprende con le mani: Elisabetta mostra ogni gesto, lo spiega e lo corregge, mentre il professionista lo ripete fino a renderlo proprio.</p>
     </div>
-    <div>
-      ${media(ctx, 'dettaglioMani', { ratio: '4/3' })}
-      ${media(ctx, 'dettaglioMateriali', { ratio: '16/9', cls: 'mt' })}
-    </div>
-  </div>
-</section>
-
-<section class="sec sec--beige">
-  <div class="wrap split split--5-7">
-    <div>${sectionHead({ eyebrow: 'Programma e organizzazione', title: 'Come si svolge.' })}</div>
-    <div>
-      <dl class="specs">
-        <div><dt>Programma</dt><dd>${tbd('Moduli e argomenti da programma ufficiale')}</dd></div>
-        <div><dt>Durata</dt><dd>${tbd('Da confermare')}</dd></div>
-        <div><dt>Organizzazione</dt><dd>${tbd('Giornate, orari, numero partecipanti')}</dd></div>
-        <div><dt>Sede e disponibilità</dt><dd>Arona o nel salone del professionista · ${tbd('calendario da confermare')}</dd></div>
-        <div><dt>Requisiti</dt><dd>${tbd('Eventuali prerequisiti')}</dd></div>
-        <div><dt>Investimento</dt><dd>${tbd('Non pubblicato: su richiesta, da confermare')}</dd></div>
-      </dl>
+    <ol class="learnp__list">
+      ${learn.map(([t, d], i) => `<li><span class="learnp__n">${String(i + 1).padStart(2, '0')}</span><h3>${esc(t)}</h3><p>${esc(d)}</p></li>`).join('')}
+    </ol>
+    <div class="learnp__rituals">
+      <p class="sub-h">I rituali del Metodo Élite</p>
+      <ul class="taglist taglist--light">${courses.map((c) => `<li><a href="${ctx.href(courseUrl(c))}">${esc(c.name)}</a></li>`).join('')}</ul>
     </div>
   </div>
 </section>
@@ -273,7 +265,7 @@ const presencePage = {
 </section>`;
     return page(ctx, {
       title: 'Formazione Hair Spa in Presenza con Elisabetta Tancini — Arona o nel tuo salone',
-      description: 'Formazione Hair Spa in presenza con Elisabetta Tancini, presso la sede di Arona o direttamente nel salone: competenze, tecniche e rituali del Metodo Élite.',
+      description: 'Formazione Hair Spa in presenza con Elisabetta Tancini, presso il salone Maison BB ad Arona (max 8 persone) o direttamente nel salone con il tuo team.',
       jsonld: [breadcrumbs(cPresence)],
       bodyClass: 'p-presence',
       body,

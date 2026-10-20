@@ -168,6 +168,188 @@
     document.addEventListener('visibilitychange', () => (document.hidden ? pause() : play()));
   });
 
+  /* ---------- Comparsa delle immagini a tutto schermo ---------- */
+  const onView = (el, cb, threshold = 0.2) => {
+    if (!('IntersectionObserver' in window)) { cb(true); return; }
+    new IntersectionObserver(([e]) => cb(e.isIntersecting), { threshold }).observe(el);
+  };
+  $$('[data-reveal]').forEach((el) => onView(el, (inView) => { if (inView) el.classList.add('is-in'); }));
+
+  /* ---------- Foto in dissolvenza: hero di Elisabetta e galleria del metodo ---------- */
+  function cycle(items, marks, ms, root, onStep) {
+    if (items.length < 2 || reduceMotion) return;
+    let i = 0, timer = 0, visible = false;
+    const step = () => {
+      const prev = i; i = (i + 1) % items.length;
+      items.forEach((it, k) => it.classList.toggle('is-on', k === i));
+      marks.forEach((m, k) => { m.classList.toggle('is-on', k === i); m.classList.toggle('is-done', onStep ? k < i : false); });
+      if (onStep) onStep(i, prev);
+    };
+    const run = () => { clearInterval(timer); if (visible && !document.hidden) timer = setInterval(step, ms); };
+    onView(root, (v) => { visible = v; run(); }, 0.3);
+    document.addEventListener('visibilitychange', run);
+  }
+  $$('[data-slides]').forEach((el) => {
+    const hero = el.closest('.hero') || el;
+    const ms = 6000;
+    hero.style.setProperty('--slide-ms', `${ms}ms`);
+    const marks = $$('.hero__progress li', hero);
+    // Ricomincia l'animazione della barra della foto attiva
+    cycle($$('.hero__slide', el), marks, ms, hero, (i) => { const bar = marks[i] && $('i', marks[i]); if (bar) { bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = ''; } });
+  });
+  $$('[data-fader]').forEach((el) => cycle($$('.fader__item', el), $$('.fader__dots li', el), 4200, el));
+
+  /* ---------- Schede a due voci (Academy: online / in presenza) ---------- */
+  $$('[data-switch]').forEach((sw) => {
+    const tabs = $$('[role="tab"]', sw);
+    const pick = (btn, focus) => {
+      tabs.forEach((t) => {
+        const on = t === btn;
+        t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+      if (focus) btn.focus();
+    };
+    tabs.forEach((t) => t.addEventListener('click', () => pick(t)));
+    sw.addEventListener('keydown', (e) => {
+      const k = tabs.indexOf(document.activeElement);
+      if (k < 0) return;
+      const n = { ArrowRight: k + 1, ArrowLeft: k - 1, Home: 0, End: tabs.length - 1 }[e.key];
+      if (n === undefined) return;
+      e.preventDefault();
+      pick(tabs[(n + tabs.length) % tabs.length], true);
+    });
+  });
+
+  /* ---------- Élite & More: il numero si sfoglia in orizzontale (desktop) ---------- */
+  $$('[data-sfoglio]').forEach((root) => {
+    const fx = $('.sfoglio__fx', root);
+    const pages = $$(':scope > .pg', fx);
+    const [prev, next] = $$('.sfoglio__btn', root);
+    const folio = $('.sfoglio__folio b', root), bar = $('.sfoglio__bar span', root), live = $('[data-sfoglio-live]', root);
+    const wide = window.matchMedia('(min-width: 60rem) and (min-height: 36rem)');
+    const N = pages.length;
+    if (!N || !prev || !next) return;
+    const bundle = !!window.__ASSETS;
+    const pad = (n) => String(n).padStart(2, '0');
+    const clamp = (n) => Math.max(0, Math.min(N - 1, n));
+    let i = 0, lockUntil = 0, acc = 0, accT = 0, timer = 0, speak = false;
+
+    const shown = () => root.offsetParent !== null;
+    const on = () => wide.matches && shown();
+    // Il numero è «agganciato» quando occupa la finestra sotto l'intestazione
+    const docked = () => Math.abs(root.getBoundingClientRect().top - (hdr ? hdr.getBoundingClientRect().bottom : 0)) < 6;
+    const idx = () => clamp(Math.round(fx.scrollLeft / (fx.clientWidth || 1)));
+    // Pagina di un'ancora: #p-03 (sito) oppure #/elite-e-more/@p-03 (file unico)
+    const pageOf = (href) => {
+      const m = /(?:#|@)(p-\d+|sommario)$/.exec(href || '');
+      const el = m && document.getElementById(m[1]);
+      const pg = el && el.closest('.pg');
+      return pg ? pages.indexOf(pg) : -1;
+    };
+    const render = (k) => {
+      root.dataset.tone = pages[k].dataset.tone === 'ink' ? 'ink' : 'paper';
+      folio.textContent = pad(k + 1);
+      bar.style.width = `${((k + 1) / N) * 100}%`;
+      prev.disabled = k === 0;
+      next.disabled = k === N - 1;
+    };
+    const settle = () => {
+      if (!on()) return;
+      i = idx();
+      render(i);
+      const p = pages[i];
+      if (speak) live.textContent = `Pagina ${i + 1} di ${N}: ${(($('h1, h2', p) || {}).textContent || '').replace(/\s+/g, ' ').trim()}`;
+      if (!bundle) {
+        const hash = i === 0 ? '' : `#${p.id}`;
+        if (location.hash !== hash) history.replaceState(history.state, '', hash || location.pathname + location.search);
+      }
+    };
+    // Animato solo verso la pagina accanto: i salti (sommario, copertina) sono immediati
+    const go = (n, instant) => {
+      n = clamp(n);
+      const now = instant || reduceMotion || Math.abs(n - i) > 1;
+      i = n; speak = true;
+      render(n);
+      fx.scrollTo({ left: n * fx.clientWidth, behavior: now ? 'instant' : 'smooth' });
+      if (now) settle();
+    };
+
+    if ('onscrollend' in window) fx.addEventListener('scrollend', settle);
+    fx.addEventListener('scroll', () => { clearTimeout(timer); timer = setTimeout(settle, 120); }, { passive: true });
+
+    // Rotellina: un gesto = una pagina, solo a numero agganciato; prima e ultima pagina lasciano scorrere il sito
+    root.addEventListener('wheel', (e) => {
+      if (!on() || e.ctrlKey || !docked()) return;
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return; // swipe orizzontale nativo
+      const dy = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaMode === 2 ? e.deltaY * fx.clientHeight : e.deltaY;
+      const t = performance.now();
+      if (t >= lockUntil && ((dy < 0 && i === 0) || (dy > 0 && i === N - 1))) return;
+      e.preventDefault();
+      if (t < lockUntil) { lockUntil = Math.max(lockUntil, t + 150); return; }
+      if (t - accT > 200) acc = 0;
+      accT = t; acc += dy;
+      if (Math.abs(acc) >= 50) { go(i + Math.sign(acc)); acc = 0; lockUntil = t + 650; }
+    }, { passive: false });
+
+    // Tastiera: ← PagSu | → PagGiù | Inizio Fine (Pag/Inizio/Fine solo a numero agganciato)
+    document.addEventListener('keydown', (e) => {
+      if (!on() || e.defaultPrevented || e.ctrlKey || e.altKey || e.metaKey) return;
+      const t = e.target instanceof Element ? e.target : null;
+      if (t && t.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"]), [role="tab"], .vmodal')) return;
+      const r = root.getBoundingClientRect();
+      if (r.bottom < 120 || r.top > window.innerHeight - 120) return;
+      let n;
+      switch (e.key) {
+        case 'ArrowLeft': n = i - 1; break;
+        case 'ArrowRight': n = i + 1; break;
+        case 'PageUp': if (!docked() || i === 0) return; n = i - 1; break;
+        case 'PageDown': if (!docked() || i === N - 1) return; n = i + 1; break;
+        case 'Home': if (!docked()) return; n = 0; break;
+        case 'End': if (!docked()) return; n = N - 1; break;
+        default: return;
+      }
+      e.preventDefault();
+      go(n);
+    });
+
+    prev.addEventListener('click', () => go(i - 1));
+    next.addEventListener('click', () => go(i + 1));
+
+    // Link interni al numero: girano pagina e portano lì il focus; in pila restano ancore native
+    root.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href]');
+      if (!a || !on()) return;
+      const k = pageOf(a.getAttribute('href'));
+      if (k < 0) return;
+      e.preventDefault();
+      window.scrollTo({ top: window.scrollY + root.getBoundingClientRect().top - (hdr ? hdr.offsetHeight : 0), behavior: 'instant' });
+      go(k);
+      pages[k].focus({ preventScroll: true });
+    });
+
+    // Tab porta la vista sulla pagina del link
+    fx.addEventListener('focusin', (e) => {
+      if (!on()) return;
+      const pg = e.target.closest('.pg');
+      const k = pg ? pages.indexOf(pg) : -1;
+      if (k >= 0 && k !== i) go(k, true);
+    });
+
+    // Link diretti e ritorno: l'ancora decide la pagina
+    window.addEventListener('hashchange', () => { const k = pageOf(location.hash); if (on() && k >= 0) go(k, true); });
+
+    // Ridimensionamento e cambio di modalità: si resta sulla stessa pagina
+    const snap = () => { fx.scrollTo({ left: i * fx.clientWidth, behavior: 'instant' }); render(i); };
+    if ('ResizeObserver' in window) new ResizeObserver(() => { if (on()) snap(); }).observe(fx);
+    wide.addEventListener('change', () => { if (wide.matches) requestAnimationFrame(snap); else if (shown()) pages[i].scrollIntoView({ block: 'start' }); });
+
+    const start = pageOf(location.hash);
+    i = start >= 0 ? start : idx();
+    if (on() && start >= 0) requestAnimationFrame(() => go(start, true));
+    render(i);
+  });
+
   /* ---------- File unico di anteprima: navigazione tra le pagine ---------- */
   if (window.__ASSETS) {
     const routes = $$('.route');

@@ -1,5 +1,5 @@
 {
-  "_info": "Schede corso. null = dato non ancora documentato: la pagina mostra un campo segnaposto. verified=false = bozza di testo da validare con il programma ufficiale. Non inserire contenuti non presenti nei programmi ufficiali. cardImage: immagine delle card (media = chiave in media.json, pos = inquadratura, provisional = foto provvisoria da sostituire con lo scatto del rituale).",
+  "_info": "Schede corso. null = dato non ancora documentato: la pagina mostra un campo segnaposto. verified=false = bozza da validare. shortDescription = frase del corso; competencies = le sei voci di «Cosa imparerai»; techniques = tecniche principali (tabella di confronto). cardImage: immagine delle card (media = chiave in media.json, pos = inquadratura, provisional = foto provvisoria). vatIncluded: il prezzo è mostrato «IVA inclusa».",
   "courses": [
     {
       "id": "wellness-ritual",
@@ -7,39 +7,96 @@
       "name": "Wellness Ritual",
       "nameVerified": false,
       "order": 1,
-      "modes": ["online"],
-      "level": { "label": "Primi approcci", "verified": true },
-      "shortDescription": { "text": "Il rituale ideale per i primi approcci all’Hair Spa.", "verified": true },
+      "modes": [
+        "online"
+      ],
+      "level": {
+        "label": "Primi approcci",
+        "verified": true
+      },
+      "shortDescription": {
+        "text": "Le basi del Metodo Élite Experience: accoglienza, manualità e struttura del trattamento Hair Spa.",
+        "verified": true
+      },
       "fullDescription": null,
       "heroImage": null,
       "heroSlot": "Elisabetta durante il Wellness Ritual: manualità al lavatesta",
-      "cardImage": {"media": "massaggioTesta", "pos": "55% 45%", "provisional": true},
-      "gallery": [],
-      "gallerySlots": ["Dettaglio delle mani sul cuoio capelluto", "Passaggio chiave della sequenza", "Postazione e materiali del rituale"],
+      "cardImage": {
+        "media": "massaggioTesta",
+        "pos": "55% 45%",
+        "provisional": true
+      },
       "video": null,
-      "competencies": null,
-      "techniques": null,
-      "manualities": null,
-      "program": null,
-      "salonApplication": null,
+      "competencies": [
+        {
+          "title": "Tecnica principale",
+          "text": "Apprendimento del protocollo Wellness Hair Spa, dalla preparazione del cliente alle tecniche di detersione e trattamento della cute, attraverso manualità professionali eseguite sul lettino ad acqua."
+        },
+        {
+          "title": "Manualità",
+          "text": "Studio dei movimenti di base, della gestione della pressione e della continuità del gesto, per sviluppare una manualità fluida, precisa e piacevole durante il trattamento."
+        },
+        {
+          "title": "Sequenza operativa",
+          "text": "Organizzazione delle diverse fasi del rituale: accoglienza, consulenza iniziale, welcome ritual, detersione, manualità Hair Spa e conclusione dell’esperienza."
+        },
+        {
+          "title": "Strumenti e materiali",
+          "text": "Utilizzo del lettino Hair Spa ad acqua e dei prodotti professionali dedicati alla detersione e al trattamento, con attenzione alla preparazione e alla corretta gestione della postazione."
+        },
+        {
+          "title": "Organizzazione del rituale",
+          "text": "Preparazione dell’ambiente, gestione dell’accoglienza e pianificazione delle fasi operative per offrire un’esperienza curata, ordinata e coerente in ogni dettaglio."
+        },
+        {
+          "title": "Applicazione in salone",
+          "text": "Le competenze necessarie per introdurre un primo servizio Hair Spa strutturato, integrandolo nell’organizzazione quotidiana del salone e rendendone replicabile l’esecuzione."
+        }
+      ],
+      "techniques": [
+        "Accoglienza",
+        "Detersione",
+        "Manualità"
+      ],
       "audience": null,
       "prerequisites": null,
-      "access": null,
-      "fruition": null,
+      "access": "Account dedicato su piattaforma Academy",
+      "fruition": "Video di 1 ora",
       "availability": null,
-      "materials": null,
-      "support": null,
+      "support": "Team Élite Experience",
       "requirements": null,
       "price": 190,
-      "promotion": { "active": false, "percent": 20, "code": null, "conditions": null, "validUntil": null },
+      "promotion": {
+        "active": false,
+        "percent": 20,
+        "code": null,
+        "conditions": null,
+        "validUntil": null
+      },
       "purchaseUrl": null,
-      "pdf": null,
       "faq": null,
       "related": [
-        { "id": "pinda-ritual", "reason": null },
-        { "id": "brushing-ritual", "reason": null },
-        { "id": "collection", "reason": null }
-      ]
+        {
+          "id": "pinda-ritual",
+          "reason": null
+        },
+        {
+          "id": "brushing-ritual",
+          "reason": null
+        },
+        {
+          "id": "collection",
+          "reason": null
+        }
+      ],
+      "mode": "Videolezione online",
+      "duration": "1 h",
+      "vatIncluded": true,
+      "sectionImage": {
+        "media": "acquaMani",
+        "pos": "45% 50%",
+        "provisional": true
+      }
     },
     {
       "id": "pinda-ritual",
@@ -47,39 +104,96 @@
       "name": "Pinda Ritual",
       "nameVerified": false,
       "order": 2,
-      "modes": ["online"],
-      "level": { "label": "Medium", "verified": true },
-      "shortDescription": { "text": "Il rituale che porta l’utilizzo dei pinda all’interno delle manualità Hair Spa.", "verified": false },
+      "modes": [
+        "online"
+      ],
+      "level": {
+        "label": "Medium",
+        "verified": true
+      },
+      "shortDescription": {
+        "text": "Il calore incontra la manualità, dando forma a un’esperienza sensoriale avvolgente.",
+        "verified": true
+      },
       "fullDescription": null,
       "heroImage": "pinda",
       "heroSlot": null,
-      "cardImage": {"media": "pinda", "pos": "60% 45%", "provisional": false},
-      "gallery": ["dettaglioPinda", "dettaglioMateriali"],
-      "gallerySlots": ["Applicazione del pinda durante il rituale"],
+      "cardImage": {
+        "media": "pinda",
+        "pos": "60% 45%",
+        "provisional": false
+      },
       "video": null,
-      "competencies": null,
-      "techniques": null,
-      "manualities": null,
-      "program": null,
-      "salonApplication": null,
+      "competencies": [
+        {
+          "title": "Tecnica principale",
+          "text": "Apprendimento del rituale Hair Spa con pinda riscaldati, attraverso l’impiego del calore e di tecniche manuali ispirate alle pratiche olistiche."
+        },
+        {
+          "title": "Manualità",
+          "text": "Studio delle pressioni, dei movimenti lenti e avvolgenti e della gestione del ritmo, per accompagnare il cliente in un’esperienza di distensione e benessere sensoriale."
+        },
+        {
+          "title": "Sequenza operativa",
+          "text": "Comprensione delle diverse fasi del trattamento, dalla preparazione dei pinda alla loro applicazione, fino all’integrazione delle manualità e alla conclusione del rituale."
+        },
+        {
+          "title": "Strumenti e materiali",
+          "text": "Preparazione e utilizzo dei pinda, con particolare attenzione alla gestione del calore, alla temperatura di applicazione e alle modalità di impiego durante il trattamento."
+        },
+        {
+          "title": "Organizzazione del rituale",
+          "text": "Preparazione della postazione, predisposizione dei materiali e organizzazione delle tempistiche per garantire continuità tra le diverse fasi dell’esperienza."
+        },
+        {
+          "title": "Applicazione in salone",
+          "text": "Introduzione di un rituale Hair Spa distintivo, capace di arricchire il menu dei trattamenti con una proposta dedicata al rilassamento e alla dimensione sensoriale."
+        }
+      ],
+      "techniques": [
+        "Calore",
+        "Pressione",
+        "Sensorialità"
+      ],
       "audience": null,
       "prerequisites": null,
-      "access": null,
-      "fruition": null,
+      "access": "Account dedicato su piattaforma Academy",
+      "fruition": "Video di 1 ora",
       "availability": null,
-      "materials": null,
-      "support": null,
+      "support": "Team Élite Experience",
       "requirements": null,
       "price": 290,
-      "promotion": { "active": false, "percent": 20, "code": null, "conditions": null, "validUntil": null },
+      "promotion": {
+        "active": false,
+        "percent": 20,
+        "code": null,
+        "conditions": null,
+        "validUntil": null
+      },
       "purchaseUrl": null,
-      "pdf": null,
       "faq": null,
       "related": [
-        { "id": "wellness-ritual", "reason": null },
-        { "id": "relax-full-ritual", "reason": null },
-        { "id": "collection", "reason": null }
-      ]
+        {
+          "id": "wellness-ritual",
+          "reason": null
+        },
+        {
+          "id": "relax-full-ritual",
+          "reason": null
+        },
+        {
+          "id": "collection",
+          "reason": null
+        }
+      ],
+      "mode": "Videolezione online",
+      "duration": "1 h",
+      "vatIncluded": true,
+      "sectionImage": {
+        "media": "ritualeOlio",
+        "pos": "46% 50%",
+        "provisional": true
+      }
     },
     {
       "id": "brushing-ritual",
@@ -87,39 +201,96 @@
       "name": "Brushing Ritual",
       "nameVerified": false,
       "order": 3,
-      "modes": ["online"],
-      "level": { "label": "Medium", "verified": true },
-      "shortDescription": { "text": "Il rituale in cui la spazzolatura diventa parte della tecnica Hair Spa.", "verified": false },
+      "modes": [
+        "online"
+      ],
+      "level": {
+        "label": "Medium",
+        "verified": true
+      },
+      "shortDescription": {
+        "text": "La spazzolatura si trasforma in un gesto professionale, parte integrante dell’esperienza Hair Spa.",
+        "verified": true
+      },
       "fullDescription": null,
       "heroImage": null,
       "heroSlot": "Spazzolatura durante il Brushing Ritual: strumento e gesto",
-      "cardImage": {"media": "pinda", "pos": "10% 70%", "provisional": true},
-      "gallery": [],
-      "gallerySlots": ["Dettaglio della spazzola e del gesto", "Passaggio chiave della sequenza", "Strumenti del rituale"],
+      "cardImage": {
+        "media": "cascataDorata",
+        "pos": "50% 45%",
+        "provisional": true
+      },
       "video": null,
-      "competencies": null,
-      "techniques": null,
-      "manualities": null,
-      "program": null,
-      "salonApplication": null,
+      "competencies": [
+        {
+          "title": "Tecnica principale",
+          "text": "Approfondimento del Brushing Ritual, un protocollo che valorizza la spazzolatura e le manualità professionali, integrandole in un percorso che accompagna il cliente fino allo styling finale."
+        },
+        {
+          "title": "Manualità",
+          "text": "Studio della gestualità, del controllo dei movimenti e del ritmo della spazzolatura, con attenzione alla precisione tecnica e alla qualità dell’esperienza."
+        },
+        {
+          "title": "Sequenza operativa",
+          "text": "Organizzazione del rituale dalla consulenza iniziale alle manualità, fino alla fase di styling, al finishing e alle indicazioni per il mantenimento del risultato."
+        },
+        {
+          "title": "Strumenti e materiali",
+          "text": "Conoscenza degli strumenti di spazzolatura e styling previsti dal protocollo, insieme ai prodotti professionali dedicati al finishing e alla valorizzazione del capello."
+        },
+        {
+          "title": "Organizzazione del rituale",
+          "text": "Preparazione della postazione e coordinamento delle diverse fasi, per integrare il rituale nel servizio senza interrompere la fluidità dell’esperienza."
+        },
+        {
+          "title": "Applicazione in salone",
+          "text": "Valorizzazione di una fase tradizionale del lavoro del parrucchiere, trasformandola in un servizio più strutturato e riconoscibile, con opportunità di consulenza e mantenimento a casa."
+        }
+      ],
+      "techniques": [
+        "Spazzolatura",
+        "Styling",
+        "Finishing"
+      ],
       "audience": null,
       "prerequisites": null,
-      "access": null,
-      "fruition": null,
+      "access": "Account dedicato su piattaforma Academy",
+      "fruition": "Video di 1 ora",
       "availability": null,
-      "materials": null,
-      "support": null,
+      "support": "Team Élite Experience",
       "requirements": null,
       "price": 290,
-      "promotion": { "active": false, "percent": 20, "code": null, "conditions": null, "validUntil": null },
+      "promotion": {
+        "active": false,
+        "percent": 20,
+        "code": null,
+        "conditions": null,
+        "validUntil": null
+      },
       "purchaseUrl": null,
-      "pdf": null,
       "faq": null,
       "related": [
-        { "id": "wellness-ritual", "reason": null },
-        { "id": "hairgym-ritual", "reason": null },
-        { "id": "collection", "reason": null }
-      ]
+        {
+          "id": "wellness-ritual",
+          "reason": null
+        },
+        {
+          "id": "hairgym-ritual",
+          "reason": null
+        },
+        {
+          "id": "collection",
+          "reason": null
+        }
+      ],
+      "mode": "Videolezione online",
+      "duration": "1 h",
+      "vatIncluded": true,
+      "sectionImage": {
+        "media": "lavatesta",
+        "pos": "50% 40%",
+        "provisional": true
+      }
     },
     {
       "id": "hairgym-ritual",
@@ -127,39 +298,96 @@
       "name": "Hairgym Ritual",
       "nameVerified": false,
       "order": 4,
-      "modes": ["online"],
-      "level": { "label": "Base e Medium", "verified": true },
-      "shortDescription": { "text": "Il rituale Hairgym del Metodo Élite, con le sue manualità e sequenze specifiche.", "verified": false },
+      "modes": [
+        "online"
+      ],
+      "level": {
+        "label": "Base e Medium",
+        "verified": true
+      },
+      "shortDescription": {
+        "text": "Manualità dinamiche e pressioni mirate per un approccio funzionale al benessere del cuoio capelluto.",
+        "verified": true
+      },
       "fullDescription": null,
       "heroImage": null,
       "heroSlot": "Manualità dell’Hairgym Ritual sul cuoio capelluto",
-      "cardImage": {"media": "lavatesta", "pos": "86% 50%", "provisional": true},
-      "gallery": [],
-      "gallerySlots": ["Dettaglio delle mani", "Passaggio chiave della sequenza", "Postura dell’operatore"],
+      "cardImage": {
+        "media": "lavatesta",
+        "pos": "86% 50%",
+        "provisional": true
+      },
       "video": null,
-      "competencies": null,
-      "techniques": null,
-      "manualities": null,
-      "program": null,
-      "salonApplication": null,
+      "competencies": [
+        {
+          "title": "Tecnica principale",
+          "text": "Apprendimento del protocollo Hairgym, dedicato alla stimolazione manuale del cuoio capelluto attraverso tecniche attive e movimenti ritmati."
+        },
+        {
+          "title": "Manualità",
+          "text": "Studio delle pressioni mirate, delle gestualità dinamiche e dell’alternanza dei ritmi, con particolare attenzione al controllo e alla precisione dell’esecuzione."
+        },
+        {
+          "title": "Sequenza operativa",
+          "text": "Comprensione dell’organizzazione delle manualità all’interno del protocollo, dalla preparazione del cliente allo sviluppo delle sequenze di stimolazione, fino alla conclusione del trattamento."
+        },
+        {
+          "title": "Strumenti e materiali",
+          "text": "Approfondimento delle tecniche manuali e della predisposizione dei prodotti e degli eventuali strumenti di supporto previsti dal protocollo."
+        },
+        {
+          "title": "Organizzazione del rituale",
+          "text": "Preparazione della postazione, gestione delle tempistiche e organizzazione delle sequenze per inserire il trattamento in un percorso professionale continuativo."
+        },
+        {
+          "title": "Applicazione in salone",
+          "text": "Sviluppo di un servizio dedicato al benessere funzionale della cute, con la possibilità di proporre cicli di trattamento e percorsi di mantenimento personalizzati."
+        }
+      ],
+      "techniques": [
+        "Stimolazione",
+        "Ritmo",
+        "Pressioni"
+      ],
       "audience": null,
       "prerequisites": null,
-      "access": null,
-      "fruition": null,
+      "access": "Account dedicato su piattaforma Academy",
+      "fruition": "Video di 1 ora",
       "availability": null,
-      "materials": null,
-      "support": null,
+      "support": "Team Élite Experience",
       "requirements": null,
       "price": 290,
-      "promotion": { "active": false, "percent": 20, "code": null, "conditions": null, "validUntil": null },
+      "promotion": {
+        "active": false,
+        "percent": 20,
+        "code": null,
+        "conditions": null,
+        "validUntil": null
+      },
       "purchaseUrl": null,
-      "pdf": null,
       "faq": null,
       "related": [
-        { "id": "brushing-ritual", "reason": null },
-        { "id": "relax-full-ritual", "reason": null },
-        { "id": "collection", "reason": null }
-      ]
+        {
+          "id": "brushing-ritual",
+          "reason": null
+        },
+        {
+          "id": "relax-full-ritual",
+          "reason": null
+        },
+        {
+          "id": "collection",
+          "reason": null
+        }
+      ],
+      "mode": "Videolezione online",
+      "duration": "1 h",
+      "vatIncluded": true,
+      "sectionImage": {
+        "media": "massaggioTesta",
+        "pos": "58% 45%",
+        "provisional": true
+      }
     },
     {
       "id": "relax-full-ritual",
@@ -167,49 +395,121 @@
       "name": "Relax Full Ritual",
       "nameVerified": false,
       "order": 5,
-      "modes": ["online"],
-      "level": { "label": "Pro", "verified": true },
-      "shortDescription": { "text": "Il rituale Relax Full del Metodo Élite, con le sue manualità e sequenze specifiche.", "verified": false },
+      "modes": [
+        "online"
+      ],
+      "level": {
+        "label": "Pro",
+        "verified": true
+      },
+      "shortDescription": {
+        "text": "Un’esperienza Hair Spa immersiva, in cui manualità, calore e attenzione sensoriale si incontrano.",
+        "verified": true
+      },
       "fullDescription": null,
       "heroImage": null,
       "heroSlot": "Manualità del Relax Full Ritual",
-      "cardImage": {"media": "lavatestaAcqua", "pos": "50% 78%", "provisional": true},
-      "gallery": [],
-      "gallerySlots": ["Dettaglio delle mani", "Passaggio chiave della sequenza", "Postazione del rituale"],
+      "cardImage": {
+        "media": "lavatestaAcqua",
+        "pos": "50% 78%",
+        "provisional": true
+      },
       "video": null,
-      "competencies": null,
-      "techniques": null,
-      "manualities": null,
-      "program": null,
-      "salonApplication": null,
+      "competencies": [
+        {
+          "title": "Tecnica principale",
+          "text": "Apprendimento di un rituale Hair Spa ispirato alle tecniche olistiche, che combina massaggio di testa, collo e spalle, manualità rilassanti e utilizzo di calore e vapore."
+        },
+        {
+          "title": "Manualità",
+          "text": "Studio dei movimenti distensivi, delle pressioni e delle transizioni tra le diverse aree trattate, per costruire una sequenza armoniosa e continua."
+        },
+        {
+          "title": "Sequenza operativa",
+          "text": "Organizzazione delle fasi del rituale, dalla preparazione del cliente all’esecuzione delle manualità su testa, collo e spalle, integrando gli elementi sensoriali previsti dal trattamento."
+        },
+        {
+          "title": "Strumenti e materiali",
+          "text": "Utilizzo delle attrezzature e dei materiali previsti per il trattamento Hair Spa, con particolare attenzione alla gestione del vapore, del calore e dei prodotti professionali."
+        },
+        {
+          "title": "Organizzazione del rituale",
+          "text": "Preparazione dell’ambiente e coordinamento di tempi, strumenti e manualità per costruire un’esperienza immersiva, curata dall’accoglienza fino al momento conclusivo."
+        },
+        {
+          "title": "Applicazione in salone",
+          "text": "Creazione di un servizio Hair Spa premium, pensato per arricchire la proposta del salone con esperienze esclusive, percorsi dedicati e rituali da proporre anche come regalo."
+        }
+      ],
+      "techniques": [
+        "Massaggio",
+        "Calore",
+        "Rilassamento"
+      ],
       "audience": null,
       "prerequisites": null,
-      "access": null,
-      "fruition": null,
+      "access": "Account dedicato su piattaforma Academy",
+      "fruition": "Video di 1 ora",
       "availability": null,
-      "materials": null,
-      "support": null,
+      "support": "Team Élite Experience",
       "requirements": null,
       "price": 290,
-      "promotion": { "active": false, "percent": 20, "code": null, "conditions": null, "validUntil": null },
+      "promotion": {
+        "active": false,
+        "percent": 20,
+        "code": null,
+        "conditions": null,
+        "validUntil": null
+      },
       "purchaseUrl": null,
-      "pdf": null,
       "faq": null,
       "related": [
-        { "id": "pinda-ritual", "reason": null },
-        { "id": "hairgym-ritual", "reason": null },
-        { "id": "collection", "reason": null }
-      ]
+        {
+          "id": "pinda-ritual",
+          "reason": null
+        },
+        {
+          "id": "hairgym-ritual",
+          "reason": null
+        },
+        {
+          "id": "collection",
+          "reason": null
+        }
+      ],
+      "mode": "Videolezione online",
+      "duration": "1 h",
+      "vatIncluded": true,
+      "sectionImage": {
+        "media": "heroHome",
+        "pos": "30% 30%",
+        "provisional": true
+      }
     }
   ],
   "collection": {
     "id": "collection",
     "name": "Élite Ritual Collection",
     "nameVerified": false,
-    "description": { "text": "La collezione completa dei rituali del Metodo Élite in un unico percorso formativo.", "verified": false },
-    "includes": ["wellness-ritual", "pinda-ritual", "brushing-ritual", "hairgym-ritual", "relax-full-ritual"],
-    "price": null,
-    "promotion": { "active": false, "percent": 20, "code": null, "conditions": null, "validUntil": null },
+    "description": {
+      "text": "La collezione completa dei rituali del Metodo Élite in un unico percorso formativo.",
+      "verified": false
+    },
+    "includes": [
+      "wellness-ritual",
+      "pinda-ritual",
+      "brushing-ritual",
+      "hairgym-ritual",
+      "relax-full-ritual"
+    ],
+    "price": 1600,
+    "promotion": {
+      "active": false,
+      "percent": 20,
+      "code": null,
+      "conditions": null,
+      "validUntil": null
+    },
     "purchaseUrl": null
   }
 }

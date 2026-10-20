@@ -14,15 +14,11 @@
 .hero__bg::after { content: ""; position: absolute; inset: 0; z-index: 1; background: radial-gradient(110% 85% at 66% 40%, rgba(31, 18, 11, 0) 0%, rgba(31, 18, 11, .28) 70%, rgba(31, 18, 11, .7) 100%), linear-gradient(90deg, rgba(31, 18, 11, .86) 0%, rgba(31, 18, 11, .58) 32%, rgba(31, 18, 11, .12) 58%, rgba(31, 18, 11, 0) 78%), linear-gradient(0deg, rgba(31, 18, 11, .78) 0%, rgba(31, 18, 11, 0) 46%), linear-gradient(180deg, rgba(31, 18, 11, .55) 0%, rgba(31, 18, 11, 0) 22%); }
 @keyframes hero-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes hero-drift { from { transform: scale(1.18); } to { transform: scale(1.1); } }
-.hero__in { position: relative; z-index: 3; display: flex; flex-direction: column; justify-content: flex-end; width: 100%; max-width: calc(var(--maxw) + var(--g) * 2); margin: 0 auto; padding: calc(var(--hdr) + 48px) var(--g) clamp(28px, 4.5vh, 48px); }
+.hero__in { position: relative; z-index: 3; display: flex; flex-direction: column; justify-content: flex-end; width: 100%; max-width: calc(var(--maxw) + var(--g) * 2); margin: 0 auto; padding: calc(var(--hdr) + 48px) var(--g) clamp(56px, 10vh, 112px); }
 .hero__text { max-width: min(780px, 54vw); }
 .hero .eyebrow { color: var(--beige); }
 .hero__title { font-size: clamp(2.75rem, 6vw, 6.2rem); font-weight: 300; line-height: .98; letter-spacing: -.025em; font-variation-settings: "opsz" 72; }
 .hero__lead { margin-top: clamp(20px, 2.2vw, 30px); max-width: 34em; font-size: var(--t-lead); line-height: 1.55; color: rgba(245, 240, 235, .82); }
-.hero__facts { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: clamp(44px, 8vh, 96px); border-top: 1px solid rgba(245, 240, 235, .2); }
-.hero__facts li { padding: 20px 20px 0 0; color: rgba(245, 240, 235, .66); font-size: .8125rem; }
-.hero__facts li + li { padding-left: 20px; border-left: 1px solid rgba(245, 240, 235, .14); }
-.hero__facts b { display: block; margin-bottom: 2px; color: var(--ivory); font-family: var(--serif); font-size: 1.1rem; font-weight: 400; }
 
 /* Home: metodo */
 .qa { margin: 32px 0 36px; border-top: 1px solid var(--line-strong); }
@@ -201,7 +197,7 @@
 .chero__meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
 .chero__title { font-size: clamp(2.8rem, 5.6vw, 5.6rem); font-weight: 300; line-height: 1; letter-spacing: -.022em; font-variation-settings: "opsz" 72; }
 .chero__lead { margin-top: 20px; max-width: 32em; font-size: var(--t-lead); color: var(--muted); }
-.chero__facts { display: grid; grid-template-columns: repeat(4, auto); justify-content: start; gap: 12px 32px; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--line-strong); }
+.chero__facts { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 12px 32px; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--line-strong); }
 .chero__facts dt { font-size: var(--t-micro); letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--choc); }
 .chero__facts dd { margin-top: 4px; font-size: var(--t-small); }
 .chero__pdf { margin-top: 18px; font-size: .875rem; }
@@ -318,9 +314,6 @@
   .coll-band { grid-template-columns: 1fr; align-items: start; }
   .coll-band__foot { justify-content: flex-start; }
   .eli-hero__text { padding: 48px var(--g) 64px; }
-  .hero__facts { grid-template-columns: 1fr 1fr; }
-  .hero__facts li:nth-child(3) { padding-left: 0; border-left: 0; }
-  .hero__facts li:nth-child(n+3) { margin-top: 18px; }
   .home-eli__grid, .ritual-feature, .eli-strip, .enroll__in, .contact__grid { grid-template-columns: 1fr; }
   .home-eli__portrait { max-width: 520px; }
   .modes, .needs, .paths { grid-template-columns: 1fr; }
@@ -346,7 +339,6 @@
   .hero__bg .ph img { object-position: 62% 0%; transform-origin: 62% 0%; }
   .hero__bg::after { background: radial-gradient(120% 90% at 60% 40%, rgba(31, 18, 11, 0) 0%, rgba(31, 18, 11, .45) 75%), linear-gradient(0deg, #1F120B 0%, rgba(31, 18, 11, .45) 30%, rgba(31, 18, 11, 0) 58%), linear-gradient(180deg, rgba(31, 18, 11, .6) 0%, rgba(31, 18, 11, 0) 30%); }
   .hero__in { margin-top: -64px; padding-top: 0; padding-bottom: 40px; }
-  .hero__facts { margin-top: 40px; }
   .home-method__media { aspect-ratio: 4 / 5; }
   .picker__list { grid-auto-columns: 82%; gap: 14px; }
   .ritual-feature__detail { width: 60%; }

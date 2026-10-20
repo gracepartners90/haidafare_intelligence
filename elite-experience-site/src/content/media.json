@@ -5,6 +5,14 @@
     "note": "Hero della home: foto fornita dal brand, specchiata in orizzontale per lasciare libero il lato del testo. Il trattamento (tono, grana, vignettatura) è applicato in pagina. Per gli schermi grandi è consigliata una versione con lato lungo di almeno 2400 px.",
     "alt": "Rituale Hair Spa al lavatesta: un arco dorato fa scendere l'acqua in fili sottili sui capelli della cliente, rilassata a occhi chiusi, in una luce calda e ambrata."
   },
+  "acquaMani": {
+    "file": "media/hair-spa-acqua-mani.jpg", "w": 2000, "h": 1143, "official": true,
+    "alt": "Le mani dell'operatrice accompagnano l'acqua sul cuoio capelluto della cliente durante un rituale Hair Spa, accanto a un rubinetto dorato."
+  },
+  "cascataDorata": {
+    "file": "media/hair-spa-cascata-dorata.jpg", "w": 1024, "h": 1024, "official": true,
+    "alt": "Lavatesta Hair Spa con rubinetto dorato: l'acqua scende a cascata sui capelli della cliente, rilassata a occhi chiusi, tra candele e asciugamani."
+  },
   "massaggioTesta": {
     "file": "media/hair-spa-massaggio-testa.jpg", "w": 1344, "h": 768, "official": true,
     "alt": "Una cliente rilassata, a occhi chiusi, durante un massaggio Hair Spa al cuoio capelluto."
