@@ -3,6 +3,7 @@
 //   node build.mjs --pretty   → dist/ con URL "puliti" per la pubblicazione su hosting
 //   node build.mjs --bundle   → dist/elite-experience-prototipo.html, file unico di anteprima
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { site } from './src/config.js';
@@ -62,6 +63,8 @@ function makeCtx(route, dirOverride) {
 const css = ['tokens', 'base', 'layout', 'components', 'sections', 'blocks', 'magazine']
   .map((f) => fs.readFileSync(path.join(root, 'src/styles', `${f}.css`), 'utf8')).join('\n');
 const js = fs.readFileSync(path.join(root, 'src/scripts/site.js'), 'utf8');
+// Versione di stili e script nei link: dopo un aggiornamento il browser non usa la copia in cache
+const version = crypto.createHash('sha1').update(css + js).digest('hex').slice(0, 8);
 
 function copyDir(from, to) {
   fs.mkdirSync(to, { recursive: true });
@@ -85,11 +88,11 @@ if (mode !== 'bundle') {
     const out = p.render(ctx);
     const file = path.join(dist, p.file || `${p.route}index.html`);
     fs.mkdirSync(path.dirname(file), { recursive: true });
-    fs.writeFileSync(file, out.html);
+    fs.writeFileSync(file, out.html.replace(/(assets\/site\.(?:css|js))"/g, `$1?v=${version}"`));
     if (!out.noindex) urls.push(`${site.url}/${p.route}`);
   }
   fs.writeFileSync(path.join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}\n</urlset>\n`);
-  fs.writeFileSync(path.join(dist, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /journal/esempio-impaginazione/\nSitemap: ${site.url}/sitemap.xml\n`);
+  fs.writeFileSync(path.join(dist, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${site.url}/sitemap.xml\n`);
   console.log(`${pages.length} pagine generate in dist/ (${mode})`);
 } else {
   // File unico: tutte le pagine come sezioni, navigazione con #/percorso, immagini e font incorporati una sola volta

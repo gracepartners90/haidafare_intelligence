@@ -53,7 +53,7 @@ function send(req, res, status, file, headers = {}) {
   const ext = path.extname(file).toLowerCase();
   res.writeHead(status, {
     'Content-Type': types[ext] || 'application/octet-stream',
-    'Cache-Control': ext === '.html' ? 'no-cache' : 'public, max-age=3600',
+    'Cache-Control': ['.html', '.css', '.js'].includes(ext) ? 'no-cache' : 'public, max-age=600',
     ...headers,
   });
   if (req.method === 'HEAD') return res.end();
