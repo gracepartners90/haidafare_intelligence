@@ -22,10 +22,10 @@ export default [{
 ${fullHero(ctx, {
   cls: 'hero--eli',
   slides: [
-    { image: 'ritratto', position: '50% 24%' },
-    { image: 'pinda', position: '62% 38%' },
-    { image: 'intervento', position: '50% 24%' },
-    { image: 'dimostrazione', position: '50% 42%' },
+    { image: 'ritrattoFiori', position: '46% 30%', positionMobile: '45% 30%' },
+    { image: 'palcoIntervento', position: '52% 35%', positionMobile: '51% 35%' },
+    { image: 'lavatestaArco', position: '78% 12%', positionMobile: '95% 12%' },
+    { image: 'palcoDimostrazione', position: '56% 35%', positionMobile: '59% 35%' },
   ],
   eyebrow: 'Fondatrice di Élite Experience',
   title: '<span class="rv"><span>Elisabetta</span></span> <span class="rv"><span>Tancini</span></span>',
@@ -110,7 +110,7 @@ ${fullImage(ctx, 'intervento', { position: '50% 26%' })}
       title: 'Elisabetta Tancini — Hair Spa Specialist, formatrice e fondatrice di Élite Experience',
       description: 'Elisabetta Tancini, imprenditrice, Hair Spa Specialist e formatrice internazionale: alla guida del salone Maison BB ad Arona, è la fondatrice di Élite Experience e l’ideatrice del Metodo Élite.',
       jsonld: [person(), breadcrumbs(crumbs)],
-      ogImage: 'ritratto',
+      ogImage: 'ritrattoFiori',
       ogType: 'profile',
       bodyClass: 'p-eli',
       body,

@@ -4,7 +4,7 @@ import { esc, media } from './core.js';
 // Hero a tutto schermo (stessa struttura della home). `slides` = più foto in dissolvenza.
 export function fullHero(ctx, { image, position, slides, eyebrow, title, lead, extra = '', cls = '' }) {
   const bg = slides
-    ? `<div class="hero__slides" data-slides>${slides.map((s, i) => `<div class="hero__slide${i === 0 ? ' is-on' : ''}">${media(ctx, s.image, { fill: true, eager: i === 0, position: s.position })}</div>`).join('')}</div>`
+    ? `<div class="hero__slides" data-slides>${slides.map((s, i) => `<div class="hero__slide${i === 0 ? ' is-on' : ''}">${media(ctx, s.image, { fill: true, eager: i === 0, position: s.position, positionMobile: s.positionMobile })}</div>`).join('')}</div>`
     : media(ctx, image, { fill: true, eager: true, position });
   return `<section class="hero ${cls}">
   <div class="hero__bg">${bg}</div>

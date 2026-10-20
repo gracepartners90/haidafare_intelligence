@@ -66,6 +66,22 @@
     "file": "media/metodo-strumenti-pinda-erbe.jpg", "w": 2000, "h": 1121, "official": true,
     "alt": "Le mani chiudono con lo spago un pinda di tessuto, accanto a vasi di vetro pieni di erbe essiccate e a ciotole di legno."
   },
+  "ritrattoFiori": {
+    "file": "media/elisabetta-ritratto-fiori.jpg", "w": 1672, "h": 941, "official": true,
+    "alt": "Ritratto di Elisabetta Tancini, seduta a un tavolo con le braccia incrociate, davanti a una parete decorata con fiori."
+  },
+  "palcoIntervento": {
+    "file": "media/elisabetta-palco-intervento.jpg", "w": 1672, "h": 941, "official": true,
+    "alt": "Elisabetta Tancini parla sul palco durante un intervento, davanti a uno schermo con un'immagine di foglie."
+  },
+  "lavatestaArco": {
+    "file": "media/hair-spa-lavatesta-arco.jpg", "w": 1397, "h": 786, "official": true,
+    "alt": "Un'operatrice esegue un rituale Hair Spa al lavatesta con l'arco dorato, in una sala con luci soffuse e candele."
+  },
+  "palcoDimostrazione": {
+    "file": "media/elisabetta-palco-dimostrazione.jpg", "w": 1672, "h": 941, "official": true,
+    "alt": "Elisabetta Tancini durante una dimostrazione dal vivo sul palco: muove un bastone della pioggia sopra la cliente distesa al lavatesta."
+  },
   "acquaMani": {
     "file": "media/hair-spa-acqua-mani.jpg", "w": 2000, "h": 1143, "official": true,
     "alt": "Le mani dell'operatrice accompagnano l'acqua sul cuoio capelluto della cliente durante un rituale Hair Spa, accanto a un rubinetto dorato."
