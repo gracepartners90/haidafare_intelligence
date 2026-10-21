@@ -20,6 +20,8 @@
 .hero__title .rv + .rv { animation-delay: .16s; }
 @keyframes rv-up { from { opacity: 0; transform: translateY(.35em); } to { opacity: 1; transform: none; } }
 .hero--eli .hero__text { max-width: none; }
+/* Hero più bassa (Contatti): il modulo resta vicino; su mobile resta come le altre */
+@media (min-width: 761px) { .hero--short { height: 72vh; height: 72svh; min-height: 520px; max-height: 760px; } }
 .hero--eli .hero__title { font-weight: 400; font-variation-settings: "opsz" 48; }
 .hero--eli .hero__lead { animation: fade-up 1.2s .5s var(--ease) both; }
 @keyframes fade-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }

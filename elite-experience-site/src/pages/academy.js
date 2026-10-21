@@ -41,7 +41,7 @@ const academyPage = {
     const min = Math.min(...courses.map((c) => c.price).filter((p) => p != null));
     const body = `
 ${fullHero(ctx, {
-  image: 'ritualeOlio', position: '46% 50%', cls: 'hero--line',
+  image: 'academySpazzola', position: '50% 45%', positionMobile: '52% 45%', cls: 'hero--line',
   eyebrow: 'Élite Experience Academy',
   title: 'La formazione Hair Spa del Metodo <em>Élite</em>.',
   lead: 'Percorsi online e in presenza per apprendere rituali, tecniche e manualità Hair Spa, pensati per professionisti e saloni.',
@@ -137,7 +137,7 @@ const onlinePage = {
     const { courses, collection, faq } = ctx.data;
     const body = `
 ${fullHero(ctx, {
-  image: 'pinda', position: '62% 40%',
+  image: 'onlinePostazione', position: '50% 50%', positionMobile: '56% 50%',
   eyebrow: 'Academy',
   title: 'Formazione <em>Online</em>',
   lead: 'Videolezioni teoriche e dimostrative dedicate all’apprendimento dei rituali e delle manualità Hair Spa del Metodo Élite.',
@@ -182,7 +182,7 @@ ${fullHero(ctx, {
       title: 'Formazione Online Hair Spa — Corsi del Metodo Élite | Élite Experience',
       description: 'I corsi online del Metodo Élite: Wellness Ritual, Pinda Ritual, Brushing Ritual, Hairgym Ritual e Relax Full Ritual. Videolezioni di 1 ora su piattaforma Academy, da 190 € IVA inclusa.',
       jsonld: [breadcrumbs(cOnline)],
-      ogImage: 'pinda',
+      ogImage: 'onlinePostazione',
       bodyClass: 'p-online',
       body,
     });
@@ -215,13 +215,13 @@ ${fullHero(ctx, {
     ${sectionHead({ eyebrow: 'Due modalità', title: 'Ad Arona o nel tuo salone.' })}
     <div class="duo duo--cards">
       <article class="duo__item">
-        ${media(ctx, 'lavatestaAcqua', { ratio: '16/10', position: '50% 30%', provisional: true })}
+        ${media(ctx, 'salaHairSpa', { ratio: '16/10', position: '50% 55%' })}
         <h3 class="h3serif">Presso la sede di Arona</h3>
         <p>Percorso formativo in presenza presso Maison BB, il salone di Elisabetta ad Arona.</p>
         <ul class="facts"><li><span>Sede</span>Arona – Salone Maison BB</li><li><span>Partecipanti</span>Max 8 persone</li></ul>
       </article>
       <article class="duo__item">
-        ${media(ctx, 'lavatesta', { ratio: '16/10', position: '62% 45%', provisional: true })}
+        ${media(ctx, 'materialiRituale', { ratio: '16/10', position: '50% 50%' })}
         <h3 class="h3serif">Direttamente nel salone</h3>
         <p>Formazione organizzata presso la sede del professionista, con il suo team.</p>
         <ul class="facts"><li><span>Dove</span>Nel salone del professionista</li><li><span>Partecipanti</span>Team del salone</li></ul>

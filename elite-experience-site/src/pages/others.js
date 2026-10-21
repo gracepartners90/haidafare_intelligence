@@ -2,6 +2,7 @@ import { site } from '../config.js';
 import { esc, tbd, eyebrow, btn, media, tbdBlock, breadcrumb, form } from '../components/core.js';
 import { breadcrumbs } from '../components/seo.js';
 import { page } from '../components/layout.js';
+import { fullHero } from '../components/blocks.js';
 
 const H = { label: 'Home', to: '' };
 
@@ -14,14 +15,12 @@ const contatti = {
     const courseOpts = [...courses.map((c) => c.name), ctx.data.collection.name, 'Non so ancora'];
     const c = site.contacts;
     const body = `
-<section class="phero phero--center">
-  <div class="wrap">
-    ${breadcrumb(ctx, crumbs)}
-    ${eyebrow('Contatti')}
-    <h1 class="phero__title">Trova il percorso più adatto al tuo salone.</h1>
-    <p class="phero__lead">Scegli il tipo di richiesta: ti risponderemo con le informazioni utili per il tuo caso.</p>
-  </div>
-</section>
+${fullHero(ctx, {
+  image: 'vassoioRituale', position: '50% 50%', positionMobile: '45% 50%', cls: 'hero--short',
+  eyebrow: 'Contatti',
+  title: 'Trova il percorso più adatto al tuo salone.',
+  lead: 'Scegli il tipo di richiesta: ti risponderemo con le informazioni utili per il tuo caso.',
+})}
 <section class="sec sec--tight">
   <div class="wrap contact">
     <div class="tabs" role="tablist" aria-label="Tipo di richiesta" data-tabs>
@@ -79,7 +78,7 @@ const contatti = {
     </div>
   </div>
 </section>`;
-    return page(ctx, { title: 'Contatti — Informazioni sulla formazione e collaborazioni | Élite Experience', description: 'Contatta Élite Experience: informazioni sui corsi Hair Spa, formazione in presenza con Elisabetta Tancini e proposte di collaborazione.', jsonld: [breadcrumbs(crumbs)], ogImage: 'ritratto', bodyClass: 'p-contact', body });
+    return page(ctx, { title: 'Contatti — Informazioni sulla formazione e collaborazioni | Élite Experience', description: 'Contatta Élite Experience: informazioni sui corsi Hair Spa, formazione in presenza con Elisabetta Tancini e proposte di collaborazione.', jsonld: [breadcrumbs(crumbs)], ogImage: 'vassoioRituale', bodyClass: 'p-contact', body });
   },
 };
 
