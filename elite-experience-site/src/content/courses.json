@@ -19,7 +19,7 @@
         "verified": true
       },
       "fullDescription": null,
-      "heroImage": null,
+      "heroImage": "elisabettaWellness",
       "heroSlot": "Elisabetta durante il Wellness Ritual: manualità al lavatesta",
       "cardImage": {
         "media": "elisabettaWellness",
@@ -93,11 +93,12 @@
       "duration": "1 h",
       "vatIncluded": true,
       "sectionImage": {
-        "media": "acquaMani",
-        "pos": "45% 50%",
-        "provisional": true
+        "media": "caraffaLavatesta",
+        "pos": "50% 45%",
+        "provisional": false
       },
-      "forExperienced": "Un ripasso completo delle basi del Metodo Élite (accoglienza, detersione, manualità) per rendere il servizio uniforme in tutto il team."
+      "forExperienced": "Un ripasso completo delle basi del Metodo Élite (accoglienza, detersione, manualità) per rendere il servizio uniforme in tutto il team.",
+      "heroPos": "40% 35%"
     },
     {
       "id": "pinda-ritual",
@@ -389,9 +390,9 @@
       "duration": "1 h",
       "vatIncluded": true,
       "sectionImage": {
-        "media": "massaggioTesta",
-        "pos": "58% 45%",
-        "provisional": true
+        "media": "preparazioneProdotti",
+        "pos": "50% 55%",
+        "provisional": false
       },
       "forExperienced": "Porta nel salone manualità attive, pressioni mirate e ritmi alternati, con la possibilità di proporre cicli di trattamento e percorsi di mantenimento.",
       "heroPos": "28% 40%"
@@ -414,7 +415,7 @@
         "verified": true
       },
       "fullDescription": null,
-      "heroImage": null,
+      "heroImage": "aerografoCute",
       "heroSlot": "Manualità del Relax Full Ritual",
       "cardImage": {
         "media": "aerografoCute",
@@ -488,11 +489,12 @@
       "duration": "1 h",
       "vatIncluded": true,
       "sectionImage": {
-        "media": "heroHome",
-        "pos": "30% 30%",
-        "provisional": true
+        "media": "spazzolaLettino",
+        "pos": "50% 45%",
+        "provisional": false
       },
-      "forExperienced": "Unisce massaggio di testa, collo e spalle, calore e vapore in un servizio premium, da proporre come trattamento di punta o come regalo."
+      "forExperienced": "Unisce massaggio di testa, collo e spalle, calore e vapore in un servizio premium, da proporre come trattamento di punta o come regalo.",
+      "heroPos": "50% 40%"
     }
   ],
   "collection": {

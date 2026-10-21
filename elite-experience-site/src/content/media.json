@@ -123,6 +123,18 @@
     "file": "media/brushing-carrello-strumenti.jpg", "w": 2000, "h": 1120, "official": true,
     "alt": "Carrello del rituale visto dall'alto: ciotole con i prodotti, spazzole in legno, pennelli e massaggiatore per il cuoio capelluto."
   },
+  "preparazioneProdotti": {
+    "file": "media/hairgym-preparazione-prodotti.jpg", "w": 2000, "h": 1115, "official": true,
+    "alt": "Le mani dell'operatrice versano un fluido in una ciotola di ceramica, accanto ai flaconi dei prodotti e a un pennello."
+  },
+  "caraffaLavatesta": {
+    "file": "media/wellness-caraffa-lavatesta.jpg", "w": 2000, "h": 1116, "official": true,
+    "alt": "L'operatrice versa acqua da una caraffa di vetro sui capelli della cliente al lavatesta, con una maschera sugli occhi."
+  },
+  "spazzolaLettino": {
+    "file": "media/relax-spazzola-lettino.jpg", "w": 2000, "h": 1250, "official": true,
+    "alt": "Spazzolatura del cuoio capelluto con una spazzola in legno, sulla cliente distesa al lavatesta sotto un telo."
+  },
   "acquaMani": {
     "file": "media/hair-spa-acqua-mani.jpg", "w": 2000, "h": 1143, "official": true,
     "alt": "Le mani dell'operatrice accompagnano l'acqua sul cuoio capelluto della cliente durante un rituale Hair Spa, accanto a un rubinetto dorato."
