@@ -107,7 +107,7 @@ ${fullHero(ctx, {
   </div>
 </section>
 
-${fullImage(ctx, 'acquaMani', { position: '45% 50%' })}
+${fullImage(ctx, 'arcoDoratoMani', { position: '50% 50%', positionMobile: '55% 50%' })}
 
 <section class="sec" id="faq">
   <div class="wrap split split--4-8">

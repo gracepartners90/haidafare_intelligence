@@ -42,10 +42,6 @@
     "file": "media/hair-spa-ciotola-legno.jpg", "w": 2000, "h": 1125, "official": true,
     "alt": "Con una ciotola di legno l'operatrice versa acqua sui capelli della cliente, distesa a occhi chiusi al lavatesta."
   },
-  "pressioneSpalle": {
-    "file": "media/metodo-pressione-spalle.jpg", "w": 2000, "h": 1123, "official": true,
-    "alt": "Le mani dell'operatrice premono sulle spalle della cliente, distesa sul lettino Hair Spa con una maschera sugli occhi."
-  },
   "ritmoElisabetta": {
     "file": "media/metodo-ritmo-elisabetta.jpg", "w": 2000, "h": 1123, "official": true,
     "alt": "Elisabetta Tancini lavora al lavatesta con l'arco dorato, accanto alla cliente distesa con una maschera sugli occhi."
@@ -134,6 +130,14 @@
   "manualitaArco": {
     "file": "media/manualita-arco-pettine.jpg", "w": 2000, "h": 1125, "official": true,
     "alt": "Sotto l'arco dorato che fa scendere fili d'acqua, l'operatrice pettina i capelli della cliente con un pettine in legno."
+  },
+  "pressioneTesta": {
+    "file": "media/metodo-pressione-testa.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Le mani dell'operatrice accolgono la testa della cliente, distesa a occhi chiusi, in una luce calda e soffusa."
+  },
+  "arcoDoratoMani": {
+    "file": "media/academy-arco-dorato-mani.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Sotto l'arco dorato che fa scendere fili d'acqua, le mani dell'operatrice sostengono la testa della cliente distesa a occhi chiusi."
   },
   "acquaMani": {
     "file": "media/hair-spa-acqua-mani.jpg", "w": 2000, "h": 1143, "official": true,
