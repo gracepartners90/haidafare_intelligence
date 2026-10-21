@@ -1,0 +1,46 @@
+/* =========================================================
+   Élite Experience — Design tokens
+   Palette dal brief; --ink è il colore del logo ufficiale (#3D2416).
+   ========================================================= */
+@font-face { font-family: "Newsreader"; src: url("fonts/Newsreader-Variable.woff2") format("woff2"); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("fonts/Newsreader-Variable-Italic.woff2") format("woff2"); font-weight: 200 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "Inter Tight"; src: url("fonts/InterTight-Variable.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Mrs Saint Delafield"; src: url("fonts/MrsSaintDelafield-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+
+:root {
+  /* Colori */
+  --choc: #704D3F;      /* marrone cioccolato */
+  --deep: #493126;      /* marrone profondo */
+  --ink: #3D2416;       /* colore del logo */
+  --mid: #906E5D;       /* marrone medio */
+  --ivory: #F5F0EB;     /* avorio caldo */
+  --beige: #DED0C4;     /* beige naturale */
+  --sand: #ECE3DA;      /* tono intermedio avorio/beige */
+  --white: #FFFFFF;
+  --muted: #74574A;     /* testo secondario su fondi chiari (AA) */
+  --muted-light: #D9C8BB; /* testo secondario su fondi scuri (AA) */
+  --line: rgba(61, 36, 22, .14);
+  --line-strong: rgba(61, 36, 22, .32);
+  --line-light: rgba(245, 240, 235, .18);
+
+  /* Tipografia */
+  --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --t-hero: clamp(2.6rem, 5vw, 5.1rem);
+  --t-h1: clamp(2.4rem, 4.4vw, 4.4rem);
+  --t-h2: clamp(1.95rem, 3.1vw, 3.15rem);
+  --t-h3: clamp(1.4rem, 1.8vw, 1.85rem);
+  --t-lead: clamp(1.125rem, 1.25vw, 1.3rem);
+  --t-body: 1.0625rem;
+  --t-small: .9375rem;
+  --t-micro: .75rem;
+
+  /* Spazi */
+  --maxw: 1360px;
+  --g: clamp(20px, 4vw, 64px);
+  --gap: clamp(16px, 2.2vw, 36px);
+  --sec: clamp(80px, 9vw, 150px);
+  --hdr: 84px;
+
+  --ease: cubic-bezier(.2, .7, .1, 1);
+}

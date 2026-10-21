@@ -1,0 +1,202 @@
+{
+  "_info": "Registro immagini. official=true: foto fornite da Élite Experience. Per aggiungere una foto: copiarla in src/assets/media e registrarla qui.",
+  "heroHome": {
+    "file": "media/hair-spa-arco-acqua-specchio.jpg", "w": 1344, "h": 768, "official": true,
+    "note": "Hero della home: foto fornita dal brand, specchiata in orizzontale per lasciare libero il lato del testo. Il trattamento (tono, grana, vignettatura) è applicato in pagina. Per gli schermi grandi è consigliata una versione con lato lungo di almeno 2400 px.",
+    "alt": "Rituale Hair Spa al lavatesta: un arco dorato fa scendere l'acqua in fili sottili sui capelli della cliente, rilassata a occhi chiusi, in una luce calda e ambrata."
+  },
+  "petaliRosa": {
+    "file": "media/hair-spa-petali-rosa-specchio.jpg", "w": 1664, "h": 1109, "official": true,
+    "note": "Hero della home: foto fornita dal brand, specchiata in orizzontale per lasciare libero il lato del testo. Per gli schermi grandi è consigliata una versione con lato lungo di almeno 2400 px.",
+    "alt": "Rituale Hair Spa al lavatesta: petali di rosa sui capelli della cliente, rilassata a occhi chiusi, mentre l'operatrice ne versa altri da una coppa di vetro."
+  },
+  "olioFronte": {
+    "file": "media/hair-spa-olio-fronte.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Un filo d'olio scende sulla fronte della cliente, distesa a occhi chiusi, durante un rituale Hair Spa."
+  },
+  "pindaLino": {
+    "file": "media/pinda-mani-lino.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Le mani dell'operatrice tengono due pinda di lino legati con lo spago, appoggiati su un asciugamano."
+  },
+  "spazzolaLegno": {
+    "file": "media/brushing-spazzola-legno.jpg", "w": 1672, "h": 941, "official": true,
+    "alt": "Spazzolatura con una spazzola in legno sui capelli bagnati della cliente al lavatesta."
+  },
+  "elisabettaCute": {
+    "file": "media/elisabetta-hairgym-cuoio-capelluto.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Elisabetta Tancini esegue una manualità sul cuoio capelluto di una cliente nel suo salone."
+  },
+  "aerografoCute": {
+    "file": "media/relax-aerografo-cute.jpg", "w": 2000, "h": 1121, "official": true,
+    "alt": "L'operatrice applica un trattamento sul cuoio capelluto con l'aerografo, tenendo la testa della cliente con l'altra mano."
+  },
+  "pindaAsciugamano": {
+    "file": "media/pinda-lino-asciugamano.jpg", "w": 2000, "h": 1118, "official": true,
+    "alt": "Due pinda di lino legati con lo spago, appoggiati sull'asciugamano ricamato Maison BB."
+  },
+  "elisabettaWellness": {
+    "file": "media/elisabetta-wellness-manualita.jpg", "w": 1673, "h": 940, "official": true,
+    "alt": "Elisabetta Tancini appoggia le mani sui capelli di una cliente, nel suo salone, mentre spiega la manualità."
+  },
+  "ciotolaLegno": {
+    "file": "media/hair-spa-ciotola-legno.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Con una ciotola di legno l'operatrice versa acqua sui capelli della cliente, distesa a occhi chiusi al lavatesta."
+  },
+  "continuitaPennello": {
+    "file": "media/metodo-continuita-pennello.jpg", "w": 1601, "h": 900, "official": true,
+    "alt": "Con un pennello l'operatrice applica il trattamento sul cuoio capelluto, tenendo la testa della cliente con l'altra mano."
+  },
+  "strumentiPinda": {
+    "file": "media/metodo-strumenti-pinda-erbe.jpg", "w": 2000, "h": 1121, "official": true,
+    "alt": "Le mani chiudono con lo spago un pinda di tessuto, accanto a vasi di vetro pieni di erbe essiccate e a ciotole di legno."
+  },
+  "ritrattoFiori": {
+    "file": "media/elisabetta-ritratto-fiori.jpg", "w": 1672, "h": 941, "official": true,
+    "alt": "Ritratto di Elisabetta Tancini, seduta a un tavolo con le braccia incrociate, davanti a una parete decorata con fiori."
+  },
+  "palcoIntervento": {
+    "file": "media/elisabetta-palco-intervento.jpg", "w": 1672, "h": 941, "official": true,
+    "alt": "Elisabetta Tancini parla sul palco durante un intervento, davanti a uno schermo con un'immagine di foglie."
+  },
+  "lavatestaArco": {
+    "file": "media/hair-spa-lavatesta-arco.jpg", "w": 1397, "h": 786, "official": true,
+    "alt": "Un'operatrice esegue un rituale Hair Spa al lavatesta con l'arco dorato, in una sala con luci soffuse e candele."
+  },
+  "palcoDimostrazione": {
+    "file": "media/elisabetta-palco-dimostrazione.jpg", "w": 1672, "h": 941, "official": true,
+    "alt": "Elisabetta Tancini durante una dimostrazione dal vivo sul palco: muove un bastone della pioggia sopra la cliente distesa al lavatesta."
+  },
+  "formatricePalco": {
+    "file": "media/elisabetta-formatrice-palco.jpg", "w": 941, "h": 1672, "official": true,
+    "alt": "Elisabetta Tancini esegue una manualità Hair Spa sulla cliente distesa al lavatesta, durante una dimostrazione dal vivo."
+  },
+  "formazioneGruppo": {
+    "file": "media/elisabetta-formazione-gruppo-4x5.jpg", "w": 1210, "h": 1512, "official": true,
+    "alt": "Durante una formazione in presenza, un gruppo di professioniste osserva e riprende una manualità al lavatesta."
+  },
+  "consulenzaSalone": {
+    "file": "media/elisabetta-consulenza-salone.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Elisabetta Tancini sorride durante una consulenza con una cliente nel suo salone, tra pareti in legno e prodotti del rituale."
+  },
+  "teaserFrame": {
+    "file": "media/elite-teaser-home-frame.jpg", "w": 1920, "h": 1080, "official": true,
+    "note": "Primo fotogramma del teaser della home, mostrato finché il video non parte.",
+    "alt": "Nello specchio del salone, Elisabetta Tancini analizza il cuoio capelluto di una cliente con una microcamera."
+  },
+  "academySpazzola": {
+    "file": "media/academy-spazzolatura-lettino.jpg", "w": 2000, "h": 1143, "official": true,
+    "alt": "Spazzolatura con una spazzola in legno sui capelli lunghi della cliente, distesa sul lettino Hair Spa con una benda sugli occhi."
+  },
+  "onlinePostazione": {
+    "file": "media/online-preparazione-postazione.jpg", "w": 1672, "h": 941, "official": true,
+    "alt": "Le mani dell'operatrice preparano la postazione del rituale: asciugamano, spazzola, pinda e pennello su un carrello in legno accanto al lavatesta."
+  },
+  "salaHairSpa": {
+    "file": "media/presenza-sala-hair-spa.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Sala Hair Spa in luce soffusa: lettino con ciotole e candela, lavatesta e scaffale con i prodotti."
+  },
+  "materialiRituale": {
+    "file": "media/presenza-materiali-rituale.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Materiali del rituale su un piano scuro: ciotole in ceramica, flaconi, pettine in legno, asciugamano e fiori."
+  },
+  "vassoioRituale": {
+    "file": "media/contatti-vassoio-rituale.jpg", "w": 1672, "h": 941, "official": true,
+    "alt": "Vassoio con i materiali del rituale Hair Spa: due pinda, spazzole in legno, pennello in una ciotola e asciugamano."
+  },
+  "carrelloStrumenti": {
+    "file": "media/brushing-carrello-strumenti.jpg", "w": 2000, "h": 1120, "official": true,
+    "alt": "Carrello del rituale visto dall'alto: ciotole con i prodotti, spazzole in legno, pennelli e massaggiatore per il cuoio capelluto."
+  },
+  "preparazioneProdotti": {
+    "file": "media/hairgym-preparazione-prodotti.jpg", "w": 2000, "h": 1115, "official": true,
+    "alt": "Le mani dell'operatrice versano un fluido in una ciotola di ceramica, accanto ai flaconi dei prodotti e a un pennello."
+  },
+  "caraffaLavatesta": {
+    "file": "media/wellness-caraffa-lavatesta.jpg", "w": 2000, "h": 1116, "official": true,
+    "alt": "L'operatrice versa acqua da una caraffa di vetro sui capelli della cliente al lavatesta, con una maschera sugli occhi."
+  },
+  "spazzolaLettino": {
+    "file": "media/relax-spazzola-lettino.jpg", "w": 2000, "h": 1250, "official": true,
+    "alt": "Spazzolatura del cuoio capelluto con una spazzola in legno, sulla cliente distesa al lavatesta sotto un telo."
+  },
+  "tecnicaLavatesta": {
+    "file": "media/tecnica-lavatesta-mani.jpg", "w": 1920, "h": 1080, "official": true,
+    "alt": "La mano dell'operatrice lavora tra i capelli bagnati della cliente, distesa al lavatesta a occhi chiusi."
+  },
+  "manualitaArco": {
+    "file": "media/manualita-arco-pettine.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Sotto l'arco dorato che fa scendere fili d'acqua, l'operatrice pettina i capelli della cliente con un pettine in legno."
+  },
+  "pressioneTesta": {
+    "file": "media/metodo-pressione-testa.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Le mani dell'operatrice accolgono la testa della cliente, distesa a occhi chiusi, in una luce calda e soffusa."
+  },
+  "arcoDoratoMani": {
+    "file": "media/academy-arco-dorato-mani.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Sotto l'arco dorato che fa scendere fili d'acqua, le mani dell'operatrice sostengono la testa della cliente distesa a occhi chiusi."
+  },
+  "metodoHero": {
+    "file": "media/metodo-hero-lavatesta-vapore.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Rituale Hair Spa al lavatesta: l'acqua scende sull'attaccatura dei capelli della cliente, distesa a occhi chiusi e avvolta dal vapore, mentre due mani lavorano tra i capelli."
+  },
+  "ritmoArco": {
+    "file": "media/metodo-ritmo-arco-dorato.jpg", "w": 1672, "h": 941, "official": true,
+    "alt": "Le mani dell'operatrice guidano l'arco dorato che fa scendere fili d'acqua sui capelli della cliente, distesa al lavatesta con una benda sugli occhi."
+  },
+  "presenzaHero": {
+    "file": "media/presenza-hero-formazione-salone.jpg", "w": 1672, "h": 941, "official": true,
+    "alt": "Elisabetta Tancini spiega un rituale nella sala Hair Spa di Maison BB, davanti a un gruppo di professionisti e a una cliente seduta."
+  },
+  "acquaMani": {
+    "file": "media/hair-spa-acqua-mani.jpg", "w": 2000, "h": 1143, "official": true,
+    "alt": "Le mani dell'operatrice accompagnano l'acqua sul cuoio capelluto della cliente durante un rituale Hair Spa, accanto a un rubinetto dorato."
+  },
+  "cascataDorata": {
+    "file": "media/hair-spa-cascata-dorata.jpg", "w": 1024, "h": 1024, "official": true,
+    "alt": "Lavatesta Hair Spa con rubinetto dorato: l'acqua scende a cascata sui capelli della cliente, rilassata a occhi chiusi, tra candele e asciugamani."
+  },
+  "massaggioTesta": {
+    "file": "media/hair-spa-massaggio-testa.jpg", "w": 1344, "h": 768, "official": true,
+    "alt": "Una cliente rilassata, a occhi chiusi, durante un massaggio Hair Spa al cuoio capelluto."
+  },
+  "ritualeOlio": {
+    "file": "media/hair-spa-rituale-olio.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Le mani di un'operatrice versano olio da una caraffa di vetro nel palmo, accanto a ciotole e flaconi del rituale."
+  },
+  "lavatestaAcqua": {
+    "file": "media/elisabetta-lavatesta-acqua.jpg", "w": 941, "h": 1672, "official": true,
+    "alt": "Elisabetta Tancini versa acqua da una caraffa di vetro sui capelli di una cliente al lavatesta."
+  },
+  "dimostrazione": {
+    "file": "media/elisabetta-dimostrazione-live.jpg", "w": 1198, "h": 1600, "official": true,
+    "alt": "Elisabetta Tancini durante una dimostrazione dal vivo di un rituale Hair Spa, con la cliente al lavatesta."
+  },
+  "intervento": {
+    "file": "media/elisabetta-intervento-palco.jpg", "w": 1200, "h": 1600, "official": true,
+    "alt": "Elisabetta Tancini sul palco durante un intervento."
+  },
+  "ritratto": {
+    "file": "media/elisabetta-ritratto.jpg", "w": 941, "h": 1672, "official": true,
+    "alt": "Elisabetta Tancini, fondatrice di Élite Experience, ritratta nel suo salone."
+  },
+  "lavatesta": {
+    "file": "media/elisabetta-lavatesta.jpg", "w": 1673, "h": 940, "official": true,
+    "alt": "Elisabetta Tancini esegue una manualità Hair Spa sul cuoio capelluto di una cliente al lavatesta."
+  },
+  "pinda": {
+    "file": "media/elisabetta-pinda.jpg", "w": 1800, "h": 1007, "official": true,
+    "alt": "Elisabetta Tancini prepara un pinda in tessuto accanto ai materiali del rituale."
+  },
+  "dettaglioPinda": {
+    "file": "media/dettaglio-pinda-mani.jpg", "w": 440, "h": 460, "official": true,
+    "alt": "Dettaglio delle mani di Elisabetta Tancini con un pinda in tessuto."
+  },
+  "dettaglioMateriali": {
+    "file": "media/dettaglio-materiali.jpg", "w": 720, "h": 380, "official": true,
+    "alt": "Materiali del rituale: erbe essiccate in vasi di vetro, ciotola in legno e spago."
+  },
+  "dettaglioMani": {
+    "file": "media/dettaglio-mani-cute.jpg", "w": 460, "h": 320, "official": true,
+    "alt": "Dettaglio delle mani durante una manualità sul cuoio capelluto."
+  }
+}
