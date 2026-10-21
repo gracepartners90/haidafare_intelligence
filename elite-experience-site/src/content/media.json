@@ -94,6 +94,11 @@
     "file": "media/elisabetta-consulenza-salone.jpg", "w": 2000, "h": 1125, "official": true,
     "alt": "Elisabetta Tancini sorride durante una consulenza con una cliente nel suo salone, tra pareti in legno e prodotti del rituale."
   },
+  "teaserFrame": {
+    "file": "media/elite-teaser-home-frame.jpg", "w": 1920, "h": 1080, "official": true,
+    "note": "Primo fotogramma del teaser della home, mostrato finché il video non parte.",
+    "alt": "Nello specchio del salone, Elisabetta Tancini analizza il cuoio capelluto di una cliente con una microcamera."
+  },
   "acquaMani": {
     "file": "media/hair-spa-acqua-mani.jpg", "w": 2000, "h": 1143, "official": true,
     "alt": "Le mani dell'operatrice accompagnano l'acqua sul cuoio capelluto della cliente durante un rituale Hair Spa, accanto a un rubinetto dorato."

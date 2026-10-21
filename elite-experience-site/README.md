@@ -175,8 +175,12 @@ sostituiti con gli articoli reali prima della pubblicazione.
 
 ### Video
 
-I video si mettono in `src/assets/video/` e si collegano con il campo `src` (corsi),
-`video` (sequenza) o `src` di `fullVideo()` (sezione «Il gesto, in movimento» della home). Il riquadro video li riproduce in una finestra; senza file mostra quale
+I video si mettono in `src/assets/video/` e si collegano con il campo `src` (corsi) o
+`video` (sequenza). La sezione «Il gesto, in movimento» della home usa `fullVideo()` con
+`loop: { webm, mp4 }`: il teaser (`video/elite-teaser-home.*`, 8 secondi, senza audio) scorre
+muto in sottofondo quando la sezione è visibile, con il pulsante per metterlo in pausa; con la
+riduzione del movimento attiva parte solo se lo si avvia. Il server dell'anteprima risponde
+alle richieste parziali, necessarie a Safari per i video. Il riquadro video li riproduce in una finestra; senza file mostra quale
 contenuto inserire. Nel file unico di anteprima i video non vengono incorporati.
 
 ---
@@ -205,8 +209,7 @@ tre esempi.
 Le testimonianze sono state tolte dal sito: si possono reintrodurre quando saranno
 disponibili testimonianze reali con autorizzazione alla pubblicazione.
 
-**Video** — il video della sezione «Il gesto, in movimento» della home, estratti dei
-videocorsi, selezione completa per "Il metodo, in pratica", frame per le anteprime.
+**Video** — estratti dei videocorsi, selezione completa per "Il metodo, in pratica", frame per le anteprime.
 
 ---
 

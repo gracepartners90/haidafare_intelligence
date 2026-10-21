@@ -120,9 +120,9 @@ ${practiceSequence(ctx)}
 
 <!-- 07 VIDEO A TUTTO SCHERMO -->
 ${fullVideo(ctx, {
-  poster: 'acquaMani', position: '40% 50%', eyebrow: 'Il Metodo Élite in video',
+  poster: 'teaserFrame', position: '50% 50%', eyebrow: 'Il Metodo Élite in video',
   title: 'Il gesto, <em>in movimento</em>.',
-  src: null, note: 'Spazio per il video di presentazione del Metodo Élite (formato orizzontale 16:9).',
+  loop: { webm: 'video/elite-teaser-home.webm', mp4: 'video/elite-teaser-home.mp4' },
 })}
 
 <!-- 08 CONTATTI -->

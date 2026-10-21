@@ -28,8 +28,24 @@ export function fullImage(ctx, image, { position, positionMobile, caption, provi
 </section>`;
 }
 
-// Video a tutto schermo: con `src` il pulsante riproduce il filmato, senza dichiara lo spazio da riempire
-export function fullVideo(ctx, { poster, position, eyebrow, title, src, note }) {
+// Video a tutto schermo. Con `loop` ({ webm, mp4 }) il filmato scorre muto in sottofondo quando la
+// sezione è visibile, con il pulsante per metterlo in pausa; con `src` il pulsante lo apre in una
+// finestra; senza nessuno dei due dichiara lo spazio da riempire.
+export function fullVideo(ctx, { poster, position, eyebrow, title, src, loop, note }) {
+  if (loop) {
+    return `<section class="fullvideo fullvideo--loop" data-reveal data-loop-video>
+  ${media(ctx, poster, { fill: true, position })}
+  <video class="fullvideo__video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+    ${loop.webm ? `<source src="${ctx.asset(loop.webm)}" type="video/webm">` : ''}
+    ${loop.mp4 ? `<source src="${ctx.asset(loop.mp4)}" type="video/mp4">` : ''}
+  </video>
+  <div class="fullvideo__in">
+    ${eyebrow ? `<p class="eyebrow">${esc(eyebrow)}</p>` : ''}
+    <h2 class="fullvideo__title">${title}</h2>
+  </div>
+  <button class="fullvideo__toggle" type="button" data-loop-toggle aria-pressed="false"><span class="fullvideo__toggle-icon" aria-hidden="true"></span><span data-loop-label>Metti in pausa il video</span></button>
+</section>`;
+  }
   return `<section class="fullvideo" data-reveal>
   ${media(ctx, poster, { fill: true, position })}
   <div class="fullvideo__in">

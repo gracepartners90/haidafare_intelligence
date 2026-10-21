@@ -199,6 +199,24 @@
   });
   $$('[data-fader]').forEach((el) => cycle($$('.fader__item', el), $$('.fader__dots li', el), 4200, el));
 
+  /* ---------- Teaser in sottofondo: parte quando la sezione è visibile, con pausa a scelta ---------- */
+  $$('[data-loop-video]').forEach((sec) => {
+    const video = $('video', sec), toggle = $('[data-loop-toggle]', sec), label = $('[data-loop-label]', sec);
+    if (!video) return;
+    let userPaused = reduceMotion, visible = false;
+    const sync = () => {
+      toggle.setAttribute('aria-pressed', String(userPaused));
+      label.textContent = userPaused ? 'Riproduci il video' : 'Metti in pausa il video';
+      if (visible && !userPaused && !document.hidden) video.play().catch(() => { /* resta il fotogramma */ });
+      else video.pause();
+    };
+    video.addEventListener('playing', () => sec.classList.add('is-playing'));
+    toggle.addEventListener('click', () => { userPaused = !userPaused; sync(); });
+    onView(sec, (v) => { visible = v; sync(); }, 0.25);
+    document.addEventListener('visibilitychange', sync);
+    sync();
+  });
+
   /* ---------- Schede a due voci (Academy: online / in presenza) ---------- */
   $$('[data-switch]').forEach((sw) => {
     const tabs = $$('[role="tab"]', sw);
