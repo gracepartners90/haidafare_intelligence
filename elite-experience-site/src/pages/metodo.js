@@ -19,7 +19,7 @@ export default [{
     ];
     const body = `
 ${fullHero(ctx, {
-  image: 'lavatesta', position: '62% 40%',
+  image: 'metodoHero', position: '58% 40%', positionMobile: '56% 40%',
   eyebrow: 'Élite Experience',
   title: 'Il Metodo <em>Élite</em>',
   lead: 'Un metodo professionale Hair Spa ideato da Elisabetta Tancini, che si esprime attraverso rituali, tecniche e manualità.',
@@ -60,7 +60,7 @@ ${fullHero(ctx, {
     </div>
     ${fader(ctx, [
       { image: 'pressioneTesta', position: '42% 50%' },
-      { image: 'ritmoElisabetta', position: '94% 40%' },
+      { image: 'ritmoArco', position: '58% 50%' },
       { image: 'continuitaPennello', position: '48% 45%' },
       { image: 'strumentiPinda', position: '46% 55%' },
     ], { cls: 'hands__fader' })}

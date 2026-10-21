@@ -42,10 +42,6 @@
     "file": "media/hair-spa-ciotola-legno.jpg", "w": 2000, "h": 1125, "official": true,
     "alt": "Con una ciotola di legno l'operatrice versa acqua sui capelli della cliente, distesa a occhi chiusi al lavatesta."
   },
-  "ritmoElisabetta": {
-    "file": "media/metodo-ritmo-elisabetta.jpg", "w": 2000, "h": 1123, "official": true,
-    "alt": "Elisabetta Tancini lavora al lavatesta con l'arco dorato, accanto alla cliente distesa con una maschera sugli occhi."
-  },
   "continuitaPennello": {
     "file": "media/metodo-continuita-pennello.jpg", "w": 1601, "h": 900, "official": true,
     "alt": "Con un pennello l'operatrice applica il trattamento sul cuoio capelluto, tenendo la testa della cliente con l'altra mano."
@@ -138,6 +134,18 @@
   "arcoDoratoMani": {
     "file": "media/academy-arco-dorato-mani.jpg", "w": 2000, "h": 1125, "official": true,
     "alt": "Sotto l'arco dorato che fa scendere fili d'acqua, le mani dell'operatrice sostengono la testa della cliente distesa a occhi chiusi."
+  },
+  "metodoHero": {
+    "file": "media/metodo-hero-lavatesta-acqua.jpg", "w": 1672, "h": 941, "official": true,
+    "alt": "Rituale Hair Spa al lavatesta: l'acqua scende sui capelli della cliente, distesa a occhi chiusi sotto un telo, in una luce calda."
+  },
+  "ritmoArco": {
+    "file": "media/metodo-ritmo-arco-dorato.jpg", "w": 1672, "h": 941, "official": true,
+    "alt": "Le mani dell'operatrice guidano l'arco dorato che fa scendere fili d'acqua sui capelli della cliente, distesa al lavatesta con una benda sugli occhi."
+  },
+  "presenzaHero": {
+    "file": "media/presenza-hero-formazione-salone.jpg", "w": 1672, "h": 941, "official": true,
+    "alt": "Elisabetta Tancini spiega un rituale nella sala Hair Spa di Maison BB, davanti a un gruppo di professionisti e a una cliente seduta."
   },
   "acquaMani": {
     "file": "media/hair-spa-acqua-mani.jpg", "w": 2000, "h": 1143, "official": true,
