@@ -11,7 +11,7 @@
     "alt": "Rituale Hair Spa al lavatesta: petali di rosa sui capelli della cliente, rilassata a occhi chiusi, mentre l'operatrice ne versa altri da una coppa di vetro."
   },
   "olioFronte": {
-    "file": "media/hair-spa-olio-fronte.jpg", "w": 1922, "h": 1080, "official": true,
+    "file": "media/hair-spa-olio-fronte.jpg", "w": 2000, "h": 1125, "official": true,
     "alt": "Un filo d'olio scende sulla fronte della cliente, distesa a occhi chiusi, durante un rituale Hair Spa."
   },
   "pindaLino": {
@@ -39,16 +39,8 @@
     "alt": "Elisabetta Tancini appoggia le mani sui capelli di una cliente, nel suo salone, mentre spiega la manualità."
   },
   "ciotolaLegno": {
-    "file": "media/hair-spa-ciotola-legno.jpg", "w": 2000, "h": 1126, "official": true,
+    "file": "media/hair-spa-ciotola-legno.jpg", "w": 2000, "h": 1125, "official": true,
     "alt": "Con una ciotola di legno l'operatrice versa acqua sui capelli della cliente, distesa a occhi chiusi al lavatesta."
-  },
-  "arcoDorato": {
-    "file": "media/hair-spa-arco-dorato.jpg", "w": 1920, "h": 1080, "official": true,
-    "alt": "Un arco dorato fa scendere fili d'acqua sui capelli della cliente, rilassata a occhi chiusi, mentre l'operatrice lavora sul cuoio capelluto."
-  },
-  "pettiniAmbra": {
-    "file": "media/hair-spa-pettini-ambra.jpg", "w": 1920, "h": 1080, "official": true,
-    "alt": "Le mani dell'operatrice lavorano sul cuoio capelluto della cliente, distesa a occhi chiusi al lavatesta, con due strumenti da massaggio color ambra."
   },
   "pressioneSpalle": {
     "file": "media/metodo-pressione-spalle.jpg", "w": 2000, "h": 1123, "official": true,
@@ -134,6 +126,14 @@
   "spazzolaLettino": {
     "file": "media/relax-spazzola-lettino.jpg", "w": 2000, "h": 1250, "official": true,
     "alt": "Spazzolatura del cuoio capelluto con una spazzola in legno, sulla cliente distesa al lavatesta sotto un telo."
+  },
+  "tecnicaLavatesta": {
+    "file": "media/tecnica-lavatesta-mani.jpg", "w": 1920, "h": 1080, "official": true,
+    "alt": "La mano dell'operatrice lavora tra i capelli bagnati della cliente, distesa al lavatesta a occhi chiusi."
+  },
+  "manualitaArco": {
+    "file": "media/manualita-arco-pettine.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Sotto l'arco dorato che fa scendere fili d'acqua, l'operatrice pettina i capelli della cliente con un pettine in legno."
   },
   "acquaMani": {
     "file": "media/hair-spa-acqua-mani.jpg", "w": 2000, "h": 1143, "official": true,

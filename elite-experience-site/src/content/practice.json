@@ -5,9 +5,9 @@
   "secondsPerChapter": 5,
   "video": null,
   "chapters": [
-    { "word": "Tecnica", "line": { "text": "La mano lavora sul cuoio capelluto con precisione e misura.", "verified": false }, "media": "pettiniAmbra", "pos": "26% 50%", "posMobile": "40% 50%", "zoom": 1.04 },
-    { "word": "Manualità", "line": { "text": "Il gesto si costruisce: ritmo, direzione, continuità.", "verified": false }, "media": "arcoDorato", "pos": "50% 45%", "zoom": 1.06 },
-    { "word": "Protocollo", "line": { "text": "Ogni materiale al suo posto, ogni passaggio in sequenza.", "verified": false }, "media": "ciotolaLegno", "pos": "58% 50%", "zoom": 1.06 },
-    { "word": "Applicazione", "line": { "text": "Il rituale completo, nel tempo reale del salone.", "verified": false }, "media": "olioFronte", "pos": "50% 42%", "zoom": 1.04 }
+    { "word": "Tecnica", "line": { "text": "La mano lavora sul cuoio capelluto con precisione e misura.", "verified": false }, "media": "tecnicaLavatesta", "pos": "50% 45%", "posMobile": "55% 45%", "zoom": 1.02 },
+    { "word": "Manualità", "line": { "text": "Il gesto si costruisce: ritmo, direzione, continuità.", "verified": false }, "media": "manualitaArco", "pos": "50% 50%", "posMobile": "48% 50%", "zoom": 1.02 },
+    { "word": "Protocollo", "line": { "text": "Ogni materiale al suo posto, ogni passaggio in sequenza.", "verified": false }, "media": "ciotolaLegno", "pos": "55% 50%", "posMobile": "74% 50%", "zoom": 1.02 },
+    { "word": "Applicazione", "line": { "text": "Il rituale completo, nel tempo reale del salone.", "verified": false }, "media": "olioFronte", "pos": "50% 50%", "posMobile": "50% 50%", "zoom": 1.02 }
   ]
 }
