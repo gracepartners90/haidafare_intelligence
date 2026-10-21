@@ -30,10 +30,10 @@ export function promoBanner(item) {
   return `<p class="promo-banner"><b>-${p.percent}%</b> ${p.code ? `con il codice <code>${esc(p.code)}</code> — ` : ''}${esc(p.conditions)}${p.validUntil ? ` (fino al ${esc(p.validUntil)})` : ''}</p>`;
 }
 
-// Immagine del corso nelle card: foto del corso, altrimenti cardImage (anche provvisoria)
+// Immagine del corso nelle card: cardImage, altrimenti la foto di apertura della scheda
 export function courseImage(ctx, c, { ratio, cls, fill } = {}) {
   const ci = c.cardImage;
-  if (!c.heroImage && ci) return media(ctx, ci.media, { ratio, cls, fill, position: ci.pos, provisional: ci.provisional });
+  if (ci) return media(ctx, ci.media, { ratio, cls, fill, position: ci.pos, provisional: ci.provisional });
   return visual(ctx, { key: c.heroImage, subject: c.heroSlot, ratio, cls, fill, tone: c.order % 2 ? 'light' : 'dark' });
 }
 

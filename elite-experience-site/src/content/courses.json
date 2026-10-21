@@ -1,5 +1,5 @@
 {
-  "_info": "Schede corso. null = dato non ancora documentato: la pagina mostra un campo segnaposto. verified=false = bozza da validare. shortDescription = frase del corso; competencies = le sei voci di «Cosa imparerai»; techniques = tecniche principali (tabella di confronto). audience, prerequisites, forExperienced = «A chi è rivolto»; availability, requirements = «Informazioni pratiche». cardImage: immagine delle card (media = chiave in media.json, pos = inquadratura, provisional = foto provvisoria). vatIncluded: il prezzo è mostrato «IVA inclusa».",
+  "_info": "Schede corso. null = dato non ancora documentato: la pagina mostra un campo segnaposto. verified=false = bozza da validare. shortDescription = frase del corso; competencies = le sei voci di «Cosa imparerai»; techniques = tecniche principali (tabella di confronto). audience, prerequisites, forExperienced = «A chi è rivolto»; availability, requirements = «Informazioni pratiche». heroImage (+ heroPos): foto di apertura della scheda. sectionImage: immagine a tutto schermo della scheda. cardImage: immagine delle card (media = chiave in media.json, pos = inquadratura, provisional = foto provvisoria). vatIncluded: il prezzo è mostrato «IVA inclusa».",
   "courses": [
     {
       "id": "wellness-ritual",
@@ -117,7 +117,7 @@
         "verified": true
       },
       "fullDescription": null,
-      "heroImage": "pinda",
+      "heroImage": "pindaLino",
       "heroSlot": null,
       "cardImage": {
         "media": "pindaLino",
@@ -191,11 +191,12 @@
       "duration": "1 h",
       "vatIncluded": true,
       "sectionImage": {
-        "media": "ritualeOlio",
+        "media": "strumentiPinda",
         "pos": "46% 50%",
-        "provisional": true
+        "provisional": false
       },
-      "forExperienced": "Aggiunge al servizio l’uso dei pinda riscaldati e delle pressioni avvolgenti: un rituale distintivo, dedicato al rilassamento."
+      "forExperienced": "Aggiunge al servizio l’uso dei pinda riscaldati e delle pressioni avvolgenti: un rituale distintivo, dedicato al rilassamento.",
+      "heroPos": "50% 55%"
     },
     {
       "id": "brushing-ritual",
@@ -215,7 +216,7 @@
         "verified": true
       },
       "fullDescription": null,
-      "heroImage": null,
+      "heroImage": "spazzolaLegno",
       "heroSlot": "Spazzolatura durante il Brushing Ritual: strumento e gesto",
       "cardImage": {
         "media": "spazzolaLegno",
@@ -289,11 +290,12 @@
       "duration": "1 h",
       "vatIncluded": true,
       "sectionImage": {
-        "media": "lavatesta",
-        "pos": "50% 40%",
-        "provisional": true
+        "media": "carrelloStrumenti",
+        "pos": "50% 45%",
+        "provisional": false
       },
-      "forExperienced": "Collega il trattamento allo styling e al finishing, e trasforma una fase tradizionale del lavoro in un servizio strutturato, con consigli per il mantenimento a casa."
+      "forExperienced": "Collega il trattamento allo styling e al finishing, e trasforma una fase tradizionale del lavoro in un servizio strutturato, con consigli per il mantenimento a casa.",
+      "heroPos": "56% 50%"
     },
     {
       "id": "hairgym-ritual",
@@ -313,7 +315,7 @@
         "verified": true
       },
       "fullDescription": null,
-      "heroImage": null,
+      "heroImage": "elisabettaCute",
       "heroSlot": "Manualità dell’Hairgym Ritual sul cuoio capelluto",
       "cardImage": {
         "media": "elisabettaCute",
@@ -391,7 +393,8 @@
         "pos": "58% 45%",
         "provisional": true
       },
-      "forExperienced": "Porta nel salone manualità attive, pressioni mirate e ritmi alternati, con la possibilità di proporre cicli di trattamento e percorsi di mantenimento."
+      "forExperienced": "Porta nel salone manualità attive, pressioni mirate e ritmi alternati, con la possibilità di proporre cicli di trattamento e percorsi di mantenimento.",
+      "heroPos": "28% 40%"
     },
     {
       "id": "relax-full-ritual",

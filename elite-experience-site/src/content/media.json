@@ -119,6 +119,10 @@
     "file": "media/contatti-vassoio-rituale.jpg", "w": 1672, "h": 941, "official": true,
     "alt": "Vassoio con i materiali del rituale Hair Spa: due pinda, spazzole in legno, pennello in una ciotola e asciugamano."
   },
+  "carrelloStrumenti": {
+    "file": "media/brushing-carrello-strumenti.jpg", "w": 2000, "h": 1120, "official": true,
+    "alt": "Carrello del rituale visto dall'alto: ciotole con i prodotti, spazzole in legno, pennelli e massaggiatore per il cuoio capelluto."
+  },
   "acquaMani": {
     "file": "media/hair-spa-acqua-mani.jpg", "w": 2000, "h": 1143, "official": true,
     "alt": "Le mani dell'operatrice accompagnano l'acqua sul cuoio capelluto della cliente durante un rituale Hair Spa, accanto a un rubinetto dorato."
