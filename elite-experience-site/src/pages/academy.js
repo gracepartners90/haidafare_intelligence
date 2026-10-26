@@ -205,7 +205,7 @@ const presencePage = {
     const { courses, faq } = ctx.data;
     const body = `
 ${fullHero(ctx, {
-  image: 'presenzaHero', position: '50% 45%', positionMobile: '56% 40%',
+  image: 'presenzaHero', position: '42% 22%', positionMobile: '56% 24%',
   eyebrow: 'Academy',
   title: 'Formazione<br><em>in presenza</em>',
   lead: 'Percorsi pratici per apprendere tecniche, rituali e manualità Hair Spa direttamente con Elisabetta Tancini, presso il salone Maison BB ad Arona o nel tuo salone.',
