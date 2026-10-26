@@ -16,7 +16,7 @@ export default [{
 <!-- 01 HERO -->
 ${fullHero(ctx, {
   image: 'petaliRosa', position: '62% 45%', cls: 'hero--home',
-  title: 'Porta l’esperienza Hair&nbsp;Spa<br>nel tuo salone.',
+  title: 'Porta l’esperienza<br>Hair&nbsp;Spa<br>nel tuo salone.',
   lead: 'Un metodo professionale ideato da Elisabetta Tancini, che attraverso percorsi di formazione online e in presenza ti accompagna nell’apprendimento di rituali, tecniche e manualità Hair Spa.',
   extra: `<div class="actions">
         ${btn(ctx, { label: 'Scopri la formazione', to: 'academy/', variant: 'light' })}
