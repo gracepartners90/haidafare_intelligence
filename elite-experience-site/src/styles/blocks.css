@@ -123,12 +123,6 @@
 .teach p:not(.lead):not(.eyebrow):not(.teach__intro) { max-width: 36em; color: var(--muted-light); }
 .teach .teach__intro { max-width: none; margin: 30px 0 14px; color: var(--beige); font-size: var(--t-micro); font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
 .teach .linelist li { grid-template-columns: 120px 1fr; }
-.eli-collab .prose > p { color: var(--muted); }
-.eli-collab .prose > .lead { color: var(--ink); }
-.collab-list { margin: 28px 0 32px; border-top: 1px solid var(--line-strong); }
-.collab-list li { display: grid; grid-template-columns: minmax(180px, 1fr) 2fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: var(--t-small); }
-.collab-list b { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; }
-.collab-list span { color: var(--muted); }
 .partners-sec .partners { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .partners-sec .partner { display: grid; justify-items: center; padding: clamp(36px, 4vw, 56px) 24px; text-align: center; }
 .partners-sec .partner__logo { position: relative; width: 100%; height: 110px; margin-bottom: 18px; background: none; }
@@ -238,7 +232,7 @@
   .shead--line .shead__title { white-space: normal; }
   .switch__tabs button { gap: 8px; padding: 18px 0; font-size: 1.15rem; }
   .switch__tabs button + button { padding-left: 14px; }
-  .switch__facts div, .collab-list li, .teach .linelist li { grid-template-columns: 1fr; gap: 4px; }
+  .switch__facts div, .teach .linelist li { grid-template-columns: 1fr; gap: 4px; }
   .partners-sec .partners, .howto--3, .cgrid, .learnp__list { grid-template-columns: 1fr; }
   .cmp { grid-auto-columns: 80%; }
   .hero__progress { display: none; }
@@ -250,3 +244,43 @@
 /* Parole in evidenza nei testi */
 .lead strong, .shead__lead strong, .path p strong { color: var(--ink); }
 .sec--deep strong, .sec--choc strong { color: var(--ivory); }
+
+.origin__text strong, .principles strong, .hands__list strong, .duo strong, .bio__text strong, .eli-collab strong { color: var(--ink); }
+.shead__title strong { font-weight: 500; }
+
+/* A capo solo su desktop */
+@media (max-width: 760px) { .br-d { display: none; } }
+
+/* Elisabetta — Vision in negativo: fondo marrone, testi e firma in bianco */
+.vision .eyebrow, .vision .signed blockquote, .vision .signed__sign { color: var(--white); }
+
+/* Elisabetta — Collaborazioni: intestazione su due colonne, foto e tipologie in griglia */
+.eli-collab__head { display: grid; grid-template-columns: 5fr 6fr; gap: var(--gap) clamp(40px, 6vw, 110px); align-items: start; }
+.eli-collab__head .shead { margin: 0; }
+.eli-collab__head .shead__title em { font-style: italic; }
+.eli-collab__intro p { color: var(--muted); }
+.eli-collab__intro .lead { color: var(--ink); }
+.eli-collab__intro p + p { margin-top: 1em; }
+.eli-collab__intro .btn { margin-top: 28px; }
+.eli-collab__body { display: grid; grid-template-columns: 4fr 8fr; gap: var(--gap); margin-top: clamp(48px, 6vw, 88px); }
+.eli-collab__img { position: relative; min-height: 420px; margin: 0; overflow: hidden; }
+.collab-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin: 0; padding: 0; list-style: none; background: var(--line-strong); border: 1px solid var(--line-strong); }
+.collab-card { display: flex; flex-direction: column; min-height: 240px; padding: clamp(24px, 2.4vw, 36px); background: var(--ivory); transition: background-color .5s var(--ease), color .5s var(--ease); }
+.collab-card__n { color: var(--choc); font-size: var(--t-micro); font-weight: 600; letter-spacing: .14em; }
+.collab-card__name { margin-top: 28px; font-family: var(--serif); font-size: clamp(1.3rem, 1.6vw, 1.6rem); font-weight: 400; line-height: 1.2; }
+.collab-card p { margin-top: 10px; color: var(--muted); font-size: var(--t-small); line-height: 1.5; }
+.collab-card:hover { background: var(--deep); color: var(--ivory); }
+.collab-card:hover .collab-card__n { color: var(--beige); }
+.collab-card:hover p { color: var(--muted-light); }
+@media (max-width: 1100px) {
+  .eli-collab__body { grid-template-columns: 1fr; }
+  .eli-collab__img { min-height: 0; aspect-ratio: 16 / 9; }
+  .collab-cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 760px) {
+  .eli-collab__head { grid-template-columns: 1fr; align-items: start; }
+  .eli-collab__img { aspect-ratio: 4 / 5; }
+  .collab-cards { grid-template-columns: 1fr; }
+  .collab-card { min-height: 0; }
+  .collab-card__name { margin-top: 16px; }
+}

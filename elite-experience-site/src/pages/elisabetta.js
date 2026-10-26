@@ -8,10 +8,10 @@ const crumbs = [{ label: 'Home', to: '' }, { label: 'Elisabetta Tancini', to: 'e
 // Testo fornito da Élite Experience
 const bio = [
   'Imprenditrice, Hair Spa Specialist e formatrice internazionale, Elisabetta Tancini ha costruito il proprio percorso professionale unendo l’esperienza quotidiana in salone alla ricerca e all’evoluzione delle tecniche dedicate al mondo Hair Spa.',
-  'Alla guida di Maison BB, il suo salone ad Arona, vive ogni giorno la professione da una doppia prospettiva: quella di chi lavora a contatto con le persone e quella di chi conosce le esigenze, le responsabilità e le sfide di un’impresa nel settore Hair &amp; Beauty.',
-  'Parallelamente, la sua attività di formatrice la porta a collaborare a livello internazionale con importanti protagonisti dell’industria Hair, condividendo competenze, tecniche e una visione dell’Hair Spa in cui precisione delle manualità, sensibilità e cura del dettaglio diventano elementi distintivi.',
-  'Da questo incontro tra esperienza imprenditoriale, pratica professionale e formazione nasce Élite Experience, il metodo attraverso cui Elisabetta interpreta l’Hair Spa e trasmette il proprio sapere ai professionisti che desiderano introdurre o perfezionare questa disciplina nel proprio salone.',
-  'Per Elisabetta, formare significa andare oltre la dimostrazione di un rituale: significa insegnare a comprenderne ogni gesto, acquisire sicurezza nelle manualità e sviluppare una propria consapevolezza professionale.',
+  'Alla guida di Maison BB, il suo salone ad Arona, <strong>vive ogni giorno la professione da una doppia prospettiva</strong>: quella di chi lavora a contatto con le persone e quella di chi conosce le esigenze, le responsabilità e le sfide di un’impresa nel settore Hair &amp; Beauty.',
+  'Parallelamente, la sua attività di formatrice la porta a collaborare a <strong>livello internazionale</strong> con importanti protagonisti dell’industria Hair, condividendo competenze, tecniche e una visione dell’Hair Spa in cui precisione delle manualità, sensibilità e cura del dettaglio diventano elementi distintivi.',
+  'Da questo incontro tra <strong>esperienza imprenditoriale, pratica professionale e formazione</strong> nasce Élite Experience, il metodo attraverso cui Elisabetta interpreta l’Hair Spa e trasmette il proprio sapere ai professionisti che desiderano introdurre o perfezionare questa disciplina nel proprio salone.',
+  'Per Elisabetta, formare significa <strong>andare oltre</strong> la dimostrazione di un rituale: significa insegnare a comprenderne ogni gesto, acquisire sicurezza nelle manualità e sviluppare una propria <strong>consapevolezza professionale</strong>.',
 ];
 
 export default [{
@@ -32,7 +32,7 @@ ${fullHero(ctx, {
   lead: 'Imprenditrice, Hair Spa Specialist e formatrice internazionale.',
 })}
 
-<section class="sec vision">
+<section class="sec sec--deep vision">
   <div class="wrap">
     ${eyebrow('Vision')}
     ${signedQuote(`${esc('L’Hair Spa è l’arte di dare tempo:')}<br>${esc('al gesto, alla persona, alla cura che li unisce.')}`, { cls: 'signed--xl' })}
@@ -58,26 +58,35 @@ ${fullHero(ctx, {
   <div class="wrap split split--7-5">
     <div>
       ${sectionHead({ eyebrow: 'La formazione', title: 'Una visione da condividere.' })}
-      <p class="lead">Le competenze prendono forma attraverso lo studio, la comprensione e la pratica.</p>
+      <p class="lead">Le competenze prendono forma attraverso lo <strong>studio</strong>, la <strong>comprensione</strong> e la <strong>pratica</strong>.</p>
       <p>Elisabetta mostra ogni gesto, ne approfondisce la tecnica e la sequenza, accompagnando il professionista nell’apprendimento delle manualità e nella loro applicazione all’interno dei rituali Hair Spa.</p>
       <p class="teach__intro">Due modalità formative, pensate per rispondere a esigenze differenti:</p>
       <ul class="linelist linelist--light">
-        <li><b>Online</b><span>Videolezioni dimostrative e teoriche per approfondire tecniche, gesti e sequenze operative, con la libertà di apprendere secondo i propri tempi.</span></li>
-        <li><b>In presenza</b><span>Percorsi formativi ad Arona o direttamente nel salone del professionista, per apprendere le manualità a stretto contatto con Elisabetta, attraverso dimostrazioni, esercitazioni e confronto diretto.</span></li>
+        <li><b>Online</b><span><strong>Videolezioni dimostrative</strong> e teoriche per approfondire tecniche, gesti e sequenze operative, con la libertà di apprendere secondo i propri tempi.</span></li>
+        <li><b>In presenza</b><span><strong>Percorsi formativi</strong> ad Arona o direttamente nel salone del professionista, per apprendere le manualità a stretto contatto con Elisabetta, attraverso dimostrazioni, esercitazioni e confronto diretto.</span></li>
       </ul>
     </div>
     ${videoBlock(ctx, { poster: 'formazioneGruppo', posterPos: '50% 50%', title: 'Elisabetta in formazione', note: 'Inserire un estratto autentico di Elisabetta durante una lezione.', ratio: '4/5' })}
   </div>
 </section>
 
-<section class="sec eli-collab" id="collaborazioni">
-  <div class="wrap split split--5-7">
-    <div>${sectionHead({ eyebrow: 'Collaborazioni', title: 'Elisabetta Tancini per aziende e progetti educational.' })}</div>
-    <div class="prose">
-      <p class="lead">Per brand e aziende Hair &amp; Beauty, distributori, accademie e organizzatori di eventi che cercano una formatrice Hair Spa per progetti professionali.</p>
-      <p>Formazione per reti commerciali e team tecnici, contenuti formativi dedicati, masterclass ed eventi: ogni progetto viene definito insieme al partner.</p>
-      <ul class="collab-list">${editorial.collaborations.types.map((t) => `<li><b>${esc(t.name)}</b><span>${esc(t.text)}</span></li>`).join('')}</ul>
-      ${btn(ctx, { label: 'Proponi una collaborazione', to: 'contatti/#collaborazioni' })}
+<section class="sec sec--beige eli-collab" id="collaborazioni">
+  <div class="wrap">
+    <div class="eli-collab__head">
+      ${sectionHead({ eyebrow: 'Collaborazioni', title: 'Elisabetta Tancini per aziende e progetti <em>educational</em>.' })}
+      <div class="eli-collab__intro">
+        <p class="lead">Per brand e aziende Hair &amp; Beauty, distributori, accademie e organizzatori di eventi che cercano una formatrice Hair Spa per progetti professionali.</p>
+        <p>Formazione per reti commerciali e team tecnici, contenuti formativi dedicati, masterclass ed eventi: ogni progetto viene definito insieme al partner.</p>
+        ${btn(ctx, { label: 'Proponi una collaborazione', to: 'contatti/#collaborazioni' })}
+      </div>
+    </div>
+    <div class="eli-collab__body">
+      <div class="eli-collab__img">${media(ctx, 'dimostrazione', { fill: true, position: '42% 30%' })}</div>
+      <ol class="collab-cards">${editorial.collaborations.types.map((t, i) => `<li class="collab-card">
+        <span class="collab-card__n">${String(i + 1).padStart(2, '0')}</span>
+        <h3 class="collab-card__name">${esc(t.name)}</h3>
+        <p>${esc(t.text)}</p>
+      </li>`).join('')}</ol>
     </div>
   </div>
 </section>
