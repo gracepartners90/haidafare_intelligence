@@ -813,11 +813,12 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
    ========================================================= */
 
 /* ---------- Hero con più foto in dissolvenza (Elisabetta) ---------- */
+/* La foto che esce (is-out) continua il suo movimento mentre sfuma: nessuno scatto a fine foto */
 .hero__slides { position: absolute; inset: 0; }
 .hero__slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.6s cubic-bezier(.4, 0, .2, 1); }
 .hero__slide.is-on { opacity: 1; }
 .hero__bg .hero__slide .ph img { animation: none; }
-.hero__bg .hero__slide.is-on .ph img { animation: hero-drift 9s linear both; }
+.hero__bg .hero__slide.is-on .ph img, .hero__bg .hero__slide.is-out .ph img { animation: hero-drift 9s linear both; }
 .hero__progress { position: absolute; right: var(--g); bottom: clamp(48px, 9vh, 104px); z-index: 4; display: flex; gap: 8px; }
 .hero__progress li { width: 44px; height: 2px; overflow: hidden; background: rgba(245, 240, 235, .25); }
 .hero__progress i { display: block; height: 100%; background: var(--ivory); transform: scaleX(0); transform-origin: left; }
@@ -873,8 +874,9 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .fader { position: relative; overflow: hidden; background: var(--sand); }
 .fader__item { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 1.2s ease; }
 .fader__item.is-on { opacity: 1; }
-.fader__item .ph img { transform: scale(1.07); transition: transform 6s linear; filter: sepia(.1) saturate(1.05) contrast(1.05); }
-.fader__item.is-on .ph img { transform: none; }
+.fader__item .ph img { filter: sepia(.1) saturate(1.05) contrast(1.05); }
+.fader__item.is-on .ph img, .fader__item.is-out .ph img { animation: fader-drift 6s linear both; }
+@keyframes fader-drift { from { transform: scale(1.07); } to { transform: none; } }
 .fader::after { content: ""; position: absolute; inset: 50% 0 0; z-index: 1; background: linear-gradient(rgba(31, 18, 11, 0), rgba(31, 18, 11, .62)); pointer-events: none; }
 .fader__item figcaption { position: absolute; left: clamp(20px, 2.4vw, 32px); bottom: clamp(48px, 5vw, 64px); z-index: 2; color: var(--ivory); font-family: var(--serif); font-size: clamp(1.8rem, 2.8vw, 2.8rem); font-style: italic; font-weight: 300; }
 .fader__dots { position: absolute; left: clamp(20px, 2.4vw, 32px); bottom: clamp(22px, 2.4vw, 30px); z-index: 3; display: flex; gap: 6px; }
@@ -6524,10 +6526,16 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   $$('[data-seq]').forEach((seq) => {
     const frames = $$('.seq__frame', seq), caps = $$('.seq__cap', seq), steps = $$('.seq__bar li', seq), tc = $('[data-seq-tc]', seq);
     const n = frames.length, secs = Number(seq.dataset.seconds) || 5, dur = secs * 1000, total = clock(n * secs);
-    let cur = 0, start = 0, elapsed = 0, playing = false, visible = false, raf = 0;
+    let cur = 0, start = 0, elapsed = 0, playing = false, visible = false, raf = 0, prev = -1, prevStart = 0;
     const zoom = (i) => parseFloat(frames[i].style.getPropertyValue('--zoom')) || 1;
+    // Il movimento di ogni foto dura il capitolo più la dissolvenza (1,4 s, come in CSS):
+    // la foto che esce continua a muoversi mentre sfuma, senza fermarsi di colpo
+    const FADE = 1400;
+    const setZoom = (i, t0, t) => $('img', frames[i]).style.setProperty('--z', (zoom(i) * (1 + 0.06 * (1 - Math.min(1, Math.max(0, t - t0) / (dur + FADE))))).toFixed(4));
     const go = (i) => {
+      if (i !== cur) { prev = cur; prevStart = start; }
       cur = i; start = performance.now(); elapsed = 0;
+      setZoom(i, start, start);
       frames.forEach((f, k) => f.classList.toggle('is-on', k === i));
       caps.forEach((c, k) => c.classList.toggle('is-on', k === i));
       steps.forEach((s, k) => {
@@ -6542,12 +6550,17 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     const tick = (t) => {
       const local = Math.min(1, (t - start) / dur);
       $('i', steps[cur]).style.setProperty('--f', local.toFixed(3));
-      $('img', frames[cur]).style.setProperty('--z', (zoom(cur) * (1 + 0.06 * (1 - local))).toFixed(4));
+      setZoom(cur, start, t);
+      if (prev >= 0 && t - start < FADE) setZoom(prev, prevStart, t);
       if (tc) tc.textContent = `${clock(Math.floor((cur + local) * secs))} / ${total}`;
       if (local >= 1) go((cur + 1) % n);
       if (playing) raf = requestAnimationFrame(tick);
     };
-    const play = () => { if (playing || reduceMotion || !visible || document.hidden) return; playing = true; start = performance.now() - elapsed; raf = requestAnimationFrame(tick); };
+    const play = () => {
+      if (playing || reduceMotion || !visible || document.hidden) return;
+      const shift = performance.now() - elapsed - start;
+      playing = true; start += shift; prevStart += shift; raf = requestAnimationFrame(tick);
+    };
     const pause = () => { if (!playing) return; playing = false; elapsed = performance.now() - start; cancelAnimationFrame(raf); };
     steps.forEach((s, i) => $('button', s).addEventListener('click', () => { go(i); if (playing) { pause(); elapsed = 0; play(); } }));
     if (reduceMotion) seq.classList.add('is-static');
@@ -6571,7 +6584,10 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     let i = 0, timer = 0, visible = false;
     const step = () => {
       const prev = i; i = (i + 1) % items.length;
-      items.forEach((it, k) => it.classList.toggle('is-on', k === i));
+      // La foto che esce continua il movimento mentre sfuma (is-out); quella che entra, ancora
+      // trasparente, riparte dall'inizio del movimento
+      items.forEach((it, k) => { it.classList.toggle('is-on', k === i); it.classList.toggle('is-out', k === prev); });
+      $$('img', items[i]).forEach((im) => { im.style.animation = 'none'; void im.offsetWidth; im.style.animation = ''; });
       marks.forEach((m, k) => { m.classList.toggle('is-on', k === i); m.classList.toggle('is-done', onStep ? k < i : false); });
       if (onStep) onStep(i, prev);
     };

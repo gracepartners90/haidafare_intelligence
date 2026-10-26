@@ -134,10 +134,16 @@
   $$('[data-seq]').forEach((seq) => {
     const frames = $$('.seq__frame', seq), caps = $$('.seq__cap', seq), steps = $$('.seq__bar li', seq), tc = $('[data-seq-tc]', seq);
     const n = frames.length, secs = Number(seq.dataset.seconds) || 5, dur = secs * 1000, total = clock(n * secs);
-    let cur = 0, start = 0, elapsed = 0, playing = false, visible = false, raf = 0;
+    let cur = 0, start = 0, elapsed = 0, playing = false, visible = false, raf = 0, prev = -1, prevStart = 0;
     const zoom = (i) => parseFloat(frames[i].style.getPropertyValue('--zoom')) || 1;
+    // Il movimento di ogni foto dura il capitolo più la dissolvenza (1,4 s, come in CSS):
+    // la foto che esce continua a muoversi mentre sfuma, senza fermarsi di colpo
+    const FADE = 1400;
+    const setZoom = (i, t0, t) => $('img', frames[i]).style.setProperty('--z', (zoom(i) * (1 + 0.06 * (1 - Math.min(1, Math.max(0, t - t0) / (dur + FADE))))).toFixed(4));
     const go = (i) => {
+      if (i !== cur) { prev = cur; prevStart = start; }
       cur = i; start = performance.now(); elapsed = 0;
+      setZoom(i, start, start);
       frames.forEach((f, k) => f.classList.toggle('is-on', k === i));
       caps.forEach((c, k) => c.classList.toggle('is-on', k === i));
       steps.forEach((s, k) => {
@@ -152,12 +158,17 @@
     const tick = (t) => {
       const local = Math.min(1, (t - start) / dur);
       $('i', steps[cur]).style.setProperty('--f', local.toFixed(3));
-      $('img', frames[cur]).style.setProperty('--z', (zoom(cur) * (1 + 0.06 * (1 - local))).toFixed(4));
+      setZoom(cur, start, t);
+      if (prev >= 0 && t - start < FADE) setZoom(prev, prevStart, t);
       if (tc) tc.textContent = `${clock(Math.floor((cur + local) * secs))} / ${total}`;
       if (local >= 1) go((cur + 1) % n);
       if (playing) raf = requestAnimationFrame(tick);
     };
-    const play = () => { if (playing || reduceMotion || !visible || document.hidden) return; playing = true; start = performance.now() - elapsed; raf = requestAnimationFrame(tick); };
+    const play = () => {
+      if (playing || reduceMotion || !visible || document.hidden) return;
+      const shift = performance.now() - elapsed - start;
+      playing = true; start += shift; prevStart += shift; raf = requestAnimationFrame(tick);
+    };
     const pause = () => { if (!playing) return; playing = false; elapsed = performance.now() - start; cancelAnimationFrame(raf); };
     steps.forEach((s, i) => $('button', s).addEventListener('click', () => { go(i); if (playing) { pause(); elapsed = 0; play(); } }));
     if (reduceMotion) seq.classList.add('is-static');
@@ -181,7 +192,10 @@
     let i = 0, timer = 0, visible = false;
     const step = () => {
       const prev = i; i = (i + 1) % items.length;
-      items.forEach((it, k) => it.classList.toggle('is-on', k === i));
+      // La foto che esce continua il movimento mentre sfuma (is-out); quella che entra, ancora
+      // trasparente, riparte dall'inizio del movimento
+      items.forEach((it, k) => { it.classList.toggle('is-on', k === i); it.classList.toggle('is-out', k === prev); });
+      $$('img', items[i]).forEach((im) => { im.style.animation = 'none'; void im.offsetWidth; im.style.animation = ''; });
       marks.forEach((m, k) => { m.classList.toggle('is-on', k === i); m.classList.toggle('is-done', onStep ? k < i : false); });
       if (onStep) onStep(i, prev);
     };
