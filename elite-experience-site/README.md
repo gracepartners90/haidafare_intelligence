@@ -190,7 +190,8 @@ contenuto inserire. Nel file unico di anteprima i video non vengono incorporati.
 
 Il prototipo è completo nella struttura; questi dati servono per andare online.
 
-**Brand e contatti** — email, telefono, indirizzo della sede di Arona, P. IVA, profili social,
+**Brand e contatti** — telefono, indirizzo della sede di Arona, P. IVA, profili social (l'email,
+info@elitexperience.it, è già inserita),
 riferimenti per la privacy policy e la cookie policy.
 
 **Elisabetta Tancini** — eventuali riconoscimenti, altre fotografie ufficiali (anche verticali,
@@ -202,8 +203,8 @@ e un estratto video autentico (le foto di apertura e a tutto schermo sono inseri
 Ritual Collection sono già compilati.
 
 **Formazione in presenza** — durata e condizioni (sede Maison BB ad Arona, max 8
-partecipanti, calendario da concordare e prezzo di 990 € IVA inclusa a persona sono già
-indicati).
+partecipanti e calendario da concordare sono già indicati; per il costo il sito invita a
+richiedere informazioni).
 
 **Élite & More** — gli articoli reali (titolo, data, estratto, immagine, testo) al posto dei
 tre esempi.

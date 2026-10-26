@@ -12,6 +12,7 @@ export const organization = () => ({
   logo: `${site.url}/assets/brand/logo-elite-experience.png`,
   founder: { '@id': `${site.url}/elisabetta-tancini/#person` },
   address: { '@type': 'PostalAddress', addressLocality: site.city, addressCountry: 'IT' },
+  ...(site.contacts.email ? { email: site.contacts.email } : {}),
 });
 
 export const website = () => ({

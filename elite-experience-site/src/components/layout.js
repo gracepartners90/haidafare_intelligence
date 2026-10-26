@@ -75,7 +75,7 @@ export function footer(ctx) {
         </ul></div>
         <div><p class="ftr__h">Contatti</p><ul class="ftr__contacts">
           <li>Sede: ${esc(site.city)}${c.address ? ` — ${esc(c.address)}` : ` ${tbd('indirizzo')}`}</li>
-          <li>Email: ${val(c.email, 'da inserire')}</li>
+          <li>Email: ${c.email ? `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>` : tbd('da inserire')}</li>
           <li>Telefono: ${val(c.phone, 'da inserire')}</li>
           <li><a href="${ctx.href('contatti/')}">Richiedi informazioni</a></li>
         </ul>

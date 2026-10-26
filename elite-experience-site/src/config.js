@@ -12,7 +12,7 @@ export const site = {
   founder: 'Elisabetta Tancini',
   city: 'Arona',
   contacts: {
-    email: null,
+    email: 'info@elitexperience.it',
     phone: null,
     address: null, // indirizzo della sede di Arona
     vat: null,
