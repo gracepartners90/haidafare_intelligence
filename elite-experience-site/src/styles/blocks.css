@@ -238,7 +238,7 @@
 .lead strong, .shead__lead strong, .path p strong { color: var(--ink); }
 .sec--deep strong, .sec--choc strong { color: var(--ivory); }
 
-.switch__lead strong, .origin__text strong, .principles strong, .hands__list strong, .duo strong, .bio__text strong, .eli-collab strong { color: var(--ink); }
+.learn strong, .specs strong, .note strong, .switch__lead strong, .origin__text strong, .principles strong, .hands__list strong, .duo strong, .bio__text strong, .eli-collab strong { color: var(--ink); }
 .shead__title strong { font-weight: 500; }
 
 /* A capo solo su desktop */
@@ -298,3 +298,6 @@
   .partners { grid-template-columns: 1fr; }
   .partner { min-height: 220px; }
 }
+
+/* Schede corso: la frase sotto «Cosa imparerai» su una riga */
+.learn-sec .shead__lead { max-width: 46em; }

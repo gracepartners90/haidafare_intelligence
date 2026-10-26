@@ -17,6 +17,9 @@ export function tbdBlock({ title, lines = [], note, tone = 'light', cls = '' }) 
 }
 
 // Testo di copy in bozza: visibile normalmente, evidenziato quando le note di lavorazione sono attive
+// Testo con **grassetti**: escape dell'HTML, poi ** … ** diventa <strong>
+export const rich = (t) => esc(t).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
 export function draft(t) {
   if (!t) return '';
   if (typeof t === 'string') return `<span class="draft">${esc(t)}</span>`;

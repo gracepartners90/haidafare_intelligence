@@ -1,16 +1,16 @@
 // Modello unico per tutte le schede corso: i contenuti arrivano da src/content/courses.json.
 import { site } from '../config.js';
-import { esc, tbd, draft, eyebrow, sectionHead, btn, arrow, media, breadcrumb, faqList, faqPick } from '../components/core.js';
+import { esc, rich, tbd, draft, eyebrow, sectionHead, btn, arrow, media, breadcrumb, faqList, faqPick } from '../components/core.js';
 import { courseCard, courseImage, courseUrl, levelChip, priceLine, priceText, promoBanner } from '../components/course.js';
 import { course as courseLd, breadcrumbs, faqPage } from '../components/seo.js';
 import { page } from '../components/layout.js';
 import { fullImage } from '../components/blocks.js';
 
 // Testo definitivo, bozza ({ text, verified: false }) o segnaposto se manca
-const val = (v, label) => (v == null ? tbd(label) : typeof v === 'string' ? esc(v) : draft(v));
+const val = (v, label) => (v == null ? tbd(label) : typeof v === 'string' ? rich(v) : draft(v));
 
 // Le sei voci di «Cosa imparerai»
-const competencies = (c) => `<ol class="learn">${(c.competencies || []).map((x, i) => `<li><span class="learn__n">${String(i + 1).padStart(2, '0')}</span><div><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p></div></li>`).join('')}</ol>`;
+const competencies = (c) => `<ol class="learn">${(c.competencies || []).map((x, i) => `<li><span class="learn__n">${String(i + 1).padStart(2, '0')}</span><div><h3>${esc(x.title)}</h3><p>${rich(x.text)}</p></div></li>`).join('')}</ol>`;
 
 function coursePage(c, all, collection) {
   const crumbs = [
@@ -63,7 +63,7 @@ function coursePage(c, all, collection) {
         <div><dt>Prerequisiti</dt><dd>${val(c.prerequisites, 'Eventuali prerequisiti')}</dd></div>
         <div><dt>Per chi fa già Hair Spa</dt><dd>${val(c.forExperienced, 'Utilità del corso per chi ha già competenze')}</dd></div>
       </dl>
-      ${c.id === 'wellness-ritual' ? '<p class="note">Il corso ideale per i primi approcci all’Hair Spa.</p>' : ''}
+      ${c.id === 'wellness-ritual' ? '<p class="note">Il corso ideale per i <strong>primi approcci</strong> all’Hair Spa.</p>' : ''}
     </div>
     <div>
       ${sectionHead({ eyebrow: 'Come funziona', title: 'Informazioni pratiche' })}
@@ -89,7 +89,7 @@ ${c.sectionImage ? fullImage(ctx, c.sectionImage.media, { position: c.sectionIma
       <h2 class="h2serif">${esc(c.name)}</h2>
       ${priceLine(c)}
       ${promoBanner(c)}
-      <p>L’acquisto avviene sulla piattaforma Élite Experience Academy.</p>
+      <p>L’acquisto avviene sulla <strong>piattaforma Élite Experience Academy</strong>.</p>
     </div>
     <div class="enroll__actions">${btn(ctx, { label: 'Acquista ora', to: buyUrl, ext: true, variant: 'light' })}</div>
   </div>
