@@ -165,11 +165,6 @@
 .timeline h3 { font-size: 1.25rem; }
 .timeline p { margin-top: 6px; color: var(--muted); font-size: var(--t-small); }
 .teach .lead { color: var(--muted-light); margin-bottom: 28px; }
-.partners { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); }
-.partner { padding: clamp(24px, 3vw, 40px); border: 1px solid var(--line); background: var(--white); }
-.partner__logo { display: grid; place-items: center; height: 96px; margin-bottom: 22px; background: var(--ivory); }
-.partner h3 { display: flex; align-items: center; gap: 12px; font-size: var(--t-h3); }
-.partner p { margin-top: 10px; }
 
 /* ---------- Academy ---------- */
 .modes { display: grid; grid-template-columns: 1fr 1fr; }
@@ -322,7 +317,7 @@
   .contact__info { position: static; grid-template-columns: 200px 1fr; align-items: start; }
 }
 @media (max-width: 760px) {
-  .principles, .guide, .howto, .learn, .duo, .partners, .cgrid, .jgrid, .related { grid-template-columns: 1fr; }
+  .principles, .guide, .howto, .learn, .duo, .cgrid, .jgrid, .related { grid-template-columns: 1fr; }
   .qa > div, .linelist li, .specs > div, .facts li { grid-template-columns: 1fr; gap: 4px; }
   .ritual-index a, .catlist a { grid-template-columns: 1fr 24px; gap: 6px 12px; }
   .ritual-index__desc, .catlist p { grid-column: 1; grid-row: 2; }

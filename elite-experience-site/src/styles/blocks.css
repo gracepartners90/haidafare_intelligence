@@ -123,13 +123,6 @@
 .teach p:not(.lead):not(.eyebrow):not(.teach__intro) { max-width: 36em; color: var(--muted-light); }
 .teach .teach__intro { max-width: none; margin: 30px 0 14px; color: var(--beige); font-size: var(--t-micro); font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
 .teach .linelist li { grid-template-columns: 120px 1fr; }
-.partners-sec .partners { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.partners-sec .partner { display: grid; justify-items: center; padding: clamp(36px, 4vw, 56px) 24px; text-align: center; }
-.partners-sec .partner__logo { position: relative; width: 100%; height: 110px; margin-bottom: 18px; background: none; }
-.partner__logo img { width: auto; max-width: min(280px, 90%); height: auto; max-height: 72px; }
-.partner__word { color: var(--ink); font-size: clamp(1.8rem, 2.6vw, 2.4rem); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-.partner__flag { top: 0; left: 50%; transform: translateX(-50%); white-space: nowrap; }
-.partners-sec .partner__role { margin: 0; color: var(--choc); font-size: var(--t-micro); font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
 
 /* ---------- Academy: due modalità ---------- */
 .switch { border-top: 1px solid var(--line-strong); }
@@ -233,7 +226,7 @@
   .switch__tabs button { gap: 8px; padding: 18px 0; font-size: 1.15rem; }
   .switch__tabs button + button { padding-left: 14px; }
   .switch__facts div, .teach .linelist li { grid-template-columns: 1fr; gap: 4px; }
-  .partners-sec .partners, .howto--3, .cgrid, .learnp__list { grid-template-columns: 1fr; }
+  .howto--3, .cgrid, .learnp__list { grid-template-columns: 1fr; }
   .cmp { grid-auto-columns: 80%; }
   .hero__progress { display: none; }
   .fullimg { height: 70vh; height: 70svh; min-height: 380px; }
@@ -283,4 +276,25 @@
   .collab-cards { grid-template-columns: 1fr; }
   .collab-card { min-height: 0; }
   .collab-card__name { margin-top: 16px; }
+}
+
+/* Elisabetta — Partnership attive: testo a sinistra, schede scure con i loghi in bianco */
+.partners-sec__grid { display: grid; grid-template-columns: 4fr 8fr; gap: clamp(36px, 4vw, 56px) clamp(40px, 6vw, 110px); align-items: center; }
+.partners-sec__lead { margin-top: 18px; max-width: 26em; color: var(--muted); }
+.partners { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); margin: 0; padding: 0; list-style: none; }
+.partner { display: grid; grid-template-rows: 1fr auto; min-height: clamp(260px, 24vw, 340px); padding: 0; border: 0; background: var(--deep); color: var(--ivory); transition: background-color .6s var(--ease); }
+.partner:hover { background: var(--choc); }
+.partner__logo { position: relative; display: grid; place-items: center; height: auto; margin: 0; padding: clamp(32px, 4vw, 56px); background: none; }
+.partner__logo img { width: auto; max-width: min(260px, 82%); height: auto; max-height: 84px; filter: brightness(0) invert(1); opacity: .94; transition: transform .8s var(--ease); }
+.partner:hover .partner__logo img { transform: scale(1.04); }
+.partner__word { color: var(--ivory); font-size: clamp(1.8rem, 2.6vw, 2.4rem); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.partner__flag { top: 16px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+.partner__meta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 16px; margin: 0 clamp(20px, 2.4vw, 32px); padding: 18px 0 22px; border-top: 1px solid var(--line-light); font-size: var(--t-micro); font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.partner__role { color: var(--ivory); }
+.partner__status { display: inline-flex; align-items: center; gap: 8px; color: var(--beige); font-weight: 500; letter-spacing: .12em; }
+.partner__status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--beige); }
+@media (max-width: 1100px) { .partners-sec__grid { grid-template-columns: 1fr; } }
+@media (max-width: 760px) {
+  .partners { grid-template-columns: 1fr; }
+  .partner { min-height: 220px; }
 }

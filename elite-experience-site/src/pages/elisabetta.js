@@ -93,16 +93,23 @@ ${fullHero(ctx, {
 
 ${fullImage(ctx, 'consulenzaSalone', { position: '30% 35%', positionMobile: '8% 35%' })}
 
-<section class="sec partners-sec">
-  <div class="wrap">
-    ${sectionHead({ eyebrow: 'Collaborazioni', title: 'Partnership attive.' })}
-    <div class="partners">
-      ${editorial.collaborations.documented.map((p) => `<article class="partner">
+<section class="sec sec--ivory partners-sec">
+  <div class="wrap partners-sec__grid">
+    <header class="partners-sec__head">
+      ${eyebrow('Collaborazioni')}
+      <h2 class="shead__title">Partnership attive.</h2>
+      <p class="partners-sec__lead">L’attività di formatrice porta Elisabetta a collaborare a livello internazionale con importanti protagonisti dell’industria Hair.</p>
+    </header>
+    <ul class="partners">
+      ${editorial.collaborations.documented.map((p) => `<li class="partner">
         <div class="partner__logo">${p.logo ? `<img ${ctx.src(p.logo)}${p.logoW ? ` width="${p.logoW}" height="${p.logoH}"` : ''} alt="${esc(p.name)}" loading="lazy">` : `<span class="partner__word">${esc(p.name)}</span><span class="ph__flag partner__flag" aria-hidden="true">Logo ufficiale da inserire</span>`}</div>
-        <h3 class="partner__name sr-only">${esc(p.name)}</h3>
-        <p class="partner__role">${esc(p.role)}</p>
-      </article>`).join('')}
-    </div>
+        <div class="partner__meta">
+          <h3 class="partner__name sr-only">${esc(p.name)}</h3>
+          <span class="partner__role">${esc(p.role)}</span>
+          ${p.status === 'attiva' ? '<span class="partner__status">Partnership attiva</span>' : ''}
+        </div>
+      </li>`).join('')}
+    </ul>
   </div>
 </section>
 
