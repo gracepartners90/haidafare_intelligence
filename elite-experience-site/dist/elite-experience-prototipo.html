@@ -1117,6 +1117,12 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .video--loop.is-playing .video__loop { opacity: 1; }
 .video .video__toggle { right: 16px; bottom: 16px; z-index: 2; padding: 0; width: 42px; height: 42px; justify-content: center; }
 
+/* Mobile: pulsante di pausa del video ridotto alla sola icona */
+@media (max-width: 760px) {
+  .fullvideo__toggle { width: 40px; height: 40px; padding: 0; justify-content: center; }
+  .fullvideo__toggle [data-loop-label] { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+
 /* =========================================================
    Élite & More — il numero da sfogliare (modello Rockstar Notes)
    Pila di pagine su mobile e senza JS; sfoglio orizzontale su desktop.
@@ -1643,7 +1649,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   </video>
   <div class="fullvideo__in">
     <p class="eyebrow">Il Metodo Élite in video</p>
-    <h2 class="fullvideo__title">Il gesto, <em>in movimento</em>.</h2>
+    <h2 class="fullvideo__title">Il gesto,<br><em>in movimento</em>.</h2>
   </div>
   <button class="fullvideo__toggle" type="button" data-loop-toggle aria-pressed="false"><span class="fullvideo__toggle-icon" aria-hidden="true"></span><span data-loop-label>Metti in pausa il video</span></button>
 </section>

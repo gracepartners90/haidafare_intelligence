@@ -121,7 +121,7 @@ ${practiceSequence(ctx)}
 <!-- 07 VIDEO A TUTTO SCHERMO -->
 ${fullVideo(ctx, {
   poster: 'teaserFrame', position: '50% 50%', eyebrow: 'Il Metodo Élite in video',
-  title: 'Il gesto, <em>in movimento</em>.',
+  title: 'Il gesto,<br><em>in movimento</em>.',
   loop: { webm: 'video/elite-teaser-home.webm', mp4: 'video/elite-teaser-home.mp4' },
 })}
 
