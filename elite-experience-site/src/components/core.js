@@ -76,8 +76,19 @@ export function visual(ctx, { key, subject, ratio, tone, cls, caption, eager, po
 }
 
 // Video: se manca il file, mostra uno spazio dichiarato (nessun video generico al suo posto)
-export function videoBlock(ctx, { poster, posterPos, posterSubject, title, note, src, ratio = '16/9', tone = 'dark', cls = '' }) {
+// Con loop: { webm, mp4 } il video (muto) scorre da solo quando è visibile, con il pulsante di pausa
+export function videoBlock(ctx, { poster, posterPos, posterSubject, title, note, src, loop, ratio = '16/9', tone = 'dark', cls = '' }) {
   const bg = poster ? media(ctx, poster, { fill: true, position: posterPos }) : slot({ subject: posterSubject || 'Frame del video', tone, fill: true, label: 'Video da inserire' });
+  if (loop) {
+    return `<div class="video video--loop ${cls}" style="aspect-ratio:${ratio}${posterPos ? `;--pos:${posterPos}` : ''}" data-loop-video>
+    ${bg}
+    <video class="video__loop" muted loop playsinline preload="none" aria-label="${esc(title || 'Video')}">
+      ${loop.webm ? `<source src="${ctx.asset(loop.webm)}" type="video/webm">` : ''}
+      ${loop.mp4 ? `<source src="${ctx.asset(loop.mp4)}" type="video/mp4">` : ''}
+    </video>
+    <button class="fullvideo__toggle video__toggle" type="button" data-loop-toggle aria-pressed="false"><span class="fullvideo__toggle-icon" aria-hidden="true"></span><span class="sr-only" data-loop-label>Metti in pausa il video</span></button>
+  </div>`;
+  }
   return `<div class="video ${cls}" style="aspect-ratio:${ratio}">
     ${bg}
     <button class="video__play" type="button" data-video-open data-video-title="${esc(title || 'Video')}" data-video-note="${esc(note || '')}"${src ? ` data-video-src="${ctx.asset(src)}"` : ''}>

@@ -180,7 +180,9 @@ I video si mettono in `src/assets/video/` e si collegano con il campo `src` (cor
 `video` (sequenza). La sezione «Il gesto, in movimento» della home usa `fullVideo()` con
 `loop: { webm, mp4 }`: il teaser (`video/elite-teaser-home.*`, 8 secondi, senza audio) scorre
 muto in sottofondo quando la sezione è visibile, con il pulsante per metterlo in pausa; con la
-riduzione del movimento attiva parte solo se lo si avvia. Il server dell'anteprima risponde
+riduzione del movimento attiva parte solo se lo si avvia. Allo stesso modo `videoBlock()` con
+`loop` mostra in un riquadro il video della formazione nella pagina di Elisabetta
+(`video/elisabetta-formazione.*`, 15 secondi, verticale, senza audio). Il server dell'anteprima risponde
 alle richieste parziali, necessarie a Safari per i video. Il riquadro video li riproduce in una finestra; senza file mostra quale
 contenuto inserire. Nel file unico di anteprima i video non vengono incorporati.
 

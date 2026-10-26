@@ -66,7 +66,7 @@ ${fullHero(ctx, {
         <li><b>In presenza</b><span><strong>Percorsi formativi</strong> ad Arona o direttamente nel salone del professionista, per apprendere le manualità a stretto contatto con Elisabetta, attraverso dimostrazioni, esercitazioni e confronto diretto.</span></li>
       </ul>
     </div>
-    ${videoBlock(ctx, { poster: 'formazioneGruppo', posterPos: '50% 50%', title: 'Elisabetta in formazione', note: 'Inserire un estratto autentico di Elisabetta durante una lezione.', ratio: '4/5' })}
+    ${videoBlock(ctx, { poster: 'formazioneVideo', posterPos: '50% 45%', title: 'Elisabetta Tancini in formazione', loop: { webm: 'video/elisabetta-formazione.webm', mp4: 'video/elisabetta-formazione.mp4' }, ratio: '4/5' })}
   </div>
 </section>
 
