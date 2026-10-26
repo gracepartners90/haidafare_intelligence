@@ -771,8 +771,8 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .seq__stage { --side: max(var(--g), calc((100% - var(--maxw)) / 2)); position: relative; height: calc(100vh - var(--hdr)); height: calc(100svh - var(--hdr)); min-height: 600px; max-height: 960px; overflow: hidden; }
 .seq__frame { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 1.4s cubic-bezier(.4, 0, .2, 1); }
 .seq__frame.is-on { opacity: 1; }
-.seq__frame img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos); transform: scale(var(--z, var(--zoom))); transform-origin: var(--pos); will-change: transform; }
-/* Foto al naturale (senza viraggio né grana): resta solo l'ombreggiatura in alto e in basso per leggere i testi */
+.seq__frame img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos); transform: scale(var(--z, var(--zoom))); transform-origin: var(--pos); will-change: transform; filter: sepia(.12) saturate(.94) contrast(1.04) brightness(.9); }
+/* Filtro leggero, caldo, senza grana; l'ombreggiatura in alto e in basso tiene leggibili i testi */
 .seq__shade { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(110% 90% at 60% 45%, rgba(31, 18, 11, 0) 0%, rgba(31, 18, 11, .45) 72%, rgba(31, 18, 11, .8) 100%), linear-gradient(180deg, rgba(31, 18, 11, .55) 0%, rgba(31, 18, 11, .1) 34%, rgba(31, 18, 11, .2) 58%, rgba(31, 18, 11, .78) 100%); }
 .seq__intro { position: absolute; left: var(--side); top: clamp(48px, 9vh, 104px); z-index: 3; max-width: 640px; transition: opacity .9s, transform .9s var(--ease); }
 .seq__title { font-family: var(--serif); font-size: var(--t-h1); font-weight: 340; line-height: 1; letter-spacing: -.02em; }
@@ -783,12 +783,6 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .seq__cap.is-on { opacity: 1; filter: none; transform: none; transition-delay: .35s; }
 .seq__word { font-family: var(--sans); font-size: clamp(2.75rem, 7.4vw, 8.75rem); font-weight: 300; line-height: .9; letter-spacing: -.04em; text-transform: uppercase; }
 .seq__line { margin-top: 16px; max-width: 30em; color: var(--beige); font-size: clamp(1rem, 1.2vw, 1.1875rem); }
-.seq__watch { position: absolute; right: var(--side); bottom: clamp(108px, 15vh, 168px); z-index: 4; display: flex; align-items: center; gap: 18px; padding: 0; background: none; border: 0; color: var(--ivory); text-align: left; opacity: 0; transform: translateY(16px); pointer-events: none; transition: opacity .9s, transform .9s var(--ease); }
-.seq.at-end .seq__watch, .seq__watch:focus-visible { opacity: 1; transform: none; pointer-events: auto; }
-.seq__watch .video__icon { width: clamp(60px, 6vw, 96px); }
-.seq__watch:hover .video__icon { background: var(--ivory); color: var(--ink); }
-.seq__watch b { display: block; font-size: clamp(1.0625rem, 1.4vw, 1.4rem); font-weight: 450; }
-.seq__watch small { display: block; margin-top: 4px; color: var(--beige); font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; }
 .seq__bar { position: absolute; left: var(--side); right: var(--side); bottom: clamp(32px, 6vh, 60px); z-index: 3; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; }
 .seq__bar ol { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .seq__bar button { width: 100%; padding: 8px 0 0; background: none; border: 0; color: rgba(245, 240, 235, .6); font-size: .6875rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; text-align: left; transition: color .5s; }
@@ -802,7 +796,6 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
   .seq__chapter { bottom: 132px; }
   .seq__word { font-size: clamp(2.5rem, 12vw, 3.6rem); }
   .seq__line { font-size: .9375rem; }
-  .seq__watch { left: var(--side); right: auto; bottom: auto; top: 40%; }
   .seq__bar { grid-template-columns: 1fr; }
   .seq__bar ol { gap: 8px; }
   .seq__bar button { font-size: .5625rem; letter-spacing: .08em; }
@@ -1570,10 +1563,6 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     <div class="seq__chapter" aria-live="polite">
       <div class="seq__cap is-on"><p class="seq__word">Tecnica</p><p class="seq__line">La mano lavora sul cuoio capelluto con precisione e misura.</p></div><div class="seq__cap"><p class="seq__word">Manualità</p><p class="seq__line">Il gesto si costruisce: ritmo, direzione, continuità.</p></div><div class="seq__cap"><p class="seq__word">Protocollo</p><p class="seq__line">Ogni materiale al suo posto, ogni passaggio in sequenza.</p></div><div class="seq__cap"><p class="seq__word">Applicazione</p><p class="seq__line">Il rituale completo, nel tempo reale del salone.</p></div>
     </div>
-    <button class="seq__watch" type="button" data-video-open data-video-title="Il metodo, in pratica — selezione completa" data-video-note="Inserire il video della selezione dai videocorsi Élite Experience.">
-      <span class="video__icon" aria-hidden="true"></span>
-      <span><b>Guarda la selezione completa</b><small>Dai videocorsi Élite Experience</small></span>
-    </button>
     <div class="seq__bar">
       <ol><li class="is-on"><button type="button" data-seq-go="0">Tecnica</button><i aria-hidden="true"></i></li><li><button type="button" data-seq-go="1">Manualità</button><i aria-hidden="true"></i></li><li><button type="button" data-seq-go="2">Protocollo</button><i aria-hidden="true"></i></li><li><button type="button" data-seq-go="3">Applicazione</button><i aria-hidden="true"></i></li></ol>
       <span class="seq__tc" data-seq-tc aria-hidden="true">00:00:00 / 00:00:20</span>
@@ -1852,10 +1841,6 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     <div class="seq__chapter" aria-live="polite">
       <div class="seq__cap is-on"><p class="seq__word">Tecnica</p><p class="seq__line">La mano lavora sul cuoio capelluto con precisione e misura.</p></div><div class="seq__cap"><p class="seq__word">Manualità</p><p class="seq__line">Il gesto si costruisce: ritmo, direzione, continuità.</p></div><div class="seq__cap"><p class="seq__word">Protocollo</p><p class="seq__line">Ogni materiale al suo posto, ogni passaggio in sequenza.</p></div><div class="seq__cap"><p class="seq__word">Applicazione</p><p class="seq__line">Il rituale completo, nel tempo reale del salone.</p></div>
     </div>
-    <button class="seq__watch" type="button" data-video-open data-video-title="Il metodo, in pratica — selezione completa" data-video-note="Inserire il video della selezione dai videocorsi Élite Experience.">
-      <span class="video__icon" aria-hidden="true"></span>
-      <span><b>Guarda la selezione completa</b><small>Dai videocorsi Élite Experience</small></span>
-    </button>
     <div class="seq__bar">
       <ol><li class="is-on"><button type="button" data-seq-go="0">Tecnica</button><i aria-hidden="true"></i></li><li><button type="button" data-seq-go="1">Manualità</button><i aria-hidden="true"></i></li><li><button type="button" data-seq-go="2">Protocollo</button><i aria-hidden="true"></i></li><li><button type="button" data-seq-go="3">Applicazione</button><i aria-hidden="true"></i></li></ol>
       <span class="seq__tc" data-seq-tc aria-hidden="true">00:00:00 / 00:00:20</span>
@@ -6632,7 +6617,6 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
         if (k === i) $('button', s).setAttribute('aria-current', 'step'); else $('button', s).removeAttribute('aria-current');
       });
       if (i > 0) seq.classList.add('past-intro');
-      if (i === n - 1) seq.classList.add('at-end');
       if (tc) tc.textContent = `${clock(i * secs)} / ${total}`;
     };
     const tick = (t) => {

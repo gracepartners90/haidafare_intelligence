@@ -159,9 +159,9 @@ Quattro capitoli (Tecnica, Manualità, Protocollo, Applicazione) che scorrono co
 quando la sezione è visibile, con barra dei capitoli cliccabile e timecode. Ogni capitolo
 indica l'immagine (`media`), l'inquadratura (`pos`) e l'ingrandimento (`zoom`). Quando
 saranno disponibili i frame dei videocorsi, basta registrarli in `media.json` e
-richiamarli qui; con `"video": "video/selezione.mp4"` il pulsante "Guarda la selezione
-completa" riproduce il filmato. Con la riduzione del movimento attiva nel sistema la
-sequenza resta ferma e si sfoglia con i capitoli.
+richiamarli qui. Le foto hanno un filtro leggero e caldo, senza grana; non c'è un video
+della selezione. Con la riduzione del movimento attiva nel sistema la sequenza resta
+ferma e si sfoglia con i capitoli.
 
 ### Élite & More (`editorial.json` → `journal`)
 
@@ -234,7 +234,7 @@ pubblicazione dei nuovi articoli (il sito è statico: oggi un articolo si aggiun
 Le testimonianze sono state tolte dal sito: si possono reintrodurre quando saranno
 disponibili testimonianze reali con autorizzazione alla pubblicazione.
 
-**Video** — estratti dei videocorsi, selezione completa per "Il metodo, in pratica", frame per le anteprime.
+**Video** — estratti dei videocorsi e frame per le anteprime.
 
 ---
 

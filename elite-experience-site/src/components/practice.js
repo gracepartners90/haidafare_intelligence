@@ -21,10 +21,6 @@ export function practiceSequence(ctx, { id = 'in-pratica', compact = false } = {
     <div class="seq__chapter" aria-live="polite">
       ${d.chapters.map((c, i) => `<div class="seq__cap${i === 0 ? ' is-on' : ''}"><p class="seq__word">${esc(c.word)}</p><p class="seq__line">${draft(c.line)}</p></div>`).join('')}
     </div>
-    <button class="seq__watch" type="button" data-video-open data-video-title="Il metodo, in pratica — selezione completa" ${d.video ? `data-video-src="${ctx.asset(d.video)}"` : 'data-video-note="Inserire il video della selezione dai videocorsi Élite Experience."'}>
-      <span class="video__icon" aria-hidden="true"></span>
-      <span><b>Guarda la selezione completa</b><small>Dai videocorsi Élite Experience</small></span>
-    </button>
     <div class="seq__bar">
       <ol>${d.chapters.map((c, i) => `<li${i === 0 ? ' class="is-on"' : ''}><button type="button" data-seq-go="${i}">${esc(c.word)}</button><i aria-hidden="true"></i></li>`).join('')}</ol>
       <span class="seq__tc" data-seq-tc aria-hidden="true">00:00:00 / 00:00:${String(total).padStart(2, '0')}</span>

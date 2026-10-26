@@ -1,9 +1,8 @@
 {
-  "_info": "Sequenza 'Il metodo, in pratica'. Ogni capitolo usa un'immagine del registro media con inquadratura (pos, posMobile facoltativa per gli schermi piccoli) e ingrandimento (zoom). Quando saranno disponibili i frame dei videocorsi, sostituire 'media' con le nuove immagini. 'video': percorso del video completo della selezione (null = spazio da riempire).",
+  "_info": "Sequenza 'Il metodo, in pratica'. Ogni capitolo usa un'immagine del registro media con inquadratura (pos, posMobile facoltativa per gli schermi piccoli) e ingrandimento (zoom). Quando saranno disponibili i frame dei videocorsi, sostituire 'media' con le nuove immagini.",
   "title": "Il metodo, in pratica.",
   "line": "Il gesto, i materiali, il rituale: il Metodo Élite visto da vicino.",
   "secondsPerChapter": 5,
-  "video": null,
   "chapters": [
     { "word": "Tecnica", "line": { "text": "La mano lavora sul cuoio capelluto con precisione e misura.", "verified": true }, "media": "tecnicaArco", "pos": "50% 50%", "posMobile": "48% 50%", "zoom": 1.02 },
     { "word": "Manualità", "line": { "text": "Il gesto si costruisce: ritmo, direzione, continuità.", "verified": true }, "media": "manualitaMassaggio", "pos": "50% 45%", "posMobile": "55% 45%", "zoom": 1.02 },

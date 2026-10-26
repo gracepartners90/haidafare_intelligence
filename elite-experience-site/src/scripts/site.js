@@ -172,7 +172,6 @@
         if (k === i) $('button', s).setAttribute('aria-current', 'step'); else $('button', s).removeAttribute('aria-current');
       });
       if (i > 0) seq.classList.add('past-intro');
-      if (i === n - 1) seq.classList.add('at-end');
       if (tc) tc.textContent = `${clock(i * secs)} / ${total}`;
     };
     const tick = (t) => {
