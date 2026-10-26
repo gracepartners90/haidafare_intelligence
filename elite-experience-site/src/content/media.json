@@ -123,17 +123,17 @@
     "file": "media/relax-spazzola-lettino.jpg", "w": 2000, "h": 1250, "official": true,
     "alt": "Spazzolatura del cuoio capelluto con una spazzola in legno, sulla cliente distesa al lavatesta sotto un telo."
   },
-  "tecnicaLavatesta": {
-    "file": "media/tecnica-lavatesta-mani.jpg", "w": 1920, "h": 1080, "official": true,
-    "alt": "La mano dell'operatrice lavora tra i capelli bagnati della cliente, distesa al lavatesta a occhi chiusi."
+  "manualitaMassaggio": {
+    "file": "media/manualita-massaggio-cuoio-capelluto.jpg", "w": 1672, "h": 941, "official": true,
+    "alt": "Le mani dell'operatrice massaggiano il cuoio capelluto della cliente, distesa a occhi chiusi con un asciugamano arrotolato sotto la nuca."
   },
-  "manualitaArco": {
-    "file": "media/manualita-arco-pettine.jpg", "w": 2000, "h": 1125, "official": true,
-    "alt": "Sotto l'arco dorato che fa scendere fili d'acqua, l'operatrice pettina i capelli della cliente con un pettine in legno."
+  "tecnicaArco": {
+    "file": "media/tecnica-arco-dorato-acqua.jpg", "w": 1672, "h": 941, "official": true,
+    "alt": "Sotto l'arco dorato che fa scendere fili d'acqua sui capelli, la cliente è distesa al lavatesta a occhi chiusi."
   },
-  "pressioneTesta": {
-    "file": "media/metodo-pressione-testa.jpg", "w": 2000, "h": 1125, "official": true,
-    "alt": "Le mani dell'operatrice accolgono la testa della cliente, distesa a occhi chiusi, in una luce calda e soffusa."
+  "pressioneLavatesta": {
+    "file": "media/metodo-pressione-mani-lavatesta.jpg", "w": 1333, "h": 2000, "official": true,
+    "alt": "Le mani dell'operatrice accolgono la testa della cliente al lavatesta, con i capelli bagnati e gli occhi chiusi."
   },
   "arcoDoratoMani": {
     "file": "media/academy-arco-dorato-mani.jpg", "w": 2000, "h": 1125, "official": true,
@@ -148,8 +148,8 @@
     "alt": "Le mani dell'operatrice guidano l'arco dorato che fa scendere fili d'acqua sui capelli della cliente, distesa al lavatesta con una benda sugli occhi."
   },
   "presenzaHero": {
-    "file": "media/presenza-hero-formazione-salone.jpg", "w": 1672, "h": 941, "official": true,
-    "alt": "Elisabetta Tancini spiega un rituale nella sala Hair Spa di Maison BB, davanti a un gruppo di professionisti e a una cliente seduta."
+    "file": "media/presenza-hero-dimostrazione.jpg", "w": 1662, "h": 946, "official": true,
+    "alt": "Dimostrazione di un rituale Hair Spa davanti a un pubblico di professionisti: una formatrice lavora sulla cliente seduta mentre un'altra presenta accanto allo schermo."
   },
   "acquaMani": {
     "file": "media/hair-spa-acqua-mani.jpg", "w": 2000, "h": 1143, "official": true,

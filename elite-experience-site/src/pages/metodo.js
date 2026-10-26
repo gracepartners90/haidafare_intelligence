@@ -60,7 +60,7 @@ ${fullHero(ctx, {
       </ol>
     </div>
     ${fader(ctx, [
-      { image: 'pressioneTesta', position: '42% 50%' },
+      { image: 'pressioneLavatesta', position: '50% 38%' },
       { image: 'ritmoArco', position: '58% 50%' },
       { image: 'continuitaPennello', position: '48% 45%' },
       { image: 'strumentiPinda', position: '46% 55%' },

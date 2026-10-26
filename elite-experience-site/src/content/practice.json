@@ -5,8 +5,8 @@
   "secondsPerChapter": 5,
   "video": null,
   "chapters": [
-    { "word": "Tecnica", "line": { "text": "La mano lavora sul cuoio capelluto con precisione e misura.", "verified": true }, "media": "manualitaArco", "pos": "50% 50%", "posMobile": "48% 50%", "zoom": 1.02 },
-    { "word": "Manualità", "line": { "text": "Il gesto si costruisce: ritmo, direzione, continuità.", "verified": true }, "media": "tecnicaLavatesta", "pos": "50% 45%", "posMobile": "55% 45%", "zoom": 1.02 },
+    { "word": "Tecnica", "line": { "text": "La mano lavora sul cuoio capelluto con precisione e misura.", "verified": true }, "media": "tecnicaArco", "pos": "50% 50%", "posMobile": "48% 50%", "zoom": 1.02 },
+    { "word": "Manualità", "line": { "text": "Il gesto si costruisce: ritmo, direzione, continuità.", "verified": true }, "media": "manualitaMassaggio", "pos": "50% 45%", "posMobile": "55% 45%", "zoom": 1.02 },
     { "word": "Protocollo", "line": { "text": "Ogni materiale al suo posto, ogni passaggio in sequenza.", "verified": true }, "media": "ciotolaLegno", "pos": "55% 50%", "posMobile": "74% 50%", "zoom": 1.02 },
     { "word": "Applicazione", "line": { "text": "Il rituale completo, nel tempo reale del salone.", "verified": true }, "media": "olioFronte", "pos": "50% 50%", "posMobile": "50% 50%", "zoom": 1.02 }
   ]
