@@ -190,8 +190,8 @@ contenuto inserire. Nel file unico di anteprima i video non vengono incorporati.
 
 Il prototipo è completo nella struttura; questi dati servono per andare online.
 
-**Brand e contatti** — telefono, indirizzo della sede di Arona, P. IVA, profili social (l'email,
-info@elitexperience.it, è già inserita),
+**Brand e contatti** — indirizzo della sede di Arona (per la pagina Contatti), P. IVA (email,
+telefono e profilo Instagram sono già inseriti),
 riferimenti per la privacy policy e la cookie policy.
 
 **Elisabetta Tancini** — eventuali riconoscimenti, altre fotografie ufficiali (anche verticali,

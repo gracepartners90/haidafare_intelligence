@@ -40,7 +40,6 @@ function coursePage(c, all, collection) {
   </div>
   <div class="chero__media">
     ${c.heroImage ? media(ctx, c.heroImage, { fill: true, eager: true, position: c.heroPos || '50% 50%' }) : courseImage(ctx, c, { fill: true })}
-    <button class="chero__play" type="button" data-video-open data-video-title="Anteprima — ${esc(c.name)}" data-video-note="Inserire un estratto autentico del corso (non un video generico di trattamento)."${c.video && c.video.src ? ` data-video-src="${ctx.asset(c.video.src)}"` : ''}><span class="video__icon" aria-hidden="true"></span>Anteprima del corso</button>
   </div>
 </section>
 

@@ -13,6 +13,8 @@ export const organization = () => ({
   founder: { '@id': `${site.url}/elisabetta-tancini/#person` },
   address: { '@type': 'PostalAddress', addressLocality: site.city, addressCountry: 'IT' },
   ...(site.contacts.email ? { email: site.contacts.email } : {}),
+  ...(site.contacts.phone ? { telephone: site.contacts.phone } : {}),
+  sameAs: Object.values(site.social).filter(Boolean),
 });
 
 export const website = () => ({

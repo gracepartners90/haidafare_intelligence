@@ -49,7 +49,6 @@ export function header(ctx) {
 
 export function footer(ctx) {
   const c = site.contacts;
-  const val = (v, label) => (v ? esc(v) : tbd(label));
   const social = Object.entries(site.social).map(([k, v]) => `<li>${v ? `<a ${external(v)}>${esc(k[0].toUpperCase() + k.slice(1))}</a>` : `${esc(k[0].toUpperCase() + k.slice(1))} ${tbd('link')}`}</li>`).join('');
   return `<footer class="ftr">
   <div class="wrap">
@@ -74,9 +73,8 @@ export function footer(ctx) {
           <li><a ${external(site.academyUrl)}>Piattaforma Academy ↗</a></li>
         </ul></div>
         <div><p class="ftr__h">Contatti</p><ul class="ftr__contacts">
-          <li>Sede: ${esc(site.city)}${c.address ? ` — ${esc(c.address)}` : ` ${tbd('indirizzo')}`}</li>
           <li>Email: ${c.email ? `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>` : tbd('da inserire')}</li>
-          <li>Telefono: ${val(c.phone, 'da inserire')}</li>
+          <li>Telefono: ${c.phone ? `<a href="tel:${c.phone.replace(/\s/g, '')}">${esc(c.phone)}</a>` : tbd('da inserire')}</li>
           <li><a href="${ctx.href('contatti/')}">Richiedi informazioni</a></li>
         </ul>
         <ul class="ftr__social">${social}</ul></div>

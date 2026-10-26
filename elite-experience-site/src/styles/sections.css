@@ -195,9 +195,6 @@
 .chero__facts dd { margin-top: 4px; font-size: var(--t-small); }
 .chero__pdf { margin-top: 18px; font-size: .875rem; }
 .chero__media { position: relative; min-height: 420px; }
-.chero__play { position: absolute; left: 20px; bottom: 20px; z-index: 2; display: inline-flex; align-items: center; gap: 14px; padding: 0; border: 0; background: none; color: var(--white); font-weight: 500; text-shadow: 0 1px 10px rgba(0, 0, 0, .4); }
-.chero__play .video__icon { width: 56px; }
-.chero__play:hover .video__icon { background: var(--ivory); color: var(--ink); }
 .learn-sec .shead__title { font-size: clamp(2.6rem, 4.6vw, 4.6rem); }
 .learn { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 var(--gap); border-top: 1px solid var(--line-strong); }
 .learn li { display: grid; grid-template-columns: 48px 1fr; gap: 12px; padding: 28px 0 32px; border-bottom: 1px solid var(--line); }
