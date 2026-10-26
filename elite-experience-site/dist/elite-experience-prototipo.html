@@ -697,6 +697,8 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
   .tech__c { grid-column: 1 / span 4; } .tech__text { grid-column: 5 / span 8; } .tech__d { grid-column: 1 / -1; grid-row: 3; }
 }
 @media (max-width: 1024px) {
+  /* Hero: titolo e testo su tutta la larghezza disponibile (prima metà schermo) */
+  .hero__text { max-width: min(680px, 100%); }
   .phero--split, .eli-hero, .chero { grid-template-columns: 1fr; min-height: 0; }
   .phero__media, .chero__media { min-height: 0; aspect-ratio: 4 / 3; order: -1; }
   .eli-hero__media { min-height: 0; aspect-ratio: 4 / 5; max-height: 80vh; }
@@ -1666,7 +1668,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     <div class="hero__text">
       <p class="eyebrow">Élite Experience</p>
       <h1 class="hero__title">Il Metodo <em>Élite</em></h1>
-      <p class="hero__lead">Un metodo professionale Hair Spa ideato da Elisabetta Tancini,<br>che si esprime attraverso rituali, tecniche e manualità.</p>
+      <p class="hero__lead">Un metodo professionale Hair Spa ideato da Elisabetta Tancini,<br class="br-d"> che si esprime attraverso rituali, tecniche e manualità.</p>
       
     </div>
     
@@ -2009,7 +2011,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   <div class="hero__in">
     <div class="hero__text">
       <p class="eyebrow">Élite Experience Academy</p>
-      <h1 class="hero__title">La formazione Hair Spa<br>del Metodo <em>Élite</em>.</h1>
+      <h1 class="hero__title">La formazione Hair&nbsp;Spa<br>del Metodo <em>Élite</em>.</h1>
       <p class="hero__lead">Percorsi online e in presenza per apprendere rituali, tecniche e manualità Hair Spa, pensati per professionisti e saloni.</p>
       
     </div>

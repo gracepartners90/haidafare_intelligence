@@ -43,7 +43,7 @@ const academyPage = {
 ${fullHero(ctx, {
   image: 'academySpazzola', position: '50% 45%', positionMobile: '52% 45%', cls: 'hero--line',
   eyebrow: 'Élite Experience Academy',
-  title: 'La formazione Hair Spa<br>del Metodo <em>Élite</em>.',
+  title: 'La formazione Hair&nbsp;Spa<br>del Metodo <em>Élite</em>.',
   lead: 'Percorsi online e in presenza per apprendere rituali, tecniche e manualità Hair Spa, pensati per professionisti e saloni.',
 })}
 

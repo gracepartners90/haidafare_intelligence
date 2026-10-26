@@ -23,7 +23,7 @@ ${fullHero(ctx, {
   image: 'metodoHero', position: '55% 45%', positionMobile: '55% 45%',
   eyebrow: 'Élite Experience',
   title: 'Il Metodo <em>Élite</em>',
-  lead: 'Un metodo professionale Hair Spa ideato da Elisabetta Tancini,<br>che si esprime attraverso rituali, tecniche e manualità.',
+  lead: 'Un metodo professionale Hair Spa ideato da Elisabetta Tancini,<br class="br-d"> che si esprime attraverso rituali, tecniche e manualità.',
 })}
 
 <section class="sec origin">
