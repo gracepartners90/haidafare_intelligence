@@ -1016,13 +1016,16 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1180px) {
-  .cmp { grid-auto-flow: column; grid-auto-columns: minmax(250px, 40%); grid-template-columns: none; margin-right: calc(var(--g) * -1); padding: 0 var(--g) 8px 0; overflow-x: auto; scroll-snap-type: x mandatory; }
-  .cmp__card { scroll-snap-align: start; }
+  /* Confronto dei rituali: griglia (3 + 2 schede centrate) al posto dello slider orizzontale */
+  .cmp { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .cmp__card { grid-column: span 2; }
+  .cmp__card:nth-child(4) { grid-column: 2 / span 2; }
   .learnp__list { grid-template-columns: repeat(3, 1fr); }
   .learnp__list li:nth-child(4) { padding-left: 0; border-left: 0; }
 }
 @media (max-width: 1024px) {
-  .hands__grid, .bio__grid, .switch__panel, .learnp__head { grid-template-columns: 1fr; }
+  .hands__grid, .switch__panel, .learnp__head { grid-template-columns: 1fr; }
+  .bio__grid { grid-template-columns: 2fr 3fr; gap: 36px; }
   .home-eli__grid { grid-template-columns: 1fr; }
   .bio__head { position: static; }
   .hands__fader { max-width: 560px; }
@@ -1037,7 +1040,9 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
   .switch__tabs button + button { padding-left: 14px; }
   .switch__facts div, .teach .linelist li { grid-template-columns: 1fr; gap: 4px; }
   .howto--3, .cgrid, .learnp__list { grid-template-columns: 1fr; }
-  .cmp { grid-auto-columns: 80%; }
+  .cmp { grid-template-columns: 1fr; }
+  .cmp__card, .cmp__card:nth-child(4) { grid-column: auto; }
+  .bio__grid { grid-template-columns: 1fr; }
   .hero__progress { display: none; }
   .fullimg { height: 70vh; height: 70svh; min-height: 380px; }
   .fullimg--band { height: 56vh; height: 56svh; min-height: 320px; }
@@ -1052,7 +1057,16 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .shead__title strong { font-weight: 500; }
 
 /* A capo solo su desktop */
-@media (max-width: 760px) { .br-d { display: none; } }
+@media (min-width: 761px) and (max-width: 899px) {
+  .cmp { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .cmp__card, .cmp__card:nth-child(4) { grid-column: span 2; }
+  .cmp__card:nth-child(5) { grid-column: 2 / span 2; }
+}
+/* A capo a metà frase: solo sugli schermi larghi, dove la riga precedente resta piena */
+@media (max-width: 1279px) { .br-d { display: none; } }
+@media (max-width: 1365px) { .br-xl { display: none; } }
+/* Metodo, «Dal metodo alla formazione»: sui grandi schermi la colonna del testo è un po' più larga */
+@media (min-width: 1600px) { .split--form { grid-template-columns: 11fr 13fr; } }
 
 /* Elisabetta — Vision in negativo: fondo marrone, testi e firma in bianco */
 .vision .eyebrow, .vision .signed blockquote, .vision .signed__sign { color: var(--white); }
@@ -1809,14 +1823,14 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
 </section>
 
 <section class="sec">
-  <div class="wrap split split--5-7">
+  <div class="wrap split split--5-7 split--form">
     <div>
       <header class="shead shead--left ">
     <p class="eyebrow ">Il metodo applicato alla formazione</p>
     <h2 class="shead__title">Dal metodo alla formazione.</h2>
     
   </header>
-      <p class="lead">Il Metodo Élite si apprende attraverso due modalità formative,<br>pensate per esigenze diverse.</p>
+      <p class="lead">Il Metodo Élite si apprende attraverso due modalità formative,<br class="br-xl"> pensate per esigenze diverse.</p>
     </div>
     <div class="duo">
       <div><h3 class="h3serif">Online</h3><p>Videolezioni teoriche e dimostrative dedicate ai rituali e alle manualità Hair Spa.</p><a class="arrow " href="#/academy/formazione-online/"><span>Formazione online</span><i aria-hidden="true">→</i></a></div>

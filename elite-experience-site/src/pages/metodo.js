@@ -84,10 +84,10 @@ ${practiceSequence(ctx, { id: 'in-pratica-metodo' })}
 </section>
 
 <section class="sec">
-  <div class="wrap split split--5-7">
+  <div class="wrap split split--5-7 split--form">
     <div>
       ${sectionHead({ eyebrow: 'Il metodo applicato alla formazione', title: 'Dal metodo alla formazione.' })}
-      <p class="lead">Il Metodo Élite si apprende attraverso due modalità formative,<br>pensate per esigenze diverse.</p>
+      <p class="lead">Il Metodo Élite si apprende attraverso due modalità formative,<br class="br-xl"> pensate per esigenze diverse.</p>
     </div>
     <div class="duo">
       <div><h3 class="h3serif">Online</h3><p>Videolezioni teoriche e dimostrative dedicate ai rituali e alle manualità Hair Spa.</p>${arrow(ctx, { label: 'Formazione online', to: 'academy/formazione-online/' })}</div>
