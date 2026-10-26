@@ -49,6 +49,19 @@ function resolve(urlPath) {
   return null;
 }
 
+// Redirect 301 dai vecchi indirizzi WordPress, letti da dist/_redirects (generato dal build)
+const rules = (() => {
+  try {
+    return fs.readFileSync(path.join(root, '_redirects'), 'utf8').split('\n').map((l) => l.trim().split(/\s+/)).filter((r) => r.length >= 2 && r[0].startsWith('/'));
+  } catch { return []; }
+})();
+function redirectFor(urlPath) {
+  const p = urlPath.split('?')[0];
+  const slash = p.endsWith('/') ? p : `${p}/`;
+  const rule = rules.find(([from]) => (from.endsWith('/*') ? p.startsWith(from.slice(0, -1)) : from === slash));
+  return rule ? rule[1] : null;
+}
+
 function send(req, res, status, file, headers = {}) {
   const ext = path.extname(file).toLowerCase();
   const size = fs.statSync(file).size;
@@ -83,6 +96,8 @@ http.createServer((req, res) => {
     res.writeHead(401, { 'WWW-Authenticate': 'Basic realm="Anteprima Elite Experience", charset="UTF-8"', 'Content-Type': 'text/plain; charset=utf-8' });
     return res.end('Anteprima riservata.');
   }
+  const moved = redirectFor(req.url);
+  if (moved) { res.writeHead(301, { Location: moved }); return res.end(); }
   const hit = resolve(req.url);
   if (hit && hit.redirect) { res.writeHead(301, { Location: hit.redirect }); return res.end(); }
   if (hit) return send(req, res, 200, hit.file);

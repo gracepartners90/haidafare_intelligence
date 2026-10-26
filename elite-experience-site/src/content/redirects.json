@@ -1,0 +1,33 @@
+{
+  "_info": "Vecchi indirizzi del sito WordPress → pagine nuove (redirect permanenti 301). Gli articoli di Élite & More mantengono il loro indirizzo e non servono redirect. Il build genera dist/_redirects (Netlify, Cloudflare Pages) e dist/.htaccess (Apache); server.mjs li applica sull'anteprima. «*» alla fine vale per tutto ciò che segue.",
+  "redirects": [
+    { "from": "/about-us/", "to": "/elisabetta-tancini/" },
+    { "from": "/dati-aziendali/", "to": "/contatti/" },
+    { "from": "/thank-you/", "to": "/contatti/" },
+    { "from": "/404-2/", "to": "/" },
+    { "from": "/privacy-policy/", "to": "/privacy/" },
+    { "from": "/cookie-policy/", "to": "/privacy/" },
+    { "from": "/video-elite/", "to": "/" },
+    { "from": "/wellness-ritual/", "to": "/academy/formazione-online/wellness-ritual/" },
+    { "from": "/elite-ritual-collection/", "to": "/academy/formazione-online/" },
+    { "from": "/feed/", "to": "/elite-e-more/" },
+    { "from": "/category/elite-e-more/", "to": "/elite-e-more/" },
+    { "from": "/category/hair-spa/", "to": "/elite-e-more/" },
+    { "from": "/category/formazione/", "to": "/elite-e-more/categoria/formazione-hair-spa/" },
+    { "from": "/category/formazione-hair-spa/", "to": "/elite-e-more/categoria/formazione-hair-spa/" },
+    { "from": "/category/formazione-per-hair-spa/", "to": "/elite-e-more/categoria/formazione-hair-spa/" },
+    { "from": "/category/metodo-elite-experience/", "to": "/elite-e-more/categoria/metodo-e-rituali/" },
+    { "from": "/category/scalp-care/", "to": "/elite-e-more/categoria/metodo-e-rituali/" },
+    { "from": "/category/tendenze-hair-spa/", "to": "/elite-e-more/categoria/metodo-e-rituali/" },
+    { "from": "/category/comunicazione/", "to": "/elite-e-more/categoria/professione-e-salone/" },
+    { "from": "/category/customer-experience/", "to": "/elite-e-more/categoria/professione-e-salone/" },
+    { "from": "/category/esperienza-cliente/", "to": "/elite-e-more/categoria/professione-e-salone/" },
+    { "from": "/category/marketing/", "to": "/elite-e-more/categoria/professione-e-salone/" },
+    { "from": "/category/posizionamento/", "to": "/elite-e-more/categoria/professione-e-salone/" },
+    { "from": "/category/strategia-di-salone/", "to": "/elite-e-more/categoria/professione-e-salone/" },
+    { "from": "/category/strategy/", "to": "/elite-e-more/categoria/professione-e-salone/" },
+    { "from": "/category/*", "to": "/elite-e-more/" },
+    { "from": "/tag/*", "to": "/elite-e-more/" },
+    { "from": "/author/*", "to": "/elite-e-more/" }
+  ]
+}

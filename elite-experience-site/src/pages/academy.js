@@ -121,7 +121,7 @@ ${fullImage(ctx, 'arcoDoratoMani', { position: '50% 50%', positionMobile: '55% 5
   </div>
 </section>`;
     return page(ctx, {
-      title: 'Academy — Formazione Hair Spa online e in presenza | Élite Experience',
+      title: 'Academy — Formazione Hair Spa online e in presenza',
       description: 'L’Academy di Élite Experience: formazione Hair Spa online e in presenza con Elisabetta Tancini. Due modalità e il percorso giusto per il tuo salone.',
       jsonld: [breadcrumbs(cAcademy), faqPage(faqAll(ctx.data))],
       bodyClass: 'p-academy',
@@ -179,8 +179,8 @@ ${fullHero(ctx, {
   </div>
 </section>`;
     return page(ctx, {
-      title: 'Formazione Online Hair Spa — Corsi del Metodo Élite | Élite Experience',
-      description: 'I corsi online del Metodo Élite: Wellness Ritual, Pinda Ritual, Brushing Ritual, Hairgym Ritual e Relax Full Ritual. Videolezioni di 1 ora su piattaforma Academy, da 190 € IVA inclusa.',
+      title: 'Formazione Hair Spa online — I corsi del Metodo Élite',
+      description: 'Cinque corsi online del Metodo Élite: Wellness, Pinda, Brushing, Hairgym e Relax Full Ritual. Videolezioni di 1 ora, da 190 € IVA inclusa.',
       jsonld: [breadcrumbs(cOnline)],
       ogImage: 'onlinePostazione',
       bodyClass: 'p-online',
@@ -261,7 +261,7 @@ ${fullHero(ctx, {
   </div>
 </section>`;
     return page(ctx, {
-      title: 'Formazione Hair Spa in Presenza con Elisabetta Tancini — Arona o nel tuo salone',
+      title: 'Formazione Hair Spa in presenza con Elisabetta Tancini',
       description: 'Formazione Hair Spa in presenza con Elisabetta Tancini, presso il salone Maison BB ad Arona (max 8 persone) o direttamente nel salone con il tuo team.',
       jsonld: [breadcrumbs(cPresence)],
       bodyClass: 'p-presence',

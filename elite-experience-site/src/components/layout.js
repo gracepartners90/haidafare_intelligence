@@ -116,7 +116,7 @@ ${p.noindex ? '<meta name="robots" content="noindex, follow">' : '<meta name="ro
 <meta property="og:title" content="${esc(p.title)}">
 <meta property="og:description" content="${esc(p.description)}">
 <meta property="og:url" content="${canonical}">
-<meta property="og:image" content="${site.url}/assets/${ctx.data.media[p.ogImage || 'lavatesta'].file}">
+${p.published ? `<meta property="article:published_time" content="${p.published}">\n` : ''}${p.modified ? `<meta property="article:modified_time" content="${p.modified}">\n` : ''}<meta property="og:image" content="${site.url}/assets/${ctx.data.media[p.ogImage || 'lavatesta'].file}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F5F0EB">
 <link rel="icon" type="image/png" ${ctx.src('brand/lotus.png').replace('src=', 'href=')}>

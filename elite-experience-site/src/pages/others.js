@@ -77,7 +77,7 @@ ${fullHero(ctx, {
     </div>
   </div>
 </section>`;
-    return page(ctx, { title: 'Contatti — Informazioni sulla formazione e collaborazioni | Élite Experience', description: 'Contatta Élite Experience: informazioni sui corsi Hair Spa, formazione in presenza con Elisabetta Tancini e proposte di collaborazione.', jsonld: [breadcrumbs(crumbs)], ogImage: 'vassoioRituale', bodyClass: 'p-contact', body });
+    return page(ctx, { title: 'Contatti — Formazione Hair Spa e collaborazioni', description: 'Contatta Élite Experience: informazioni sui corsi Hair Spa, formazione in presenza con Elisabetta Tancini e proposte di collaborazione.', jsonld: [breadcrumbs(crumbs)], ogImage: 'vassoioRituale', bodyClass: 'p-contact', body });
   },
 };
 

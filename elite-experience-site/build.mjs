@@ -89,9 +89,14 @@ if (mode !== 'bundle') {
     const file = path.join(dist, p.file || `${p.route}index.html`);
     fs.mkdirSync(path.dirname(file), { recursive: true });
     fs.writeFileSync(file, out.html.replace(/(assets\/site\.(?:css|js))"/g, `$1?v=${version}"`));
-    if (!out.noindex) urls.push(`${site.url}/${p.route}`);
+    if (!out.noindex) urls.push({ loc: `${site.url}/${p.route}`, lastmod: out.modified || out.published });
   }
-  fs.writeFileSync(path.join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}\n</urlset>\n`);
+  fs.writeFileSync(path.join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u.loc}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`);
+  // Redirect 301 dai vecchi indirizzi WordPress: Netlify/Cloudflare Pages (_redirects) e Apache (.htaccess)
+  const redirects = read('src/content/redirects.json').redirects;
+  fs.writeFileSync(path.join(dist, '_redirects'), redirects.map((r) => `${r.from} ${r.to} 301`).join('\n') + '\n');
+  const rx = (from) => `^${from.replace(/[.]/g, '\\.').replace(/\/\*$/, '/.*').replace(/\/$/, '/?')}$`;
+  fs.writeFileSync(path.join(dist, '.htaccess'), `# Redirect 301 dai vecchi indirizzi del sito WordPress (generato da src/content/redirects.json)\n${redirects.map((r) => `RedirectMatch 301 ${rx(r.from)} ${r.to}`).join('\n')}\n`);
   fs.writeFileSync(path.join(dist, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${site.url}/sitemap.xml\n`);
   console.log(`${pages.length} pagine generate in dist/ (${mode})`);
 } else {

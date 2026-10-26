@@ -114,7 +114,7 @@ ${c.sectionImage ? fullImage(ctx, c.sectionImage.media, { position: c.sectionIma
   </div>
 </section>`;
       return page(ctx, {
-        title: `${c.name} — Corso online Hair Spa | Élite Experience Academy`,
+        title: `${c.name} — Corso online Hair Spa | Élite Experience`,
         description: `${c.name}: corso online del Metodo Élite, videolezione di ${c.duration || '1 h'}${c.price != null ? ` a ${priceText(c)}` : ''}. Cosa imparerai, a chi è rivolto e come acquistarlo.`,
         jsonld: [courseLd(c), breadcrumbs(crumbs), faqPage(courseFaq(ctx, c))],
         ogImage: c.heroImage || 'lavatesta',

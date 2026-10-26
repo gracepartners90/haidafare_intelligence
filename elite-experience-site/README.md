@@ -245,8 +245,18 @@ disponibili testimonianze reali con autorizzazione alla pubblicazione.
 - Dati strutturati JSON-LD: EducationalOrganization, WebSite, Person (Elisabetta Tancini),
   Course (con Offer solo se il prezzo è confermato), FAQPage, Blog e BlogPosting (Élite &
   More), BreadcrumbList.
-- `sitemap.xml` e `robots.txt` generati; gli articoli di Élite & More mantengono l'indirizzo del
-  sito attuale.
+- `sitemap.xml` (con data di aggiornamento degli articoli) e `robots.txt` generati; gli articoli
+  di Élite & More mantengono l'indirizzo del sito attuale.
+- Titoli entro circa 60 caratteri e descrizioni entro 155; per gli articoli titolo e descrizione
+  vengono da Yoast (il nome del magazine si aggiunge solo se c'è spazio).
+- **Redirect 301** dai vecchi indirizzi WordPress che non esistono più (`/about-us/`,
+  `/privacy-policy/`, `/cookie-policy/`, `/dati-aziendali/`, `/video-elite/`, categorie, tag,
+  autori, feed): elenco in `src/content/redirects.json`. Il build genera `dist/_redirects`
+  (Netlify, Cloudflare Pages) e `dist/.htaccess` (Apache); `server.mjs` li applica
+  sull'anteprima. Con un altro hosting vanno riportati nella sua configurazione.
+- Prima della pubblicazione: allineare i prezzi dei corsi con la piattaforma Academy (i dati
+  strutturati dei corsi dichiarano il prezzo del sito), collegare Google Tag Manager/Analytics
+  (presenti sul sito attuale) insieme al banner dei cookie, inviare la sitemap a Search Console.
 - Un solo H1 per pagina, gerarchia dei titoli coerente, testi alternativi su ogni immagine.
 
 ## Accessibilità

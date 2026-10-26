@@ -5,6 +5,11 @@ import { page } from '../components/layout.js';
 import { magazineIssue, latestArticles, relatedArticles, registro, articlePath, catPath, articleBody, articleMeta, catName } from '../components/editorial.js';
 
 const H = { label: 'Home', to: '' };
+// Titolo della pagina: il nome del magazine solo se il titolo resta entro circa 60 caratteri
+const articleTitle = (a) => {
+  const t = a.seoTitle || a.title;
+  return t.length + 15 <= 62 ? `${t} — Élite & More` : t;
+};
 const base = [H, { label: 'Élite & More', to: 'elite-e-more/' }];
 
 const rubriche = (ctx, active) => {
@@ -36,7 +41,7 @@ ${magazineIssue(ctx)}
 </section>`;
       return page(ctx, {
         title: 'Élite & More — Il magazine Hair Spa di Élite Experience',
-        description: 'Élite & More, il magazine di Élite Experience: cultura Hair Spa, rituali e manualità, formazione professionale e la vita del salone. Sfoglia il numero in edicola.',
+        description: 'Élite & More, il magazine di Élite Experience: cultura Hair Spa, rituali, formazione professionale e vita del salone. Sfoglia il numero in edicola.',
         jsonld: [blog(), breadcrumbs(base)],
         bodyClass: 'p-mag',
         body,
@@ -99,11 +104,13 @@ ${magazineIssue(ctx)}
   </section>
 </article>`;
       return page(ctx, {
-        title: `${a.seoTitle || a.title} — Élite & More`,
+        title: articleTitle(a),
         description: a.seoDescription || a.excerpt,
         jsonld: [blogPosting(a, ctx.data.media[a.image]), breadcrumbs(crumbs)],
         ogImage: a.image,
         ogType: 'article',
+        published: a.date,
+        modified: a.modified,
         noindex: !!a.sample,
         bodyClass: 'p-article',
         section: 'elite-e-more/',

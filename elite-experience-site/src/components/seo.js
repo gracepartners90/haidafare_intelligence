@@ -86,6 +86,8 @@ export const blogPosting = (a, image) => ({
   ...(image ? { image: `${site.url}/assets/${image.file}` } : {}),
   inLanguage: 'it-IT',
   author: { '@type': 'Organization', name: 'Redazione Élite & More' },
+  publisher: { '@id': `${site.url}/#organization` },
   isPartOf: { '@id': `${site.url}/elite-e-more/#blog` },
+  mainEntityOfPage: `${site.url}/${a.slug}/`,
   url: `${site.url}/${a.slug}/`,
 });

@@ -137,8 +137,8 @@ ${fullVideo(ctx, {
 </section>`;
 
     return page(ctx, {
-      title: 'Élite Experience — Metodo e Formazione Hair Spa | Elisabetta Tancini',
-      description: 'Porta l’esperienza Hair Spa nel tuo salone: il metodo professionale ideato da Elisabetta Tancini, con formazione online e in presenza su rituali, tecniche e manualità Hair Spa.',
+      title: 'Élite Experience — Metodo e Formazione Hair Spa',
+      description: 'Il metodo professionale Hair Spa ideato da Elisabetta Tancini: formazione online e in presenza su rituali, tecniche e manualità per il tuo salone.',
       jsonld: [organization(), website()],
       bodyClass: 'p-home',
       body,
