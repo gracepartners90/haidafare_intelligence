@@ -16,7 +16,7 @@ const contatti = {
     const c = site.contacts;
     const body = `
 ${fullHero(ctx, {
-  image: 'vassoioRituale', position: '50% 50%', positionMobile: '45% 50%', cls: 'hero--short',
+  image: 'vassoioRituale', position: '50% 50%', positionMobile: '45% 50%',
   eyebrow: 'Contatti',
   title: 'Trova il percorso più adatto al tuo salone.',
   lead: 'Scegli il tipo di richiesta: ti risponderemo con le informazioni utili per il tuo caso.',
