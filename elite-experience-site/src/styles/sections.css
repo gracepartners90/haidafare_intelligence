@@ -319,7 +319,8 @@
   .manual__text { grid-column: 1 / -1; grid-row: auto; }
   .manual__a { grid-column: 1 / -1; grid-row: auto; }
   .manual__b { grid-column: 1 / span 6; grid-row: auto; } .manual__c { grid-column: 7 / span 6; grid-row: auto; }
-  .contact__info { position: static; grid-template-columns: 200px 1fr; align-items: start; }
+  /* Sotto il modulo il blocco email/telefono chiudeva male la pagina: gli stessi recapiti sono nel piè di pagina */
+  .contact__info { display: none; }
 }
 @media (max-width: 760px) {
   .principles, .guide, .howto, .learn, .duo, .cgrid, .jgrid, .related { grid-template-columns: 1fr; }
@@ -339,7 +340,6 @@
   .chero__facts { grid-template-columns: 1fr 1fr; }
   .form__grid { grid-template-columns: 1fr; }
   .field--half { grid-column: 1 / -1; }
-  .contact__info { grid-template-columns: 1fr; }
   .notes { left: 8px; bottom: 8px; padding: 7px 10px; font-size: .625rem; }
 }
 

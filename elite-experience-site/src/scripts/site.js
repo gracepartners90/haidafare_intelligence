@@ -253,13 +253,14 @@
     });
   });
 
-  /* ---------- Élite & More: il numero si sfoglia in orizzontale (desktop) ---------- */
+  /* ---------- Élite & More: il numero si sfoglia in orizzontale (tablet e desktop) ---------- */
   $$('[data-sfoglio]').forEach((root) => {
     const fx = $('.sfoglio__fx', root);
     const pages = $$(':scope > .pg', fx);
     const [prev, next] = $$('.sfoglio__btn', root);
     const folio = $('.sfoglio__folio b', root), bar = $('.sfoglio__bar span', root), live = $('[data-sfoglio-live]', root);
-    const wide = window.matchMedia('(min-width: 60rem) and (min-height: 36rem)');
+    // Sfoglio orizzontale da tablet in su (stesso limite del CSS)
+    const wide = window.matchMedia('(min-width: 761px) and (min-height: 36rem)');
     const N = pages.length;
     if (!N || !prev || !next) return;
     const bundle = !!window.__ASSETS;

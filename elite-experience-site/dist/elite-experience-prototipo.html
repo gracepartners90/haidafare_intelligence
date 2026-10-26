@@ -737,7 +737,8 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
   .manual__text { grid-column: 1 / -1; grid-row: auto; }
   .manual__a { grid-column: 1 / -1; grid-row: auto; }
   .manual__b { grid-column: 1 / span 6; grid-row: auto; } .manual__c { grid-column: 7 / span 6; grid-row: auto; }
-  .contact__info { position: static; grid-template-columns: 200px 1fr; align-items: start; }
+  /* Sotto il modulo il blocco email/telefono chiudeva male la pagina: gli stessi recapiti sono nel piè di pagina */
+  .contact__info { display: none; }
 }
 @media (max-width: 760px) {
   .principles, .guide, .howto, .learn, .duo, .cgrid, .jgrid, .related { grid-template-columns: 1fr; }
@@ -757,7 +758,6 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
   .chero__facts { grid-template-columns: 1fr 1fr; }
   .form__grid { grid-template-columns: 1fr; }
   .field--half { grid-column: 1 / -1; }
-  .contact__info { grid-template-columns: 1fr; }
   .notes { left: 8px; bottom: 8px; padding: 7px 10px; font-size: .625rem; }
 }
 
@@ -1018,19 +1018,13 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1180px) {
-  /* Confronto dei rituali: griglia (3 + 2 schede centrate) al posto dello slider orizzontale */
-  .cmp { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-  .cmp__card { grid-column: span 2; }
-  .cmp__card:nth-child(4) { grid-column: 2 / span 2; }
   .learnp__list { grid-template-columns: repeat(3, 1fr); }
   .learnp__list li:nth-child(4) { padding-left: 0; border-left: 0; }
 }
 @media (max-width: 1024px) {
   .hands__grid, .switch__panel, .learnp__head { grid-template-columns: 1fr; }
-  .bio__grid { grid-template-columns: 2fr 3fr; gap: 36px; }
   .home-eli__grid { grid-template-columns: 1fr; }
   .bio__head { position: static; }
-  .hands__fader { max-width: 560px; }
   .cgrid { grid-template-columns: 1fr 1fr; }
   .cgrid > .ccard, .cgrid > .ccard:nth-child(3n+1):nth-last-child(2) { grid-column: auto; }
   .learnp__list { grid-template-columns: 1fr 1fr; }
@@ -1043,8 +1037,8 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
   .switch__facts div, .teach .linelist li { grid-template-columns: 1fr; gap: 4px; }
   .howto--3, .cgrid, .learnp__list { grid-template-columns: 1fr; }
   .cmp { grid-template-columns: 1fr; }
-  .cmp__card, .cmp__card:nth-child(4) { grid-column: auto; }
   .bio__grid { grid-template-columns: 1fr; }
+  .hands__fader { max-width: 560px; }
   .hero__progress { display: none; }
   .fullimg { height: 70vh; height: 70svh; min-height: 380px; }
   .fullimg--band { height: 56vh; height: 56svh; min-height: 320px; }
@@ -1059,10 +1053,37 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .shead__title strong { font-weight: 500; }
 
 /* A capo solo su desktop */
-@media (min-width: 761px) and (max-width: 899px) {
-  .cmp { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .cmp__card, .cmp__card:nth-child(4) { grid-column: span 2; }
-  .cmp__card:nth-child(5) { grid-column: 2 / span 2; }
+
+/* ---------- Tablet ---------- */
+@media (min-width: 761px) and (max-width: 1180px) {
+  /* Confronto dei rituali: una scheda orizzontale per rituale (foto a sinistra), nessuna scheda isolata */
+  .cmp { grid-template-columns: 1fr; gap: 14px; }
+  .cmp__card {
+    display: grid; grid-template-columns: minmax(0, 34%) minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, .7fr); align-content: start; padding-bottom: 0;
+    grid-template-areas: "media n n n" "media name name name" "media desc desc desc" "media r1 r2 r3" "media foot foot foot";
+  }
+  .cmp__card:hover { transform: none; }
+  .cmp__media { grid-area: media; }
+  .cmp__media .ph { height: 100%; aspect-ratio: auto !important; }
+  .cmp__n { grid-area: n; margin: 22px 24px 0; }
+  .cmp__name { grid-area: name; margin: 2px 24px 6px; }
+  .cmp__desc { grid-area: desc; margin: 0 24px 12px; }
+  .cmp__row { align-content: start; margin: 0; padding: 12px 14px 12px 0; }
+  .cmp__row:nth-of-type(1) { grid-area: r1; margin-left: 24px; }
+  .cmp__level { flex-wrap: wrap; gap: 6px 10px; }
+  .cmp__row:nth-of-type(2) { grid-area: r2; }
+  .cmp__row:nth-of-type(3) { grid-area: r3; margin-right: 24px; }
+  .cmp__price { grid-area: foot; justify-self: start; margin: 0 24px 22px; padding-top: 14px; border-top: 0; }
+  .cmp__card .arrow { grid-area: foot; justify-self: end; align-self: center; margin: 0 24px 22px; padding-top: 14px; }
+}
+@media (min-width: 761px) and (max-width: 1024px) {
+  /* Il percorso professionale: la foto diventa una fascia orizzontale e il testo va su due colonne */
+  .bio__grid { grid-template-columns: 1fr; gap: 40px; }
+  .bio__img { max-width: none; aspect-ratio: 16 / 9 !important; }
+  .bio__text { columns: 2; column-gap: 40px; }
+  .bio__text p:last-child { column-span: all; margin-top: 36px; }
+  /* Il metodo passa attraverso le mani: la galleria diventa una fascia a tutta larghezza sotto l'elenco */
+  .hands__fader { max-width: none; margin-inline: calc(var(--g) * -1); aspect-ratio: 4 / 3 !important; }
 }
 /* A capo a metà frase: solo sugli schermi larghi, dove la riga precedente resta piena */
 @media (max-width: 1279px) { .br-d { display: none; } }
@@ -1141,7 +1162,7 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 
 /* =========================================================
    Élite & More — il numero da sfogliare (modello Rockstar Notes)
-   Pila di pagine su mobile e senza JS; sfoglio orizzontale su desktop.
+   Pila di pagine su mobile e senza JS; sfoglio orizzontale da tablet in su.
    ========================================================= */
 .sfoglio { position: relative; }
 .sfoglio__nav, .sfoglio__folio, .sfoglio__bar { display: none; }
@@ -1203,6 +1224,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
 .pg-open__text { position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: center; padding: 40px var(--g) 52px; }
 .pg-open__title { margin: 14px 0 18px; font-size: clamp(2.2rem, 4.4vw, 4.6rem); font-weight: 300; line-height: 1.02; letter-spacing: -.015em; }
 .pg-open__excerpt { max-width: 32em; color: var(--muted); font-size: var(--t-lead); line-height: 1.5; }
+.pg-open__text .arrow { align-self: flex-start; }
 .pg-open__by { margin: 18px 0 20px; color: var(--muted); font-family: var(--serif); font-size: .9375rem; font-style: italic; }
 .pg--ink .pg-open__excerpt, .pg--ink .pg-open__by { color: var(--muted-light); }
 .pg-open__photo { position: relative; order: -1; aspect-ratio: 4 / 5; overflow: hidden; }
@@ -1294,14 +1316,46 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   .pg-end__title { font-size: min(clamp(2.6rem, 5.6vw, 5.6rem), 13svh); }
 }
 
-/* ---------- Desktop con JS: sfoglio orizzontale ---------- */
-@media (min-width: 60rem) and (min-height: 36rem) {
+/* ---------- Tablet e desktop con JS: sfoglio orizzontale ---------- */
+@media (min-width: 761px) and (min-height: 36rem) {
   html.js .sfoglio { height: calc(100vh - var(--hdr)); height: calc(100svh - var(--hdr)); }
   html.js .sfoglio__fx { display: flex; height: 100%; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; }
   html.js .sfoglio__fx::-webkit-scrollbar { display: none; }
   html.js .pg { flex: 0 0 100%; height: 100%; min-height: 0; border-top: 0; scroll-snap-align: start; scroll-snap-stop: always; }
   html.js .pg__folio { display: none; }
   html.js .sfoglio__nav, html.js .sfoglio__folio, html.js .sfoglio__bar { display: block; }
+}
+/* Tablet: archivio e rubriche a tutta larghezza, le rubriche su tre colonne sopra l'elenco */
+@media (min-width: 761px) and (max-width: 1180px) {
+  .p-mag .split--4-8 { grid-template-columns: 1fr; gap: 32px; }
+  .p-mag .rubriche { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 32px; }
+}
+/* Tablet in verticale: pagine da rivista verticale (foto in alto, testo sotto), sfogliate come su desktop */
+@media (min-width: 761px) and (max-width: 959.98px) and (min-height: 36rem) {
+  html.js .pg-cover { grid-template-rows: auto minmax(0, 1fr); min-height: 0; }
+  html.js .pg-cover__main { padding: 32px var(--g) 28px; }
+  html.js .pg-cover__story { margin-top: 28px; }
+  html.js .pg-cover__excerpt { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+  html.js .pg-cover__photo { aspect-ratio: auto; min-height: 0; height: 100%; }
+  html.js .pg-toc { align-content: center; gap: 28px; padding: 32px var(--g); }
+  html.js .pg-toc__brief { display: none; }
+  html.js .pg-toc .registro a { padding: 14px 0; }
+  html.js .pg-toc .registro__title { font-size: 1.3rem; }
+  html.js .pg-open { grid-template-rows: minmax(0, 1fr) auto; min-height: 0; }
+  html.js .pg-open__photo { aspect-ratio: auto; min-height: 0; }
+  html.js .pg-open__text { justify-content: flex-start; padding: 32px var(--g) 40px; }
+  html.js .pg-open__title { font-size: clamp(2.2rem, 5.4vw, 3.4rem); }
+  html.js .pg-open__excerpt { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+  html.js .pg-open__folio { font-size: 13rem; }
+  html.js .pg-open--C { grid-template-rows: minmax(0, 1fr); }
+  html.js .pg-open--C .pg-open__text { justify-content: center; }
+  html.js .pg-open--C .pg-open__excerpt { display: block; }
+  /* Frecce in basso a sinistra, sotto il testo: al centro coprivano le righe */
+  html.js .sfoglio__btn { top: auto; bottom: 14px; width: 44px; height: 44px; margin-top: 0; font-size: 1.4rem; }
+  html.js .sfoglio__btn[data-dir="-1"] { left: var(--g); }
+  html.js .sfoglio__btn[data-dir="1"] { left: calc(var(--g) + 54px); right: auto; }
+  html.js .pg-open__text { padding-bottom: 84px; }
+  html.js .pg-toc, html.js .pg-end { padding-bottom: 84px; }
 }
 .sfoglio__btn { position: absolute; top: 50%; z-index: 5; width: 52px; height: 52px; margin-top: -26px; border: 1px solid var(--line-strong); border-radius: 50%; background: var(--ivory); color: var(--ink); font-size: 1.6rem; line-height: 1; cursor: pointer; transition: opacity .3s, background-color .3s, color .3s; }
 .sfoglio__btn[data-dir="-1"] { left: 18px; }
@@ -6645,13 +6699,14 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     });
   });
 
-  /* ---------- Élite & More: il numero si sfoglia in orizzontale (desktop) ---------- */
+  /* ---------- Élite & More: il numero si sfoglia in orizzontale (tablet e desktop) ---------- */
   $$('[data-sfoglio]').forEach((root) => {
     const fx = $('.sfoglio__fx', root);
     const pages = $$(':scope > .pg', fx);
     const [prev, next] = $$('.sfoglio__btn', root);
     const folio = $('.sfoglio__folio b', root), bar = $('.sfoglio__bar span', root), live = $('[data-sfoglio-live]', root);
-    const wide = window.matchMedia('(min-width: 60rem) and (min-height: 36rem)');
+    // Sfoglio orizzontale da tablet in su (stesso limite del CSS)
+    const wide = window.matchMedia('(min-width: 761px) and (min-height: 36rem)');
     const N = pages.length;
     if (!N || !prev || !next) return;
     const bundle = !!window.__ASSETS;
