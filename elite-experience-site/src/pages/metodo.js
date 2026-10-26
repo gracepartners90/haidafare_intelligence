@@ -11,7 +11,7 @@ export default [{
   route: 'metodo-elite/',
   render(ctx) {
     const { courses } = ctx.data;
-    // Testi in bozza, su due righe: le parole chiave sono in grassetto
+    // Testi su due righe, con le parole chiave in grassetto
     const principles = [
       ['Il gesto al centro', 'Si apprende con la <strong>manualità</strong>: il gesto è il primo contenuto.'],
       ['Il rituale come struttura', '<strong>Tecniche</strong> e manualità in una sequenza ripetibile.'],
@@ -42,7 +42,7 @@ ${fullHero(ctx, {
   <div class="wrap">
     ${sectionHead({ eyebrow: 'Principi fondamentali', title: 'Quattro principi, un’unica idea di Hair Spa.' })}
     <ol class="principles">
-      ${principles.map(([t, d], i) => `<li><span class="principles__n">${String(i + 1).padStart(2, '0')}</span><h3 class="h3serif">${esc(t)}</h3><p><span class="draft">${d}</span></p></li>`).join('')}
+      ${principles.map(([t, d], i) => `<li><span class="principles__n">${String(i + 1).padStart(2, '0')}</span><h3 class="h3serif">${esc(t)}</h3><p>${d}</p></li>`).join('')}
     </ol>
   </div>
 </section>

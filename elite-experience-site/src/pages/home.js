@@ -35,7 +35,7 @@ ${fullHero(ctx, {
       <p class="lead">Il Metodo Élite è l’approccio professionale all’Hair Spa ideato da Elisabetta Tancini.<br>Si fonda sull’<strong>apprendimento</strong> e sull’<strong>applicazione</strong> di rituali, tecniche e manualità che il professionista porta nel proprio salone.</p>
       <ol class="pillars">
         <li><span class="pillars__n">01</span><div><h3>Che cos’è</h3><p>Un metodo professionale Hair Spa, fatto di rituali, tecniche e manualità ideati da Elisabetta Tancini.</p></div></li>
-        <li><span class="pillars__n">02</span><div><h3>L’approccio</h3><p>${draft('Il gesto al centro: ogni rituale si apprende attraverso la manualità, la sequenza e la pratica.')}</p></div></li>
+        <li><span class="pillars__n">02</span><div><h3>L’approccio</h3><p>Il gesto al centro: ogni rituale si apprende attraverso la manualità, la sequenza e la pratica.</p></div></li>
         <li><span class="pillars__n">03</span><div><h3>Metodo, rituali, formazione</h3><p>Il metodo è la base. I rituali ne sono l’espressione pratica.<br>La formazione è il modo per apprenderli.</p></div></li>
       </ol>
       ${btn(ctx, { label: 'Scopri il Metodo Élite', to: 'metodo-elite/' })}

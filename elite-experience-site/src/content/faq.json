@@ -159,7 +159,7 @@
           "id": "presenza-richiesta",
           "q": "Come si richiede la formazione in presenza?",
           "a": "Compilando il modulo dedicato nella pagina Contatti: verrai ricontattato per definire modalità e date.",
-          "verified": false,
+          "verified": true,
           "link": {
             "label": "Richiedi la formazione in presenza",
             "to": "contatti/#presenza"

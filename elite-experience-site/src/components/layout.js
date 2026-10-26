@@ -82,7 +82,7 @@ export function footer(ctx) {
     </div>
     <div class="ftr__base">
       <p>© 2026 Élite Experience${c.vat ? ` — P. IVA ${esc(c.vat)}` : ` — P. IVA ${tbd('da inserire')}`}</p>
-      <ul><li><a href="${ctx.href('privacy/')}">Privacy</a></li><li><a href="${ctx.href('privacy/')}#cookie">Cookie</a></li><li class="ftr__lang"><span aria-current="true">IT</span> · <span title="Versione inglese predisposta, non ancora attiva">EN</span></li></ul>
+      <ul><li><a href="${ctx.href('privacy/')}">Privacy</a></li><li><a href="${ctx.href('privacy/')}#cookie">Cookie</a></li></ul>
     </div>
   </div>
 </footer>

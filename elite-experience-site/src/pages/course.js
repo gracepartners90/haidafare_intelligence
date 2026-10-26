@@ -81,7 +81,7 @@ function coursePage(c, all, collection) {
 ${c.sectionImage ? fullImage(ctx, c.sectionImage.media, { position: c.sectionImage.pos, provisional: c.sectionImage.provisional, cls: 'fullimg--band' }) : ''}
 
 <!-- 05 ISCRIZIONE -->
-<section class="sec sec--choc enroll" id="iscrizione">
+<section class="sec sec--deep enroll" id="iscrizione">
   <div class="wrap enroll__in">
     <div>
       ${eyebrow('Iscrizione')}

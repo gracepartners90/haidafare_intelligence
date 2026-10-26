@@ -241,8 +241,8 @@ scelto e autorizzato prima della pubblicazione.
 
 ## Versione inglese
 
-La struttura è predisposta (`locales` in `config.js`, `hreflang` nel `<head>`). Per
-attivarla: aggiungere `'en'` a `locales`, tradurre i contenuti di `src/content/` in file
+Il sito è solo in italiano: il selettore di lingua nel footer è stato tolto. La struttura
+resta predisposta (`locales` in `config.js`, `hreflang` nel `<head>`). Per attivarla: aggiungere `'en'` a `locales`, tradurre i contenuti di `src/content/` in file
 paralleli (es. `courses.en.json`) e generare le pagine sotto `/en/`. La pagina di
 Elisabetta Tancini è la prima candidata alla traduzione.
 
