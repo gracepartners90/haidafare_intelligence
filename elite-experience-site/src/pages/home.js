@@ -28,7 +28,7 @@ ${fullHero(ctx, {
 <section class="sec home-method" id="metodo">
   <div class="wrap home-method__grid">
     <figure class="home-method__media">
-      ${media(ctx, 'lavatestaAcqua', { fill: true, position: '50% 80%' })}
+      ${media(ctx, 'lavatestaAcqua', { fill: true, position: '50% 50%' })}
     </figure>
     <div class="home-method__text">
       ${sectionHead({ eyebrow: 'Il Metodo Élite', title: 'Un metodo che prende forma attraverso il gesto.' })}

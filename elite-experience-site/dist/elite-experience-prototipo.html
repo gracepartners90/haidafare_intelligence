@@ -702,7 +702,8 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
   .eli-hero__media { min-height: 0; aspect-ratio: 4 / 5; max-height: 80vh; }
   .phero--split .phero__text, .chero__text { padding: 48px var(--g) 56px; }
   .home-method__grid { grid-template-columns: 1fr; }
-  .home-method__media { min-height: 0; aspect-ratio: 4 / 3; }
+  /* Foto verticale: formato 3:4 perché si vedano sia il viso di Elisabetta sia la cliente */
+  .home-method__media { min-height: 0; aspect-ratio: 3 / 4; max-height: 85vh; }
   .picker { grid-template-columns: 1fr; }
   .picker__stage { display: none; }
   /* Tablet e mobile: elenco verticale compatto, con foto quadrata, testi e freccia */
@@ -712,7 +713,7 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
   .picker__thumb { grid-area: thumb; display: block; margin: 0; }
   .picker__num { grid-area: num; padding-top: 0; font-size: .8125rem; }
   .picker__body { grid-area: body; }
-  .picker__name { font-size: clamp(1.45rem, 4.4vw, 1.9rem); }
+  .picker__name { font-size: clamp(1.45rem, 4.4vw, 1.9rem); font-weight: 500; }
   .picker__desc { margin-top: 6px; }
   .picker__meta { margin-top: 10px; gap: 6px 10px; }
   .picker__go { grid-area: go; align-self: center; padding-top: 0; }
@@ -748,7 +749,6 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
   .hero__bg .ph img { object-position: var(--pos-m, var(--pos, 62% 0%)); transform-origin: var(--pos-m, var(--pos, 62% 0%)); }
   .hero__bg::after { background: radial-gradient(120% 90% at 60% 40%, rgba(31, 18, 11, 0) 0%, rgba(31, 18, 11, .45) 75%), linear-gradient(0deg, #1F120B 0%, rgba(31, 18, 11, .45) 30%, rgba(31, 18, 11, 0) 58%), linear-gradient(180deg, rgba(31, 18, 11, .6) 0%, rgba(31, 18, 11, 0) 30%); }
   .hero__in { margin-top: -64px; padding-top: 0; padding-bottom: 40px; }
-  .home-method__media { aspect-ratio: 4 / 5; }
   .picker__link { gap: 4px 14px; padding: 18px 0; }
   .ritual-feature__detail { width: 60%; }
   .tech__grid { display: flex; flex-direction: column; }
@@ -1357,7 +1357,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
 <section class="sec home-method" id="metodo">
   <div class="wrap home-method__grid">
     <figure class="home-method__media">
-      <figure class="ph ph--fill " style="--pos:50% 80%">
+      <figure class="ph ph--fill " style="--pos:50% 50%">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-asset="media/elisabetta-lavatesta-acqua.jpg" width="941" height="1672" alt="Elisabetta Tancini versa acqua da una caraffa di vetro sui capelli di una cliente al lavatesta." loading="lazy" decoding="async">
     
   </figure>
