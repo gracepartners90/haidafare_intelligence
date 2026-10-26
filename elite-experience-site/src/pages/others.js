@@ -69,7 +69,6 @@ ${fullHero(ctx, {
       <aside class="contact__info">
         ${media(ctx, 'ritratto', { ratio: '4/5', position: '50% 22%' })}
         <dl class="specs specs--tight">
-          <div><dt>Sede</dt><dd>${esc(site.city)}${c.address ? `, ${esc(c.address)}` : ` ${tbd('indirizzo')}`}</dd></div>
           <div><dt>Email</dt><dd>${c.email ? `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>` : tbd('da inserire')}</dd></div>
           <div><dt>Telefono</dt><dd>${c.phone ? `<a href="tel:${c.phone.replace(/\s/g, '')}">${esc(c.phone)}</a>` : tbd('da inserire')}</dd></div>
           <div><dt>Academy</dt><dd><a href="${site.academyUrl}" target="_blank" rel="noopener">academy.elitexperience.it ↗</a></dd></div>
