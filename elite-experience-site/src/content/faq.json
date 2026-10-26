@@ -75,12 +75,14 @@
         {
           "id": "promozioni",
           "q": "Sono previste promozioni o codici sconto?",
-          "a": null
+          "a": "Sì, sono previste promozioni e codici sconto. Quando una promozione è attiva, le condizioni e l’eventuale codice sono indicati nella scheda del corso.",
+          "verified": true
         },
         {
           "id": "pagamento",
           "q": "Quali metodi di pagamento sono accettati?",
-          "a": null
+          "a": "Con carta di credito o PayPal, anche a rate.",
+          "verified": true
         }
       ]
     },
@@ -119,15 +121,15 @@
           "verified": true
         },
         {
-          "id": "materiali",
-          "q": "Sono previsti materiali didattici o attestati?",
-          "a": null
-        },
-        {
           "id": "assistenza",
           "q": "Come posso ricevere assistenza durante il corso?",
-          "a": "Puoi contare sul team Élite Experience.",
-          "verified": true
+          "a": "Puoi contare sul team Élite Experience: scrivi a info@elitexperience.it.",
+          "verified": true,
+          "link": {
+            "label": "Scrivi una email",
+            "to": "mailto:info@elitexperience.it",
+            "ext": true
+          }
         }
       ]
     },
@@ -166,7 +168,12 @@
         {
           "id": "presenza-costo",
           "q": "Quanto costa la formazione in presenza?",
-          "a": null
+          "a": "990 € IVA inclusa a persona. Per organizzare la formazione e concordare le date, richiedi informazioni.",
+          "verified": true,
+          "link": {
+            "label": "Richiedi informazioni",
+            "to": "contatti/#presenza"
+          }
         }
       ]
     },

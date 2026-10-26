@@ -43,13 +43,13 @@ const academyPage = {
 ${fullHero(ctx, {
   image: 'academySpazzola', position: '50% 45%', positionMobile: '52% 45%', cls: 'hero--line',
   eyebrow: 'Élite Experience Academy',
-  title: 'La formazione Hair Spa del Metodo <em>Élite</em>.',
+  title: 'La formazione Hair Spa<br>del Metodo <em>Élite</em>.',
   lead: 'Percorsi online e in presenza per apprendere rituali, tecniche e manualità Hair Spa, pensati per professionisti e saloni.',
 })}
 
 <section class="sec modes-sec" id="modalita">
   <div class="wrap">
-    ${sectionHead({ eyebrow: 'Due modalità', title: 'Online o in presenza: lo stesso metodo.', lead: 'Scegli come imparare. Le due modalità condividono rituali, tecniche e manualità del Metodo Élite.', cls: 'shead--wide' })}
+    ${sectionHead({ eyebrow: 'Due modalità', title: '<strong>Online</strong> o in <strong>presenza</strong>: lo <strong>stesso metodo</strong>.', lead: 'Scegli come imparare. Le due modalità condividono rituali, tecniche e manualità del Metodo Élite.', cls: 'shead--wide' })}
     <div class="switch" data-switch>
       <div class="switch__tabs" role="tablist" aria-label="Modalità di formazione">
         <button type="button" role="tab" id="sw-online" aria-controls="sw-p-online" aria-selected="true"><span>01</span>Formazione online</button>
@@ -57,8 +57,8 @@ ${fullHero(ctx, {
       </div>
       <div class="switch__panel" role="tabpanel" id="sw-p-online" aria-labelledby="sw-online">
         <div class="switch__lead">
-          <p class="switch__big">Impara con i tuoi tempi, <em>dove vuoi</em>.</p>
-          <p>Videolezioni teoriche e dimostrative dedicate all’apprendimento dei rituali e delle manualità Hair Spa. Ogni corso ha una scheda con competenze, tecniche e programma.</p>
+          <p class="switch__big">Impara con i tuoi tempi,<br><em>dove vuoi</em>.</p>
+          <p><strong>Videolezioni teoriche e dimostrative</strong> dedicate all’apprendimento dei rituali e delle manualità Hair Spa.<br>Ogni corso ha una scheda con competenze, tecniche e programma.</p>
           ${arrow(ctx, { label: 'Scopri la formazione online', to: 'academy/formazione-online/' })}
         </div>
         <dl class="switch__facts">
@@ -71,7 +71,7 @@ ${fullHero(ctx, {
       <div class="switch__panel" role="tabpanel" id="sw-p-presenza" aria-labelledby="sw-presenza" hidden>
         <div class="switch__lead">
           <p class="switch__big">Impara <em>accanto a Elisabetta</em>.</p>
-          <p>Percorsi pratici con Elisabetta Tancini, presso il salone Maison BB ad Arona o direttamente nel salone del professionista.</p>
+          <p><strong>Percorsi</strong> pratici con Elisabetta Tancini, presso il salone <strong>Maison BB</strong> ad Arona o direttamente nel <strong>salone del professionista</strong>.</p>
           ${arrow(ctx, { label: 'Scopri la formazione in presenza', to: 'academy/formazione-in-presenza/' })}
         </div>
         <dl class="switch__facts">
@@ -190,12 +190,13 @@ ${fullHero(ctx, {
 };
 
 /* ---------------- FORMAZIONE IN PRESENZA ---------------- */
+// Testi su tre righe ciascuno (desktop), con le parole chiave in grassetto
 const learn = [
-  ['Manualità', 'Pressione, ritmo e continuità del gesto, allenati con dimostrazioni ed esercitazioni guidate.'],
-  ['Sequenze', 'La struttura completa del rituale: accoglienza, consulenza, detersione, manualità e conclusione dell’esperienza.'],
-  ['Strumenti e postazione', 'Preparazione della postazione e uso dei materiali e degli strumenti previsti da ciascun rituale.'],
-  ['Applicazione in salone', 'Come portare il rituale nel lavoro quotidiano, organizzarne i tempi e renderlo replicabile.'],
-  ['Confronto diretto', 'Domande, correzioni e consigli sul proprio modo di lavorare, a stretto contatto con Elisabetta.'],
+  ['Manualità', 'Pressione, ritmo e continuità del gesto, allenati con <strong>dimostrazioni</strong> ed <strong>esercitazioni</strong> guidate.'],
+  ['Sequenze', 'La <strong>struttura completa</strong> del rituale, dall’accoglienza alla conclusione dell’esperienza.'],
+  ['Strumenti e postazione', '<strong>Preparazione della postazione</strong> e uso di materiali e strumenti di ciascun rituale.'],
+  ['Applicazione in salone', 'Portare il rituale nel <strong>lavoro quotidiano</strong>, organizzarne i tempi e renderlo replicabile.'],
+  ['Confronto diretto', '<strong>Domande, correzioni e consigli</strong> sul proprio modo di lavorare, con Elisabetta.'],
 ];
 
 const presencePage = {
@@ -206,7 +207,7 @@ const presencePage = {
 ${fullHero(ctx, {
   image: 'presenzaHero', position: '50% 45%', positionMobile: '56% 40%',
   eyebrow: 'Academy',
-  title: 'Formazione <em>in presenza</em>',
+  title: 'Formazione<br><em>in presenza</em>',
   lead: 'Percorsi pratici per apprendere tecniche, rituali e manualità Hair Spa direttamente con Elisabetta Tancini, presso il salone Maison BB ad Arona o nel tuo salone.',
 })}
 
@@ -233,11 +234,11 @@ ${fullHero(ctx, {
 <section class="sec sec--deep learnp">
   <div class="wrap">
     <div class="learnp__head">
-      ${sectionHead({ eyebrow: 'Cosa si apprende', title: 'Competenze, tecniche e rituali.' })}
+      ${sectionHead({ eyebrow: 'Cosa si apprende', title: 'Competenze, tecniche<br>e rituali.' })}
       <p class="lead">In presenza il metodo si apprende con le mani: Elisabetta mostra ogni gesto, lo spiega e lo corregge, mentre il professionista lo ripete fino a renderlo proprio.</p>
     </div>
     <ol class="learnp__list">
-      ${learn.map(([t, d], i) => `<li><span class="learnp__n">${String(i + 1).padStart(2, '0')}</span><h3>${esc(t)}</h3><p>${esc(d)}</p></li>`).join('')}
+      ${learn.map(([t, d], i) => `<li><span class="learnp__n">${String(i + 1).padStart(2, '0')}</span><h3>${esc(t)}</h3><p>${d}</p></li>`).join('')}
     </ol>
     <div class="learnp__rituals">
       <p class="sub-h">I rituali del Metodo Élite</p>

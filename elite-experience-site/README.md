@@ -202,7 +202,8 @@ e un estratto video autentico (le foto di apertura e a tutto schermo sono inseri
 Ritual Collection sono già compilati.
 
 **Formazione in presenza** — durata e condizioni (sede Maison BB ad Arona, max 8
-partecipanti e calendario da concordare sono già indicati).
+partecipanti, calendario da concordare e prezzo di 990 € IVA inclusa a persona sono già
+indicati).
 
 **Élite & More** — gli articoli reali (titolo, data, estratto, immagine, testo) al posto dei
 tre esempi.

@@ -43,7 +43,7 @@ export function btn(ctx, { label, to, variant = 'primary', ext = false, cls = ''
 
 export function arrow(ctx, { label, to, ext = false, cls = '' }) {
   const href = ext ? to : ctx.href(to);
-  const extAttrs = ext ? ' target="_blank" rel="noopener"' : '';
+  const extAttrs = ext && !to.startsWith('mailto:') ? ' target="_blank" rel="noopener"' : '';
   return `<a class="arrow ${cls}" href="${href}"${extAttrs}><span>${esc(label)}</span><i aria-hidden="true">${ext ? '↗' : '→'}</i></a>`;
 }
 
