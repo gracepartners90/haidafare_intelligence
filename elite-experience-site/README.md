@@ -268,9 +268,25 @@ contrasti AA sui colori del brand, rispetto di `prefers-reduced-motion`.
 
 ## Moduli
 
-I tre moduli di contatto (formazione, presenza, collaborazioni) validano i campi ma **non
-inviano dati**: nessuna integrazione CRM o servizio esterno è collegata. Il collegamento va
-scelto e autorizzato prima della pubblicazione.
+I tre moduli di contatto (formazione, presenza, collaborazioni) scrivono le richieste nel
+foglio Google **«Lead - Élite Experience»**, scheda **«Richieste sito»**, tramite un piccolo
+script Google Apps Script (`integrations/google-sheets/richieste-sito.gs`). Lo script può
+anche inviare un avviso a info@elitexperience.it a ogni richiesta.
+
+Finché `site.forms.endpoint` in `src/config.js` è `null`, i moduli validano i campi ma non
+inviano nulla (nota «Prototipo» sotto il pulsante).
+
+**Attivazione** (una volta, con l'account proprietario del foglio):
+1. Nel foglio: *Estensioni → Apps Script*, incollare il contenuto di `richieste-sito.gs`, salvare.
+2. *Esegui il deployment → Nuovo deployment → App web*; «Esegui come: Me», «Chi ha accesso:
+   Chiunque»; autorizzare.
+3. Copiare l'URL dell'app web (finisce con `/exec`) in `site.forms.endpoint` e ripubblicare.
+
+Ogni richiesta diventa una riga con data, tipo di richiesta, nome, cognome, salone, città,
+email, telefono, i campi propri del modulo, messaggio e pagina di provenienza; le colonne di
+lavoro (chiamate, note, esito) restano per il team. Un campo invisibile blocca i bot; un valore
+che inizia con `=` non diventa una formula. Nella privacy policy va indicato che i dati sono
+conservati su Google Workspace/Drive.
 
 ## Versione inglese
 

@@ -1,5 +1,6 @@
 // Componenti di base: restituiscono stringhe HTML.
 // Convenzione contenuti: null = dato non documentato → segnaposto visibile; {text, verified:false} → bozza da validare.
+import { site } from '../config.js';
 
 export const esc = (s = '') => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 export const join = (arr) => (Array.isArray(arr) ? arr.filter(Boolean).join('') : arr || '');
@@ -156,18 +157,22 @@ export function field({ name, label, type = 'text', required = false, options, a
 }
 
 export function form(ctx, { id, title, intro, fields, submit }) {
-  return `<form class="form" id="${id}" novalidate data-form>
+  const endpoint = site.forms && site.forms.endpoint;
+  return `<form class="form" id="${id}" novalidate data-form${endpoint ? ` data-endpoint="${esc(endpoint)}"` : ''}>
+    <input type="hidden" name="tipo" value="${esc(title)}"><input type="hidden" name="pagina" value="">
+    <div class="form__hp" aria-hidden="true"><label>Sito web <input type="text" name="sito_web" tabindex="-1" autocomplete="off"></label></div>
     ${title ? `<h3 class="form__title">${esc(title)}</h3>` : ''}
     ${intro ? `<p class="form__intro">${esc(intro)}</p>` : ''}
     <div class="form__grid">${fields.map((f) => field({ ...f, prefix: id })).join('')}</div>
     <div class="field field--check">
-      <label><input type="checkbox" name="privacy" id="${id}-privacy" required> Ho letto l’<a href="${ctx.href('privacy/')}">informativa privacy</a> e acconsento al trattamento dei dati per ricevere una risposta. <span aria-hidden="true">*</span></label>
+      <label><input type="checkbox" name="privacy" id="${id}-privacy" required><span>Ho letto l’<a href="${ctx.href('privacy/')}">informativa privacy</a> e acconsento al trattamento dei dati per ricevere una risposta. <span aria-hidden="true">*</span></span></label>
       <span class="field__err" aria-live="polite"></span>
     </div>
     <div class="form__foot">
       <button class="btn btn--primary" type="submit"><span>${esc(submit)}</span><i aria-hidden="true">→</i></button>
-      <p class="form__note">Prototipo: l’invio non è ancora collegato a un servizio di ricezione.</p>
+      ${endpoint ? '' : '<p class="form__note">Prototipo: l’invio non è ancora collegato a un servizio di ricezione.</p>'}
     </div>
-    <p class="form__ok" role="status" hidden>Richiesta pronta per l’invio. Nel sito pubblicato verrà inoltrata a Élite Experience.</p>
+    <p class="form__ok" role="status" hidden>${endpoint ? 'Grazie, la tua richiesta è stata inviata. Ti risponderemo al più presto.' : 'Richiesta pronta per l’invio. Nel sito pubblicato verrà inoltrata a Élite Experience.'}</p>
+    <p class="form__fail" role="alert" hidden>L’invio non è riuscito. Riprova tra qualche minuto oppure scrivi a <a href="mailto:${esc(site.contacts.email)}">${esc(site.contacts.email)}</a>.</p>
   </form>`;
 }

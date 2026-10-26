@@ -32,9 +32,12 @@ ${fullHero(ctx, {
       <div class="contact__forms">
         <div role="tabpanel" id="formazione" aria-labelledby="tab-formazione">
           ${form(ctx, { id: 'form-formazione', title: 'Informazioni sulla formazione', intro: 'Per conoscere i corsi e ricevere un orientamento sul percorso più adatto.', submit: 'Richiedi informazioni', fields: [
-            { name: 'nome', label: 'Nome e cognome', required: true, autocomplete: 'name', half: true },
+            { name: 'nome', label: 'Nome', required: true, autocomplete: 'given-name', half: true },
+            { name: 'cognome', label: 'Cognome', required: true, autocomplete: 'family-name', half: true },
             { name: 'email', label: 'Email', type: 'email', required: true, autocomplete: 'email', half: true },
             { name: 'telefono', label: 'Telefono', type: 'tel', autocomplete: 'tel', half: true },
+            { name: 'salone', label: 'Salone', autocomplete: 'organization', half: true },
+            { name: 'citta', label: 'Città', autocomplete: 'address-level2', half: true },
             { name: 'ruolo', label: 'Ruolo', type: 'select', options: ['Titolare di salone', 'Hairstylist', 'Operatore Hair Spa', 'Altro'], half: true },
             { name: 'esperienza', label: 'Esperienza Hair Spa', type: 'select', options: ['Nessuna, voglio iniziare', 'Offro già servizi Hair Spa'], required: true, half: true },
             { name: 'corso', label: 'Corso di interesse', type: 'select', options: courseOpts, half: true },
@@ -43,10 +46,12 @@ ${fullHero(ctx, {
         </div>
         <div role="tabpanel" id="presenza" aria-labelledby="tab-presenza" hidden>
           ${form(ctx, { id: 'form-presenza', title: 'Formazione in presenza', intro: 'Per verificare disponibilità e organizzazione, ad Arona o nel tuo salone.', submit: 'Richiedi disponibilità', fields: [
-            { name: 'nome', label: 'Nome e cognome', required: true, autocomplete: 'name', half: true },
+            { name: 'nome', label: 'Nome', required: true, autocomplete: 'given-name', half: true },
+            { name: 'cognome', label: 'Cognome', required: true, autocomplete: 'family-name', half: true },
             { name: 'email', label: 'Email', type: 'email', required: true, autocomplete: 'email', half: true },
             { name: 'telefono', label: 'Telefono', type: 'tel', autocomplete: 'tel', half: true },
-            { name: 'salone', label: 'Salone e città', required: true, half: true },
+            { name: 'salone', label: 'Salone', required: true, autocomplete: 'organization', half: true },
+            { name: 'citta', label: 'Città', required: true, autocomplete: 'address-level2', half: true },
             { name: 'modalita', label: 'Dove', type: 'select', options: ['Presso la sede di Arona', 'Nel mio salone'], required: true, half: true },
             { name: 'partecipanti', label: 'Numero di partecipanti', type: 'number', half: true },
             { name: 'periodo', label: 'Periodo preferito', half: true },
@@ -55,14 +60,15 @@ ${fullHero(ctx, {
         </div>
         <div role="tabpanel" id="collaborazioni" aria-labelledby="tab-collaborazioni" hidden>
           ${form(ctx, { id: 'form-collaborazioni', title: 'Collaborazioni professionali', intro: 'Per aziende, brand, distributori, accademie e organizzatori di eventi.', submit: 'Invia la proposta', fields: [
-            { name: 'nome', label: 'Nome e cognome', required: true, autocomplete: 'name', half: true },
+            { name: 'nome', label: 'Nome', required: true, autocomplete: 'given-name', half: true },
+            { name: 'cognome', label: 'Cognome', required: true, autocomplete: 'family-name', half: true },
             { name: 'azienda', label: 'Azienda o ente', required: true, autocomplete: 'organization', half: true },
             { name: 'ruolo', label: 'Ruolo', half: true },
             { name: 'email', label: 'Email', type: 'email', required: true, autocomplete: 'email', half: true },
             { name: 'telefono', label: 'Telefono', type: 'tel', autocomplete: 'tel', half: true },
             { name: 'tipologia', label: 'Tipo di collaborazione', type: 'select', options: ['Azienda o brand', 'Distributore', 'Accademia', 'Organizzatore di eventi', 'Altro'], required: true, half: true },
             { name: 'paese', label: 'Paese', autocomplete: 'country-name', half: true },
-            { name: 'progetto', label: 'Descrizione del progetto', type: 'textarea', required: true },
+            { name: 'messaggio', label: 'Descrizione del progetto', type: 'textarea', required: true },
           ] })}
         </div>
       </div>

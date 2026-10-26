@@ -20,6 +20,9 @@ export const site = {
   social: {
     instagram: 'https://www.instagram.com/elite_experienceacademy/',
   },
+  // Moduli di contatto: URL dell'app web Google Apps Script che scrive le richieste nel foglio
+  // «Lead - Élite Experience» (vedi integrations/google-sheets). Con null i moduli restano dimostrativi.
+  forms: { endpoint: null },
 };
 
 // Navigazione principale. `children` genera il sottomenu (Academy).

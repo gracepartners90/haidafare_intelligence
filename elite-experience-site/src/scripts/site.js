@@ -96,12 +96,13 @@
     window.addEventListener('hashchange', () => { if (!window.__ASSETS) selectTab(location.hash.slice(1)); });
   }
 
-  /* ---------- Form: validazione accessibile, nessun invio a servizi esterni ---------- */
+  /* ---------- Form: validazione accessibile; con data-endpoint la richiesta va al foglio Google ---------- */
   $$('[data-form]').forEach((form) => {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       let first = null;
-      $$('input, select, textarea', form).forEach((el) => {
+      $$('input:not([type="hidden"]), select, textarea', form).forEach((el) => {
+        if (el.closest('.form__hp')) return;
         const field = el.closest('.field'); const err = field && $('.field__err', field);
         let msg = '';
         if (el.required && (el.type === 'checkbox' ? !el.checked : !el.value.trim())) msg = el.type === 'checkbox' ? 'Per inviare la richiesta è necessario il consenso.' : 'Campo obbligatorio.';
@@ -111,8 +112,27 @@
         el.setAttribute('aria-invalid', msg ? 'true' : 'false');
         if (msg && !first) first = el;
       });
-      const ok = $('.form__ok', form);
+      const ok = $('.form__ok', form), fail = $('.form__fail', form), btn = $('button[type="submit"]', form);
+      if (fail) fail.hidden = true;
       if (first) { first.focus(); if (ok) ok.hidden = true; return; }
+      const endpoint = form.dataset.endpoint;
+      if (endpoint) {
+        form.elements.pagina.value = location.href;
+        btn.disabled = true;
+        form.setAttribute('aria-busy', 'true');
+        try {
+          const res = await fetch(endpoint, { method: 'POST', body: new FormData(form) });
+          const out = await res.json();
+          if (!out.ok) throw new Error('invio rifiutato');
+        } catch {
+          if (fail) { fail.hidden = false; fail.setAttribute('tabindex', '-1'); fail.focus(); }
+          btn.disabled = false;
+          form.removeAttribute('aria-busy');
+          return;
+        }
+        btn.disabled = false;
+        form.removeAttribute('aria-busy');
+      }
       if (ok) ok.hidden = false;
       form.reset();
     });
