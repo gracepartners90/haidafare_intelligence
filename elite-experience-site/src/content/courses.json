@@ -73,7 +73,7 @@
         "conditions": null,
         "validUntil": null
       },
-      "purchaseUrl": null,
+      "purchaseUrl": "https://academy.elitexperience.it/rituale/wellness-ritual/",
       "faq": null,
       "related": [
         {
@@ -172,7 +172,7 @@
         "conditions": null,
         "validUntil": null
       },
-      "purchaseUrl": null,
+      "purchaseUrl": "https://academy.elitexperience.it/rituale/pinda-ritual/",
       "faq": null,
       "related": [
         {
@@ -271,7 +271,7 @@
         "conditions": null,
         "validUntil": null
       },
-      "purchaseUrl": null,
+      "purchaseUrl": "https://academy.elitexperience.it/rituale/brushing-ritual/",
       "faq": null,
       "related": [
         {
@@ -370,7 +370,7 @@
         "conditions": null,
         "validUntil": null
       },
-      "purchaseUrl": null,
+      "purchaseUrl": "https://academy.elitexperience.it/rituale/hairgym-ritual/",
       "faq": null,
       "related": [
         {
@@ -469,7 +469,7 @@
         "conditions": null,
         "validUntil": null
       },
-      "purchaseUrl": null,
+      "purchaseUrl": "https://academy.elitexperience.it/rituale/relax-full-ritual/",
       "faq": null,
       "related": [
         {
@@ -521,6 +521,6 @@
       "conditions": null,
       "validUntil": null
     },
-    "purchaseUrl": null
+    "purchaseUrl": "https://academy.elitexperience.it/rituale/elite-ritual-collection/"
   }
 }

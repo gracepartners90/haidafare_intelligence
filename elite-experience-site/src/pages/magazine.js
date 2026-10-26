@@ -2,7 +2,7 @@
 import { esc, eyebrow, sectionHead, arrow, media, breadcrumb } from '../components/core.js';
 import { breadcrumbs, blog, blogPosting } from '../components/seo.js';
 import { page } from '../components/layout.js';
-import { magazineIssue, latestArticles, registro, articlePath, catPath, articleBody, articleMeta, catName } from '../components/editorial.js';
+import { magazineIssue, latestArticles, relatedArticles, registro, articlePath, catPath, articleBody, articleMeta, catName } from '../components/editorial.js';
 
 const H = { label: 'Home', to: '' };
 const base = [H, { label: 'Élite & More', to: 'elite-e-more/' }];
@@ -72,7 +72,6 @@ ${magazineIssue(ctx)}
     route: articlePath(a),
     render(ctx) {
       const crumbs = [...base, { label: catName(ctx.data, a.category), to: catPath(a.category) }, { label: a.title, to: articlePath(a) }];
-      const others = latestArticles(ctx.data).filter((x) => x.slug !== a.slug);
       const body = `
 <article class="article">
   <header class="article__head wrap">
@@ -80,7 +79,7 @@ ${magazineIssue(ctx)}
     ${a.sample ? '<p class="article__flag">Articolo di esempio per l’anteprima del magazine</p>' : ''}
     <p class="mag-eyebrow article__meta">${articleMeta(ctx, a)}</p>
     <h1 class="article__title">${esc(a.title)}</h1>
-    <p class="article__lead">${esc(a.excerpt)}</p>
+    ${a.leadFromBody ? '' : `<p class="article__lead">${esc(a.excerpt)}</p>`}
     <p class="article__by">di Redazione Élite &amp; More</p>
   </header>
   <div class="article__hero">${media(ctx, a.image, { ratio: '21/9', position: a.imagePos, eager: true })}</div>
@@ -95,18 +94,19 @@ ${magazineIssue(ctx)}
   <section class="sec sec--ivory">
     <div class="wrap split split--4-8">
       <div>${sectionHead({ eyebrow: 'Élite & More', title: 'Continua a leggere.' })}${arrow(ctx, { label: 'Sfoglia il numero', to: 'elite-e-more/' })}</div>
-      ${registro(ctx, others)}
+      ${registro(ctx, relatedArticles(ctx.data, a))}
     </div>
   </section>
 </article>`;
       return page(ctx, {
-        title: `${a.title} — Élite & More`,
-        description: a.excerpt,
-        jsonld: [blogPosting(a), breadcrumbs(crumbs)],
+        title: `${a.seoTitle || a.title} — Élite & More`,
+        description: a.seoDescription || a.excerpt,
+        jsonld: [blogPosting(a, ctx.data.media[a.image]), breadcrumbs(crumbs)],
         ogImage: a.image,
         ogType: 'article',
         noindex: !!a.sample,
         bodyClass: 'p-article',
+        section: 'elite-e-more/',
         body,
       });
     },

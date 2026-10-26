@@ -24,7 +24,7 @@ const read = (p) => JSON.parse(fs.readFileSync(path.join(root, p), 'utf8'));
 
 const coursesFile = read('src/content/courses.json');
 const data = {
-  media: read('src/content/media.json'),
+  media: { ...read('src/content/media.json'), ...read('src/content/media-elite-e-more.json') },
   courses: [...coursesFile.courses].sort((a, b) => a.order - b.order),
   collection: coursesFile.collection,
   faq: read('src/content/faq.json'),

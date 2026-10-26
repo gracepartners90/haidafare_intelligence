@@ -5,7 +5,8 @@ import { esc, media, arrow, btn } from './core.js';
 
 const pad = (n) => String(n).padStart(2, '0');
 export const dateIt = (d) => new Date(`${d}T12:00:00`).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
-export const articlePath = (a) => `elite-e-more/${a.slug}/`;
+// Gli articoli restano all'indirizzo del sito WordPress: dominio/slug/
+export const articlePath = (a) => `${a.slug}/`;
 export const catPath = (slug) => `elite-e-more/categoria/${slug}/`;
 
 // Articoli, dal più recente
@@ -102,10 +103,11 @@ function end(ctx, { issue }) {
   </div>`;
 }
 
-// Il numero in edicola, da sfogliare
+// Il numero in edicola, da sfogliare: gli articoli più recenti
+export const ISSUE_SIZE = 6;
 export function magazineIssue(ctx) {
   const j = ctx.data.editorial.journal;
-  const arts = latestArticles(ctx.data);
+  const arts = latestArticles(ctx.data, { n: ISSUE_SIZE });
   const minutes = arts.reduce((s, a) => s + (a.minutes || 0), 0);
   const folios = arts.map((_, i) => i + 3);
   const ctxIssue = { issue: j.issue, arts, folios, minutes };
@@ -145,15 +147,30 @@ export function registro(ctx, list) {
 }
 
 /* ---------- Pagina articolo ---------- */
+// Testo dei blocchi: "text" semplice oppure "html" importato (strong, em, a, br).
+// I link interni hanno href="@percorso" e diventano link relativi del sito.
+const inline = (ctx, b) => (b.html != null ? b.html.replace(/href="@([^"]*)"/g, (m, to) => `href="${ctx.href(to)}"`) : esc(b.text));
+
 export function articleBody(ctx, a) {
   let first = true;
   return a.body.map((b) => {
-    if (b.type === 'h2') return `<h2>${esc(b.text)}</h2>`;
-    if (b.type === 'quote') return `<blockquote class="article__pull"><p>${esc(b.text)}</p></blockquote>`;
+    if (b.type === 'h2' || b.type === 'h3') return `<${b.type}>${inline(ctx, b)}</${b.type}>`;
+    if (b.type === 'quote') return `<blockquote class="article__pull"><p>${inline(ctx, b)}</p></blockquote>`;
+    if (b.type === 'ul' || b.type === 'ol') return `<${b.type}>${b.items.map((h) => `<li>${inline(ctx, { html: h })}</li>`).join('')}</${b.type}>`;
+    if (b.type === 'img') {
+      const m = ctx.data.media[b.key];
+      return media(ctx, b.key, { ratio: m ? `${m.w}/${m.h}` : undefined, cls: 'article__img' });
+    }
     const cls = first ? ' class="article__first"' : '';
     first = false;
-    return `<p${cls}>${esc(b.text)}</p>`;
+    return `<p${cls}>${inline(ctx, b)}</p>`;
   }).join('\n');
+}
+
+// "Continua a leggere": prima la stessa rubrica, poi i più recenti
+export function relatedArticles(data, a, n = ISSUE_SIZE) {
+  const others = latestArticles(data).filter((x) => x.slug !== a.slug);
+  return [...others.filter((x) => x.category === a.category), ...others.filter((x) => x.category !== a.category)].slice(0, n);
 }
 
 export { meta as articleMeta, catName };

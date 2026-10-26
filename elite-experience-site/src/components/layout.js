@@ -5,7 +5,8 @@ const external = (url) => `href="${url}" target="_blank" rel="noopener"`;
 
 function navItems(ctx, { mobile = false } = {}) {
   return nav.map((item) => {
-    const current = ctx.route === item.to || (item.to && ctx.route.startsWith(item.to) && item.to !== '');
+    const route = ctx.section || ctx.route;
+    const current = route === item.to || (item.to && route.startsWith(item.to) && item.to !== '');
     if (!item.children) {
       return `<li><a href="${ctx.href(item.to)}"${current ? ' aria-current="page"' : ''}>${esc(item.label)}</a></li>`;
     }
@@ -137,7 +138,7 @@ ${head(ctx, p)}
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body${ctx.mode === 'pretty' ? '' : ' class="notes-on"'}>
-${header(ctx)}
+${header(p.section ? { ...ctx, section: p.section } : ctx)}
 ${main}
 ${footer(ctx)}
 <script ${ctx.src('site.js')} defer></script>

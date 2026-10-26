@@ -75,14 +75,17 @@ export const blog = () => ({
   publisher: { '@id': `${site.url}/#organization` },
 });
 
-export const blogPosting = (a) => ({
+// Articolo del magazine: indirizzo alla radice, come sul sito WordPress (dominio/slug/)
+export const blogPosting = (a, image) => ({
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   headline: a.title,
-  description: a.excerpt,
+  description: a.seoDescription || a.excerpt,
   datePublished: a.date,
+  ...(a.modified ? { dateModified: a.modified } : {}),
+  ...(image ? { image: `${site.url}/assets/${image.file}` } : {}),
   inLanguage: 'it-IT',
   author: { '@type': 'Organization', name: 'Redazione Élite & More' },
   isPartOf: { '@id': `${site.url}/elite-e-more/#blog` },
-  url: `${site.url}/elite-e-more/${a.slug}/`,
+  url: `${site.url}/${a.slug}/`,
 });

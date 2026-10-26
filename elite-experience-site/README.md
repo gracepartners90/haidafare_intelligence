@@ -50,6 +50,7 @@ elite-experience-site/
 │   │   ├── courses.json      Schede corso, Élite Ritual Collection
 │   │   ├── faq.json          Domande frequenti divise per tema
 │   │   ├── media.json        Registro delle fotografie ufficiali con testi alternativi
+│   │   ├── media-elite-e-more.json  Immagini degli articoli importati da elitexperience.it
 │   │   ├── practice.json     Sequenza "Il metodo, in pratica"
 │   │   └── editorial.json    Élite & More (numero, rubriche, articoli), collaborazioni
 │   ├── components/           Componenti riutilizzabili (HTML generato da funzioni)
@@ -78,7 +79,8 @@ elite-experience-site/
 | Formazione Online (i cinque rituali a confronto e la collezione) | `/academy/formazione-online/`, `#confronto`, `#collezione` |
 | Schede corso (5, da un unico modello) | `/academy/formazione-online/<slug>/` |
 | Formazione in Presenza | `/academy/formazione-in-presenza/` |
-| Élite & More: il numero da sfogliare, archivio, rubriche, articoli | `/elite-e-more/…` (stesso indirizzo del sito attuale) |
+| Élite & More: il numero da sfogliare, archivio, rubriche | `/elite-e-more/…` (stesso indirizzo del sito attuale) |
+| Articoli di Élite & More (23) | `/<slug>/`, alla radice come sul sito WordPress attuale |
 | Contatti (3 moduli) | `/contatti/` |
 | Privacy, 404 | `/privacy/`, `/404.html` |
 
@@ -122,6 +124,8 @@ Campi principali: `name`, `level`, `shortDescription` (la frase di «Cosa impare
   singoli (il sito mostra in automatico, in evidenza, la somma dei corsi inclusi, € 1.350, e il
   risparmio, quando la somma è più alta). Con `price` a
   `null` il prezzo non viene mostrato e i dati strutturati del corso non dichiarano un'offerta.
+  Nota: oggi la piattaforma Academy indica prezzi diversi (€ 290, € 390, collezione € 1.790);
+  per scelta il sito mantiene per ora i propri, da allineare prima della pubblicazione.
 - **Durata e modalità**: «Videolezione online», 1 h per tutti i corsi.
 - **Livello**: Wellness Ritual "Primi approcci", Pinda e Brushing "Medium", Hairgym "Base e
   Medium", Relax Full "Pro".
@@ -168,11 +172,26 @@ si alternano), pagina di fine — in orizzontale su desktop
 (frecce, rotellina, tastiera ← → PagSu PagGiù, link del sommario) e come pila di pagine su
 mobile o senza JavaScript. Sotto il numero: l'archivio a registro e le rubriche
 (`categories`). Ogni articolo (`articles`) ha titolo, rubrica, data, minuti di lettura,
-estratto, immagine e corpo (`body`: paragrafi `p`, titoletti `h2`, citazioni `quote`).
+estratto, immagine e corpo (`body`: paragrafi `p`, titoletti `h2`/`h3`, elenchi `ul`/`ol`,
+immagini `img`, citazioni `quote`; il testo è in `html` con grassetti, corsivi e link).
 
-I tre articoli presenti sono **esempi** per l'anteprima (`"sample": true`): con le note di
-lavorazione attive mostrano l'etichetta "Esempio" e le loro pagine sono `noindex`. Vanno
-sostituiti con gli articoli reali prima della pubblicazione.
+Il numero in edicola mostra i **6 articoli più recenti**; l'archivio e le rubriche li elencano
+tutti. In fondo a ogni articolo, «Continua a leggere» propone 6 articoli, prima della stessa
+rubrica.
+
+**Articoli importati da elitexperience.it.** I 23 articoli del blog WordPress sono stati
+importati con testo, grassetti, elenchi, immagini e data originali. Restano **allo stesso
+indirizzo** (`elitexperience.it/<slug>/`), così i link già indicizzati continuano a
+funzionare. Dettagli:
+
+- i link interni al vecchio sito sono rimappati sulle pagine nuove (i nomi dei corsi portano
+  alla loro scheda; `/about-us/` → Elisabetta Tancini; `/#rituali` → Formazione Online;
+  `/#formazione` → Academy); nei dati sono scritti come `@percorso`;
+- titolo SEO (`seoTitle`) e descrizione (`seoDescription`) vengono da Yoast; due descrizioni
+  copiate da un altro articolo non sono state riprese;
+- l'estratto è quello scritto su WordPress; se mancava, si usa la descrizione Yoast o la prima
+  frase del testo (`leadFromBody`: in questo caso non si ripete in testa all'articolo);
+- le rubriche sono state assegnate in fase di import (campo `category`): vanno verificate.
 
 ### Video
 
@@ -199,8 +218,8 @@ policy e la cookie policy.
 **Elisabetta Tancini** — eventuali riconoscimenti, altre fotografie ufficiali (anche verticali,
 di dettaglio, in aula). Le due citazioni firmate (home e «La sua visione») sono approvate.
 
-**Corsi** — per ciascuno dei 5 rituali: eventuale promozione con condizioni, link di acquisto
-e un estratto video autentico (le foto di apertura e a tutto schermo sono inserite). Prezzi, durata, accesso illimitato, livelli, tecniche,
+**Corsi** — per ciascuno dei 5 rituali: eventuale promozione con condizioni e un estratto
+video autentico (i link di acquisto diretti alla piattaforma Academy sono inseriti) (le foto di apertura e a tutto schermo sono inserite). Prezzi, durata, accesso illimitato, livelli, tecniche,
 «Cosa imparerai», profilo consigliato, prerequisiti, requisiti tecnici e prezzo della Élite
 Ritual Collection sono già compilati.
 
@@ -208,8 +227,9 @@ Ritual Collection sono già compilati.
 partecipanti e calendario da concordare sono già indicati; per il costo il sito invita a
 richiedere informazioni).
 
-**Élite & More** — gli articoli reali (titolo, data, estratto, immagine, testo) al posto dei
-tre esempi.
+**Élite & More** — verifica delle rubriche assegnate ai 23 articoli importati; modalità di
+pubblicazione dei nuovi articoli (il sito è statico: oggi un articolo si aggiunge in
+`editorial.json`).
 
 Le testimonianze sono state tolte dal sito: si possono reintrodurre quando saranno
 disponibili testimonianze reali con autorizzazione alla pubblicazione.
@@ -225,7 +245,8 @@ disponibili testimonianze reali con autorizzazione alla pubblicazione.
 - Dati strutturati JSON-LD: EducationalOrganization, WebSite, Person (Elisabetta Tancini),
   Course (con Offer solo se il prezzo è confermato), FAQPage, Blog e BlogPosting (Élite &
   More), BreadcrumbList.
-- `sitemap.xml` e `robots.txt` generati; gli articoli di esempio di Élite & More sono `noindex`.
+- `sitemap.xml` e `robots.txt` generati; gli articoli di Élite & More mantengono l'indirizzo del
+  sito attuale.
 - Un solo H1 per pagina, gerarchia dei titoli coerente, testi alternativi su ogni immagine.
 
 ## Accessibilità
