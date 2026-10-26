@@ -156,8 +156,9 @@ code { font-family: ui-monospace, Menlo, monospace; font-size: .9em; }
 .drawer[hidden] { display: none; }
 .drawer nav > ul > li { border-bottom: 1px solid var(--line); }
 .drawer nav a, .drawer .sub-toggle { display: flex; width: 100%; justify-content: space-between; padding: 16px 0; font-family: var(--serif); font-size: 1.5rem; font-weight: 350; text-decoration: none; background: none; border: 0; }
-.drawer .sub { position: static; transform: none; opacity: 1; visibility: visible; display: none; width: auto; padding: 0 0 16px; border: 0; box-shadow: none; grid-template-columns: 1fr; gap: 16px; }
-.drawer .has-sub.open .sub { display: grid; }
+.drawer .sub { position: static; transform: none; opacity: 1; visibility: visible; display: none; width: auto; padding: 18px 0 16px; border: 0; box-shadow: none; grid-template-columns: 1fr; gap: 16px; }
+.drawer .has-sub.open .sub, .drawer .has-sub:hover .sub { display: grid; transform: none; transition: none; }
+.drawer .has-sub:not(.open):hover .sub { display: none; }
 .drawer .sub a { font-family: var(--sans); font-size: 1rem; padding: 6px 0; }
 .drawer > .btn { margin-top: 24px; }
 
