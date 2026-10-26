@@ -163,6 +163,8 @@ code { font-family: ui-monospace, Menlo, monospace; font-size: .9em; }
 
 /* ---------- Footer ---------- */
 .ftr { background: var(--deep); color: var(--muted-light); padding: clamp(64px, 7vw, 110px) 0 32px; font-size: var(--t-small); }
+/* Filo di separazione: i blocchi finali «Trova il percorso…» hanno lo stesso marrone del footer */
+.ftr { border-top: 1px solid var(--line-light); }
 .ftr a { text-decoration: none; color: var(--ivory); }
 .ftr a:hover { text-decoration: underline; }
 .ftr__top { display: grid; grid-template-columns: 4fr 8fr; gap: 48px; }
@@ -887,7 +889,12 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .fader__dots li.is-on { background: var(--ivory); }
 
 /* ---------- Home ---------- */
-.home-eli__grid { grid-template-columns: 6fr 5fr; }
+.home-eli__grid { grid-template-columns: 8fr 5fr; }
+/* Testo della fondatrice: una frase per riga, come da formattazione del brand */
+.home-eli__text > p:not(.eyebrow):not(.home-eli__sub) { max-width: none; text-wrap: pretty; }
+.home-rituals .shead__lead { max-width: 46em; }
+/* Hero della home: «Porta l’esperienza Hair Spa» su una riga, «nel tuo salone.» sulla seconda */
+.hero--home .hero__text { max-width: none; }
 .shead--line { max-width: none; }
 .shead--wide { max-width: none; }
 .shead--wide .shead__lead { max-width: none; }
@@ -1004,7 +1011,13 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
 .ccard__foot .price { margin: 0; font-size: 1.2rem; }
 .ccard .ccard__foot .arrow { margin-top: 0; }
 .price small { color: var(--muted); font-family: var(--sans); font-size: .75rem; }
-.price .price__was { display: block; margin-top: 4px; letter-spacing: .02em; }
+/* Prezzo della collezione: più grande, con il confronto con i corsi singoli e il risparmio */
+.price--deal { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.price--deal .price__now { font-size: clamp(2rem, 2.8vw, 2.6rem); line-height: 1.1; }
+.price--deal .price__now small { margin-left: 2px; font-size: .8125rem; }
+.price--deal .price__was { font-family: var(--sans); font-size: .875rem; letter-spacing: .01em; }
+.price__save { margin-top: 4px; padding: 5px 12px; border-radius: 999px; background: var(--beige); color: var(--deep); font: 600 var(--t-micro)/1.4 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
+.coll .price__was, .coll-band .price__was, .sec--choc .price__was, .sec--deep .price__was { color: var(--muted-light); }
 .coll .price small, .coll-band .price small { color: var(--muted-light); }
 .sec--choc .price small, .sec--deep .price small { color: var(--muted-light); }
 
@@ -1050,6 +1063,10 @@ body:not(.notes-on) .notes::before { background: transparent; border: 1px solid 
   .fullimg--band { height: 56vh; height: 56svh; min-height: 320px; }
   .fullvideo { height: 80vh; height: 80svh; min-height: 480px; }
 }
+
+/* Parole in evidenza nei testi */
+.lead strong, .shead__lead strong, .path p strong { color: var(--ink); }
+.sec--deep strong, .sec--choc strong { color: var(--ivory); }
 
 /* =========================================================
    Élite & More — il numero da sfogliare (modello Rockstar Notes)
@@ -1278,7 +1295,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   <div class="hero__in">
     <div class="hero__text">
       
-      <h1 class="hero__title">Porta l’esperienza Hair Spa nel tuo salone.</h1>
+      <h1 class="hero__title">Porta l’esperienza Hair&nbsp;Spa<br>nel tuo salone.</h1>
       <p class="hero__lead">Un metodo professionale ideato da Elisabetta Tancini, che attraverso percorsi di formazione online e in presenza ti accompagna nell’apprendimento di rituali, tecniche e manualità Hair Spa.</p>
       <div class="actions">
         <a class="btn btn--light " href="#/academy/" ><span>Scopri la formazione</span><i aria-hidden="true">→</i></a>
@@ -1304,11 +1321,11 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     <h2 class="shead__title">Un metodo che prende forma attraverso il gesto.</h2>
     
   </header>
-      <p class="lead">Il Metodo Élite è l’approccio professionale all’Hair Spa ideato da Elisabetta Tancini. Si fonda sull’apprendimento e sull’applicazione di rituali, tecniche e manualità che il professionista porta nel proprio salone.</p>
+      <p class="lead">Il Metodo Élite è l’approccio professionale all’Hair Spa ideato da Elisabetta Tancini.<br>Si fonda sull’<strong>apprendimento</strong> e sull’<strong>applicazione</strong> di rituali, tecniche e manualità che il professionista porta nel proprio salone.</p>
       <ol class="pillars">
         <li><span class="pillars__n">01</span><div><h3>Che cos’è</h3><p>Un metodo professionale Hair Spa, fatto di rituali, tecniche e manualità ideati da Elisabetta Tancini.</p></div></li>
         <li><span class="pillars__n">02</span><div><h3>L’approccio</h3><p><span class="draft">Il gesto al centro: ogni rituale si apprende attraverso la manualità, la sequenza e la pratica.</span></p></div></li>
-        <li><span class="pillars__n">03</span><div><h3>Metodo, rituali, formazione</h3><p>Il metodo è la base. I rituali ne sono l’espressione pratica. La formazione è il modo per apprenderli.</p></div></li>
+        <li><span class="pillars__n">03</span><div><h3>Metodo, rituali, formazione</h3><p>Il metodo è la base. I rituali ne sono l’espressione pratica.<br>La formazione è il modo per apprenderli.</p></div></li>
       </ol>
       <a class="btn btn--primary " href="#/metodo-elite/" ><span>Scopri il Metodo Élite</span><i aria-hidden="true">→</i></a>
     </div>
@@ -1322,7 +1339,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
       <p class="eyebrow ">La fondatrice</p>
       <h2 class="display-name">Elisabetta Tancini</h2>
       <p class="home-eli__sub">La professionista dietro il Metodo Élite.</p>
-      <p>Imprenditrice, Hair Spa Specialist e formatrice internazionale, Elisabetta Tancini è la fondatrice di Élite Experience e l’ideatrice del Metodo Élite. Il metodo nasce dal suo lavoro in salone e si trasmette attraverso la formazione online e in presenza.</p>
+      <p>Imprenditrice, Hair Spa Specialist e formatrice internazionale,<br>Elisabetta Tancini è la <strong>fondatrice</strong> di Élite Experience e l’ideatrice del Metodo Élite.<br>Il metodo nasce dal suo <strong>lavoro in salone</strong> e si trasmette attraverso la <strong>formazione</strong> online e in presenza.</p>
       <figure class="signed ">
   <blockquote><p>Ogni gesto ha un tempo e un’intenzione.<br>Insegnarlo significa trasmettere la cura che c’è dietro.</p></blockquote>
   <figcaption><span class="signed__sign" aria-hidden="true">Elisabetta Tancini</span><span class="sr-only">Elisabetta Tancini</span></figcaption>
@@ -1342,7 +1359,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     <header class="shead shead--left ">
     <p class="eyebrow ">I rituali</p>
     <h2 class="shead__title">Il metodo, attraverso le manualità.</h2>
-    <p class="shead__lead">Ogni rituale è un’espressione pratica del Metodo Élite, con tecniche, manualità e sequenze proprie. Ognuno ha una scheda dedicata con il programma del corso.</p>
+    <p class="shead__lead">Ogni rituale è un’espressione pratica del Metodo Élite, con tecniche, manualità e sequenze proprie.<br>Ognuno dei quali ha una scheda dedicata con il programma del corso.</p>
   </header>
     <article class="ritual-feature">
       <div class="ritual-feature__media"><figure class="ph  " style="aspect-ratio:16/9;--pos:50% 55%">
@@ -1350,7 +1367,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     
   </figure></div>
       <div class="ritual-feature__text">
-        <p class="eyebrow">Rituale</p>
+        <p class="eyebrow">Special One</p>
         <h3 class="h3serif">Pinda Ritual</h3>
         <p>Il calore incontra la manualità, dando forma a un’esperienza sensoriale avvolgente.</p>
         <figure class="ph  ritual-feature__detail" style="aspect-ratio:1/1;--pos:52% 60%">
@@ -1428,7 +1445,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
       <header class="shead shead--left ">
     <p class="eyebrow ">Formazione online</p>
     <h2 class="shead__title">Il metodo, un rituale alla volta.</h2>
-    <p class="shead__lead">Cinque rituali completi: competenze, tecniche e programma del corso.</p>
+    <p class="shead__lead"><strong>Cinque</strong> rituali completi: competenze, tecniche e programma dei <strong>corsi</strong>.</p>
   </header>
       <a class="arrow " href="#/academy/formazione-online/@confronto"><span>Scopri i corsi online</span><i aria-hidden="true">→</i></a>
     </div>
@@ -1462,7 +1479,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
           <div class="picker__body">
             <span class="picker__name">Wellness Ritual</span>
             <span class="picker__desc">Le basi del Metodo Élite Experience: accoglienza, manualità e struttura del trattamento Hair Spa.</span>
-            <span class="picker__meta"><span>Online</span><span class="chip">Primi approcci</span><span class="picker__price">€ 190</span></span>
+            <span class="picker__meta"><span>Online</span><span class="chip">Primi approcci</span><span class="picker__price">€ 190 IVA inclusa</span></span>
           </div>
           <span class="picker__go"><span>Scopri il corso</span><i aria-hidden="true">→</i></span>
         </a>
@@ -1476,7 +1493,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
           <div class="picker__body">
             <span class="picker__name">Pinda Ritual</span>
             <span class="picker__desc">Il calore incontra la manualità, dando forma a un’esperienza sensoriale avvolgente.</span>
-            <span class="picker__meta"><span>Online</span><span class="chip">Medium</span><span class="picker__price">€ 290</span></span>
+            <span class="picker__meta"><span>Online</span><span class="chip">Medium</span><span class="picker__price">€ 290 IVA inclusa</span></span>
           </div>
           <span class="picker__go"><span>Scopri il corso</span><i aria-hidden="true">→</i></span>
         </a>
@@ -1490,7 +1507,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
           <div class="picker__body">
             <span class="picker__name">Brushing Ritual</span>
             <span class="picker__desc">La spazzolatura si trasforma in un gesto professionale, parte integrante dell’esperienza Hair Spa.</span>
-            <span class="picker__meta"><span>Online</span><span class="chip">Medium</span><span class="picker__price">€ 290</span></span>
+            <span class="picker__meta"><span>Online</span><span class="chip">Medium</span><span class="picker__price">€ 290 IVA inclusa</span></span>
           </div>
           <span class="picker__go"><span>Scopri il corso</span><i aria-hidden="true">→</i></span>
         </a>
@@ -1504,7 +1521,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
           <div class="picker__body">
             <span class="picker__name">Hairgym Ritual</span>
             <span class="picker__desc">Manualità dinamiche e pressioni mirate per un approccio funzionale al benessere del cuoio capelluto.</span>
-            <span class="picker__meta"><span>Online</span><span class="chip">Base e Medium</span><span class="picker__price">€ 290</span></span>
+            <span class="picker__meta"><span>Online</span><span class="chip">Base e Medium</span><span class="picker__price">€ 290 IVA inclusa</span></span>
           </div>
           <span class="picker__go"><span>Scopri il corso</span><i aria-hidden="true">→</i></span>
         </a>
@@ -1518,7 +1535,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
           <div class="picker__body">
             <span class="picker__name">Relax Full Ritual</span>
             <span class="picker__desc">Un’esperienza Hair Spa immersiva, in cui manualità, calore e attenzione sensoriale si incontrano.</span>
-            <span class="picker__meta"><span>Online</span><span class="chip">Pro</span><span class="picker__price">€ 290</span></span>
+            <span class="picker__meta"><span>Online</span><span class="chip">Pro</span><span class="picker__price">€ 290 IVA inclusa</span></span>
           </div>
           <span class="picker__go"><span>Scopri il corso</span><i aria-hidden="true">→</i></span>
         </a>
@@ -1532,7 +1549,9 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
       <p class="coll-band__desc">La collezione completa dei rituali del Metodo Élite in un unico percorso formativo.</p>
     </div>
     <div class="coll-band__foot">
-      <p class="price">€ 1.200<small class="price__was">€ 1.350 acquistando i corsi singolarmente</small></p>
+      <p class="price price--deal"><span class="price__now">€ 1.200 <small>IVA inclusa</small></span>
+      <span class="price__was">Corsi acquistati singolarmente: <s>€ 1.350</s></span>
+      <span class="price__save">Risparmi € 150</span></p>
       
       <a class="btn btn--light " href="https://academy.elitexperience.it/" target="_blank" rel="noopener" ><span>Vai alla piattaforma Academy</span><i aria-hidden="true">↗</i></a>
     </div>
@@ -1551,12 +1570,12 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     <div class="paths">
       <article class="path">
         <h3 class="h3serif">Iniziare con l’Hair Spa</h3>
-        <p>Per chi vuole avvicinarsi al mondo Hair Spa e introdurre nuove competenze nel salone: conoscere i rituali, acquisire le prime manualità, capire da dove partire.</p>
+        <p>Per chi vuole <strong>avvicinarsi al mondo dell’Hair Spa</strong> e introdurre nuove competenze nel salone: conoscere i rituali, acquisire le prime manualità, <strong>capire da dove partire</strong>.</p>
         <a class="arrow " href="#/academy/@percorsi"><span>Da dove iniziare</span><i aria-hidden="true">→</i></a>
       </article>
       <article class="path">
         <h3 class="h3serif">Approfondire l’Hair Spa</h3>
-        <p>Per chi ha già esperienza e desidera perfezionare o ampliare le manualità, conoscendo le differenze tra i singoli rituali.</p>
+        <p>Per chi ha già esperienza e desidera <strong>perfezionare</strong> o <strong>ampliare</strong> le manualità, conoscendo le differenze tra i singoli rituali.</p>
         <a class="arrow " href="#/academy/@percorsi"><span>Come approfondire</span><i aria-hidden="true">→</i></a>
       </article>
     </div>
@@ -1581,7 +1600,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
 </section>
 
 <!-- 08 CONTATTI -->
-<section class="sec sec--choc home-contact">
+<section class="sec sec--deep home-contact">
   <div class="wrap home-contact__in">
     <h2 class="h2serif">Trova il percorso più adatto al tuo salone.</h2>
     <p>Raccontaci da dove parti: ti aiutiamo a orientarti tra formazione online, formazione in presenza e singoli rituali.</p>
@@ -1886,7 +1905,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   </div>
 </section>
 
-<section class="sec sec--choc band" id="collaboriamo">
+<section class="sec sec--deep band" id="collaboriamo">
   <div class="wrap band__in">
     <div>
       <p class="eyebrow ">Collaboriamo</p>
@@ -2211,7 +2230,9 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     </div>
     <ol class="coll__list"><li><span>01</span><a href="#/academy/formazione-online/wellness-ritual/">Wellness Ritual</a></li><li><span>02</span><a href="#/academy/formazione-online/pinda-ritual/">Pinda Ritual</a></li><li><span>03</span><a href="#/academy/formazione-online/brushing-ritual/">Brushing Ritual</a></li><li><span>04</span><a href="#/academy/formazione-online/hairgym-ritual/">Hairgym Ritual</a></li><li><span>05</span><a href="#/academy/formazione-online/relax-full-ritual/">Relax Full Ritual</a></li></ol>
     <div class="coll__foot">
-      <p class="price">€ 1.200<small class="price__was">€ 1.350 acquistando i corsi singolarmente</small></p>
+      <p class="price price--deal"><span class="price__now">€ 1.200 <small>IVA inclusa</small></span>
+      <span class="price__was">Corsi acquistati singolarmente: <s>€ 1.350</s></span>
+      <span class="price__save">Risparmi € 150</span></p>
       
       <a class="btn btn--light " href="https://academy.elitexperience.it/" target="_blank" rel="noopener" ><span>Vai alla piattaforma Academy</span><i aria-hidden="true">↗</i></a>
     </div>
@@ -2393,7 +2414,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   </div>
 </section>
 
-<section class="sec sec--choc band">
+<section class="sec sec--deep band">
   <div class="wrap band__in">
     <h2 class="h2serif">Organizza la tua formazione con Elisabetta.</h2>
     <div class="actions"><a class="btn btn--light " href="#/contatti/@presenza" ><span>Richiedi informazioni</span><i aria-hidden="true">→</i></a></div>

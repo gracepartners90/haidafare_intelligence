@@ -253,7 +253,7 @@ ${fullHero(ctx, {
   </div>
 </section>
 
-<section class="sec sec--choc band">
+<section class="sec sec--deep band">
   <div class="wrap band__in">
     <h2 class="h2serif">Organizza la tua formazione con Elisabetta.</h2>
     <div class="actions">${btn(ctx, { label: 'Richiedi informazioni', to: 'contatti/#presenza', variant: 'light' })}</div>

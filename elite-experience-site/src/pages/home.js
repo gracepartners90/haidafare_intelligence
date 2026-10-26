@@ -16,7 +16,7 @@ export default [{
 <!-- 01 HERO -->
 ${fullHero(ctx, {
   image: 'petaliRosa', position: '62% 45%', cls: 'hero--home',
-  title: 'Porta l’esperienza Hair Spa nel tuo salone.',
+  title: 'Porta l’esperienza Hair&nbsp;Spa<br>nel tuo salone.',
   lead: 'Un metodo professionale ideato da Elisabetta Tancini, che attraverso percorsi di formazione online e in presenza ti accompagna nell’apprendimento di rituali, tecniche e manualità Hair Spa.',
   extra: `<div class="actions">
         ${btn(ctx, { label: 'Scopri la formazione', to: 'academy/', variant: 'light' })}
@@ -32,11 +32,11 @@ ${fullHero(ctx, {
     </figure>
     <div class="home-method__text">
       ${sectionHead({ eyebrow: 'Il Metodo Élite', title: 'Un metodo che prende forma attraverso il gesto.' })}
-      <p class="lead">Il Metodo Élite è l’approccio professionale all’Hair Spa ideato da Elisabetta Tancini. Si fonda sull’apprendimento e sull’applicazione di rituali, tecniche e manualità che il professionista porta nel proprio salone.</p>
+      <p class="lead">Il Metodo Élite è l’approccio professionale all’Hair Spa ideato da Elisabetta Tancini.<br>Si fonda sull’<strong>apprendimento</strong> e sull’<strong>applicazione</strong> di rituali, tecniche e manualità che il professionista porta nel proprio salone.</p>
       <ol class="pillars">
         <li><span class="pillars__n">01</span><div><h3>Che cos’è</h3><p>Un metodo professionale Hair Spa, fatto di rituali, tecniche e manualità ideati da Elisabetta Tancini.</p></div></li>
         <li><span class="pillars__n">02</span><div><h3>L’approccio</h3><p>${draft('Il gesto al centro: ogni rituale si apprende attraverso la manualità, la sequenza e la pratica.')}</p></div></li>
-        <li><span class="pillars__n">03</span><div><h3>Metodo, rituali, formazione</h3><p>Il metodo è la base. I rituali ne sono l’espressione pratica. La formazione è il modo per apprenderli.</p></div></li>
+        <li><span class="pillars__n">03</span><div><h3>Metodo, rituali, formazione</h3><p>Il metodo è la base. I rituali ne sono l’espressione pratica.<br>La formazione è il modo per apprenderli.</p></div></li>
       </ol>
       ${btn(ctx, { label: 'Scopri il Metodo Élite', to: 'metodo-elite/' })}
     </div>
@@ -50,7 +50,7 @@ ${fullHero(ctx, {
       ${eyebrow('La fondatrice')}
       <h2 class="display-name">Elisabetta Tancini</h2>
       <p class="home-eli__sub">La professionista dietro il Metodo Élite.</p>
-      <p>Imprenditrice, Hair Spa Specialist e formatrice internazionale, Elisabetta Tancini è la fondatrice di Élite Experience e l’ideatrice del Metodo Élite. Il metodo nasce dal suo lavoro in salone e si trasmette attraverso la formazione online e in presenza.</p>
+      <p>Imprenditrice, Hair Spa Specialist e formatrice internazionale,<br>Elisabetta Tancini è la <strong>fondatrice</strong> di Élite Experience e l’ideatrice del Metodo Élite.<br>Il metodo nasce dal suo <strong>lavoro in salone</strong> e si trasmette attraverso la <strong>formazione</strong> online e in presenza.</p>
       ${signedQuote(`${esc('Ogni gesto ha un tempo e un’intenzione.')}<br>${esc('Insegnarlo significa trasmettere la cura che c’è dietro.')}`)}
       <div class="actions">${btn(ctx, { label: 'Conosci Elisabetta', to: 'elisabetta-tancini/', variant: 'light' })}</div>
     </div>
@@ -61,11 +61,11 @@ ${fullHero(ctx, {
 <!-- 04 I RITUALI -->
 <section class="sec home-rituals">
   <div class="wrap">
-    ${sectionHead({ eyebrow: 'I rituali', title: 'Il metodo, attraverso le manualità.', lead: 'Ogni rituale è un’espressione pratica del Metodo Élite, con tecniche, manualità e sequenze proprie. Ognuno ha una scheda dedicata con il programma del corso.' })}
+    ${sectionHead({ eyebrow: 'I rituali', title: 'Il metodo, attraverso le manualità.', lead: 'Ogni rituale è un’espressione pratica del Metodo Élite, con tecniche, manualità e sequenze proprie.<br>Ognuno dei quali ha una scheda dedicata con il programma del corso.' })}
     <article class="ritual-feature">
       <div class="ritual-feature__media">${media(ctx, 'pindaLino', { ratio: '16/9', position: '50% 55%' })}</div>
       <div class="ritual-feature__text">
-        <p class="eyebrow">Rituale</p>
+        <p class="eyebrow">Special One</p>
         <h3 class="h3serif">${esc(pinda.name)}</h3>
         <p>${draft(pinda.shortDescription)}</p>
         ${media(ctx, 'pindaAsciugamano', { ratio: '1/1', position: '52% 60%', cls: 'ritual-feature__detail' })}
@@ -91,7 +91,7 @@ ${practiceSequence(ctx)}
 <section class="sec sec--beige home-courses">
   <div class="wrap">
     <div class="row-head">
-      ${sectionHead({ eyebrow: 'Formazione online', title: 'Il metodo, un rituale alla volta.', lead: 'Cinque rituali completi: competenze, tecniche e programma del corso.' })}
+      ${sectionHead({ eyebrow: 'Formazione online', title: 'Il metodo, un rituale alla volta.', lead: '<strong>Cinque</strong> rituali completi: competenze, tecniche e programma dei <strong>corsi</strong>.' })}
       ${arrow(ctx, { label: 'Scopri i corsi online', to: 'academy/formazione-online/#confronto' })}
     </div>
     ${ritualPicker(ctx, courses)}
@@ -106,12 +106,12 @@ ${practiceSequence(ctx)}
     <div class="paths">
       <article class="path">
         <h3 class="h3serif">Iniziare con l’Hair Spa</h3>
-        <p>Per chi vuole avvicinarsi al mondo Hair Spa e introdurre nuove competenze nel salone: conoscere i rituali, acquisire le prime manualità, capire da dove partire.</p>
+        <p>Per chi vuole <strong>avvicinarsi al mondo dell’Hair Spa</strong> e introdurre nuove competenze nel salone: conoscere i rituali, acquisire le prime manualità, <strong>capire da dove partire</strong>.</p>
         ${arrow(ctx, { label: 'Da dove iniziare', to: 'academy/#percorsi' })}
       </article>
       <article class="path">
         <h3 class="h3serif">Approfondire l’Hair Spa</h3>
-        <p>Per chi ha già esperienza e desidera perfezionare o ampliare le manualità, conoscendo le differenze tra i singoli rituali.</p>
+        <p>Per chi ha già esperienza e desidera <strong>perfezionare</strong> o <strong>ampliare</strong> le manualità, conoscendo le differenze tra i singoli rituali.</p>
         ${arrow(ctx, { label: 'Come approfondire', to: 'academy/#percorsi' })}
       </article>
     </div>
@@ -126,7 +126,7 @@ ${fullVideo(ctx, {
 })}
 
 <!-- 08 CONTATTI -->
-<section class="sec sec--choc home-contact">
+<section class="sec sec--deep home-contact">
   <div class="wrap home-contact__in">
     <h2 class="h2serif">Trova il percorso più adatto al tuo salone.</h2>
     <p>Raccontaci da dove parti: ti aiutiamo a orientarti tra formazione online, formazione in presenza e singoli rituali.</p>

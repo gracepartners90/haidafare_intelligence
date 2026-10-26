@@ -67,6 +67,8 @@
 
 /* ---------- Footer ---------- */
 .ftr { background: var(--deep); color: var(--muted-light); padding: clamp(64px, 7vw, 110px) 0 32px; font-size: var(--t-small); }
+/* Filo di separazione: i blocchi finali «Trova il percorso…» hanno lo stesso marrone del footer */
+.ftr { border-top: 1px solid var(--line-light); }
 .ftr a { text-decoration: none; color: var(--ivory); }
 .ftr a:hover { text-decoration: underline; }
 .ftr__top { display: grid; grid-template-columns: 4fr 8fr; gap: 48px; }

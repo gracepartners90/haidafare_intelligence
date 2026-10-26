@@ -513,6 +513,7 @@
       "relax-full-ritual"
     ],
     "price": 1200,
+    "vatIncluded": true,
     "promotion": {
       "active": false,
       "percent": 20,

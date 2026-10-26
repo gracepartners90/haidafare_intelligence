@@ -72,7 +72,12 @@
 .fader__dots li.is-on { background: var(--ivory); }
 
 /* ---------- Home ---------- */
-.home-eli__grid { grid-template-columns: 6fr 5fr; }
+.home-eli__grid { grid-template-columns: 8fr 5fr; }
+/* Testo della fondatrice: una frase per riga, come da formattazione del brand */
+.home-eli__text > p:not(.eyebrow):not(.home-eli__sub) { max-width: none; text-wrap: pretty; }
+.home-rituals .shead__lead { max-width: 46em; }
+/* Hero della home: «Porta l’esperienza Hair Spa» su una riga, «nel tuo salone.» sulla seconda */
+.hero--home .hero__text { max-width: none; }
 .shead--line { max-width: none; }
 .shead--wide { max-width: none; }
 .shead--wide .shead__lead { max-width: none; }
@@ -189,7 +194,13 @@
 .ccard__foot .price { margin: 0; font-size: 1.2rem; }
 .ccard .ccard__foot .arrow { margin-top: 0; }
 .price small { color: var(--muted); font-family: var(--sans); font-size: .75rem; }
-.price .price__was { display: block; margin-top: 4px; letter-spacing: .02em; }
+/* Prezzo della collezione: più grande, con il confronto con i corsi singoli e il risparmio */
+.price--deal { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.price--deal .price__now { font-size: clamp(2rem, 2.8vw, 2.6rem); line-height: 1.1; }
+.price--deal .price__now small { margin-left: 2px; font-size: .8125rem; }
+.price--deal .price__was { font-family: var(--sans); font-size: .875rem; letter-spacing: .01em; }
+.price__save { margin-top: 4px; padding: 5px 12px; border-radius: 999px; background: var(--beige); color: var(--deep); font: 600 var(--t-micro)/1.4 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
+.coll .price__was, .coll-band .price__was, .sec--choc .price__was, .sec--deep .price__was { color: var(--muted-light); }
 .coll .price small, .coll-band .price small { color: var(--muted-light); }
 .sec--choc .price small, .sec--deep .price small { color: var(--muted-light); }
 
@@ -235,3 +246,7 @@
   .fullimg--band { height: 56vh; height: 56svh; min-height: 320px; }
   .fullvideo { height: 80vh; height: 80svh; min-height: 480px; }
 }
+
+/* Parole in evidenza nei testi */
+.lead strong, .shead__lead strong, .path p strong { color: var(--ink); }
+.sec--deep strong, .sec--choc strong { color: var(--ivory); }

@@ -97,7 +97,7 @@ ${fullImage(ctx, 'consulenzaSalone', { position: '30% 35%', positionMobile: '8% 
   </div>
 </section>
 
-<section class="sec sec--choc band" id="collaboriamo">
+<section class="sec sec--deep band" id="collaboriamo">
   <div class="wrap band__in">
     <div>
       ${eyebrow('Collaboriamo')}

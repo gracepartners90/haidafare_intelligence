@@ -118,8 +118,9 @@ Campi principali: `name`, `level`, `shortDescription` (la frase di «Cosa impare
 `purchaseUrl`, `faq`, `related`.
 
 - **Prezzo**: confermati Wellness Ritual € 190 e gli altri rituali € 290, IVA inclusa
-  (`vatIncluded`); Élite Ritual Collection € 1.200, scontata rispetto ai corsi singoli (il sito
-  mostra in automatico la somma dei corsi inclusi, € 1.350, quando è più alta). Con `price` a
+  (`vatIncluded`); Élite Ritual Collection € 1.200 IVA inclusa, scontata rispetto ai corsi
+  singoli (il sito mostra in automatico, in evidenza, la somma dei corsi inclusi, € 1.350, e il
+  risparmio, quando la somma è più alta). Con `price` a
   `null` il prezzo non viene mostrato e i dati strutturati del corso non dichiarano un'offerta.
 - **Durata e modalità**: «Videolezione online», 1 h per tutti i corsi.
 - **Livello**: Wellness Ritual "Primi approcci", Pinda e Brushing "Medium", Hairgym "Base e

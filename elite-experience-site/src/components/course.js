@@ -12,12 +12,18 @@ export function levelChip(level) {
 export const euro = (n) => `€ ${String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`;
 export const priceText = (item) => (item.price == null ? '' : `${euro(item.price)}${item.vatIncluded ? ' IVA inclusa' : ''}`);
 
+// Con compare (somma dei corsi singoli) il prezzo è più grande e mostra il confronto e il risparmio
 export function priceLine(item, { compare } = {}) {
   if (item.price == null) return `<p class="price">${tbd('Prezzo da verificare')}</p>`;
   const promo = item.promotion && item.promotion.active
     ? ` <span class="promo">-${item.promotion.percent}%${item.promotion.code ? ` con codice ${esc(item.promotion.code)}` : ''}</span>` : '';
-  const was = compare > item.price ? `<small class="price__was">${euro(compare)} acquistando i corsi singolarmente</small>` : '';
-  return `<p class="price">${euro(item.price)}${item.vatIncluded ? ' <small>IVA inclusa</small>' : ''}${promo}${was}</p>`;
+  const vat = item.vatIncluded ? ' <small>IVA inclusa</small>' : '';
+  if (compare > item.price) {
+    return `<p class="price price--deal"><span class="price__now">${euro(item.price)}${vat}</span>${promo}
+      <span class="price__was">Corsi acquistati singolarmente: <s>${euro(compare)}</s></span>
+      <span class="price__save">Risparmi ${euro(compare - item.price)}</span></p>`;
+  }
+  return `<p class="price">${euro(item.price)}${vat}${promo}</p>`;
 }
 
 // Somma dei prezzi dei corsi inclusi nella collezione (per mostrare lo sconto)
@@ -74,7 +80,7 @@ export function collectionBlock(ctx, col, courses) {
 
 // Selettore dei rituali (home): elenco chiaro dei corsi con immagine che cambia al passaggio
 export function ritualPicker(ctx, courses) {
-  const meta = (c) => `<span class="picker__meta"><span>Online</span>${levelChip(c.level)}${c.price != null ? `<span class="picker__price">${euro(c.price)}</span>` : ''}</span>`;
+  const meta = (c) => `<span class="picker__meta"><span>Online</span>${levelChip(c.level)}${c.price != null ? `<span class="picker__price">${esc(priceText(c))}</span>` : ''}</span>`;
   return `<div class="picker" data-picker>
     <div class="picker__stage" aria-hidden="true">
       ${courses.map((c, i) => `<div class="picker__img${i === 0 ? ' is-on' : ''}">${courseImage(ctx, c, { fill: true })}</div>`).join('')}
