@@ -88,7 +88,7 @@ export function ritualPicker(ctx, courses) {
     <ol class="picker__list">
       ${courses.map((c, i) => `<li class="picker__item${i === 0 ? ' is-on' : ''}" data-picker-item="${i}">
         <a class="picker__link" href="${ctx.href(courseUrl(c))}">
-          <div class="picker__thumb" aria-hidden="true">${courseImage(ctx, c, { ratio: '16/10' })}</div>
+          <div class="picker__thumb" aria-hidden="true">${courseImage(ctx, c, { ratio: '1/1' })}</div>
           <span class="picker__num">${String(i + 1).padStart(2, '0')}</span>
           <div class="picker__body">
             <span class="picker__name">${esc(c.name)}</span>
