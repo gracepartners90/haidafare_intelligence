@@ -32,13 +32,13 @@
 .fullimg .ph img { filter: sepia(.12) saturate(1.06) contrast(1.08) brightness(.94); transform: scale(1.08); transition: transform 2.6s var(--ease); }
 .fullimg.is-in .ph img { transform: none; }
 .fullimg::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(0deg, rgba(31, 18, 11, .55) 0%, rgba(31, 18, 11, 0) 36%); pointer-events: none; }
-.fullimg::before, .fullvideo::before { content: ""; position: absolute; inset: 0; z-index: 1; background: url("brand/grain.png") repeat; background-size: 160px; opacity: .14; mix-blend-mode: overlay; pointer-events: none; }
+.fullimg::before { content: ""; position: absolute; inset: 0; z-index: 1; background: url("brand/grain.png") repeat; background-size: 160px; opacity: .14; mix-blend-mode: overlay; pointer-events: none; }
 .fullimg__cap { position: absolute; left: max(var(--g), calc((100% - var(--maxw)) / 2)); bottom: clamp(24px, 4vh, 40px); z-index: 2; color: var(--ivory); font-size: .6875rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; }
 .fullimg--band { height: 72vh; height: 72svh; min-height: 420px; max-height: 760px; }
 
 /* ---------- Video a tutto schermo ---------- */
 .fullvideo { position: relative; display: grid; place-items: center; height: 100vh; height: 100svh; min-height: 560px; max-height: 1080px; overflow: hidden; background: #1F120B; color: var(--ivory); text-align: center; }
-.fullvideo > .ph img { filter: sepia(.35) saturate(.9) contrast(1.08) brightness(.62); transform: scale(1.06); transition: transform 3s var(--ease); }
+.fullvideo > .ph img { transform: scale(1.06); transition: transform 3s var(--ease); }
 .fullvideo.is-in > .ph img { transform: none; }
 .fullvideo::after { content: ""; position: absolute; inset: 0; z-index: 1; background: radial-gradient(80% 70% at 50% 50%, rgba(31, 18, 11, .2) 0%, rgba(31, 18, 11, .75) 100%); pointer-events: none; }
 .fullvideo__in { position: relative; z-index: 2; display: grid; justify-items: center; gap: 14px; padding: 0 var(--g); }
@@ -47,9 +47,11 @@
 .fullvideo__play { display: inline-flex; align-items: center; gap: 18px; margin-top: 22px; padding: 0; background: none; border: 0; color: var(--ivory); font-size: .75rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; cursor: pointer; }
 .fullvideo__play .video__icon { width: clamp(72px, 7vw, 108px); }
 /* Teaser in sottofondo: compare in dissolvenza sopra il primo fotogramma quando parte */
-.fullvideo__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); opacity: 0; filter: sepia(.18) saturate(.95) contrast(1.05) brightness(.72); transition: opacity 1.2s ease; }
+.fullvideo__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); opacity: 0; transition: opacity 1.2s ease; }
 .fullvideo.is-playing .fullvideo__video { opacity: 1; }
-.fullvideo--loop::after { background: radial-gradient(80% 70% at 50% 50%, rgba(31, 18, 11, .15) 0%, rgba(31, 18, 11, .7) 100%); }
+.fullvideo--loop::after { background: linear-gradient(rgba(20, 14, 10, .3), rgba(20, 14, 10, .3)), radial-gradient(80% 70% at 50% 50%, rgba(20, 14, 10, 0) 30%, rgba(20, 14, 10, .45) 100%); }
+/* Video al naturale: un'ombra morbida tiene leggibile il titolo anche sui fotogrammi chiari */
+.fullvideo--loop .fullvideo__title, .fullvideo--loop .eyebrow { text-shadow: 0 2px 28px rgba(20, 14, 10, .45); }
 .fullvideo__toggle { position: absolute; right: max(var(--g), calc((100% - var(--maxw)) / 2)); bottom: clamp(24px, 4vh, 40px); z-index: 3; display: inline-flex; align-items: center; gap: 10px; padding: 9px 16px; border: 1px solid rgba(245, 240, 235, .5); border-radius: 999px; background: rgba(31, 18, 11, .35); color: var(--ivory); font-size: .6875rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; cursor: pointer; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: background-color .3s, color .3s; }
 .fullvideo__toggle:hover { background: var(--ivory); color: var(--ink); }
 .fullvideo__toggle-icon { position: relative; width: 10px; height: 12px; }
