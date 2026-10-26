@@ -14,6 +14,7 @@ export const organization = () => ({
   address: { '@type': 'PostalAddress', addressLocality: site.city, addressCountry: 'IT' },
   ...(site.contacts.email ? { email: site.contacts.email } : {}),
   ...(site.contacts.phone ? { telephone: site.contacts.phone } : {}),
+  ...(site.contacts.vat ? { vatID: `IT${site.contacts.vat}` } : {}),
   sameAs: Object.values(site.social).filter(Boolean),
 });
 

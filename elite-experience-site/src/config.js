@@ -15,7 +15,7 @@ export const site = {
     email: 'info@elitexperience.it',
     phone: '+39 379 377 8562',
     address: null, // indirizzo della sede di Arona
-    vat: null,
+    vat: '02824540039',
   },
   social: {
     instagram: 'https://www.instagram.com/elite_experienceacademy/',

@@ -190,8 +190,8 @@ contenuto inserire. Nel file unico di anteprima i video non vengono incorporati.
 
 Il prototipo è completo nella struttura; questi dati servono per andare online.
 
-**Brand e contatti** — indirizzo della sede di Arona (per la pagina Contatti), P. IVA (email,
-telefono e profilo Instagram sono già inseriti),
+**Brand e contatti** — indirizzo della sede di Arona (per la pagina Contatti); email, telefono,
+profilo Instagram e P. IVA sono già inseriti. Servono ancora i
 riferimenti per la privacy policy e la cookie policy.
 
 **Elisabetta Tancini** — eventuali riconoscimenti, altre fotografie ufficiali (anche verticali,
