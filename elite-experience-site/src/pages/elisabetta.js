@@ -129,6 +129,8 @@ ${fullImage(ctx, 'consulenzaSalone', { position: '30% 35%', positionMobile: '8% 
       ogImage: 'ritrattoFiori',
       ogType: 'profile',
       bodyClass: 'p-eli',
+      // Sul telefono la citazione in corsivo affiora già sotto la prima immagine
+      fontsEarly: true,
       body,
     });
   },

@@ -402,6 +402,27 @@
     render(i);
   });
 
+  /* ---------- Font secondari (corsivo e firma) dopo la prima schermata ---------- */
+  // Arrivano al primo scorrimento o tocco, al più tardi 2,5 s dopo il caricamento: l'immagine di apertura
+  // ha già tutta la banda. Nel file unico sono incorporati; le pagine con il corsivo in apertura li hanno nell'<head>.
+  const mainCss = $('link[rel="stylesheet"][href*="site.css"]');
+  if (mainCss && !$('link[href*="fonts-late.css"]')) {
+    const events = ['scroll', 'pointerdown', 'keydown'];
+    let timer = 0;
+    const addFonts = () => {
+      clearTimeout(timer);
+      events.forEach((e) => window.removeEventListener(e, addFonts));
+      if ($('link[href*="fonts-late.css"]')) return;
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = mainCss.href.replace('site.css', 'fonts-late.css');
+      document.head.append(link);
+    };
+    events.forEach((e) => window.addEventListener(e, addFonts, { passive: true }));
+    const later = () => { timer = setTimeout(addFonts, 2500); };
+    if (document.readyState === 'complete') later(); else window.addEventListener('load', later, { once: true });
+  }
+
   /* ---------- File unico di anteprima: navigazione tra le pagine ---------- */
   if (window.__ASSETS) {
     const routes = $$('.route');

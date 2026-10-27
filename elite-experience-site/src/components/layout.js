@@ -123,11 +123,19 @@ ${p.published ? `<meta property="article:published_time" content="${p.published}
 <link rel="apple-touch-icon" ${ctx.src('brand/apple-touch-icon.png').replace('src=', 'href=')}>
 <link rel="preload" ${ctx.src('fonts/Newsreader-Variable.woff2').replace('src=', 'href=')} as="font" type="font/woff2" crossorigin>
 <link rel="preload" ${ctx.src('fonts/InterTight-Variable.woff2').replace('src=', 'href=')} as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" ${ctx.src('site.css').replace('src=', 'href=')}>
+${p.fontsEarly ? `<link rel="stylesheet" ${ctx.src('fonts-late.css').replace('src=', 'href=')}>\n` : ''}<link rel="stylesheet" ${ctx.src('site.css').replace('src=', 'href=')}>
 ${jsonld}`;
 }
 
+// Corsivo e firma arrivano dopo il caricamento (site.js). Se il corsivo è già nella prima sezione
+// (titolo con <em>, firma dell'articolo, citazione) la pagina li dichiara subito, senza cambi visibili.
+function italicFirst(body) {
+  const end = Math.min(...['</section>', '</header>'].map((t) => body.indexOf(t)).filter((i) => i >= 0));
+  return /<em[\s>]|class="[^"]*__by\b|<blockquote/.test(body.slice(0, end));
+}
+
 export function page(ctx, p) {
+  if (p.fontsEarly === undefined) p = { ...p, fontsEarly: italicFirst(p.body) };
   const main = `<main id="contenuto" class="${p.bodyClass || ''}">${p.body}</main>`;
   if (ctx.mode === 'bundle') return { ...p, main };
   return {

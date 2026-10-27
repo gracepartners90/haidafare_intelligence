@@ -1,0 +1,5 @@
+/* Font secondari: corsivo di Newsreader e firma (Mrs Saint Delafield).
+   Arrivano dopo il caricamento della pagina (site.js), così non rallentano la prima schermata;
+   le pagine che mostrano il corsivo già in apertura li dichiarano subito nell'<head> (layout.js). */
+@font-face { font-family: "Newsreader"; src: url("fonts/Newsreader-Variable-Italic.woff2") format("woff2"); font-weight: 200 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "Mrs Saint Delafield"; src: url("fonts/MrsSaintDelafield-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }

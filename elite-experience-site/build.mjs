@@ -84,9 +84,11 @@ function makeCtx(route, dirOverride) {
 
 const css = ['tokens', 'base', 'layout', 'components', 'sections', 'blocks', 'magazine']
   .map((f) => fs.readFileSync(path.join(root, 'src/styles', `${f}.css`), 'utf8')).join('\n');
+// Corsivo e firma: file a parte, caricato dopo la prima schermata (vedi fonts-late.css)
+const fontsLate = fs.readFileSync(path.join(root, 'src/styles/fonts-late.css'), 'utf8');
 const js = fs.readFileSync(path.join(root, 'src/scripts/site.js'), 'utf8');
 // Versione di stili e script nei link: dopo un aggiornamento il browser non usa la copia in cache
-const version = crypto.createHash('sha1').update(css + js).digest('hex').slice(0, 8);
+const version = crypto.createHash('sha1').update(css + fontsLate + js).digest('hex').slice(0, 8);
 
 function copyDir(from, to) {
   fs.mkdirSync(to, { recursive: true });
@@ -103,6 +105,7 @@ if (mode !== 'bundle') {
   fs.rmSync(dist, { recursive: true, force: true });
   copyDir(path.join(root, 'src/assets'), path.join(dist, 'assets'));
   fs.writeFileSync(path.join(dist, 'assets/site.css'), css);
+  fs.writeFileSync(path.join(dist, 'assets/fonts-late.css'), fontsLate);
   fs.writeFileSync(path.join(dist, 'assets/site.js'), js);
   const urls = [];
   for (const p of pages) {
@@ -110,7 +113,7 @@ if (mode !== 'bundle') {
     const out = p.render(ctx);
     const file = path.join(dist, p.file || `${p.route}index.html`);
     fs.mkdirSync(path.dirname(file), { recursive: true });
-    fs.writeFileSync(file, out.html.replace(/(assets\/site\.(?:css|js))"/g, `$1?v=${version}"`));
+    fs.writeFileSync(file, out.html.replace(/(assets\/(?:site|fonts-late)\.(?:css|js))"/g, `$1?v=${version}"`));
     if (!out.noindex) urls.push({ loc: `${site.url}/${p.route}`, lastmod: out.modified || out.published });
   }
   fs.writeFileSync(path.join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u.loc}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`);
@@ -133,7 +136,7 @@ if (mode !== 'bundle') {
   const all = sections.join('') + header(shellCtx) + footer(shellCtx);
   for (const m of all.matchAll(/data-asset="([^"]+)"/g)) used.add(m[1]);
   const assets = Object.fromEntries([...used].map((p) => [p, dataUri(p)]));
-  const inlineCss = css.replace(/url\(["']?([^)"']+\.(woff2|png|jpg|svg))["']?\)/g, (m, p) => `url("${dataUri(p)}")`);
+  const inlineCss = (fontsLate + css).replace(/url\(["']?([^)"']+\.(woff2|png|jpg|svg))["']?\)/g, (m, p) => `url("${dataUri(p)}")`);
   const html = `<!doctype html>
 <html lang="it">
 <head>
