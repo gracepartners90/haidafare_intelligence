@@ -81,7 +81,7 @@ ${fullHero(ctx, {
       </div>
     </div>
     <div class="eli-collab__body">
-      <div class="eli-collab__img">${media(ctx, 'dimostrazione', { fill: true, position: '42% 30%' })}</div>
+      <div class="eli-collab__img">${media(ctx, 'dimostrazione', { fill: true, position: '42% 30%', sizes: '(max-width: 1024px) 100vw, 50vw' })}</div>
       <ol class="collab-cards">${editorial.collaborations.types.map((t, i) => `<li class="collab-card">
         <span class="collab-card__n">${String(i + 1).padStart(2, '0')}</span>
         <h3 class="collab-card__name">${esc(t.name)}</h3>

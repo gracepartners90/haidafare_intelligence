@@ -73,7 +73,7 @@ ${fullHero(ctx, {
         </div>
       </div>
       <aside class="contact__info">
-        ${media(ctx, 'contattiSpazzola', { ratio: '4/5', position: '50% 40%' })}
+        ${media(ctx, 'contattiSpazzola', { ratio: '4/5', position: '50% 40%', sizes: '340px' })}
         <dl class="specs specs--tight">
           <div><dt>Email</dt><dd>${c.email ? `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>` : tbd('da inserire')}</dd></div>
           <div><dt>Telefono</dt><dd>${c.phone ? `<a href="tel:${c.phone.replace(/\s/g, '')}">${esc(c.phone)}</a>` : tbd('da inserire')}</dd></div>

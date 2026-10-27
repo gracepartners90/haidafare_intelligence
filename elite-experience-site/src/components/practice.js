@@ -1,6 +1,6 @@
 // Sequenza cinematografica "Il metodo, in pratica": i capitoli scorrono come un film
 // quando la sezione è visibile. Dati in src/content/practice.json.
-import { esc, draft } from './core.js';
+import { esc, draft, photo } from './core.js';
 
 export function practiceSequence(ctx, { id = 'in-pratica', compact = false } = {}) {
   const d = ctx.data.practice;
@@ -10,7 +10,7 @@ export function practiceSequence(ctx, { id = 'in-pratica', compact = false } = {
     ${d.chapters.map((c, i) => {
       const m = ctx.data.media[c.media];
       return `<figure class="seq__frame${i === 0 ? ' is-on' : ''}" style="--pos:${c.pos};--zoom:${c.zoom}${c.posMobile ? `;--pos-m:${c.posMobile}` : ''}">
-        <img ${ctx.src(m.file)} width="${m.w}" height="${m.h}" alt="${esc(m.alt)}" loading="lazy" decoding="async">
+        ${photo(ctx, m, `alt="${esc(m.alt)}" loading="lazy" decoding="async"`, '100vw')}
       </figure>`;
     }).join('')}
     <div class="seq__shade" aria-hidden="true"></div>

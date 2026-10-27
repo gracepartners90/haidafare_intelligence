@@ -52,14 +52,22 @@ export function arrow(ctx, { label, to, ext = false, cls = '' }) {
 }
 
 /* ---------- Immagini ---------- */
-export function media(ctx, key, { ratio, cls = '', caption, eager = false, position, positionMobile, fill = false, provisional = false, alt } = {}) {
+// Foto con le sue versioni WebP leggere: il browser sceglie la misura giusta in base a sizes
+// (larghezza occupata dalla foto; per difetto lo schermo intero se riempie il blocco, metà su desktop altrimenti)
+export function photo(ctx, m, attrs, sizes) {
+  const img = `<img ${ctx.src(m.file)} width="${m.w}" height="${m.h}" ${attrs}>`;
+  const set = ctx.srcset ? ctx.srcset(m.file) : '';
+  return set ? `<picture><source type="image/webp" srcset="${set}" sizes="${sizes}">${img}</picture>` : img;
+}
+
+export function media(ctx, key, { ratio, cls = '', caption, eager = false, position, positionMobile, fill = false, provisional = false, alt, sizes } = {}) {
   const m = ctx.data.media[key];
   if (!m) return slot({ subject: `Immagine "${key}" non registrata`, ratio });
   const style = [ratio ? `aspect-ratio:${ratio}` : '', position ? `--pos:${position}` : '', positionMobile ? `--pos-m:${positionMobile}` : ''].filter(Boolean).join(';');
   // Foto provvisoria: segnalata solo con le note di lavorazione attive
   const flag = provisional || m.provisional ? '<span class="ph__flag" aria-hidden="true">Immagine provvisoria</span>' : '';
   return `<figure class="ph ${fill ? 'ph--fill' : ''} ${cls}"${style ? ` style="${style}"` : ''}>
-    <img ${ctx.src(m.file)} width="${m.w}" height="${m.h}" alt="${esc(alt ?? m.alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
+    ${photo(ctx, m, `alt="${esc(alt ?? m.alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"`, sizes || (fill ? '100vw' : '(max-width: 760px) 100vw, 50vw'))}
     ${caption ? `<figcaption>${esc(caption)}</figcaption>` : ''}${flag}
   </figure>`;
 }
@@ -72,14 +80,14 @@ export function slot({ subject, ratio, tone = 'light', label = 'Fotografia da in
   </figure>`;
 }
 
-export function visual(ctx, { key, subject, ratio, tone, cls, caption, eager, position, fill }) {
-  return key ? media(ctx, key, { ratio, cls, caption, eager, position, fill }) : slot({ subject, ratio, tone, cls, fill });
+export function visual(ctx, { key, subject, ratio, tone, cls, caption, eager, position, fill, sizes }) {
+  return key ? media(ctx, key, { ratio, cls, caption, eager, position, fill, sizes }) : slot({ subject, ratio, tone, cls, fill });
 }
 
 // Video: se manca il file, mostra uno spazio dichiarato (nessun video generico al suo posto)
 // Con loop: { webm, mp4 } il video (muto) scorre da solo quando è visibile, con il pulsante di pausa
 export function videoBlock(ctx, { poster, posterPos, posterSubject, title, note, src, loop, ratio = '16/9', tone = 'dark', cls = '' }) {
-  const bg = poster ? media(ctx, poster, { fill: true, position: posterPos }) : slot({ subject: posterSubject || 'Frame del video', tone, fill: true, label: 'Video da inserire' });
+  const bg = poster ? media(ctx, poster, { fill: true, position: posterPos, sizes: '(max-width: 760px) 100vw, 50vw' }) : slot({ subject: posterSubject || 'Frame del video', tone, fill: true, label: 'Video da inserire' });
   if (loop) {
     return `<div class="video video--loop ${cls}" style="aspect-ratio:${ratio}${posterPos ? `;--pos:${posterPos}` : ''}" data-loop-video>
     ${bg}

@@ -87,7 +87,7 @@ ${magazineIssue(ctx)}
     ${a.leadFromBody ? '' : `<p class="article__lead">${esc(a.excerpt)}</p>`}
     <p class="article__by">di Redazione Élite &amp; More</p>
   </header>
-  <div class="article__hero">${media(ctx, a.image, { ratio: '21/9', position: a.imagePos, eager: true })}</div>
+  <div class="article__hero">${media(ctx, a.image, { ratio: '21/9', position: a.imagePos, eager: true, sizes: '100vw' })}</div>
   <div class="article__body wrap-narrow">
     ${articleBody(ctx, a)}
     <aside class="article__course">

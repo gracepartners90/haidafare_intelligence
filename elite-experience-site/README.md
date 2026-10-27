@@ -140,9 +140,15 @@ richiama per chiave nelle pagine. I file vanno in `src/assets/media/`. Gli spazi
 senza fotografia mostrano un riquadro con il soggetto da fotografare.
 
 - **Hero della home**: chiave `heroHome`. Per cambiare la foto basta sostituire il file
-  indicato (orizzontale, almeno 2000 px di lato lungo) e aggiornare `w`, `h` e `alt`. Il
-  filtro (viraggio nel colore del brand, grana, vignettatura) è applicato in pagina da
-  `sections.css` (sezione "Home: hero"): il file della foto resta originale.
+  indicato (orizzontale, almeno 2000 px di lato lungo) e aggiornare `w`, `h` e `alt`.
+- **Filtro**: tutte le foto hanno lo stesso filtro leggero e caldo, applicato in pagina
+  (`--photo-filter` in `tokens.css`, senza grana né velature); i file restano originali. I
+  video restano al naturale.
+- **Peso**: dopo aver aggiunto o sostituito una foto, eseguire
+  `python3 tools/ottimizza-immagini.py` (richiede Pillow). Crea in `src/assets/media/opt/`
+  le versioni WebP a 640, 1024, 1600 e 2048 px; il build le usa con `<picture>` e `sizes`,
+  così ogni dispositivo scarica la misura che gli serve (l'originale JPG resta di riserva).
+  Senza versioni la foto funziona comunque, solo più pesante.
 - **Immagini delle card dei corsi**: campo `cardImage` di ogni corso in `courses.json`
   (chiave della foto e inquadratura).
 - **Immagine a tutto schermo della scheda corso**: campo `sectionImage`.

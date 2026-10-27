@@ -35,6 +35,22 @@ const data = {
 const pages = [...home, ...metodo, ...elisabetta, ...academy, ...course(data), ...magazine(data), ...others(data)];
 const PIXEL = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
+// Versioni WebP delle foto (create da tools/ottimizza-immagini.py in src/assets/media/opt):
+// «elite-e-more/nome» → [[640, 'media/opt/elite-e-more/nome-640.webp'], …]
+const variants = new Map();
+(function scan(dir, rel) {
+  if (!fs.existsSync(dir)) return;
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (e.isDirectory()) { scan(path.join(dir, e.name), `${rel}${e.name}/`); continue; }
+    const m = /^(.*)-(\d+)\.webp$/.exec(e.name);
+    if (!m) continue;
+    const key = `${rel}${m[1]}`;
+    if (!variants.has(key)) variants.set(key, []);
+    variants.get(key).push([Number(m[2]), `media/opt/${rel}${e.name}`]);
+  }
+})(path.join(root, 'src/assets/media/opt'), '');
+for (const list of variants.values()) list.sort((a, b) => a[0] - b[0]);
+
 function makeCtx(route, dirOverride) {
   const dir = (dirOverride ?? route).replace(/\/$/, '');
   return {
@@ -50,6 +66,12 @@ function makeCtx(route, dirOverride) {
     src(p) {
       if (mode === 'bundle') return `src="${PIXEL}" data-asset="${p}"`;
       return `src="${path.posix.relative(`/${dir}`, `/assets/${p}`)}"`;
+    },
+    // srcset WebP di una foto in media/ (vuoto nel file unico: lì le immagini sono incorporate una volta)
+    srcset(p) {
+      if (mode === 'bundle' || !p.startsWith('media/')) return '';
+      const list = variants.get(p.slice(6).replace(/\.[^.]+$/, ''));
+      return list ? list.map(([w, f]) => `${path.posix.relative(`/${dir}`, `/assets/${f}`)} ${w}w`).join(', ') : '';
     },
     // Percorso semplice di un file in assets/ (PDF, video): non incorporato nel file unico.
     asset(p) {

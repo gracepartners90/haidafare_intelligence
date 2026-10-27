@@ -46,7 +46,7 @@ function cover(ctx, { issue, arts }) {
         ${arrow(ctx, { label: 'Leggi l’articolo', to: articlePath(a) })}
       </div>
     </div>
-    <div class="pg-cover__photo">${media(ctx, a.image, { fill: true, eager: true, position: a.imagePos, alt: '' })}</div>
+    <div class="pg-cover__photo">${media(ctx, a.image, { fill: true, eager: true, position: a.imagePos, alt: '', sizes: '(max-width: 959px) 100vw, 45vw' })}</div>
   </div>`;
 }
 
@@ -86,7 +86,7 @@ function opening(ctx, a, variant, folio) {
   if (variant === 'C') return `<div class="pg-open pg-open--C">${big}${text}</div>`;
   return `<div class="pg-open pg-open--${variant}">
     ${text}
-    <div class="pg-open__photo">${media(ctx, a.image, { fill: true, position: a.imagePos, alt: '' })}</div>
+    <div class="pg-open__photo">${media(ctx, a.image, { fill: true, position: a.imagePos, alt: '', sizes: '(max-width: 959px) 100vw, 50vw' })}</div>
     ${big}
   </div>`;
 }
@@ -159,7 +159,7 @@ export function articleBody(ctx, a) {
     if (b.type === 'ul' || b.type === 'ol') return `<${b.type}>${b.items.map((h) => `<li>${inline(ctx, { html: h })}</li>`).join('')}</${b.type}>`;
     if (b.type === 'img') {
       const m = ctx.data.media[b.key];
-      return media(ctx, b.key, { ratio: m ? `${m.w}/${m.h}` : undefined, cls: 'article__img' });
+      return media(ctx, b.key, { ratio: m ? `${m.w}/${m.h}` : undefined, cls: 'article__img', sizes: '(max-width: 800px) 100vw, 760px' });
     }
     const cls = first ? ' class="article__first"' : '';
     first = false;

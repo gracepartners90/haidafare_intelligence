@@ -61,7 +61,7 @@ export function fullVideo(ctx, { poster, position, eyebrow, title, src, loop, no
 // Galleria in dissolvenza: le foto si alternano con la loro didascalia quando il blocco è visibile
 export function fader(ctx, items, { ratio = '4/5', cls = '' } = {}) {
   return `<div class="fader ${cls}" data-fader style="aspect-ratio:${ratio}">
-  ${items.map((it, i) => `<figure class="fader__item${i === 0 ? ' is-on' : ''}">${media(ctx, it.image, { fill: true, position: it.position })}${it.caption ? `<figcaption>${esc(it.caption)}</figcaption>` : ''}</figure>`).join('')}
+  ${items.map((it, i) => `<figure class="fader__item${i === 0 ? ' is-on' : ''}">${media(ctx, it.image, { fill: true, position: it.position, sizes: '(max-width: 1024px) 100vw, 45vw' })}${it.caption ? `<figcaption>${esc(it.caption)}</figcaption>` : ''}</figure>`).join('')}
   <ol class="fader__dots" aria-hidden="true">${items.map((_, i) => `<li${i === 0 ? ' class="is-on"' : ''}></li>`).join('')}</ol>
 </div>`;
 }

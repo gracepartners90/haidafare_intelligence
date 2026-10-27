@@ -37,16 +37,16 @@ export function promoBanner(item) {
 }
 
 // Immagine del corso nelle card: cardImage, altrimenti la foto di apertura della scheda
-export function courseImage(ctx, c, { ratio, cls, fill } = {}) {
+export function courseImage(ctx, c, { ratio, cls, fill, sizes } = {}) {
   const ci = c.cardImage;
-  if (ci) return media(ctx, ci.media, { ratio, cls, fill, position: ci.pos, provisional: ci.provisional });
-  return visual(ctx, { key: c.heroImage, subject: c.heroSlot, ratio, cls, fill, tone: c.order % 2 ? 'light' : 'dark' });
+  if (ci) return media(ctx, ci.media, { ratio, cls, fill, sizes, position: ci.pos, provisional: ci.provisional });
+  return visual(ctx, { key: c.heroImage, subject: c.heroSlot, ratio, cls, fill, sizes, tone: c.order % 2 ? 'light' : 'dark' });
 }
 
 // Card del corso, uguale per tutti: foto, livello, cosa imparerai, tecniche, prezzo
 export function courseCard(ctx, c, { cta = 'Scopri il corso' } = {}) {
   return `<article class="ccard">
-    <a class="ccard__media" href="${ctx.href(courseUrl(c))}" tabindex="-1" aria-hidden="true">${courseImage(ctx, c, { ratio: '4/5' })}</a>
+    <a class="ccard__media" href="${ctx.href(courseUrl(c))}" tabindex="-1" aria-hidden="true">${courseImage(ctx, c, { ratio: '4/5', sizes: '(max-width: 760px) 100vw, (max-width: 1024px) 50vw, 33vw' })}</a>
     <div class="ccard__body">
       <p class="ccard__meta"><span>Formazione online</span>${levelChip(c.level)}</p>
       <h3 class="ccard__name"><a href="${ctx.href(courseUrl(c))}">${esc(c.name)}</a></h3>
@@ -83,12 +83,12 @@ export function ritualPicker(ctx, courses) {
   const meta = (c) => `<span class="picker__meta"><span>Online</span>${levelChip(c.level)}${c.price != null ? `<span class="picker__price">${esc(priceText(c))}</span>` : ''}</span>`;
   return `<div class="picker" data-picker>
     <div class="picker__stage" aria-hidden="true">
-      ${courses.map((c, i) => `<div class="picker__img${i === 0 ? ' is-on' : ''}">${courseImage(ctx, c, { fill: true })}</div>`).join('')}
+      ${courses.map((c, i) => `<div class="picker__img${i === 0 ? ' is-on' : ''}">${courseImage(ctx, c, { fill: true, sizes: '(max-width: 760px) 100vw, 45vw' })}</div>`).join('')}
     </div>
     <ol class="picker__list">
       ${courses.map((c, i) => `<li class="picker__item${i === 0 ? ' is-on' : ''}" data-picker-item="${i}">
         <a class="picker__link" href="${ctx.href(courseUrl(c))}">
-          <div class="picker__thumb" aria-hidden="true">${courseImage(ctx, c, { ratio: '1/1' })}</div>
+          <div class="picker__thumb" aria-hidden="true">${courseImage(ctx, c, { ratio: '1/1', sizes: '120px' })}</div>
           <span class="picker__num">${String(i + 1).padStart(2, '0')}</span>
           <div class="picker__body">
             <span class="picker__name">${esc(c.name)}</span>

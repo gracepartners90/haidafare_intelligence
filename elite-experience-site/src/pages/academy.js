@@ -20,7 +20,7 @@ const levelMeter = (level) => {
 // Confronto dei cinque rituali, con la breve descrizione di ogni corso
 const compareCards = (ctx, courses) => `<div class="cmp" role="list">
       ${courses.map((c, i) => `<article class="cmp__card" role="listitem">
-        <a class="cmp__media" href="${ctx.href(courseUrl(c))}" tabindex="-1" aria-hidden="true">${courseImage(ctx, c, { ratio: '3/2' })}</a>
+        <a class="cmp__media" href="${ctx.href(courseUrl(c))}" tabindex="-1" aria-hidden="true">${courseImage(ctx, c, { ratio: '3/2', sizes: '(max-width: 760px) 100vw, (max-width: 1180px) 34vw, 20vw' })}</a>
         <p class="cmp__n">${String(i + 1).padStart(2, '0')}</p>
         <h3 class="cmp__name"><a href="${ctx.href(courseUrl(c))}">${esc(c.name)}</a></h3>
         <p class="cmp__desc">${draft(c.shortDescription)}</p>
