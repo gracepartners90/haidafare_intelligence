@@ -1,5 +1,5 @@
 import { site } from '../config.js';
-import { esc, tbd, eyebrow, btn, media, tbdBlock, breadcrumb, form } from '../components/core.js';
+import { esc, tbd, eyebrow, btn, media, tbdBlock, breadcrumb, form, extIcon } from '../components/core.js';
 import { breadcrumbs } from '../components/seo.js';
 import { page } from '../components/layout.js';
 import { fullHero } from '../components/blocks.js';
@@ -77,7 +77,7 @@ ${fullHero(ctx, {
         <dl class="specs specs--tight">
           <div><dt>Email</dt><dd>${c.email ? `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>` : tbd('da inserire')}</dd></div>
           <div><dt>Telefono</dt><dd>${c.phone ? `<a href="tel:${c.phone.replace(/\s/g, '')}">${esc(c.phone)}</a>` : tbd('da inserire')}</dd></div>
-          <div><dt>Academy</dt><dd><a href="${site.academyUrl}" target="_blank" rel="noopener">academy.elitexperience.it ↗</a></dd></div>
+          <div><dt>Academy</dt><dd><a href="${site.academyUrl}" target="_blank" rel="noopener">academy.elitexperience.it ${extIcon}</a></dd></div>
         </dl>
       </aside>
     </div>

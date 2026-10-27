@@ -99,7 +99,7 @@ function end(ctx, { issue }) {
       ${btn(ctx, { label: 'Scopri la formazione', to: 'academy/', variant: 'light' })}
       ${btn(ctx, { label: 'Il Metodo Élite', to: 'metodo-elite/', variant: 'ghost-light' })}
     </div>
-    <p class="pg-end__links">${arrow(ctx, { label: '↖ Torna alla copertina', to: '#p-01', cls: 'arrow--light' })} ${arrow(ctx, { label: 'Tutti gli articoli', to: '#archivio', cls: 'arrow--light' })}</p>
+    <p class="pg-end__links">${arrow(ctx, { label: 'Torna alla copertina', to: '#p-01', cls: 'arrow--light' })} ${arrow(ctx, { label: 'Tutti gli articoli', to: '#archivio', cls: 'arrow--light' })}</p>
   </div>`;
 }
 

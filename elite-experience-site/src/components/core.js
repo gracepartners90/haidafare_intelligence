@@ -5,6 +5,9 @@ import { site } from '../config.js';
 export const esc = (s = '') => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 export const join = (arr) => (Array.isArray(arr) ? arr.filter(Boolean).join('') : arr || '');
 
+// Freccia dei link esterni disegnata in SVG: il carattere ↗ su iPhone diventa un'emoji
+export const extIcon = '<svg class="ext-icon" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9 9 3M4.2 3H9v4.8" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
 /* ---------- Segnaposto e bozze ---------- */
 export const tbd = (text) => `<span class="tbd">${esc(text)}</span>`;
 
@@ -42,13 +45,13 @@ export function sectionHead({ eyebrow: eb, title, lead, align = 'left', level = 
 export function btn(ctx, { label, to, variant = 'primary', ext = false, cls = '', attrs = '' }) {
   const href = ext ? to : ctx.href(to);
   const extAttrs = ext ? ' target="_blank" rel="noopener"' : '';
-  return `<a class="btn btn--${variant} ${cls}" href="${href}"${extAttrs} ${attrs}><span>${esc(label)}</span><i aria-hidden="true">${ext ? '↗' : '→'}</i></a>`;
+  return `<a class="btn btn--${variant} ${cls}" href="${href}"${extAttrs} ${attrs}><span>${esc(label)}</span><i aria-hidden="true">${ext ? extIcon : '→'}</i></a>`;
 }
 
 export function arrow(ctx, { label, to, ext = false, cls = '' }) {
   const href = ext ? to : ctx.href(to);
   const extAttrs = ext && !to.startsWith('mailto:') ? ' target="_blank" rel="noopener"' : '';
-  return `<a class="arrow ${cls}" href="${href}"${extAttrs}><span>${esc(label)}</span><i aria-hidden="true">${ext ? '↗' : '→'}</i></a>`;
+  return `<a class="arrow ${cls}" href="${href}"${extAttrs}><span>${esc(label)}</span><i aria-hidden="true">${ext ? extIcon : '→'}</i></a>`;
 }
 
 /* ---------- Immagini ---------- */

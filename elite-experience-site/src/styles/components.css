@@ -26,6 +26,7 @@
 .btn--sm { padding: .8em 1.4em; font-size: .8125rem; }
 .arrow { display: inline-flex; align-items: center; gap: .6em; padding-bottom: 4px; font-weight: 500; font-size: var(--t-small); text-decoration: none; background: linear-gradient(currentColor, currentColor) left bottom / 100% 1px no-repeat; transition: background-size .5s var(--ease); }
 .arrow i { font-style: normal; transition: transform .4s var(--ease); }
+.ext-icon { display: inline-block; width: .72em; height: .72em; vertical-align: .02em; }
 .arrow:hover { background-size: 30% 1px; } .arrow:hover i { transform: translateX(4px); }
 .arrow--light { color: var(--ivory); }
 

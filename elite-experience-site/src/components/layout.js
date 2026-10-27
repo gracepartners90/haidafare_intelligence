@@ -1,5 +1,5 @@
 import { site, nav, headerCta } from '../config.js';
-import { esc, btn, tbd } from './core.js';
+import { esc, btn, tbd, extIcon } from './core.js';
 
 const external = (url) => `href="${url}" target="_blank" rel="noopener"`;
 
@@ -18,7 +18,7 @@ function navItems(ctx, { mobile = false } = {}) {
         <div class="sub__col">
           <p class="sub__label">Academy</p>
           <ul>${item.children.map((c) => `<li><a href="${ctx.href(c.to)}">${esc(c.label)}</a></li>`).join('')}</ul>
-          <a class="sub__ext" ${external(site.academyUrl)}>Piattaforma Academy ↗</a>
+          <a class="sub__ext" ${external(site.academyUrl)}>Piattaforma Academy ${extIcon}</a>
         </div>
         <div class="sub__col">
           <p class="sub__label">Schede dei corsi online</p>
@@ -71,7 +71,7 @@ export function footer(ctx) {
           <li><a href="${ctx.href('academy/formazione-online/')}">Formazione Online</a></li>
           <li><a href="${ctx.href('academy/formazione-in-presenza/')}">Formazione in Presenza</a></li>
           ${ctx.data.courses.map((co) => `<li><a href="${ctx.href(`academy/formazione-online/${co.slug}/`)}">${esc(co.name)}</a></li>`).join('')}
-          <li><a ${external(site.academyUrl)}>Piattaforma Academy ↗</a></li>
+          <li><a ${external(site.academyUrl)}>Piattaforma Academy ${extIcon}</a></li>
         </ul></div>
         <div><p class="ftr__h">Contatti</p><ul class="ftr__contacts">
           <li>Email: ${c.email ? `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>` : tbd('da inserire')}</li>
