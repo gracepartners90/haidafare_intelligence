@@ -2,6 +2,10 @@
 // quando la sezione è visibile. Dati in src/content/practice.json.
 import { esc, draft, photo } from './core.js';
 
+// Larghezza reale della foto nel riquadro (object-fit: cover, alto quanto lo schermo): quando lo schermo
+// è più stretto della foto, la foto è più larga dello schermo. Così il browser sceglie la versione abbastanza grande.
+const coverSizes = (m) => `(max-aspect-ratio: ${m.w}/${m.h}) ${Math.ceil((100 * m.w) / m.h)}vh, 100vw`;
+
 export function practiceSequence(ctx, { id = 'in-pratica', compact = false } = {}) {
   const d = ctx.data.practice;
   const total = d.chapters.length * d.secondsPerChapter;
@@ -13,7 +17,7 @@ export function practiceSequence(ctx, { id = 'in-pratica', compact = false } = {
       const tall = c.mediaMobile && ctx.data.media[c.mediaMobile];
       const posSmall = c.posMobile ? `;--pos-${tall ? 'v' : 'm'}:${c.posMobile}` : '';
       return `<figure class="seq__frame${tall ? ' seq__frame--v' : ''}${i === 0 ? ' is-on' : ''}" style="--pos:${c.pos};--zoom:${c.zoom}${posSmall}">
-        ${photo(ctx, m, `alt="${esc(m.alt)}" loading="lazy" decoding="async"`, '100vw', tall)}
+        ${photo(ctx, m, `alt="${esc(m.alt)}" loading="lazy" decoding="async"`, coverSizes(m), tall, tall && coverSizes(tall))}
       </figure>`;
     }).join('')}
     <div class="seq__shade" aria-hidden="true"></div>
