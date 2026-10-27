@@ -43,4 +43,6 @@
   --hdr: 84px;
 
   --ease: cubic-bezier(.2, .7, .1, 1);
+  /* Filtro leggero e caldo, uguale per tutte le foto del sito (niente grana né velature) */
+  --photo-filter: sepia(.12) saturate(.94) contrast(1.04) brightness(.9);
 }

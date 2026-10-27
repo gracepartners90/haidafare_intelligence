@@ -28,10 +28,9 @@
 
 /* ---------- Immagine a tutto schermo ---------- */
 .fullimg { position: relative; height: 100vh; height: 100svh; min-height: 520px; max-height: 1080px; overflow: hidden; background: var(--ink); }
-.fullimg .ph img { filter: sepia(.12) saturate(1.06) contrast(1.08) brightness(.94); transform: scale(1.08); transition: transform 2.6s var(--ease); }
+.fullimg .ph img { transform: scale(1.08); transition: transform 2.6s var(--ease); }
 .fullimg.is-in .ph img { transform: none; }
 .fullimg::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(0deg, rgba(31, 18, 11, .55) 0%, rgba(31, 18, 11, 0) 36%); pointer-events: none; }
-.fullimg::before { content: ""; position: absolute; inset: 0; z-index: 1; background: url("brand/grain.png") repeat; background-size: 160px; opacity: .14; mix-blend-mode: overlay; pointer-events: none; }
 .fullimg__cap { position: absolute; left: max(var(--g), calc((100% - var(--maxw)) / 2)); bottom: clamp(24px, 4vh, 40px); z-index: 2; color: var(--ivory); font-size: .6875rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; }
 .fullimg--band { height: 72vh; height: 72svh; min-height: 420px; max-height: 760px; }
 
@@ -65,7 +64,6 @@
 .fader { position: relative; overflow: hidden; background: var(--sand); }
 .fader__item { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 1.2s ease; }
 .fader__item.is-on { opacity: 1; }
-.fader__item .ph img { filter: sepia(.1) saturate(1.05) contrast(1.05); }
 .fader__item.is-on .ph img, .fader__item.is-out .ph img { animation: fader-drift 6s linear both; }
 @keyframes fader-drift { from { transform: scale(1.07); } to { transform: none; } }
 .fader::after { content: ""; position: absolute; inset: 50% 0 0; z-index: 1; background: linear-gradient(rgba(31, 18, 11, 0), rgba(31, 18, 11, .62)); pointer-events: none; }
@@ -155,7 +153,6 @@
 .cmp__card { display: flex; flex-direction: column; padding-bottom: 22px; border: 1px solid rgba(245, 240, 235, .12); background: rgba(245, 240, 235, .04); transition: transform .5s var(--ease), background-color .4s, border-color .4s; }
 .cmp__card:hover { transform: translateY(-6px); border-color: rgba(245, 240, 235, .32); background: rgba(245, 240, 235, .08); }
 .cmp__media { display: block; }
-.cmp__media .ph img { filter: sepia(.1) contrast(1.05); }
 .cmp__n { margin: 18px 18px 0; color: var(--beige); font-family: var(--serif); }
 .cmp__name { margin: 4px 18px 10px; font-size: 1.45rem; }
 .cmp__desc { margin: 0 18px 14px; color: var(--muted-light); font-size: .875rem; line-height: 1.5; }
