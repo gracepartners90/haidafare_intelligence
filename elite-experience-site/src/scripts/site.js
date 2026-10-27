@@ -406,8 +406,9 @@
   });
 
   /* ---------- Font secondari (corsivo e firma) dopo la prima schermata ---------- */
-  // Arrivano al primo scorrimento o tocco, al più tardi 2,5 s dopo il caricamento: l'immagine di apertura
-  // ha già tutta la banda. Nel file unico sono incorporati; le pagine con il corsivo in apertura li hanno nell'<head>.
+  // Arrivano al primo scorrimento o tocco, al più tardi 2,5 s dopo il caricamento e dopo che la prima schermata
+  // è stata disegnata (LCP): l'immagine di apertura ha già tutta la banda. Nel file unico sono incorporati;
+  // le pagine con il corsivo in apertura li hanno nell'<head>.
   const mainCss = $('link[rel="stylesheet"][href*="site.css"]');
   if (mainCss && !$('link[href*="fonts-late.css"]')) {
     const events = ['scroll', 'pointerdown', 'keydown'];
@@ -422,8 +423,14 @@
       document.head.append(link);
     };
     events.forEach((e) => window.addEventListener(e, addFonts, { passive: true }));
-    const later = () => { timer = setTimeout(addFonts, 2500); };
-    if (document.readyState === 'complete') later(); else window.addEventListener('load', later, { once: true });
+    const loaded = new Promise((ok) => {
+      if (document.readyState === 'complete') ok(); else window.addEventListener('load', ok, { once: true });
+    });
+    const painted = new Promise((ok) => {
+      if (!(window.PerformanceObserver && (PerformanceObserver.supportedEntryTypes || []).includes('largest-contentful-paint'))) { ok(); return; }
+      new PerformanceObserver((list, obs) => { obs.disconnect(); ok(); }).observe({ type: 'largest-contentful-paint', buffered: true });
+    });
+    Promise.all([loaded, painted]).then(() => { timer = setTimeout(addFonts, 2500); });
   }
 
   /* ---------- File unico di anteprima: navigazione tra le pagine ---------- */
