@@ -34,8 +34,8 @@ export function header(ctx) {
 <header class="hdr" data-hdr>
   <div class="hdr__in">
     <a class="hdr__logo" href="${ctx.href('')}" aria-label="Élite Experience — Home">
-      <img class="hdr__logo-dark" ${ctx.src('brand/logo-elite-experience.png')} width="1818" height="246" alt="Élite Experience">
-      <img class="hdr__logo-light" ${ctx.src('brand/logo-elite-experience-white.png')} width="1818" height="246" alt="" aria-hidden="true">
+      <img class="hdr__logo-dark" ${ctx.src('brand/logo-elite-experience-640.png')} width="640" height="87" alt="Élite Experience">
+      <img class="hdr__logo-light" ${ctx.src('brand/logo-elite-experience-white-640.png')} width="640" height="87" alt="" aria-hidden="true">
     </a>
     <nav class="hdr__nav" aria-label="Navigazione principale"><ul>${navItems(ctx)}</ul></nav>
     ${btn(ctx, { ...headerCta, variant: 'primary', cls: 'btn--sm hdr__cta' })}
@@ -55,7 +55,7 @@ export function footer(ctx) {
   <div class="wrap">
     <div class="ftr__top">
       <div class="ftr__brand">
-        <img ${ctx.src('brand/logo-elite-experience-white.png')} width="1818" height="246" alt="Élite Experience" loading="lazy">
+        <img ${ctx.src('brand/logo-elite-experience-white-640.png')} width="640" height="87" alt="Élite Experience" loading="lazy">
         <p>${esc(site.definition)}</p>
         <p class="ftr__founder">Metodo ideato da Elisabetta Tancini</p>
       </div>
@@ -119,7 +119,8 @@ ${p.noindex ? '<meta name="robots" content="noindex, follow">' : '<meta name="ro
 ${p.published ? `<meta property="article:published_time" content="${p.published}">\n` : ''}${p.modified ? `<meta property="article:modified_time" content="${p.modified}">\n` : ''}<meta property="og:image" content="${site.url}/assets/${ctx.data.media[p.ogImage || 'lavatesta'].file}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F5F0EB">
-<link rel="icon" type="image/png" ${ctx.src('brand/lotus.png').replace('src=', 'href=')}>
+<link rel="icon" type="image/png" sizes="64x64" ${ctx.src('brand/favicon-64.png').replace('src=', 'href=')}>
+<link rel="apple-touch-icon" ${ctx.src('brand/apple-touch-icon.png').replace('src=', 'href=')}>
 <link rel="preload" ${ctx.src('fonts/Newsreader-Variable.woff2').replace('src=', 'href=')} as="font" type="font/woff2" crossorigin>
 <link rel="preload" ${ctx.src('fonts/InterTight-Variable.woff2').replace('src=', 'href=')} as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" ${ctx.src('site.css').replace('src=', 'href=')}>

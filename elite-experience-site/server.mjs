@@ -8,6 +8,7 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import zlib from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), 'dist');
@@ -62,15 +63,39 @@ function redirectFor(urlPath) {
   return rule ? rule[1] : null;
 }
 
+// Compressione dei file di testo (HTML, CSS, JS…): Brotli o gzip, calcolata una volta per file
+const compressible = new Set(['.html', '.css', '.js', '.json', '.xml', '.txt', '.svg']);
+const packed = new Map();
+function compressed(file, mtime, enc) {
+  const key = `${enc}:${file}`;
+  const hit = packed.get(key);
+  if (hit && hit.mtime === mtime) return hit.body;
+  const raw = fs.readFileSync(file);
+  const body = enc === 'br'
+    ? zlib.brotliCompressSync(raw, { params: { [zlib.constants.BROTLI_PARAM_QUALITY]: 11 } })
+    : zlib.gzipSync(raw, { level: 9 });
+  packed.set(key, { mtime, body });
+  return body;
+}
+
 function send(req, res, status, file, headers = {}) {
   const ext = path.extname(file).toLowerCase();
-  const size = fs.statSync(file).size;
+  const st = fs.statSync(file);
+  const size = st.size;
   const base = {
     'Content-Type': types[ext] || 'application/octet-stream',
-    'Cache-Control': ['.html', '.css', '.js'].includes(ext) ? 'no-cache' : 'public, max-age=600',
+    // HTML, CSS e JS sempre aggiornati; foto, font e video in cache per un giorno
+    'Cache-Control': ['.html', '.css', '.js'].includes(ext) ? 'no-cache' : 'public, max-age=86400',
     'Accept-Ranges': 'bytes',
     ...headers,
   };
+  const accept = req.headers['accept-encoding'] || '';
+  const enc = compressible.has(ext) ? (/\bbr\b/.test(accept) ? 'br' : /\bgzip\b/.test(accept) ? 'gzip' : null) : null;
+  if (enc) {
+    const body = compressed(file, st.mtimeMs, enc);
+    res.writeHead(status, { ...base, 'Content-Encoding': enc, Vary: 'Accept-Encoding', 'Content-Length': body.length });
+    return res.end(req.method === 'HEAD' ? undefined : body);
+  }
   // Richieste parziali (video): Safari non riproduce un video servito senza
   const m = status === 200 && /^bytes=(\d*)-(\d*)$/.exec(req.headers.range || '');
   if (m && (m[1] || m[2])) {
