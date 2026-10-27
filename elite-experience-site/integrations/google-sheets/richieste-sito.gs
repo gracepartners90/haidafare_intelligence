@@ -10,20 +10,37 @@
  * 4. Copiare l'URL dell'app web (finisce con /exec) e inserirlo nel sito:
  *    src/config.js → forms.endpoint.
  *
- * Ogni richiesta diventa una riga nella scheda «Richieste sito» (creata alla prima
- * richiesta; per usare un'altra scheda basta cambiare SCHEDA qui sotto). Le colonne si
- * possono riordinare: i dati vengono scritti in base al nome della colonna nella prima
- * riga. Le colonne di lavoro (chiamate, note, esito) restano vuote per il team.
+ * Ogni richiesta diventa una riga nella scheda del suo modulo (creata alla prima
+ * richiesta): «Sito - Info formazione», «Sito - Formazione in presenza»,
+ * «Sito - Collaborazioni». Le colonne si possono riordinare: i dati vengono scritti
+ * in base al nome della colonna nella prima riga. Per rinominare una scheda basta
+ * cambiarne il nome qui sotto (SCHEDE). Le colonne di lavoro (chiamate, note, esito)
+ * restano vuote per il team.
  */
-const SCHEDA = 'Richieste sito';
 const AVVISO_EMAIL = 'info@elitexperience.it'; // lasciare '' per non ricevere l'avviso
 
-const COLONNE = [
-  'DATA', 'TIPO RICHIESTA', 'NOME', 'COGNOME', 'SALONE', 'CITTÀ', 'EMAIL', 'TELEFONO',
-  'RUOLO', 'ESPERIENZA HAIR SPA', 'CORSO DI INTERESSE', 'DOVE', 'PARTECIPANTI', 'PERIODO',
-  'AZIENDA', 'TIPO DI COLLABORAZIONE', 'PAESE', 'MESSAGGIO', 'PAGINA',
-  '1° CHIAMATA', '2° CHIAMATA', '3° CHIAMATA', 'NOTE', 'ESITO',
-];
+const LAVORO = ['1° CHIAMATA', '2° CHIAMATA', '3° CHIAMATA', 'NOTE', 'ESITO'];
+
+// Modulo del sito (campo «tipo») → scheda e colonne
+const SCHEDE = {
+  'Informazioni sulla formazione': {
+    nome: 'Sito - Info formazione',
+    colonne: ['DATA', 'NOME', 'COGNOME', 'SALONE', 'CITTÀ', 'EMAIL', 'TELEFONO', 'RUOLO', 'ESPERIENZA HAIR SPA', 'CORSO DI INTERESSE', 'MESSAGGIO', 'PAGINA'],
+  },
+  'Formazione in presenza': {
+    nome: 'Sito - Formazione in presenza',
+    colonne: ['DATA', 'NOME', 'COGNOME', 'SALONE', 'CITTÀ', 'EMAIL', 'TELEFONO', 'DOVE', 'PARTECIPANTI', 'PERIODO', 'MESSAGGIO', 'PAGINA'],
+  },
+  'Collaborazioni professionali': {
+    nome: 'Sito - Collaborazioni',
+    colonne: ['DATA', 'NOME', 'COGNOME', 'AZIENDA', 'RUOLO', 'EMAIL', 'TELEFONO', 'TIPO DI COLLABORAZIONE', 'PAESE', 'MESSAGGIO', 'PAGINA'],
+  },
+};
+// Richieste da un modulo non previsto qui sopra: tutte le colonne in una scheda a parte
+const ALTRE = {
+  nome: 'Sito - Altre richieste',
+  colonne: ['DATA', 'TIPO RICHIESTA', 'NOME', 'COGNOME', 'SALONE', 'CITTÀ', 'EMAIL', 'TELEFONO', 'RUOLO', 'ESPERIENZA HAIR SPA', 'CORSO DI INTERESSE', 'DOVE', 'PARTECIPANTI', 'PERIODO', 'AZIENDA', 'TIPO DI COLLABORAZIONE', 'PAESE', 'MESSAGGIO', 'PAGINA'],
+};
 
 // Colonna del foglio → nome del campo nel modulo del sito
 const CAMPI = {
@@ -43,7 +60,7 @@ function doPost(e) {
   const lock = LockService.getScriptLock();
   lock.waitLock(10000);
   try {
-    const foglio = scheda();
+    const foglio = scheda(SCHEDE[p.tipo] || ALTRE);
     const intestazioni = foglio.getRange(1, 1, 1, foglio.getLastColumn()).getValues()[0].map(nome);
     foglio.appendRow(intestazioni.map((h) => (h === 'DATA' ? new Date() : pulisci(p[CAMPI[h]]))));
   } finally {
@@ -58,18 +75,19 @@ function doGet() {
   return ContentService.createTextOutput('ok');
 }
 
-// La scheda delle richieste: creata se manca; se è vuota riceve le intestazioni; se ha già le sue
+// La scheda del modulo: creata se manca; se è vuota riceve le intestazioni; se ha già le sue
 // colonne, quelle dei dati del sito che mancano vengono aggiunte in fondo (nessun dato va perso)
-function scheda() {
+function scheda(def) {
   const file = SpreadsheetApp.getActiveSpreadsheet();
-  const foglio = file.getSheetByName(SCHEDA) || file.insertSheet(SCHEDA);
+  const foglio = file.getSheetByName(def.nome) || file.insertSheet(def.nome);
   if (foglio.getLastColumn() === 0) {
-    foglio.getRange(1, 1, 1, COLONNE.length).setValues([COLONNE]).setFontWeight('bold');
+    const tutte = def.colonne.concat(LAVORO);
+    foglio.getRange(1, 1, 1, tutte.length).setValues([tutte]).setFontWeight('bold');
     foglio.setFrozenRows(1);
     return foglio;
   }
   const presenti = foglio.getRange(1, 1, 1, foglio.getLastColumn()).getValues()[0].map(nome);
-  const mancanti = ['DATA'].concat(Object.keys(CAMPI)).filter((c) => presenti.indexOf(c) < 0);
+  const mancanti = def.colonne.filter((c) => presenti.indexOf(c) < 0);
   if (mancanti.length) {
     foglio.getRange(1, foglio.getLastColumn() + 1, 1, mancanti.length).setValues([mancanti]).setFontWeight('bold');
   }
@@ -96,7 +114,7 @@ function avvisa(p) {
       to: AVVISO_EMAIL,
       replyTo: p.email,
       subject: `Nuova richiesta dal sito — ${p.tipo || 'Contatti'}: ${p.nome || ''} ${p.cognome || ''}`.trim(),
-      body: `${righe.join('\n')}\n\nLa richiesta è stata salvata nella scheda «${SCHEDA}».`,
+      body: `${righe.join('\n')}\n\nLa richiesta è stata salvata nella scheda «${(SCHEDE[p.tipo] || ALTRE).nome}».`,
     });
   } catch (err) {
     console.error(err);
