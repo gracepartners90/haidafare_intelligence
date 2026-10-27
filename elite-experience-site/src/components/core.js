@@ -57,10 +57,16 @@ export function arrow(ctx, { label, to, ext = false, cls = '' }) {
 /* ---------- Immagini ---------- */
 // Foto con le sue versioni WebP leggere: il browser sceglie la misura giusta in base a sizes
 // (larghezza occupata dalla foto; per difetto lo schermo intero se riempie il blocco, metà su desktop altrimenti)
-export function photo(ctx, m, attrs, sizes) {
+// portrait: versione verticale della foto, mostrata quando lo schermo è in verticale (telefono, tablet in verticale)
+export function photo(ctx, m, attrs, sizes, portrait) {
   const img = `<img ${ctx.src(m.file)} width="${m.w}" height="${m.h}" ${attrs}>`;
   const set = ctx.srcset ? ctx.srcset(m.file) : '';
-  return set ? `<picture><source type="image/webp" srcset="${set}" sizes="${sizes}">${img}</picture>` : img;
+  let tall = '';
+  if (portrait) {
+    const vset = ctx.srcset ? ctx.srcset(portrait.file) : '';
+    tall = `${vset ? `<source media="(orientation: portrait)" type="image/webp" srcset="${vset}" sizes="${sizes}">` : ''}<source media="(orientation: portrait)" ${ctx.src(portrait.file).replace('src=', 'srcset=')}>`;
+  }
+  return set || tall ? `<picture>${tall}${set ? `<source type="image/webp" srcset="${set}" sizes="${sizes}">` : ''}${img}</picture>` : img;
 }
 
 export function media(ctx, key, { ratio, cls = '', caption, eager = false, position, positionMobile, fill = false, provisional = false, alt, sizes } = {}) {

@@ -1,12 +1,12 @@
 {
-  "_info": "Sequenza 'Il metodo, in pratica'. Ogni capitolo usa un'immagine del registro media con inquadratura (pos, posMobile facoltativa per gli schermi piccoli) e ingrandimento (zoom). Quando saranno disponibili i frame dei videocorsi, sostituire 'media' con le nuove immagini.",
+  "_info": "Sequenza 'Il metodo, in pratica'. Ogni capitolo usa un'immagine del registro media con inquadratura (pos, posMobile facoltativa per gli schermi piccoli), una versione verticale facoltativa (mediaMobile, mostrata con lo schermo in verticale: posMobile vale allora per lei) e ingrandimento (zoom). Quando saranno disponibili i frame dei videocorsi, sostituire 'media' con le nuove immagini.",
   "title": "Il metodo, in pratica.",
   "line": "Il gesto, i materiali, il rituale: il Metodo Élite visto da vicino.",
   "secondsPerChapter": 5,
   "chapters": [
-    { "word": "Tecnica", "line": { "text": "La mano lavora sul cuoio capelluto con precisione e misura.", "verified": true }, "media": "tecnicaArco", "pos": "50% 50%", "posMobile": "48% 50%", "zoom": 1.02 },
+    { "word": "Tecnica", "line": { "text": "La mano lavora sul cuoio capelluto con precisione e misura.", "verified": true }, "media": "tecnicaArco", "mediaMobile": "tecnicaArcoVerticale", "pos": "50% 50%", "posMobile": "50% 50%", "zoom": 1.02 },
     { "word": "Manualità", "line": { "text": "Il gesto si costruisce: ritmo, direzione, continuità.", "verified": true }, "media": "manualitaMassaggio", "pos": "50% 45%", "posMobile": "55% 45%", "zoom": 1.02 },
-    { "word": "Protocollo", "line": { "text": "Ogni materiale al suo posto, ogni passaggio in sequenza.", "verified": true }, "media": "ciotolaLegno", "pos": "55% 50%", "posMobile": "74% 50%", "zoom": 1.02 },
+    { "word": "Protocollo", "line": { "text": "Ogni materiale al suo posto, ogni passaggio in sequenza.", "verified": true }, "media": "ciotolaLegno", "mediaMobile": "ciotolaLegnoVerticale", "pos": "50% 50%", "posMobile": "50% 50%", "zoom": 1.02 },
     { "word": "Applicazione", "line": { "text": "Il rituale completo, nel tempo reale del salone.", "verified": true }, "media": "olioFronte", "pos": "50% 50%", "posMobile": "50% 50%", "zoom": 1.02 }
   ]
 }

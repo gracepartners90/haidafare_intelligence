@@ -378,3 +378,5 @@
 }
 /* Sequenza: inquadratura dedicata agli schermi piccoli, se indicata */
 @media (max-width: 760px) { .seq__frame img { object-position: var(--pos-m, var(--pos)); transform-origin: var(--pos-m, var(--pos)); } }
+/* Versione verticale della foto (mediaMobile in practice.json): stessa condizione del <source> in photo() */
+@media (orientation: portrait) { .seq__frame--v img { object-position: var(--pos-v, 50% 50%); transform-origin: var(--pos-v, 50% 50%); } }

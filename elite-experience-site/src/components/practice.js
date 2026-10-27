@@ -9,8 +9,11 @@ export function practiceSequence(ctx, { id = 'in-pratica', compact = false } = {
   <div class="seq__stage">
     ${d.chapters.map((c, i) => {
       const m = ctx.data.media[c.media];
-      return `<figure class="seq__frame${i === 0 ? ' is-on' : ''}" style="--pos:${c.pos};--zoom:${c.zoom}${c.posMobile ? `;--pos-m:${c.posMobile}` : ''}">
-        ${photo(ctx, m, `alt="${esc(m.alt)}" loading="lazy" decoding="async"`, '100vw')}
+      // Con la versione verticale, posMobile è l'inquadratura di quella foto (--pos-v), non di quella orizzontale
+      const tall = c.mediaMobile && ctx.data.media[c.mediaMobile];
+      const posSmall = c.posMobile ? `;--pos-${tall ? 'v' : 'm'}:${c.posMobile}` : '';
+      return `<figure class="seq__frame${tall ? ' seq__frame--v' : ''}${i === 0 ? ' is-on' : ''}" style="--pos:${c.pos};--zoom:${c.zoom}${posSmall}">
+        ${photo(ctx, m, `alt="${esc(m.alt)}" loading="lazy" decoding="async"`, '100vw', tall)}
       </figure>`;
     }).join('')}
     <div class="seq__shade" aria-hidden="true"></div>

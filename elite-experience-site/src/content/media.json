@@ -39,7 +39,11 @@
     "alt": "Elisabetta Tancini appoggia le mani sui capelli di una cliente, nel suo salone, mentre spiega la manualità."
   },
   "ciotolaLegno": {
-    "file": "media/hair-spa-ciotola-legno.jpg", "w": 2000, "h": 1125, "official": true,
+    "file": "media/protocollo-ciotola-legno.jpg", "w": 1672, "h": 941, "official": true,
+    "alt": "Con una ciotola di legno l'operatrice versa acqua sui capelli della cliente, distesa a occhi chiusi al lavatesta."
+  },
+  "ciotolaLegnoVerticale": {
+    "file": "media/protocollo-ciotola-legno-verticale.jpg", "w": 941, "h": 1672, "official": true,
     "alt": "Con una ciotola di legno l'operatrice versa acqua sui capelli della cliente, distesa a occhi chiusi al lavatesta."
   },
   "continuitaPennello": {
@@ -128,7 +132,11 @@
     "alt": "Le mani dell'operatrice massaggiano il cuoio capelluto della cliente, distesa a occhi chiusi con un asciugamano arrotolato sotto la nuca."
   },
   "tecnicaArco": {
-    "file": "media/tecnica-arco-dorato-acqua.jpg", "w": 1672, "h": 941, "official": true,
+    "file": "media/tecnica-arco-dorato-lavatesta.jpg", "w": 2000, "h": 1125, "official": true,
+    "alt": "Sotto l'arco dorato che fa scendere fili d'acqua sui capelli, la cliente è distesa al lavatesta a occhi chiusi."
+  },
+  "tecnicaArcoVerticale": {
+    "file": "media/tecnica-arco-dorato-lavatesta-verticale.jpg", "w": 1080, "h": 1920, "official": true,
     "alt": "Sotto l'arco dorato che fa scendere fili d'acqua sui capelli, la cliente è distesa al lavatesta a occhi chiusi."
   },
   "pressioneLavatesta": {

@@ -11,7 +11,10 @@
 
   /* ---------- Immagini incorporate (solo file unico di anteprima) ---------- */
   if (window.__ASSETS) {
-    $$('img[data-asset]').forEach((img) => { const a = window.__ASSETS[img.dataset.asset]; if (a) img.src = a; });
+    $$('[data-asset]').forEach((el) => {
+      const a = window.__ASSETS[el.dataset.asset];
+      if (a) el[el.tagName === 'SOURCE' ? 'srcset' : 'src'] = a;
+    });
   }
 
   /* ---------- Note di lavorazione ---------- */
