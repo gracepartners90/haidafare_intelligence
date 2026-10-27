@@ -37,19 +37,16 @@ const SCHEDE = {
   'Informazioni sulla formazione': {
     nome: 'Sito - Info formazione',
     colonne: ['DATA', 'NOME', 'COGNOME', 'SALONE', 'CITTÀ', 'EMAIL', 'TELEFONO', 'RUOLO', 'ESPERIENZA HAIR SPA', 'CORSO DI INTERESSE', 'MESSAGGIO', 'PAGINA'],
-    oggetto: 'informazioni sulla formazione',
     conferma: 'abbiamo ricevuto la tua richiesta di informazioni sulla formazione Élite Experience.',
   },
   'Formazione in presenza': {
     nome: 'Sito - Formazione in presenza',
     colonne: ['DATA', 'NOME', 'COGNOME', 'SALONE', 'CITTÀ', 'EMAIL', 'TELEFONO', 'DOVE', 'PARTECIPANTI', 'PERIODO', 'MESSAGGIO', 'PAGINA'],
-    oggetto: 'formazione in presenza',
     conferma: 'abbiamo ricevuto la tua richiesta per la formazione in presenza.',
   },
   'Collaborazioni professionali': {
     nome: 'Sito - Collaborazioni',
     colonne: ['DATA', 'NOME', 'COGNOME', 'AZIENDA', 'RUOLO', 'EMAIL', 'TELEFONO', 'TIPO DI COLLABORAZIONE', 'PAESE', 'MESSAGGIO', 'PAGINA'],
-    oggetto: 'collaborazione professionale',
     conferma: 'abbiamo ricevuto la tua proposta di collaborazione.',
     etichette: { messaggio: 'Descrizione del progetto' },
   },
@@ -58,7 +55,6 @@ const SCHEDE = {
 const ALTRE = {
   nome: 'Sito - Altre richieste',
   colonne: ['DATA', 'TIPO RICHIESTA', 'NOME', 'COGNOME', 'SALONE', 'CITTÀ', 'EMAIL', 'TELEFONO', 'RUOLO', 'ESPERIENZA HAIR SPA', 'CORSO DI INTERESSE', 'DOVE', 'PARTECIPANTI', 'PERIODO', 'AZIENDA', 'TIPO DI COLLABORAZIONE', 'PAESE', 'MESSAGGIO', 'PAGINA'],
-  oggetto: 'richiesta dal sito',
   conferma: 'abbiamo ricevuto la tua richiesta.',
 };
 
