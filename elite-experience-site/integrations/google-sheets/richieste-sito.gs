@@ -11,9 +11,9 @@
  *    src/config.js → forms.endpoint.
  *
  * Ogni richiesta diventa una riga nella scheda «Richieste sito» (creata alla prima
- * richiesta). Le colonne si possono riordinare: i dati vengono scritti in base al
- * nome della colonna nella prima riga. Le colonne di lavoro (chiamate, note, esito)
- * restano vuote per il team.
+ * richiesta; per usare un'altra scheda basta cambiare SCHEDA qui sotto). Le colonne si
+ * possono riordinare: i dati vengono scritti in base al nome della colonna nella prima
+ * riga. Le colonne di lavoro (chiamate, note, esito) restano vuote per il team.
  */
 const SCHEDA = 'Richieste sito';
 const AVVISO_EMAIL = 'info@elitexperience.it'; // lasciare '' per non ricevere l'avviso
@@ -44,7 +44,7 @@ function doPost(e) {
   lock.waitLock(10000);
   try {
     const foglio = scheda();
-    const intestazioni = foglio.getRange(1, 1, 1, foglio.getLastColumn()).getValues()[0];
+    const intestazioni = foglio.getRange(1, 1, 1, foglio.getLastColumn()).getValues()[0].map(nome);
     foglio.appendRow(intestazioni.map((h) => (h === 'DATA' ? new Date() : pulisci(p[CAMPI[h]]))));
   } finally {
     lock.releaseLock();
@@ -58,15 +58,27 @@ function doGet() {
   return ContentService.createTextOutput('ok');
 }
 
+// La scheda delle richieste: creata se manca; se è vuota riceve le intestazioni; se ha già le sue
+// colonne, quelle dei dati del sito che mancano vengono aggiunte in fondo (nessun dato va perso)
 function scheda() {
   const file = SpreadsheetApp.getActiveSpreadsheet();
-  let foglio = file.getSheetByName(SCHEDA);
-  if (!foglio) {
-    foglio = file.insertSheet(SCHEDA);
+  const foglio = file.getSheetByName(SCHEDA) || file.insertSheet(SCHEDA);
+  if (foglio.getLastColumn() === 0) {
     foglio.getRange(1, 1, 1, COLONNE.length).setValues([COLONNE]).setFontWeight('bold');
     foglio.setFrozenRows(1);
+    return foglio;
+  }
+  const presenti = foglio.getRange(1, 1, 1, foglio.getLastColumn()).getValues()[0].map(nome);
+  const mancanti = ['DATA'].concat(Object.keys(CAMPI)).filter((c) => presenti.indexOf(c) < 0);
+  if (mancanti.length) {
+    foglio.getRange(1, foglio.getLastColumn() + 1, 1, mancanti.length).setValues([mancanti]).setFontWeight('bold');
   }
   return foglio;
+}
+
+// Nome di colonna confrontabile: senza spazi in più, maiuscolo
+function nome(h) {
+  return String(h).trim().toUpperCase();
 }
 
 // Testo semplice, lunghezza limitata; un valore che inizia con = + - @ non diventa una formula
