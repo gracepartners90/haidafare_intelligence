@@ -12,6 +12,11 @@ export function levelChip(level) {
 export const euro = (n) => `€ ${String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`;
 export const priceText = (item) => (item.price == null ? '' : `${euro(item.price)}${item.vatIncluded ? ' IVA inclusa' : ''}`);
 
+// Prezzo pieno barrato accanto al prezzo di vendita (fullPrice nella scheda corso)
+const fullPrice = (item) => (item.fullPrice > item.price
+  ? ` <s class="price__full"><span class="sr-only">Prezzo pieno </span>${euro(item.fullPrice)}</s>` : '');
+export const priceHtml = (item) => (item.price == null ? '' : `${esc(priceText(item))}${fullPrice(item)}`);
+
 // Con compare (somma dei corsi singoli) il prezzo è più grande e mostra il confronto e il risparmio
 export function priceLine(item, { compare } = {}) {
   if (item.price == null) return `<p class="price">${tbd('Prezzo da verificare')}</p>`;
@@ -23,7 +28,7 @@ export function priceLine(item, { compare } = {}) {
       <span class="price__was">Corsi acquistati singolarmente: <s>${euro(compare)}</s></span>
       <span class="price__save">Risparmi ${euro(compare - item.price)}</span></p>`;
   }
-  return `<p class="price">${euro(item.price)}${vat}${promo}</p>`;
+  return `<p class="price">${euro(item.price)}${vat}${fullPrice(item)}${promo}</p>`;
 }
 
 // Somma dei prezzi dei corsi inclusi nella collezione (per mostrare lo sconto)
@@ -80,7 +85,7 @@ export function collectionBlock(ctx, col, courses) {
 
 // Selettore dei rituali (home): elenco chiaro dei corsi con immagine che cambia al passaggio
 export function ritualPicker(ctx, courses) {
-  const meta = (c) => `<span class="picker__meta"><span>Online</span>${levelChip(c.level)}${c.price != null ? `<span class="picker__price">${esc(priceText(c))}</span>` : ''}</span>`;
+  const meta = (c) => `<span class="picker__meta"><span>Online</span>${levelChip(c.level)}${c.price != null ? `<span class="picker__price">${priceHtml(c)}</span>` : ''}</span>`;
   return `<div class="picker" data-picker>
     <div class="picker__stage" aria-hidden="true">
       ${courses.map((c, i) => `<div class="picker__img${i === 0 ? ' is-on' : ''}">${courseImage(ctx, c, { fill: true, sizes: '(max-width: 760px) 100vw, 45vw' })}</div>`).join('')}

@@ -1,6 +1,6 @@
 import { site } from '../config.js';
 import { esc, draft, eyebrow, sectionHead, btn, arrow, media, faqList, faqAll, faqGroups } from '../components/core.js';
-import { collectionBlock, courseImage, courseUrl, levelChip, priceText } from '../components/course.js';
+import { collectionBlock, courseImage, courseUrl, levelChip, priceHtml, priceText } from '../components/course.js';
 import { breadcrumbs, faqPage } from '../components/seo.js';
 import { page } from '../components/layout.js';
 import { fullHero, fullImage } from '../components/blocks.js';
@@ -27,7 +27,7 @@ const compareCards = (ctx, courses) => `<div class="cmp" role="list">
         <div class="cmp__row"><span class="cmp__k">Livello</span><span class="cmp__level">${levelMeter(c.level)}<b>${esc(c.level ? c.level.label : '')}</b></span></div>
         <div class="cmp__row"><span class="cmp__k">Tecniche principali</span><span class="cmp__tech">${(c.techniques || []).map((t) => esc(t)).join(' · ')}</span></div>
         <div class="cmp__row"><span class="cmp__k">Modalità</span><span>Online</span></div>
-        <p class="cmp__price">${esc(priceText(c))}</p>
+        <p class="cmp__price">${priceHtml(c)}</p>
         ${arrow(ctx, { label: 'Scheda del corso', to: courseUrl(c), cls: 'arrow--light' })}
       </article>`).join('')}
     </div>`;

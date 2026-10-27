@@ -181,6 +181,10 @@
 .ccard__foot .price { margin: 0; font-size: 1.2rem; }
 .ccard .ccard__foot .arrow { margin-top: 0; }
 .price small { color: var(--muted); font-family: var(--sans); font-size: .75rem; }
+/* Prezzo pieno barrato accanto al prezzo di vendita */
+.price__full { margin-left: .5em; color: var(--muted); font-size: .72em; text-decoration-thickness: 1px; white-space: nowrap; }
+.cmp .price__full, .sec--choc .price__full, .sec--deep .price__full { color: var(--muted-light); }
+.picker__price .price__full, .chero__facts .price__full { font-size: 1em; }
 /* Prezzo della collezione: più grande, con il confronto con i corsi singoli e il risparmio */
 .price--deal { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
 .price--deal .price__now { font-size: clamp(2rem, 2.8vw, 2.6rem); line-height: 1.1; }

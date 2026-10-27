@@ -1,5 +1,5 @@
 {
-  "_info": "Schede corso. null = dato non ancora documentato: la pagina mostra un campo segnaposto. verified=false = bozza da validare. shortDescription = frase del corso; competencies = le sei voci di «Cosa imparerai»; techniques = tecniche principali (tabella di confronto). audience, prerequisites, forExperienced = «A chi è rivolto»; availability, requirements = «Informazioni pratiche». heroImage (+ heroPos): foto di apertura della scheda. sectionImage: immagine a tutto schermo della scheda. cardImage: immagine delle card (media = chiave in media.json, pos = inquadratura, provisional = foto provvisoria). vatIncluded: il prezzo è mostrato «IVA inclusa». Nei testi della scheda (Cosa imparerai, A chi è rivolto, Informazioni pratiche) **parola** = grassetto.",
+  "_info": "Schede corso. price = prezzo di vendita (IVA inclusa con vatIncluded); fullPrice = prezzo pieno, mostrato barrato accanto quando è più alto. null = dato non ancora documentato: la pagina mostra un campo segnaposto. verified=false = bozza da validare. shortDescription = frase del corso; competencies = le sei voci di «Cosa imparerai»; techniques = tecniche principali (tabella di confronto). audience, prerequisites, forExperienced = «A chi è rivolto»; availability, requirements = «Informazioni pratiche». heroImage (+ heroPos): foto di apertura della scheda. sectionImage: immagine a tutto schermo della scheda. cardImage: immagine delle card (media = chiave in media.json, pos = inquadratura, provisional = foto provvisoria). vatIncluded: il prezzo è mostrato «IVA inclusa». Nei testi della scheda (Cosa imparerai, A chi è rivolto, Informazioni pratiche) **parola** = grassetto.",
   "courses": [
     {
       "id": "wellness-ritual",
@@ -66,6 +66,7 @@
       "support": "Team Élite Experience, scrivendo a **info@elitexperience.it**",
       "requirements": "Computer, tablet o smartphone con connessione a internet.",
       "price": 190,
+      "fullPrice": 290,
       "promotion": {
         "active": false,
         "percent": 20,
@@ -165,6 +166,7 @@
       "support": "Team Élite Experience, scrivendo a **info@elitexperience.it**",
       "requirements": "Computer, tablet o smartphone con connessione a internet.",
       "price": 290,
+      "fullPrice": 390,
       "promotion": {
         "active": false,
         "percent": 20,
@@ -264,6 +266,7 @@
       "support": "Team Élite Experience, scrivendo a **info@elitexperience.it**",
       "requirements": "Computer, tablet o smartphone con connessione a internet.",
       "price": 290,
+      "fullPrice": 390,
       "promotion": {
         "active": false,
         "percent": 20,
@@ -363,6 +366,7 @@
       "support": "Team Élite Experience, scrivendo a **info@elitexperience.it**",
       "requirements": "Computer, tablet o smartphone con connessione a internet.",
       "price": 290,
+      "fullPrice": 390,
       "promotion": {
         "active": false,
         "percent": 20,
@@ -462,6 +466,7 @@
       "support": "Team Élite Experience, scrivendo a **info@elitexperience.it**",
       "requirements": "Computer, tablet o smartphone con connessione a internet.",
       "price": 290,
+      "fullPrice": 390,
       "promotion": {
         "active": false,
         "percent": 20,

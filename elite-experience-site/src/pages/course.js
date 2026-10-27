@@ -1,7 +1,7 @@
 // Modello unico per tutte le schede corso: i contenuti arrivano da src/content/courses.json.
 import { site } from '../config.js';
 import { esc, rich, tbd, draft, eyebrow, sectionHead, btn, arrow, media, breadcrumb, faqList, faqPick } from '../components/core.js';
-import { courseCard, courseImage, courseUrl, levelChip, priceLine, priceText, promoBanner } from '../components/course.js';
+import { courseCard, courseImage, courseUrl, levelChip, priceHtml, priceLine, priceText, promoBanner } from '../components/course.js';
 import { course as courseLd, breadcrumbs, faqPage } from '../components/seo.js';
 import { page } from '../components/layout.js';
 import { fullImage } from '../components/blocks.js';
@@ -33,7 +33,7 @@ function coursePage(c, all, collection) {
     <dl class="chero__facts">
       <div><dt>Modalità</dt><dd>${val(c.mode, 'Da confermare')}</dd></div>
       <div><dt>Durata</dt><dd>${val(c.duration, 'Da confermare')}</dd></div>
-      <div><dt>Prezzo</dt><dd>${c.price != null ? esc(priceText(c)) : tbd('Da verificare')}</dd></div>
+      <div><dt>Prezzo</dt><dd>${c.price != null ? priceHtml(c) : tbd('Da verificare')}</dd></div>
     </dl>
     ${promoBanner(c)}
     <div class="actions">${btn(ctx, { label: 'Acquista ora', to: buyUrl, ext: true })}</div>
