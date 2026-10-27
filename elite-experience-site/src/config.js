@@ -22,7 +22,7 @@ export const site = {
   },
   // Moduli di contatto: URL dell'app web Google Apps Script che scrive le richieste nel foglio
   // «Lead - Élite Experience» (vedi integrations/google-sheets). Con null i moduli restano dimostrativi.
-  forms: { endpoint: null },
+  forms: { endpoint: 'https://script.google.com/macros/s/AKfycbzwxyVLyQUvQQZghDDwS64mTz7sXNhoDEA8kGLw5Z0sAD7tXSbmm8bAisLl4vAeMUMbjg/exec' },
 };
 
 // Navigazione principale. `children` genera il sottomenu (Academy).
