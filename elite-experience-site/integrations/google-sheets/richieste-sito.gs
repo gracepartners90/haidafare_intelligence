@@ -1,7 +1,8 @@
 /**
  * Élite Experience — richieste dei moduli del sito → Google Sheets
  *
- * Installazione (una volta, con l'account proprietario del foglio):
+ * Installazione (una volta, da computer, con un account che può modificare il foglio;
+ * meglio il proprietario: lo script scrive e invia l'avviso a nome di chi lo pubblica):
  * 1. Aprire il foglio «Lead - Élite Experience» → Estensioni → Apps Script.
  * 2. Cancellare il contenuto di Codice.gs e incollare questo file. Salvare.
  * 3. Esegui il deployment → Nuovo deployment → tipo «App web».
