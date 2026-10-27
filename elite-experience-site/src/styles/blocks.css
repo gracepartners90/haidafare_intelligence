@@ -313,27 +313,6 @@
   .collab-card__name { margin-top: 16px; }
 }
 
-/* Elisabetta — Partnership attive: testo a sinistra, schede scure con i loghi in bianco */
-.partners-sec__grid { display: grid; grid-template-columns: 4fr 8fr; gap: clamp(36px, 4vw, 56px) clamp(40px, 6vw, 110px); align-items: center; }
-.partners-sec__lead { margin-top: 18px; max-width: 26em; color: var(--muted); }
-.partners { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); margin: 0; padding: 0; list-style: none; }
-.partner { display: grid; grid-template-rows: 1fr auto; min-height: clamp(260px, 24vw, 340px); padding: 0; border: 0; background: var(--deep); color: var(--ivory); transition: background-color .6s var(--ease); }
-.partner:hover { background: var(--choc); }
-.partner__logo { position: relative; display: grid; place-items: center; height: auto; margin: 0; padding: clamp(32px, 4vw, 56px); background: none; }
-.partner__logo img { width: auto; max-width: min(260px, 82%); height: auto; max-height: 84px; filter: brightness(0) invert(1); opacity: .94; transition: transform .8s var(--ease); }
-.partner:hover .partner__logo img { transform: scale(1.04); }
-.partner__word { color: var(--ivory); font-size: clamp(1.8rem, 2.6vw, 2.4rem); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-.partner__flag { top: 16px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
-.partner__meta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 16px; margin: 0 clamp(20px, 2.4vw, 32px); padding: 18px 0 22px; border-top: 1px solid var(--line-light); font-size: var(--t-micro); font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
-.partner__role { color: var(--ivory); }
-.partner__status { display: inline-flex; align-items: center; gap: 8px; color: var(--beige); font-weight: 500; letter-spacing: .12em; }
-.partner__status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--beige); }
-@media (max-width: 1100px) { .partners-sec__grid { grid-template-columns: 1fr; } }
-@media (max-width: 760px) {
-  .partners { grid-template-columns: 1fr; }
-  .partner { min-height: 220px; }
-}
-
 /* Schede corso: la frase sotto «Cosa imparerai» su una riga */
 .learn-sec .shead__lead { max-width: 46em; }
 

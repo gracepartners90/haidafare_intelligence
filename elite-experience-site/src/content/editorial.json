@@ -3360,24 +3360,6 @@
         "text": "Collaborazioni e attività formative fuori dall’Italia."
       }
     ],
-    "documented": [
-      {
-        "name": "Z.One",
-        "role": "Hair Spa Educator",
-        "logo": "partners/zone-concept.png",
-        "status": "attiva",
-        "logoW": 1021,
-        "logoH": 146
-      },
-      {
-        "name": "Maletti",
-        "role": "Hair Spa Educator",
-        "logo": "partners/maletti.png",
-        "status": "attiva",
-        "logoW": 1008,
-        "logoH": 347
-      }
-    ],
     "events": []
   },
   "testimonials": []

@@ -9,7 +9,7 @@ const crumbs = [{ label: 'Home', to: '' }, { label: 'Elisabetta Tancini', to: 'e
 const bio = [
   'Imprenditrice, Hair Spa Specialist e formatrice internazionale, Elisabetta Tancini ha costruito il proprio percorso professionale unendo l’esperienza quotidiana in salone alla ricerca e all’evoluzione delle tecniche dedicate al mondo Hair Spa.',
   'Alla guida di Maison BB, il suo salone ad Arona, <strong>vive ogni giorno la professione da una doppia prospettiva</strong>: quella di chi lavora a contatto con le persone e quella di chi conosce le esigenze, le responsabilità e le sfide di un’impresa nel settore Hair &amp; Beauty.',
-  'Parallelamente, la sua attività di formatrice la porta a collaborare a <strong>livello internazionale</strong> con importanti protagonisti dell’industria Hair, condividendo competenze, tecniche e una visione dell’Hair Spa in cui precisione delle manualità, sensibilità e cura del dettaglio diventano elementi distintivi.',
+  'Parallelamente, la sua attività di formatrice la porta a collaborare a livello internazionale con <strong>i più importanti player del settore</strong>, condividendo competenze, tecniche e una visione dell’Hair Spa in cui precisione delle manualità, sensibilità e cura del dettaglio diventano elementi distintivi.',
   'Da questo incontro tra <strong>esperienza imprenditoriale, pratica professionale e formazione</strong> nasce Élite Experience, il metodo attraverso cui Elisabetta interpreta l’Hair Spa e trasmette il proprio sapere ai professionisti che desiderano introdurre o perfezionare questa disciplina nel proprio salone.',
   'Per Elisabetta, formare significa <strong>andare oltre</strong> la dimostrazione di un rituale: significa insegnare a comprenderne ogni gesto, acquisire sicurezza nelle manualità e sviluppare una propria <strong>consapevolezza professionale</strong>.',
 ];
@@ -92,26 +92,6 @@ ${fullHero(ctx, {
 </section>
 
 ${fullImage(ctx, 'consulenzaSalone', { position: '30% 35%', positionMobile: '8% 35%' })}
-
-<section class="sec sec--ivory partners-sec">
-  <div class="wrap partners-sec__grid">
-    <header class="partners-sec__head">
-      ${eyebrow('Collaborazioni')}
-      <h2 class="shead__title">Partnership attive.</h2>
-      <p class="partners-sec__lead">L’attività di formatrice porta Elisabetta a collaborare a livello internazionale con importanti protagonisti dell’industria Hair.</p>
-    </header>
-    <ul class="partners">
-      ${editorial.collaborations.documented.map((p) => `<li class="partner">
-        <div class="partner__logo">${p.logo ? `<img ${ctx.src(p.logo)}${p.logoW ? ` width="${p.logoW}" height="${p.logoH}"` : ''} alt="${esc(p.name)}" loading="lazy">` : `<span class="partner__word">${esc(p.name)}</span><span class="ph__flag partner__flag" aria-hidden="true">Logo ufficiale da inserire</span>`}</div>
-        <div class="partner__meta">
-          <h3 class="partner__name sr-only">${esc(p.name)}</h3>
-          <span class="partner__role">${esc(p.role)}</span>
-          ${p.status === 'attiva' ? '<span class="partner__status">Partnership attiva</span>' : ''}
-        </div>
-      </li>`).join('')}
-    </ul>
-  </div>
-</section>
 
 <section class="sec sec--deep band" id="collaboriamo">
   <div class="wrap band__in">
