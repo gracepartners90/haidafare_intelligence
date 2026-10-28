@@ -20,6 +20,9 @@ export const site = {
   social: {
     instagram: 'https://www.instagram.com/elite_experienceacademy/',
   },
+  // Google Tag Manager: lo stesso contenitore del sito WordPress (Analytics, banner e informative di
+  // Acconsento). Caricato solo nella versione pubblicata (npm run build:deploy), non nell'anteprima.
+  gtm: 'GTM-TZ52ZFTG',
   // Moduli di contatto: URL dell'app web Google Apps Script che scrive le richieste nel foglio
   // «Lead - Élite Experience» (vedi integrations/google-sheets). Con null i moduli restano dimostrativi.
   forms: { endpoint: 'https://script.google.com/macros/s/AKfycbzwxyVLyQUvQQZghDDwS64mTz7sXNhoDEA8kGLw5Z0sAD7tXSbmm8bAisLl4vAeMUMbjg/exec' },

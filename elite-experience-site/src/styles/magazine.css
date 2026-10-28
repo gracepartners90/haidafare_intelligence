@@ -212,3 +212,15 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   .pg { break-after: page; }
 }
 .p-mag .ftr { border-top: 1px solid var(--line-light); }
+
+/* Privacy e Cookie Policy: testo inserito da Acconsento (Tag Manager) */
+.policy { color: var(--ink); line-height: 1.7; }
+.policy h1, .policy h2 { margin-top: 1.8em; font-family: var(--serif); font-size: clamp(1.4rem, 2vw, 1.75rem); font-weight: 400; line-height: 1.25; }
+.policy h3, .policy h4 { margin-top: 1.5em; font-family: var(--serif); font-size: 1.2rem; font-weight: 400; }
+.policy p, .policy ul, .policy ol, .policy table { margin-top: .8em; }
+.policy ul, .policy ol { padding-left: 1.3em; list-style: disc; }
+.policy ol { list-style: decimal; }
+.policy a { color: var(--choc); text-decoration: underline; text-underline-offset: 2px; }
+.policy table { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; font-size: .875rem; }
+.policy th, .policy td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.policy__note { color: var(--muted); font-style: italic; }

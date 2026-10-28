@@ -135,6 +135,8 @@
         }
         btn.disabled = false;
         form.removeAttribute('aria-busy');
+        // Per Tag Manager / Analytics: richiesta inviata e tipo di modulo
+        (window.dataLayer = window.dataLayer || []).push({ event: 'richiesta_inviata', tipo_richiesta: form.elements.tipo.value });
       }
       if (ok) ok.hidden = false;
       form.reset();

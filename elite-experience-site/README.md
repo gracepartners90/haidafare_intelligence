@@ -311,12 +311,29 @@ variabili `PREVIEW_PASSWORD` (e `PREVIEW_USER`, predefinito `elite`) chiede la p
 `PREVIEW_PASSWORD` resta accessibile a chi ha l'indirizzo. Le note di lavorazione sono attive
 come nel file unico.
 
-## Pubblicazione
+## Pubblicazione (SiteGround)
 
-`npm run build:deploy` e caricare il contenuto di `dist/` su qualsiasi hosting statico
-(Netlify, Vercel, Cloudflare Pages, server Apache/Nginx). Impostare `404.html` come pagina di
-errore. Prima della pubblicazione: verificare `site.url` in `config.js` e compilare i dati
-mancanti (i segnaposto "da inserire" restano visibili anche in questa versione).
+Il sito è ospitato su SiteGround, insieme al dominio, alle email e all'Academy. La pubblicazione
+è automatica, da GitHub Actions (`.github/workflows/elite-experience-site.yml`), via SSH/rsync:
+
+| Ramo | Build | Destinazione |
+|---|---|---|
+| ramo di lavoro del sito | `npm run build:nuovo` (nascosto ai motori di ricerca: meta e header noindex, robots.txt Disallow) | nuovo.elitexperience.it |
+| `produzione` | `npm run build:deploy` | elitexperience.it |
+
+Credenziali e cartelle sono nei secrets del repository (elenco in testa al file del workflow);
+senza secrets il caricamento viene saltato. La chiave SSH si genera in SiteGround (Site Tools →
+Sviluppatori → Gestione chiavi SSH) e si può revocare in qualsiasi momento.
+
+`dist/.htaccess` contiene i redirect 301 dai vecchi indirizzi WordPress e la pagina 404.
+Google Tag Manager (`site.gtm`, lo stesso contenitore del sito WordPress) è incluso solo nelle
+versioni pubblicate: gestisce Analytics e il banner dei cookie di Acconsento, che inserisce anche
+i testi di Privacy Policy e Cookie Policy nei contenitori `acconsento-informative-container` e
+`acconsento-cookies-container`. Il sito invia a Tag Manager l'evento `richiesta_inviata`
+(con `tipo_richiesta`) quando un modulo di contatto è stato inviato.
+
+Altro hosting: `npm run build:deploy` e caricare `dist/` su qualsiasi hosting statico (Netlify e
+Cloudflare Pages leggono `dist/_redirects`). Impostare `404.html` come pagina di errore.
 
 ## Crediti tipografici
 

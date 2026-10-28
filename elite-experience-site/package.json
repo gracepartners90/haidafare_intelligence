@@ -7,6 +7,7 @@
   "scripts": {
     "build": "node build.mjs && node build.mjs --bundle",
     "build:deploy": "node build.mjs --pretty",
+    "build:nuovo": "node build.mjs --pretty --staging",
     "preview": "npx --yes http-server dist -p 4180 -c-1",
     "start": "node server.mjs"
   },

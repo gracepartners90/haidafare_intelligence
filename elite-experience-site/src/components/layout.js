@@ -83,7 +83,7 @@ export function footer(ctx) {
     </div>
     <div class="ftr__base">
       <p>© 2026 Élite Experience${c.vat ? ` — P. IVA ${esc(c.vat)}` : ` — P. IVA ${tbd('da inserire')}`}</p>
-      <ul><li><a href="${ctx.href('privacy/')}">Privacy</a></li><li><a href="${ctx.href('privacy/')}#cookie">Cookie</a></li></ul>
+      <ul><li><a href="${ctx.href('privacy-policy/')}">Privacy Policy</a></li><li><a href="${ctx.href('cookie-policy/')}">Cookie Policy</a></li></ul>
     </div>
   </div>
 </footer>
@@ -106,7 +106,7 @@ export function head(ctx, p) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(p.title)}</title>
 <meta name="description" content="${esc(p.description)}">
-${p.noindex ? '<meta name="robots" content="noindex, follow">' : '<meta name="robots" content="index, follow">'}
+${p.noindex || ctx.staging ? `<meta name="robots" content="noindex, ${ctx.staging ? 'nofollow' : 'follow'}">` : '<meta name="robots" content="index, follow">'}
 <link rel="canonical" href="${canonical}">
 <link rel="alternate" hreflang="it" href="${canonical}">
 <link rel="alternate" hreflang="x-default" href="${canonical}">
@@ -134,20 +134,25 @@ function italicFirst(body) {
   return /<em[\s>]|class="[^"]*__by\b|<blockquote/.test(body.slice(0, end));
 }
 
+// Google Tag Manager (snippet ufficiale), solo nella versione pubblicata
+const gtmHead = (id) => `<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${id}');</script>\n`;
+const gtmBody = (id) => `<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${id}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>\n`;
+
 export function page(ctx, p) {
   if (p.fontsEarly === undefined) p = { ...p, fontsEarly: italicFirst(p.body) };
   const main = `<main id="contenuto" class="${p.bodyClass || ''}">${p.body}</main>`;
   if (ctx.mode === 'bundle') return { ...p, main };
+  const gtm = ctx.mode === 'pretty' && site.gtm;
   return {
     ...p,
     html: `<!doctype html>
 <html lang="it">
 <head>
-${head(ctx, p)}
+${gtm ? gtmHead(site.gtm) : ''}${head(ctx, p)}
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body${ctx.mode === 'pretty' ? '' : ' class="notes-on"'}>
-${header(p.section ? { ...ctx, section: p.section } : ctx)}
+${gtm ? gtmBody(site.gtm) : ''}${header(p.section ? { ...ctx, section: p.section } : ctx)}
 ${main}
 ${footer(ctx)}
 <script ${ctx.src('site.js')} defer></script>

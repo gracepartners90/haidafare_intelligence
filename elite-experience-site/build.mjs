@@ -1,6 +1,7 @@
 // Generatore statico senza dipendenze.
 //   node build.mjs            → dist/ con link relativi (apribile anche da disco)
 //   node build.mjs --pretty   → dist/ con URL "puliti" per la pubblicazione su hosting
+//   node build.mjs --pretty --staging → come sopra, ma nascosto ai motori di ricerca (nuovo.elitexperience.it)
 //   node build.mjs --bundle   → dist/elite-experience-prototipo.html, file unico di anteprima
 import fs from 'node:fs';
 import crypto from 'node:crypto';
@@ -19,6 +20,7 @@ import magazine from './src/pages/magazine.js';
 const root = path.dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
 const mode = args.includes('--bundle') ? 'bundle' : args.includes('--pretty') ? 'pretty' : 'static';
+const staging = args.includes('--staging');
 const dist = path.join(root, 'dist');
 const read = (p) => JSON.parse(fs.readFileSync(path.join(root, p), 'utf8'));
 
@@ -54,7 +56,7 @@ for (const list of variants.values()) list.sort((a, b) => a[0] - b[0]);
 function makeCtx(route, dirOverride) {
   const dir = (dirOverride ?? route).replace(/\/$/, '');
   return {
-    mode, route, data,
+    mode, route, data, staging,
     href(to) {
       if (/^https?:/.test(to)) return to;
       if (to.startsWith('#')) return mode === 'bundle' ? `#/${route}@${to.slice(1)}` : to;
@@ -121,9 +123,10 @@ if (mode !== 'bundle') {
   const redirects = read('src/content/redirects.json').redirects;
   fs.writeFileSync(path.join(dist, '_redirects'), redirects.map((r) => `${r.from} ${r.to} 301`).join('\n') + '\n');
   const rx = (from) => `^${from.replace(/[.]/g, '\\.').replace(/\/\*$/, '/.*').replace(/\/$/, '/?')}$`;
-  fs.writeFileSync(path.join(dist, '.htaccess'), `# Redirect 301 dai vecchi indirizzi del sito WordPress (generato da src/content/redirects.json)\n${redirects.map((r) => `RedirectMatch 301 ${rx(r.from)} ${r.to}`).join('\n')}\n`);
-  fs.writeFileSync(path.join(dist, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${site.url}/sitemap.xml\n`);
-  console.log(`${pages.length} pagine generate in dist/ (${mode})`);
+  const hide = staging ? '# Versione di prova: nascosta ai motori di ricerca\n<IfModule mod_headers.c>\nHeader set X-Robots-Tag "noindex, nofollow"\n</IfModule>\n\n' : '';
+  fs.writeFileSync(path.join(dist, '.htaccess'), `${hide}# Redirect 301 dai vecchi indirizzi del sito WordPress (generato da src/content/redirects.json)\n${redirects.map((r) => `RedirectMatch 301 ${rx(r.from)} ${r.to}`).join('\n')}\n\nErrorDocument 404 /404.html\n`);
+  fs.writeFileSync(path.join(dist, 'robots.txt'), staging ? 'User-agent: *\nDisallow: /\n' : `User-agent: *\nAllow: /\nSitemap: ${site.url}/sitemap.xml\n`);
+  console.log(`${pages.length} pagine generate in dist/ (${mode}${staging ? ', prova nascosta' : ''})`);
 } else {
   // File unico: tutte le pagine come sezioni, navigazione con #/percorso, immagini e font incorporati una sola volta
   const sections = pages.filter((p) => !p.file).map((p) => {

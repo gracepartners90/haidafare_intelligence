@@ -5,8 +5,6 @@
     { "from": "/dati-aziendali/", "to": "/contatti/" },
     { "from": "/thank-you/", "to": "/contatti/" },
     { "from": "/404-2/", "to": "/" },
-    { "from": "/privacy-policy/", "to": "/privacy/" },
-    { "from": "/cookie-policy/", "to": "/privacy/" },
     { "from": "/video-elite/", "to": "/" },
     { "from": "/wellness-ritual/", "to": "/academy/formazione-online/wellness-ritual/" },
     { "from": "/elite-ritual-collection/", "to": "/academy/formazione-online/" },

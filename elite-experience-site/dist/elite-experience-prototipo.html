@@ -1360,6 +1360,18 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
   .pg { break-after: page; }
 }
 .p-mag .ftr { border-top: 1px solid var(--line-light); }
+
+/* Privacy e Cookie Policy: testo inserito da Acconsento (Tag Manager) */
+.policy { color: var(--ink); line-height: 1.7; }
+.policy h1, .policy h2 { margin-top: 1.8em; font-family: var(--serif); font-size: clamp(1.4rem, 2vw, 1.75rem); font-weight: 400; line-height: 1.25; }
+.policy h3, .policy h4 { margin-top: 1.5em; font-family: var(--serif); font-size: 1.2rem; font-weight: 400; }
+.policy p, .policy ul, .policy ol, .policy table { margin-top: .8em; }
+.policy ul, .policy ol { padding-left: 1.3em; list-style: disc; }
+.policy ol { list-style: decimal; }
+.policy a { color: var(--choc); text-decoration: underline; text-underline-offset: 2px; }
+.policy table { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; font-size: .875rem; }
+.policy th, .policy td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.policy__note { color: var(--muted); font-style: italic; }
 </style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -6281,7 +6293,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     <p class="form__intro">Per conoscere i corsi e ricevere un orientamento sul percorso più adatto.</p>
     <div class="form__grid"><div class="field field--half"><label for="form-formazione-nome">Nome <span aria-hidden="true">*</span></label><input id="form-formazione-nome" name="nome" type="text" autocomplete="given-name" required><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-formazione-cognome">Cognome <span aria-hidden="true">*</span></label><input id="form-formazione-cognome" name="cognome" type="text" autocomplete="family-name" required><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-formazione-email">Email <span aria-hidden="true">*</span></label><input id="form-formazione-email" name="email" type="email" autocomplete="email" required><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-formazione-telefono">Telefono</label><input id="form-formazione-telefono" name="telefono" type="tel" autocomplete="tel"><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-formazione-salone">Salone</label><input id="form-formazione-salone" name="salone" type="text" autocomplete="organization"><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-formazione-citta">Città</label><input id="form-formazione-citta" name="citta" type="text" autocomplete="address-level2"><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-formazione-ruolo">Ruolo</label><select id="form-formazione-ruolo" name="ruolo"><option value="">Seleziona</option><option>Titolare di salone</option><option>Hairstylist</option><option>Operatore Hair Spa</option><option>Altro</option></select><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-formazione-esperienza">Esperienza Hair Spa <span aria-hidden="true">*</span></label><select id="form-formazione-esperienza" name="esperienza" required><option value="">Seleziona</option><option>Nessuna, voglio iniziare</option><option>Offro già servizi Hair Spa</option></select><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-formazione-corso">Corso di interesse</label><select id="form-formazione-corso" name="corso"><option value="">Seleziona</option><option>Wellness Ritual</option><option>Pinda Ritual</option><option>Brushing Ritual</option><option>Hairgym Ritual</option><option>Relax Full Ritual</option><option>Élite Ritual Collection</option><option>Non so ancora</option></select><span class="field__err" aria-live="polite"></span></div><div class="field"><label for="form-formazione-messaggio">Messaggio</label><textarea id="form-formazione-messaggio" name="messaggio" rows="4"></textarea><span class="field__err" aria-live="polite"></span></div></div>
     <div class="field field--check">
-      <label><input type="checkbox" name="privacy" id="form-formazione-privacy" required><span>Ho letto l’<a href="#/privacy/">informativa privacy</a> e acconsento al trattamento dei dati per ricevere una risposta. <span aria-hidden="true">*</span></span></label>
+      <label><input type="checkbox" name="privacy" id="form-formazione-privacy" required><span>Ho letto l’<a href="#/privacy-policy/">informativa privacy</a> e acconsento al trattamento dei dati per ricevere una risposta. <span aria-hidden="true">*</span></span></label>
       <span class="field__err" aria-live="polite"></span>
     </div>
     <div class="form__foot">
@@ -6300,7 +6312,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     <p class="form__intro">Per verificare disponibilità e organizzazione, ad Arona o nel tuo salone.</p>
     <div class="form__grid"><div class="field field--half"><label for="form-presenza-nome">Nome <span aria-hidden="true">*</span></label><input id="form-presenza-nome" name="nome" type="text" autocomplete="given-name" required><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-presenza-cognome">Cognome <span aria-hidden="true">*</span></label><input id="form-presenza-cognome" name="cognome" type="text" autocomplete="family-name" required><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-presenza-email">Email <span aria-hidden="true">*</span></label><input id="form-presenza-email" name="email" type="email" autocomplete="email" required><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-presenza-telefono">Telefono</label><input id="form-presenza-telefono" name="telefono" type="tel" autocomplete="tel"><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-presenza-salone">Salone <span aria-hidden="true">*</span></label><input id="form-presenza-salone" name="salone" type="text" autocomplete="organization" required><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-presenza-citta">Città <span aria-hidden="true">*</span></label><input id="form-presenza-citta" name="citta" type="text" autocomplete="address-level2" required><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-presenza-modalita">Dove <span aria-hidden="true">*</span></label><select id="form-presenza-modalita" name="modalita" required><option value="">Seleziona</option><option>Presso la sede di Arona</option><option>Nel mio salone</option></select><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-presenza-partecipanti">Numero di partecipanti</label><input id="form-presenza-partecipanti" name="partecipanti" type="number"><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-presenza-periodo">Periodo preferito</label><input id="form-presenza-periodo" name="periodo" type="text"><span class="field__err" aria-live="polite"></span></div><div class="field"><label for="form-presenza-messaggio">Messaggio</label><textarea id="form-presenza-messaggio" name="messaggio" rows="4"></textarea><span class="field__err" aria-live="polite"></span></div></div>
     <div class="field field--check">
-      <label><input type="checkbox" name="privacy" id="form-presenza-privacy" required><span>Ho letto l’<a href="#/privacy/">informativa privacy</a> e acconsento al trattamento dei dati per ricevere una risposta. <span aria-hidden="true">*</span></span></label>
+      <label><input type="checkbox" name="privacy" id="form-presenza-privacy" required><span>Ho letto l’<a href="#/privacy-policy/">informativa privacy</a> e acconsento al trattamento dei dati per ricevere una risposta. <span aria-hidden="true">*</span></span></label>
       <span class="field__err" aria-live="polite"></span>
     </div>
     <div class="form__foot">
@@ -6319,7 +6331,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     <p class="form__intro">Per aziende, brand, distributori, accademie e organizzatori di eventi.</p>
     <div class="form__grid"><div class="field field--half"><label for="form-collaborazioni-nome">Nome <span aria-hidden="true">*</span></label><input id="form-collaborazioni-nome" name="nome" type="text" autocomplete="given-name" required><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-collaborazioni-cognome">Cognome <span aria-hidden="true">*</span></label><input id="form-collaborazioni-cognome" name="cognome" type="text" autocomplete="family-name" required><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-collaborazioni-azienda">Azienda o ente <span aria-hidden="true">*</span></label><input id="form-collaborazioni-azienda" name="azienda" type="text" autocomplete="organization" required><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-collaborazioni-ruolo">Ruolo</label><input id="form-collaborazioni-ruolo" name="ruolo" type="text"><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-collaborazioni-email">Email <span aria-hidden="true">*</span></label><input id="form-collaborazioni-email" name="email" type="email" autocomplete="email" required><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-collaborazioni-telefono">Telefono</label><input id="form-collaborazioni-telefono" name="telefono" type="tel" autocomplete="tel"><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-collaborazioni-tipologia">Tipo di collaborazione <span aria-hidden="true">*</span></label><select id="form-collaborazioni-tipologia" name="tipologia" required><option value="">Seleziona</option><option>Azienda o brand</option><option>Distributore</option><option>Accademia</option><option>Organizzatore di eventi</option><option>Altro</option></select><span class="field__err" aria-live="polite"></span></div><div class="field field--half"><label for="form-collaborazioni-paese">Paese</label><input id="form-collaborazioni-paese" name="paese" type="text" autocomplete="country-name"><span class="field__err" aria-live="polite"></span></div><div class="field"><label for="form-collaborazioni-messaggio">Descrizione del progetto <span aria-hidden="true">*</span></label><textarea id="form-collaborazioni-messaggio" name="messaggio" rows="4" required></textarea><span class="field__err" aria-live="polite"></span></div></div>
     <div class="field field--check">
-      <label><input type="checkbox" name="privacy" id="form-collaborazioni-privacy" required><span>Ho letto l’<a href="#/privacy/">informativa privacy</a> e acconsento al trattamento dei dati per ricevere una risposta. <span aria-hidden="true">*</span></span></label>
+      <label><input type="checkbox" name="privacy" id="form-collaborazioni-privacy" required><span>Ho letto l’<a href="#/privacy-policy/">informativa privacy</a> e acconsento al trattamento dei dati per ricevere una risposta. <span aria-hidden="true">*</span></span></label>
       <span class="field__err" aria-live="polite"></span>
     </div>
     <div class="form__foot">
@@ -6345,15 +6357,20 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     </div>
   </div>
 </section></section>
-<section class="route " data-route="privacy/" data-title="Privacy e cookie | Élite Experience" hidden><section class="phero phero--center"><div class="wrap"><nav class="crumbs" aria-label="Percorso">
-    <ol><li><a href="#/">Home</a></li><li aria-current="page">Privacy e cookie</li></ol>
-  </nav><h1 class="phero__title">Privacy e cookie</h1></div></section>
-<section class="sec sec--tight"><div class="wrap-narrow"><div class="tbd-block tbd-block--light ">
-    <p class="tbd-block__label">Contenuto da completare</p>
-    <p class="tbd-block__title">Informativa privacy e cookie policy</p>
-    <ul><li>Titolare del trattamento</li><li>Finalità e basi giuridiche dei moduli di contatto</li><li>Cookie tecnici e di terze parti</li></ul>
-    <p class="tbd-block__note">Testo da redigere con il consulente legale prima della pubblicazione.</p>
-  </div><p id="cookie"></p></div></section></section></main>
+<section class="route " data-route="privacy-policy/" data-title="Privacy Policy | Élite Experience" hidden><section class="phero phero--center"><div class="wrap"><nav class="crumbs" aria-label="Percorso">
+    <ol><li><a href="#/">Home</a></li><li aria-current="page">Privacy Policy</li></ol>
+  </nav><h1 class="phero__title">Privacy Policy</h1></div></section>
+<section class="sec sec--tight"><div class="wrap-narrow policy">
+  <div id="acconsento-informative-container"></div>
+  <p class="policy__note">Nell’anteprima il testo non viene caricato: nella versione pubblicata arriva da Acconsento tramite Google Tag Manager.</p>
+</div></section></section>
+<section class="route " data-route="cookie-policy/" data-title="Cookie Policy | Élite Experience" hidden><section class="phero phero--center"><div class="wrap"><nav class="crumbs" aria-label="Percorso">
+    <ol><li><a href="#/">Home</a></li><li aria-current="page">Cookie Policy</li></ol>
+  </nav><h1 class="phero__title">Cookie Policy</h1></div></section>
+<section class="sec sec--tight"><div class="wrap-narrow policy">
+  <div id="acconsento-cookies-container"></div>
+  <p class="policy__note">Nell’anteprima il testo non viene caricato: nella versione pubblicata arriva da Acconsento tramite Google Tag Manager.</p>
+</div></section></section></main>
 <footer class="ftr">
   <div class="wrap">
     <div class="ftr__top">
@@ -6386,7 +6403,7 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
     </div>
     <div class="ftr__base">
       <p>© 2026 Élite Experience — P. IVA 02824540039</p>
-      <ul><li><a href="#/privacy/">Privacy</a></li><li><a href="#/privacy/#cookie">Cookie</a></li></ul>
+      <ul><li><a href="#/privacy-policy/">Privacy Policy</a></li><li><a href="#/cookie-policy/">Cookie Policy</a></li></ul>
     </div>
   </div>
 </footer>
@@ -6538,6 +6555,8 @@ mark { padding: 0 .12em; background: linear-gradient(transparent 56%, rgba(222, 
         }
         btn.disabled = false;
         form.removeAttribute('aria-busy');
+        // Per Tag Manager / Analytics: richiesta inviata e tipo di modulo
+        (window.dataLayer = window.dataLayer || []).push({ event: 'richiesta_inviata', tipo_richiesta: form.elements.tipo.value });
       }
       if (ok) ok.hidden = false;
       form.reset();

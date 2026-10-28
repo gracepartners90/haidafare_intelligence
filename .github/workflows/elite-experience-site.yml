@@ -1,0 +1,81 @@
+# Élite Experience — pubblicazione del sito su SiteGround (rsync via SSH)
+#
+# - Ramo di lavoro del sito → versione di prova, nascosta ai motori di ricerca (nuovo.elitexperience.it)
+# - Ramo «produzione»       → sito definitivo (elitexperience.it)
+#
+# Secrets del repository (Settings → Secrets and variables → Actions):
+#   SG_HOST, SG_PORT, SG_USER     credenziali SSH di SiteGround (Site Tools → Sviluppatori → Gestione chiavi SSH)
+#   SG_SSH_KEY                    chiave privata generata in SiteGround
+#   SG_SSH_PASSPHRASE             password della chiave (se impostata)
+#   SG_PATH_NUOVO                 es. www/nuovo.elitexperience.it/public_html
+#   SG_PATH_PRODUZIONE            es. www/elitexperience.it/public_html (solo al momento del passaggio)
+# Finché i secrets non ci sono, il caricamento viene saltato senza errori.
+name: Sito Élite Experience
+
+on:
+  push:
+    branches: [claude/determined-johnson-jvszxy, produzione]
+    paths: ['elite-experience-site/**', '.github/workflows/elite-experience-site.yml']
+  workflow_dispatch:
+
+concurrency:
+  group: elite-experience-site-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  pubblica:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: elite-experience-site
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Versione da pubblicare
+        id: dove
+        env:
+          PATH_NUOVO: ${{ secrets.SG_PATH_NUOVO }}
+          PATH_PRODUZIONE: ${{ secrets.SG_PATH_PRODUZIONE }}
+        run: |
+          if [ "${GITHUB_REF_NAME}" = "produzione" ]; then
+            echo "build=npm run build:deploy" >> "$GITHUB_OUTPUT"
+            echo "dest=${PATH_PRODUZIONE}" >> "$GITHUB_OUTPUT"
+            echo "nome=elitexperience.it" >> "$GITHUB_OUTPUT"
+          else
+            echo "build=npm run build:nuovo" >> "$GITHUB_OUTPUT"
+            echo "dest=${PATH_NUOVO}" >> "$GITHUB_OUTPUT"
+            echo "nome=nuovo.elitexperience.it (prova nascosta)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build
+        run: ${{ steps.dove.outputs.build }}
+
+      - name: Caricamento su SiteGround
+        env:
+          HOST: ${{ secrets.SG_HOST }}
+          PORT: ${{ secrets.SG_PORT }}
+          USER: ${{ secrets.SG_USER }}
+          KEY: ${{ secrets.SG_SSH_KEY }}
+          PASS: ${{ secrets.SG_SSH_PASSPHRASE }}
+          DEST: ${{ steps.dove.outputs.dest }}
+        run: |
+          if [ -z "$HOST" ] || [ -z "$USER" ] || [ -z "$KEY" ] || [ -z "$DEST" ]; then
+            echo "::notice::Credenziali o cartella di destinazione non impostate: caricamento saltato (${{ steps.dove.outputs.nome }})."
+            exit 0
+          fi
+          PORT="${PORT:-18765}"
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$KEY" > ~/.ssh/siteground && chmod 600 ~/.ssh/siteground
+          # La chiave di SiteGround ha una password: la si toglie solo nella copia temporanea del runner
+          if [ -n "$PASS" ]; then ssh-keygen -p -q -P "$PASS" -N '' -f ~/.ssh/siteground; fi
+          ssh-keyscan -p "$PORT" -H "$HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          # --delete toglie dalla cartella i file non più presenti nel sito; .well-known resta (certificati SSL)
+          rsync -az --delete --exclude '.well-known/' \
+            -e "ssh -i ~/.ssh/siteground -p $PORT -o IdentitiesOnly=yes" \
+            dist/ "$USER@$HOST:$DEST/"
+          echo "::notice::Pubblicato su ${{ steps.dove.outputs.nome }}"
+          rm -f ~/.ssh/siteground

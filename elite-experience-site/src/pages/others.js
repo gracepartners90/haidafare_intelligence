@@ -1,5 +1,5 @@
 import { site } from '../config.js';
-import { esc, tbd, eyebrow, btn, media, tbdBlock, breadcrumb, form, extIcon } from '../components/core.js';
+import { esc, tbd, eyebrow, btn, media, breadcrumb, form, extIcon } from '../components/core.js';
 import { breadcrumbs } from '../components/seo.js';
 import { page } from '../components/layout.js';
 import { fullHero } from '../components/blocks.js';
@@ -87,15 +87,27 @@ ${fullHero(ctx, {
   },
 };
 
-/* ---------------- PRIVACY (struttura) + 404 ---------------- */
-const privacy = {
-  route: 'privacy/',
-  render(ctx) {
-    const body = `<section class="phero phero--center"><div class="wrap">${breadcrumb(ctx, [H, { label: 'Privacy e cookie', to: 'privacy/' }])}<h1 class="phero__title">Privacy e cookie</h1></div></section>
-<section class="sec sec--tight"><div class="wrap-narrow">${tbdBlock({ title: 'Informativa privacy e cookie policy', lines: ['Titolare del trattamento', 'Finalità e basi giuridiche dei moduli di contatto', 'Cookie tecnici e di terze parti'], note: 'Testo da redigere con il consulente legale prima della pubblicazione.' })}<p id="cookie"></p></div></section>`;
-    return page(ctx, { title: 'Privacy e cookie | Élite Experience', description: 'Informativa privacy e cookie di Élite Experience.', noindex: true, body });
-  },
-};
+/* ---------------- PRIVACY POLICY, COOKIE POLICY + 404 ---------------- */
+// I testi arrivano da Acconsento, caricato da Google Tag Manager (site.gtm) nel contenitore con
+// questo id, come sul sito WordPress. Nell'anteprima Tag Manager non c'è: compare un avviso.
+function policy({ route, label, container }) {
+  return {
+    route,
+    render(ctx) {
+      const live = ctx.mode === 'pretty' && site.gtm;
+      const body = `<section class="phero phero--center"><div class="wrap">${breadcrumb(ctx, [H, { label, to: route }])}<h1 class="phero__title">${esc(label)}</h1></div></section>
+<section class="sec sec--tight"><div class="wrap-narrow policy">
+  <div id="${container}"></div>
+  ${live
+    ? `<noscript><p>Per leggere il testo è necessario JavaScript. Puoi chiederlo anche a <a href="mailto:${esc(site.contacts.email)}">${esc(site.contacts.email)}</a>.</p></noscript>`
+    : '<p class="policy__note">Nell’anteprima il testo non viene caricato: nella versione pubblicata arriva da Acconsento tramite Google Tag Manager.</p>'}
+</div></section>`;
+      return page(ctx, { title: `${label} | Élite Experience`, description: `${label} di Élite Experience.`, noindex: true, body });
+    },
+  };
+}
+const privacy = policy({ route: 'privacy-policy/', label: 'Privacy Policy', container: 'acconsento-informative-container' });
+const cookie = policy({ route: 'cookie-policy/', label: 'Cookie Policy', container: 'acconsento-cookies-container' });
 
 const notFound = {
   route: '404/',
@@ -106,4 +118,4 @@ const notFound = {
   },
 };
 
-export default () => [contatti, privacy, notFound];
+export default () => [contatti, privacy, cookie, notFound];

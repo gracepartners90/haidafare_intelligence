@@ -182,7 +182,7 @@ export function form(ctx, { id, title, intro, fields, submit }) {
     ${intro ? `<p class="form__intro">${esc(intro)}</p>` : ''}
     <div class="form__grid">${fields.map((f) => field({ ...f, prefix: id })).join('')}</div>
     <div class="field field--check">
-      <label><input type="checkbox" name="privacy" id="${id}-privacy" required><span>Ho letto l’<a href="${ctx.href('privacy/')}">informativa privacy</a> e acconsento al trattamento dei dati per ricevere una risposta. <span aria-hidden="true">*</span></span></label>
+      <label><input type="checkbox" name="privacy" id="${id}-privacy" required><span>Ho letto l’<a href="${ctx.href('privacy-policy/')}">informativa privacy</a> e acconsento al trattamento dei dati per ricevere una risposta. <span aria-hidden="true">*</span></span></label>
       <span class="field__err" aria-live="polite"></span>
     </div>
     <div class="form__foot">
